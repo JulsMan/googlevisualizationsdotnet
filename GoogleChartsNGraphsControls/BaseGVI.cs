@@ -46,7 +46,7 @@ namespace GoogleChartsNGraphsControls
         @"
 
         /********************************************************************************
-        *      GoogleChangeNGraphsControls for .NET - by Julian King
+        *      GoogleVisualizationControls for .NET - by Julian King
         *      Visualization: {3} 
         *      Div Element: {0}
         *********************************************************************************/
@@ -73,7 +73,7 @@ namespace GoogleChartsNGraphsControls
     @"
 
         /********************************************************************************
-        *      GoogleChangeNGraphsControls for .NET - by Julian King
+        *      GoogleVisualizationControls for .NET - by Julian King
         *      Visualization: {3} 
         *      Div Element: {0}
         *********************************************************************************/
