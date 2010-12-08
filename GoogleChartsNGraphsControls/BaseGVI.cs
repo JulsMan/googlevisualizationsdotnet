@@ -195,10 +195,6 @@ namespace GoogleChartsNGraphsControls
                     optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), 
                         string.Format("[ {0} ]",string.Join(",",lst.Select( s => s.ToString()).ToArray()))));
                 }
-                else if (prop.PropertyType == typeof(string))
-                {
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), val.ToString()));
-                }
                 else
                     optionsList.Add(string.Format("{0}:{1}", prop.Name.GVINameParse(), val.ToString()));
             }
