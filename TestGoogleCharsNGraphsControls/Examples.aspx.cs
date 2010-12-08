@@ -56,7 +56,7 @@ namespace TestGoogleCharsNGraphsControls
             dt.Rows.Add(new object[] { "Lunch", 1 });
             dt.Rows.Add(new object[] { "Meetings", 1 });
 
-            this.GVPieChart1.ChartData(dt);
+            this.GVPieChart1.DataSource = dt;
 
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
             this.GVPieChart2.GviLegend = "left";

@@ -86,6 +86,11 @@ namespace GoogleChartsNGraphsControls
         {
             this.dt = dt;
         }
+        public DataTable DataSource 
+        {
+            get { return this.dt; }
+            set { this.dt = value; } 
+        }
         protected override HtmlTextWriterTag TagKey
         {
             get
