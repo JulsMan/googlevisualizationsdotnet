@@ -131,6 +131,15 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVGeoMap GVGeoMap1;
         
         /// <summary>
+        /// GVGeoMap2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVGeoMap GVGeoMap2;
+        
+        /// <summary>
         /// HyperLinkGeoBug control.
         /// </summary>
         /// <remarks>

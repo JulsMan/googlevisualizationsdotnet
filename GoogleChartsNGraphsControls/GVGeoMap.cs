@@ -40,7 +40,7 @@ namespace GoogleChartsNGraphsControls
             155 - (Western Europe)
             039 - (Southern Europe)
             Geomap does not enable scrolling or dragging behavior, and only limited zooming behavior. A basic zoom out can be enabled by setting the showZoomOut property.")]
-        [DefaultValue("regions")]
+        [DefaultValue("world")]
         public string GviRegion
         {
             get
@@ -160,6 +160,15 @@ namespace GoogleChartsNGraphsControls
             
             //gvi.RegisterGVIScripts(this, this.JsonData, BaseGVI.GOOGLECHART.MAP);
             //this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
+            
+            // A datatable is required for this object ...
+            if ((this.dt == null) || (this.dt.Columns.Count == 0))
+            {
+                
+                this.dt = new DataTable("World Map");
+                this.dt.Columns.Add(new DataColumn("Country", typeof(string)));
+                this.dt.Rows.Add(new object[] {"USA" });
+            }
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.GEOMAP);
             output.Write(String.Empty);
         }

@@ -286,6 +286,8 @@
             this.GVGeoMap1.ChartData(world);
         </pre>
         
+        <h3>GeoMap Example - Working Out of the Box</h3>
+        <cc1:GVGeoMap ID="GVGeoMap2" runat="server" Width="400" Height="400" />
         
         <p />
         <h3>GeoMap Example - Using 'Markers' and 'US' Country</h3>
