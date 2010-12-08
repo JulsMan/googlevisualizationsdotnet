@@ -1,0 +1,15 @@
+<publishData>
+  <publishTarget publishUrl="http://localhost/GoogleChartsDotNet/">
+    <file relUrl="bin/GoogleChartsNGraphsControls.dll" publishTime="12/03/2010 14:03:24" />
+    <file relUrl="Examples.aspx" publishTime="12/03/2010 14:35:46" />
+    <file relUrl="bin/TestGoogleCharsNGraphsControls.pdb" publishTime="12/03/2010 14:33:22" />
+    <file relUrl="App_Themes/unknown_user.png" publishTime="08/17/2010 12:19:49" />
+    <file relUrl="bin/GoogleChartsNGraphsControls.pdb" publishTime="12/03/2010 14:03:24" />
+    <file relUrl="Web.config" publishTime="07/25/2010 10:28:28" />
+    <file relUrl="bin/TestGoogleCharsNGraphsControls.dll" publishTime="12/03/2010 14:33:22" />
+    <file relUrl="App_Themes/male_user.png" publishTime="08/16/2010 13:15:15" />
+    <file relUrl="GeoBug.aspx" publishTime="12/03/2010 14:34:36" />
+    <file relUrl="bin/Visualization.dll" publishTime="06/30/2010 09:42:43" />
+    <file relUrl="App_Themes/female_user.png" publishTime="08/16/2010 13:15:15" />
+  </publishTarget>
+</publishData>

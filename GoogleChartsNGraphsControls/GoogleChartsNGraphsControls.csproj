@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{30D276B0-B6B3-410F-B723-C128AC58FDA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GoogleChartsNGraphsControls</RootNamespace>
+    <AssemblyName>GoogleChartsNGraphsControls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Nonshipping>true</Nonshipping>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseGVI.cs" />
+    <Compile Include="BaseWebControl.cs" />
+    <Compile Include="GVOrgChart.cs" />
+    <Compile Include="GVGauge.cs" />
+    <Compile Include="GVGeoMap.cs" />
+    <Compile Include="GVScatterChart.cs" />
+    <Compile Include="GVMotionChart.cs" />
+    <Compile Include="GVSparkLine.cs" />
+    <Compile Include="GVColumnChart.cs" />
+    <Compile Include="DataStructs.cs" />
+    <Compile Include="GVAnnotatedTimeline.cs" />
+    <Compile Include="GVAreaChart.cs" />
+    <Compile Include="GVBarChart.cs" />
+    <Compile Include="GVMap.cs" />
+    <Compile Include="GVPieChart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransformDataTable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GVAnnotatedTimeline.bmp" />
+    <EmbeddedResource Include="GVAreaChart.bmp" />
+    <EmbeddedResource Include="GVPieChart.bmp" />
+    <EmbeddedResource Include="GVBarChart.bmp" />
+    <EmbeddedResource Include="GVColumnChart.bmp" />
+    <EmbeddedResource Include="GVSparkLine.bmp" />
+    <EmbeddedResource Include="GVMotionChart.bmp" />
+    <EmbeddedResource Include="GVScatterChart.bmp" />
+    <EmbeddedResource Include="GVGeoMap.bmp" />
+    <EmbeddedResource Include="GVGauge.bmp" />
+    <EmbeddedResource Include="GVOrgChart.bmp" />
+    <Content Include="icons\chart_bar.png" />
+    <Content Include="icons\chart_curve.png" />
+    <Content Include="icons\chart_line.png" />
+    <Content Include="icons\chart_organisation.png" />
+    <Content Include="icons\chart_org_inverted.png" />
+    <Content Include="icons\cmy.png" />
+    <Content Include="icons\color.png" />
+    <Content Include="icons\color_swatch.png" />
+    <Content Include="icons\comment.png" />
+    <Content Include="icons\font.png" />
+    <Content Include="icons\layers.png" />
+    <Content Include="icons\lightbulb.png" />
+    <Content Include="icons\lightning.png" />
+    <Content Include="icons\map.png" />
+    <Content Include="icons\time.png" />
+    <Content Include="icons\timeline_marker.png" />
+    <Content Include="icons\transmit.png" />
+    <Content Include="icons\vector.png" />
+    <Content Include="icons\world.png" />
+    <EmbeddedResource Include="GVMap.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GVI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
