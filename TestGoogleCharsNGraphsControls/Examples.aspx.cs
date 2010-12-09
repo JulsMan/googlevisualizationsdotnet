@@ -61,7 +61,7 @@ namespace TestGoogleCharsNGraphsControls
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
             this.GVPieChart2.GviLegend = "left";
             this.GVPieChart2.GviIs3D = true;
-            this.GVPieChart2.ChartData(dt);
+            this.GVPieChart2.DataSource = dt;
 
           
 
@@ -76,7 +76,7 @@ namespace TestGoogleCharsNGraphsControls
             dt2.Rows.Add(new object[] { "2008", 410000, 442000 });
             dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
             dt2.Rows.Add(new object[] { "2010", 480000, 435000});
-            this.GVAreaChart2.ChartData(dt2);
+            this.GVAreaChart2.DataSource = dt2;
 
 
 
@@ -90,12 +90,12 @@ namespace TestGoogleCharsNGraphsControls
             barchart.Rows.Add(new object[] { "2006", 660, 1120 });
             barchart.Rows.Add(new object[] { "2007", 1030, 540 });
             this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
-            this.GVBarChart1.ChartData(barchart);
+            this.GVBarChart1.DataSource = barchart;
 
 
 
             this.GVColumnChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
-            this.GVColumnChart1.ChartData(barchart);
+            this.GVColumnChart1.DataSource = barchart;
 
 
 
@@ -113,7 +113,7 @@ namespace TestGoogleCharsNGraphsControls
             rv.Rows.Add(new object[] { 505, 151 });
             rv.Rows.Add(new object[] { 509, 149 });
             this.GVSparkLine1.GviLabelPosition = "left";
-            this.GVSparkLine1.ChartData(rv);
+            this.GVSparkLine1.DataSource = rv;
 
 
 
@@ -125,24 +125,22 @@ namespace TestGoogleCharsNGraphsControls
                 new System.Data.DataColumn("Expenses", typeof(int)),
                 new System.Data.DataColumn("Location", typeof(string))
             });
-
             motionchart.Rows.Add(new object[] { "Apples",   new DateTime(1988,1,1),     1000,   300,    "East"} );
             motionchart.Rows.Add(new object[] { "Oranges",  new DateTime(1988, 1, 1),   1150,   311,    "West" });
             motionchart.Rows.Add(new object[] { "Bananas",  new DateTime(1988, 1, 1),   300,    200,    "West" });
             motionchart.Rows.Add(new object[] { "Apples",   new DateTime(1989, 6, 1),   1200,   250,    "East" });
             motionchart.Rows.Add(new object[] { "Oranges",  new DateTime(1989, 6, 1),   750,    150,    "West" });
             motionchart.Rows.Add(new object[] { "Bananas",  new DateTime(1989, 6, 1),   788,    617,    "West" });
-
-            this.GVMotionChart1.ChartData(motionchart);
+            this.GVMotionChart1.DataSource = motionchart;
 
 
 
             System.Data.DataTable scatter = new System.Data.DataTable("Scatter Example");
             scatter.Columns.AddRange( 
-                new System.Data.DataColumn[]{
-                    new System.Data.DataColumn("Age",typeof(int)), 
-                    new System.Data.DataColumn("Weight",typeof(int))
-                });
+            new System.Data.DataColumn[]{
+                new System.Data.DataColumn("Age",typeof(int)), 
+                new System.Data.DataColumn("Weight",typeof(int))
+            });
             scatter.Rows.Add(new object[] { 8, 72});
             scatter.Rows.Add(new object[] { 4, 46 });
             scatter.Rows.Add(new object[] { 6, 55 });
@@ -152,7 +150,7 @@ namespace TestGoogleCharsNGraphsControls
             this.GVScatterChart1.GviTitle = "Age vs Weight Comparison";
             this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
             this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
-            this.GVScatterChart1.ChartData(scatter);
+            this.GVScatterChart1.DataSource = scatter;
 
 
 
@@ -169,9 +167,7 @@ namespace TestGoogleCharsNGraphsControls
             world.Rows.Add(new object[] { "Russia", 700 });
             world.Rows.Add(new object[] { "China", 1300 });
             world.Rows.Add(new object[] { "India", 1000 });
-
-            
-            this.GVGeoMap1.ChartData(world);
+            this.GVGeoMap1.DataSource = world;
 
 
 
@@ -186,7 +182,7 @@ namespace TestGoogleCharsNGraphsControls
             gauge.Rows.Add(new object[] { "Memory", 80 });
             gauge.Rows.Add(new object[] { "CPU", 55 });
             gauge.Rows.Add(new object[] { "Network", 68 });
-            this.GVGauge1.ChartData(gauge);
+            this.GVGauge1.DataSource = gauge;
 
 
 

@@ -293,7 +293,6 @@
         
         <p />
         <h3>GeoMap Example - Using 'Markers' and 'US' Country</h3>
-        
         <asp:HyperLink ID="HyperLinkGeoBug" runat="server" NavigateUrl="~/GeoBug.aspx">View Example (for some reason this won't run in the same page)</asp:HyperLink>
         
         <pre class="sloppyCode">

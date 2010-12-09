@@ -24,7 +24,7 @@ namespace TestGoogleCharsNGraphsControls
             projs.Rows.Add(new object[] { "Duvall, WA", 10, "Duvall: Just Starting" });
 
             this.GVGeoMap2.GviOptionsOverride = "{'region':'US','colors':[0xFF8747, 0xFFB581, 0xc06000], 'dataMode':'markers'}";
-            this.GVGeoMap2.ChartData(projs);
+            this.GVGeoMap2.DataSource = projs;
         }
     }
 }
