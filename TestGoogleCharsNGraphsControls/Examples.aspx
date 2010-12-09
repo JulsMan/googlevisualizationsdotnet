@@ -32,6 +32,8 @@
             </pre>
         <p />
         
+     
+        
         <p />
         <h3>Annotated Timeline Example</h3>
         <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server"  Width="800" Height="400" GVIDisplayAnnotations="True" GviDisplayDateBarSeparator="true" GviAllowRedraw="true"/>
