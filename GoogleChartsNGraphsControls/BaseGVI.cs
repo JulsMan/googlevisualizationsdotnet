@@ -6,8 +6,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Drawing;
 
+// [assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
 namespace GoogleChartsNGraphsControls
 {
+    
     public class BaseGVI
     {
         public static bool REGISTER_GOOGLE_API_JS = false;
@@ -46,7 +48,8 @@ namespace GoogleChartsNGraphsControls
         @"
 
         /********************************************************************************
-        *      GoogleVisualizationControls for .NET - by Julian King
+        *      GoogleVisualizationControls.NET {{ver}}
+        *      http://code.google.com/p/googlevisualizationsdotnet/ 
         *      Visualization: {3} 
         *      Div Element: {0}
         *********************************************************************************/
@@ -133,7 +136,12 @@ namespace GoogleChartsNGraphsControls
             }
             // base.OnPreRender(e);
             string optionsJscode = string.Format(jscode2, PageControl.ClientID, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), PageControl.GviRegisterEvents);
-
+            string build = string.Format("v{0}.{1}.{2}.{3}",
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major, 
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MajorRevision,
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor,
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MinorRevision);
+            optionsJscode = optionsJscode.Replace("{ver}", build);  
             
             PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + PageControl.ClientID, optionsJscode, true);
 
