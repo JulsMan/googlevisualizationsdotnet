@@ -141,7 +141,7 @@
         <cc1:GVAreaChart ID="GVAreaChart2" runat="server" Width="600" Height="400" />
          <pre class="sloppyCode">
             Sample Code:
-             System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");
+            System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");
             dt2.Columns.Add("Year");
             dt2.Columns.Add("Expenses", typeof(int));
             dt2.Columns.Add("Sales", typeof(int));
@@ -355,7 +355,7 @@
         
          <p />
         <h3>Org Chart Example - with templating</h3>
-        <cc1:GVOrgChart ID="GVOrgChart2" runat="server" GviAllowCollapse="true" />
+        <cc1:GVOrgChart ID="GVOrgChart2" runat="server" GviAllowCollapse="true" GviOnSelect="function( row ){ alert('You selected Row' + row); }" />
         <pre class="sloppyCode">
         {
             ...

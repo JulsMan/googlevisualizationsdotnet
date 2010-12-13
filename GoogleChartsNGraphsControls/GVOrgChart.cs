@@ -112,6 +112,104 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviEventOption("collapse")]
+        [Bindable(true)]
+        [Category("GoogleEvents")]
+        [Description(@"Event triggered when allowCollapse is set to true and the user double clicks on a node with children. 
+            collapsed - A boolean indicating whether this is a 'collapse' or 'expand' event.
+            row - The zero-based index of the row in the data table, corresponding to the node being clicked.")]
+        [DefaultValue("")]
+        public string GviOnCollapse
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnCollapse"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviOnCollapse"] = value;
+            }
+        }
+
+        [GviEventOption("select")]
+        [Bindable(true)]
+        [Category("GoogleEvents")]
+        [Description(@"Standard select event.")]
+        [DefaultValue("")]
+        public string GviOnSelect
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnSelect"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviOnSelect"] = value;
+            }
+        }
+
+        [GviEventOption("onmouseover")]
+        [Bindable(true)]
+        [Category("GoogleEvents")]
+        [Description(@"Triggered when the user hovers over a specific row.	row - The zero-based index of the row in the data table, corresponding to the node being moused over.")]
+        [DefaultValue("")]
+        public string GviOnMouseOver
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnMouseOver"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviOnMouseOver"] = value;
+            }
+        }
+
+        [GviEventOption("onmouseout")]
+        [Bindable(true)]
+        [Category("GoogleEvents")]
+        [Description(@"Triggered when the user hovers out of a row.	row - The zero-based index of the row in the data table, corresponding to the node being moused out from.")]
+        [DefaultValue("")]
+        public string GviOnMouseOut
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnMouseOut"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviOnMouseOut"] = value;
+            }
+        }
+
+        [GviEventOption("ready")]
+        [Bindable(true)]
+        [Category("GoogleEvents")]
+        [Description(@"The chart is ready for external method calls. If you want to interact with the chart, and call methods after you draw it, you should set up a listener for this event before you call the draw method, and call the methods only after the event is fired.")]
+        [DefaultValue("")]
+        public string GviOnReady
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnReady"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviOnReady"] = value;
+            }
+        }
+
+
         /********************************************************
          Data Format
             A table with three string string columns, where each row represents a node in the orgchart. Here are the three columns:

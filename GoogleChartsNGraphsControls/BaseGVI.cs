@@ -128,6 +128,7 @@ namespace GoogleChartsNGraphsControls
                 REGISTER_GOOGLE_API_JS = true;
             }
 
+            string events = RenderGVIEvents(PageControl);
             string options = RenderGVIConfigOptions(PageControl);
             if ((PageControl.GviOptionsOverride != null) && (!string.IsNullOrEmpty(PageControl.GviOptionsOverride.ToString())))
             {
@@ -135,7 +136,7 @@ namespace GoogleChartsNGraphsControls
                 options = PageControl.GviOptionsOverride.ToString();
             }
             // base.OnPreRender(e);
-            string optionsJscode = string.Format(jscode2, PageControl.ClientID, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), PageControl.GviRegisterEvents);
+            string optionsJscode = string.Format(jscode2, PageControl.ClientID, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), events);
             string build = string.Format("v{0}.{1}.{2}.{3}",
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major, 
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MajorRevision,
@@ -153,7 +154,30 @@ namespace GoogleChartsNGraphsControls
             PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + PageControl.ClientID, string.Format("var data_{0} = function() {{ {1} }}", PageControl.ClientID, datatableoutput), true);
 
         }
-        
+
+
+        internal string RenderGVIEvents(WebControl PageControl)
+        {
+            List<string> eventsList = new List<string>();
+            System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
+            foreach (System.Reflection.PropertyInfo prop in props)
+            {
+                GviEventOption option = prop.GetCustomAttributes(typeof(GviEventOption), false)
+                .Cast<GviEventOption>().FirstOrDefault();
+
+                if (option == null) continue;
+
+                object value = prop.GetValue(PageControl,null);
+                
+                if (value == null) continue;
+
+                string foo = string.Format("chart.{0} = {1};", option.EventName, value);
+                foo = foo.Replace(";;", ";");
+                eventsList.Add(foo);
+            }
+
+            return string.Join(Environment.NewLine, eventsList.ToArray());
+        }
         /// <summary>
         /// Renders a JSON string of all the config options.
         /// </summary>
