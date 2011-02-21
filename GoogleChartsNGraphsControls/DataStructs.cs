@@ -86,5 +86,6 @@ namespace GoogleChartsNGraphsControls
 
             return str.Replace("_", ".");   // replace the '_' with '.' for subclassing
         }
+
     }
 }

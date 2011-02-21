@@ -196,9 +196,13 @@ namespace GoogleChartsNGraphsControls
 
                 if (option == null) continue;
                 
-                object val = prop.GetValue(PageControl, null);
+                object val = prop.GetValue(PageControl, null); 
 
                 if (val == null) continue;
+
+                // convert any ' to \'
+                if (val is string)
+                    val = val.ToString().Replace("'", @"\'");
 
                 if (prop.PropertyType == typeof(string))
                 {

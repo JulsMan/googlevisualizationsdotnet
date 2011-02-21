@@ -112,6 +112,25 @@
             this.GVPieChart1.ChartData(dt);
         </pre>
         
+        
+        
+        <p />
+        <h3>PieChart Example</h3>
+        <cc1:GVPieChart ID="GVPieChart3" runat="server" Width="600" Height="400" GviTitle="Title with a single's quote in it!" />
+        <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable dt = new System.Data.DataTable("Work Day");
+            dt.Columns.Add("Activity");
+            dt.Columns.Add("Daily Percentage", typeof(int));
+            dt.Rows.Add(new object[] {"Engineering",5});
+            dt.Rows.Add(new object[] { "Programming", 3 });
+            dt.Rows.Add(new object[] { "Sleeping", 1 });
+            dt.Rows.Add(new object[] { "Lunch", 1 });
+            dt.Rows.Add(new object[] { "Meetings", 1 });
+
+            this.GVPieChart1.ChartData(dt);
+        </pre>
+        
         <p />
         <h3>PieChart Example</h3>
         <cc1:GVPieChart ID="GVPieChart2" runat="server" Width="600" Height="400" GviTitle="Favorite Pets" GviLegend="left" GviIs3D="true" />

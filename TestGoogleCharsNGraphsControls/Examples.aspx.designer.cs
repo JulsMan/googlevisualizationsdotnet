@@ -59,6 +59,15 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVPieChart GVPieChart1;
         
         /// <summary>
+        /// GVPieChart3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVPieChart GVPieChart3;
+        
+        /// <summary>
         /// GVPieChart2 control.
         /// </summary>
         /// <remarks>
