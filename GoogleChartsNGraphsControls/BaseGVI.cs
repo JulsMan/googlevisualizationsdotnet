@@ -200,9 +200,20 @@ namespace GoogleChartsNGraphsControls
 
                 if (val == null) continue;
 
-                // convert any ' to \'
+                // convert any ' that is not at the end of the values into a \'
+                // example 'Bruce Lee's gee!' ==> 'Bruce Lee\'s gee'
                 if (val is string)
-                    val = val.ToString().Replace("'", @"\'");
+                {
+                    List<string> matches = new List<string>();
+                    foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(val.ToString(), @"\w\'\w", System.Text.RegularExpressions.RegexOptions.Compiled))
+                        matches.Add(m.Value);
+
+                    foreach (string s in matches)
+                    {
+                        string repl = s.Replace("'", @"\'");
+                        val = val.ToString().Replace(s, repl);
+                    }
+                }
 
                 if (prop.PropertyType == typeof(string))
                 {
