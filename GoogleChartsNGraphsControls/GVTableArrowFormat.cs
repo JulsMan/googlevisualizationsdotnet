@@ -10,8 +10,8 @@ using System.Data;
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVBarChart runat=server></{0}:GVBarChart>")]
-    [ToolboxBitmap(typeof(GVBarChart))]
+    [ToolboxData("<{0}:GVTableArrowFormat runat=server></{0}:GVTableArrowFormat>")]
+    [ToolboxBitmap(typeof(GVTableArrowFormat))]
     public class GVTableArrowFormat : BaseWebControl
     {
 

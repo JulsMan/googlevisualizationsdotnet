@@ -5,12 +5,13 @@ using System.Text;
 using System.Web.UI;
 using System.ComponentModel;
 using System.Drawing;
+using System.Data;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVBarChart runat=server></{0}:GVBarChart>")]
-    [ToolboxBitmap(typeof(GVBarChart))]
+    [ToolboxData("<{0}:GVTableBarFormat runat=server></{0}:GVTableBarFormat>")]
+    [ToolboxBitmap(typeof(GVTableBarFormat))]
     public class GVTableBarFormat : BaseWebControl
     {
 
