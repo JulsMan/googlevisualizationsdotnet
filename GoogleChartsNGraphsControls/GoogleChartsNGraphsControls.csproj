@@ -65,6 +65,7 @@
     <Compile Include="GVMap.cs" />
     <Compile Include="GVPieChart.cs" />
     <Compile Include="GVTableArrowFormat.cs" />
+    <Compile Include="GVTableBarFormat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransformDataTable.cs" />
   </ItemGroup>
@@ -94,6 +95,8 @@
     <Content Include="icons\lightbulb.png" />
     <Content Include="icons\lightning.png" />
     <Content Include="icons\map.png" />
+    <Content Include="icons\table_row.png" />
+    <Content Include="icons\table_row_delete.png" />
     <Content Include="icons\time.png" />
     <Content Include="icons\timeline_marker.png" />
     <Content Include="icons\transmit.png" />

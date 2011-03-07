@@ -19,7 +19,7 @@ namespace GoogleChartsNGraphsControls
             AREACHART, TIMELINE, GEOMAP, BARCHART,
             COLUMNCHART, GAUGE, LINECHART, MAP,
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
-            SPARKLINE, WORDCLOUD, SCATTERCHART
+            SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR
         }
 
         #region JSCode
@@ -111,6 +111,8 @@ namespace GoogleChartsNGraphsControls
             dic.Add(GOOGLECHART.PIECHART, new string[] { "corechart", "PieChart" });
             dic.Add(GOOGLECHART.SPARKLINE, new string[] { "imagesparkline", "ImageSparkLine" });
             dic.Add(GOOGLECHART.SCATTERCHART, new string[] { "corechart", "ScatterChart" });
+            dic.Add(GOOGLECHART.TABLEARROW, new string[] { "tablearrowformat", "TableArrowFormat" });
+            dic.Add(GOOGLECHART.TABLEARROW, new string[] { "tablebarformat", "TableBarFormat" });
         }
 
         
