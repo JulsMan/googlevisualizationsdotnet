@@ -364,7 +364,7 @@ namespace GoogleChartsNGraphsControls
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.BARCHART);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TABLEARROW);
             output.Write(Text);
         }
     }
