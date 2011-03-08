@@ -65,7 +65,8 @@
     <Compile Include="GVMap.cs" />
     <Compile Include="GVPieChart.cs" />
     <Compile Include="GVTableArrowFormat.cs" />
-    <EmbeddedResource Include="GVTableBarFormat.cs" />
+    <Compile Include="GVTableBarFormat.cs" />
+    <Compile Include="IGoogleFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransformDataTable.cs" />
   </ItemGroup>

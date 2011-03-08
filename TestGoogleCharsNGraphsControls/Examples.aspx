@@ -346,6 +346,47 @@
         </pre>
         
         
+         <p />
+        <h3>Data Table: Arrow Format Example</h3>
+        <cc1:GVTableArrowFormat ID="GVTableArrowFormat1" runat="server" Height="300" Width="400" GviFormatColumn="1" />
+         <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable tblArrow = new System.Data.DataTable("DataTable - Arrow Formatter");
+            tblArrow.Columns.AddRange(new System.Data.DataColumn[] {
+                new System.Data.DataColumn("Department",typeof(string)), 
+                new System.Data.DataColumn("Revenue Change",typeof(float))
+            });
+            tblArrow.Rows.Add(new object[] { "Sports", 12f });
+            tblArrow.Rows.Add(new object[] { "Toys", -7.3f});
+            tblArrow.Rows.Add(new object[] { "Electronics", -2.1f });
+            tblArrow.Rows.Add(new object[] { "Food", 22.0f });
+            this.GVTableArrowFormat1.GviOptionsOverride = "{allowHtml: true, showRowNumber: true}";
+            this.GVTableArrowFormat1.DataSource = tblArrow;
+        </pre>
+        
+        
+        
+         <p />
+        <h3>Data Table: Bar Format Example</h3>
+        <cc1:GVTableBarFormat ID="GVTableBarFormat1" runat="server"  Height="300" Width="400" GviFormatColumn="2"/>
+         <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable tblBar = new System.Data.DataTable("DataTable - Arrow Formatter");
+            tblBar.Columns.AddRange(new System.Data.DataColumn[] {
+                new System.Data.DataColumn("Department",typeof(string)), 
+                new System.Data.DataColumn("Manager",typeof(string)),
+                new System.Data.DataColumn("Revenue",typeof(int))
+            });
+            tblBar.Rows.Add(new object[] { "Shoes", "Lady Gaga",10700 });
+            tblBar.Rows.Add(new object[] { "Sports", "Reggie Bush",-15200 });
+            tblBar.Rows.Add(new object[] { "Toys", "Reggie Bush", 12500 });
+            tblBar.Rows.Add(new object[] { "Electronics", "Daft Punk",-2100});
+            tblBar.Rows.Add(new object[] { "Food", "Wolfgang Puck", 22600 });
+            tblBar.Rows.Add(new object[] { "Art", "Leo Davinci",1100 });
+            this.GVTableBarFormat1.GviFormatColumn = 2;
+            this.GVTableBarFormat1.GviOptionsOverride = "{allowHtml: true, showRowNumber: true}";
+            this.GVTableBarFormat1.DataSource = tblBar;
+        </pre>
         
         <p />
         <h3>Org Chart Example</h3>

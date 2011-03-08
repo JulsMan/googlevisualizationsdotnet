@@ -12,7 +12,7 @@ namespace GoogleChartsNGraphsControls
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVTableBarFormat runat=server></{0}:GVTableBarFormat>")]
     [ToolboxBitmap(typeof(GVTableBarFormat))]
-    public class GVTableBarFormat : BaseWebControl
+    public class GVTableBarFormat : BaseWebControl, IGoogleFormatter
     {
 
         [Bindable(true)]
@@ -367,5 +367,56 @@ namespace GoogleChartsNGraphsControls
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TABLEBAR);
             output.Write(Text);
         }
+
+        #region IGoogleFormatter Members
+
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleFormatOptions")]
+        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        [DefaultValue("")]
+        public string GviFormatterParams
+        {
+            get
+            {
+                string s = (string)ViewState["GviFormatterParams"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFormatterParams"] = value;
+            }
+        }
+
+        public string Formatter
+        {
+            get
+            {
+                return "BarFormat";
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleFormatOptions")]
+        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        [DefaultValue(null)]
+        public int? GviFormatColumn
+        {
+            get
+            {
+                int? s = (int?)ViewState["GviFormatColumn"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFormatColumn"] = value;
+            }
+        }
+
+        #endregion
     }
 }

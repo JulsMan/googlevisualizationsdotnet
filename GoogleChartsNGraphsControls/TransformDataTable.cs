@@ -78,7 +78,7 @@ namespace GoogleChartsNGraphsControls
             public override string ToString()
             {
                 string convertedCType = this.ColumnJavascriptType == "object"? "string": this.ColumnJavascriptType;
-                return string.Format(@"dataTable.addColumn('{0}', '{1}');", convertedCType, this.ColumnName);
+                return string.Format(@"dt.addColumn('{0}', '{1}');", convertedCType, this.ColumnName);
             }
         }
 
@@ -86,7 +86,7 @@ namespace GoogleChartsNGraphsControls
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(@"
-                var dataTable = new google.visualization.DataTable();
+                var dt = new google.visualization.DataTable();
                 // Declare columns and rows.
                 ");
 
@@ -107,13 +107,13 @@ namespace GoogleChartsNGraphsControls
             sb.AppendLine(string.Format(
             @"
             // Add data.
-            dataTable.addRows([ 
+            dt.addRows([ 
                 {0}
             ]);", 
                 string.Join(",", tmp.ToArray())));
 
 
-            sb.AppendLine("return dataTable;");
+            sb.AppendLine("return dt;");
 
             return sb.ToString();
         }

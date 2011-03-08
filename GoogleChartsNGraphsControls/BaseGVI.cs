@@ -12,6 +12,7 @@ namespace GoogleChartsNGraphsControls
     
     public class BaseGVI
     {
+        
         public static bool REGISTER_GOOGLE_API_JS = false;
         
         public enum GOOGLECHART
@@ -22,11 +23,39 @@ namespace GoogleChartsNGraphsControls
             SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR
         }
 
+        #region Formatter - for use with the IGoogleFormatter only
+        private static string formatjs = "var formatter = new google.visualization.{Formatter}({FormatterParams}); formatter.format(data, {FormatColumn});";
+        #endregion
+
         #region JSCode
         /// <summary>
         /// Old ... trying to retire this method ... the data is outputted as JSON and is not 
         /// easily debugged or matching that on the Google Vis site
         /// </summary>
+
+        private static string jscode3 =
+       @"
+
+        /********************************************************************************
+        *      GoogleVisualizationControls.NET {{ver}}
+        *      http://code.google.com/p/googlevisualizationsdotnet/ 
+        *      Visualization: {3} 
+        *      Div Element: {0}
+        *********************************************************************************/
+        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
+        google.setOnLoadCallback( draw_{0} );
+        var chart_{0} = undefined;
+        function draw_{0}() {{
+                var data = data_{0}();
+                var chart = new google.visualization.{3}(document.getElementById('{0}'));
+                
+                {formatter}
+
+                chart.draw(data, {1});
+            }}
+";
+
+
         private static string jscode =
         @"
 
@@ -94,25 +123,28 @@ namespace GoogleChartsNGraphsControls
 ";
         #endregion
 
-        private Dictionary<GOOGLECHART, string[]> dic = new Dictionary<GOOGLECHART, string[]>();
+        private static Dictionary<GOOGLECHART, string[]> dic = new Dictionary<GOOGLECHART, string[]>();
         private DataTable dt = new DataTable();
         public BaseGVI()
         {
-            dic.Add(GOOGLECHART.AREACHART, new string[] { "corechart", "AreaChart" });
-            dic.Add(GOOGLECHART.TIMELINE, new string[] { "annotatedtimeline", "AnnotatedTimeLine" });
-            dic.Add(GOOGLECHART.GEOMAP, new string[] { "geomap", "GeoMap" });
-            dic.Add(GOOGLECHART.BARCHART, new string[] { "corechart", "BarChart" });
-            dic.Add(GOOGLECHART.COLUMNCHART, new string[] { "corechart", "ColumnChart" });
-            dic.Add(GOOGLECHART.GAUGE, new string[] { "gauge", "Gauge" });
-            dic.Add(GOOGLECHART.LINECHART, new string[] { "corechart", "LineChart" });
-            dic.Add(GOOGLECHART.MAP, new string[] { "map", "Map" });
-            dic.Add(GOOGLECHART.MOTIONCHART, new string[] { "motionchart", "MotionChart" });
-            dic.Add(GOOGLECHART.ORGANIZATIONCHART, new string[] { "orgchart", "OrgChart" });
-            dic.Add(GOOGLECHART.PIECHART, new string[] { "corechart", "PieChart" });
-            dic.Add(GOOGLECHART.SPARKLINE, new string[] { "imagesparkline", "ImageSparkLine" });
-            dic.Add(GOOGLECHART.SCATTERCHART, new string[] { "corechart", "ScatterChart" });
-            dic.Add(GOOGLECHART.TABLEARROW, new string[] { "tablearrowformat", "TableArrowFormat" });
-            dic.Add(GOOGLECHART.TABLEARROW, new string[] { "tablebarformat", "TableBarFormat" });
+            if (dic.Count == 0)
+            {
+                dic.Add(GOOGLECHART.AREACHART, new string[] { "corechart", "AreaChart" });
+                dic.Add(GOOGLECHART.TIMELINE, new string[] { "annotatedtimeline", "AnnotatedTimeLine" });
+                dic.Add(GOOGLECHART.GEOMAP, new string[] { "geomap", "GeoMap" });
+                dic.Add(GOOGLECHART.BARCHART, new string[] { "corechart", "BarChart" });
+                dic.Add(GOOGLECHART.COLUMNCHART, new string[] { "corechart", "ColumnChart" });
+                dic.Add(GOOGLECHART.GAUGE, new string[] { "gauge", "Gauge" });
+                dic.Add(GOOGLECHART.LINECHART, new string[] { "corechart", "LineChart" });
+                dic.Add(GOOGLECHART.MAP, new string[] { "map", "Map" });
+                dic.Add(GOOGLECHART.MOTIONCHART, new string[] { "motionchart", "MotionChart" });
+                dic.Add(GOOGLECHART.ORGANIZATIONCHART, new string[] { "orgchart", "OrgChart" });
+                dic.Add(GOOGLECHART.PIECHART, new string[] { "corechart", "PieChart" });
+                dic.Add(GOOGLECHART.SPARKLINE, new string[] { "imagesparkline", "ImageSparkLine" });
+                dic.Add(GOOGLECHART.SCATTERCHART, new string[] { "corechart", "ScatterChart" });
+                dic.Add(GOOGLECHART.TABLEARROW, new string[] { "table", "Table" });
+                dic.Add(GOOGLECHART.TABLEBAR, new string[] { "table", "Table" });
+            }
         }
 
         
@@ -124,6 +156,8 @@ namespace GoogleChartsNGraphsControls
         /// <param name="CHARTTYPE"></param>
         internal void RegisterGVIScriptsEx(BaseWebControl PageControl, DataTable dt, GOOGLECHART CHARTTYPE)
         {
+            string JAVASCRIPT = jscode3;
+
             if (!REGISTER_GOOGLE_API_JS)
             {
                 PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "REGISTER_GOOGLE_API_JS", @"<script type='text/javascript' src='http://www.google.com/jsapi'></script>");
@@ -132,13 +166,15 @@ namespace GoogleChartsNGraphsControls
 
             string events = RenderGVIEvents(PageControl);
             string options = RenderGVIConfigOptions(PageControl);
+            string formatter = RenderFormatter(PageControl);
             if ((PageControl.GviOptionsOverride != null) && (!string.IsNullOrEmpty(PageControl.GviOptionsOverride.ToString())))
             {
                 // the override switch is in play ... use the json struct here to override the manually set items...
                 options = PageControl.GviOptionsOverride.ToString();
             }
-            // base.OnPreRender(e);
-            string optionsJscode = string.Format(jscode2, PageControl.ClientID, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), events);
+
+            JAVASCRIPT = JAVASCRIPT.Replace("{formatter}", formatter);
+            string optionsJscode = string.Format(JAVASCRIPT, PageControl.ClientID, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), events);
             string build = string.Format("v{0}.{1}.{2}.{3}",
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major, 
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MajorRevision,
@@ -249,6 +285,25 @@ namespace GoogleChartsNGraphsControls
             }
 
             return string.Format("{{ {0} }}", string.Join(",", optionsList.ToArray()));
+        }
+        internal string RenderFormatter(WebControl PageControl)
+        {
+            if (PageControl as IGoogleFormatter == null)
+                return "";
+
+            IGoogleFormatter formatter = PageControl as IGoogleFormatter;
+
+            string fmtstr = BaseGVI.formatjs;
+            
+            // add the Formatter prop
+            fmtstr = fmtstr.Replace("{Formatter}", formatter.Formatter);
+            if (formatter.GviFormatColumn == null)
+                formatter.GviFormatColumn = 1;
+            
+            fmtstr = fmtstr.Replace("{FormatColumn}", formatter.GviFormatColumn.ToString());
+            fmtstr = fmtstr.Replace("{FormatterParams}", formatter.GviFormatterParams);
+            //fmtstr = System.Text.RegularExpressions.Regex.Replace(fmtstr, "{\w}", "");
+            return fmtstr;
         }
         internal static string RGBtoHex(System.Drawing.Color?[] c)
         {

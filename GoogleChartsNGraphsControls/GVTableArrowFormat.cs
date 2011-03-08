@@ -12,7 +12,7 @@ namespace GoogleChartsNGraphsControls
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVTableArrowFormat runat=server></{0}:GVTableArrowFormat>")]
     [ToolboxBitmap(typeof(GVTableArrowFormat))]
-    public class GVTableArrowFormat : BaseWebControl
+    public class GVTableArrowFormat : BaseWebControl, IGoogleFormatter
     {
 
         [Bindable(true)]
@@ -367,5 +367,55 @@ namespace GoogleChartsNGraphsControls
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TABLEARROW);
             output.Write(Text);
         }
+
+        #region IGoogleFormatter Members
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleFormatOptions")]
+        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        [DefaultValue("")]
+        public string GviFormatterParams
+        {
+            get
+            {
+                string s = (string)ViewState["GviFormatterParams"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFormatterParams"] = value;
+            }
+        }
+
+        public string Formatter
+        {
+            get
+            {
+                return "ArrowFormat";
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleFormatOptions")]
+        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        [DefaultValue("")]
+        public int? GviFormatColumn
+        {
+            get
+            {
+                int? s = (int?)ViewState["GviFormatColumn"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFormatColumn"] = value;
+            }
+        }
+
+        #endregion
     }
 }
