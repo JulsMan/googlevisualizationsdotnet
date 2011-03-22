@@ -16,6 +16,7 @@ namespace TestGoogleCharsNGraphsControls
             this.GVMap2.ChartData("Bothell, WA", "Work");
 
 
+            GridView g;
 
 
             // AnnotatedTimeline Test

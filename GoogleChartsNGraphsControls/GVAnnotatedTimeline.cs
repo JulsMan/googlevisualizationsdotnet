@@ -8,7 +8,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using System.Data;
-using Microsoft.VisualBasic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Drawing.Design;
 
 namespace GoogleChartsNGraphsControls
 {
@@ -42,13 +44,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description("If set to true, any annotation text that includes HTML tags will be rendered as HTML.")]
         [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviAllowHtml 
+        [DefaultValue(TrippleStateBool.NotSet)]
+
+        public TrippleStateBool GviAllowHtml 
         {
             get
             {
-                bool? s = (bool?)ViewState["GviAllowHtml"];
-                return (s == null ? null : s);
+                object o = ViewState["GviAllowHtml"];
+                return o == null ? TrippleStateBool.NotSet : (TrippleStateBool)o;
             }
 
             set
@@ -278,7 +281,20 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        //[enumstring]
+        //public enum HighlightDotEnum {
+        //    [nullvalue]
+        //    notset,
+        //    nearest,
+        //    last }
 
+        public struct HighlightDotStruct
+        {
+            public string notset;
+            public string nearest;
+            public string last;
+
+        }
 
         [GviConfigOption]
         [Bindable(true)]
@@ -286,21 +302,27 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Which dot on the series to highlight, and corresponding values to show in the legend. Select from one of these values:
             'nearest' - The values closest along the X axis to the mouse.
             'last' - The next set of values to the left of the mouse")]
-        [DefaultValue("")]
+        [Editor(typeof(CustomDropDownListDesigner), typeof(UITypeEditor))]
+        
         public string GviHighlightDot
         {
-            get
-            {
-                string s = (string)ViewState["GviHighlightDot"];
-                return s;
-            }
+            get;
+            set;
+            //get
+            //{
+            //    string s = (string)ViewState["GviHighlightDot"];
+            //    return s;
+            //}
 
-            set
-            {
-                ViewState["GviHighlightDot"] = value;
-            }
+            //set
+            //{
+            //    ViewState["GviHighlightDot"] = value;
+            //}
         }
-
+        internal string GetGviHighlightDot()
+        {
+            throw new NotImplementedException();
+        }
 
         [GviConfigOption]
         [Bindable(true)]
