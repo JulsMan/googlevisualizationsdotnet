@@ -69,6 +69,12 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Overrides the name of the element being replaced in the DOM with this chart.")]
+        [DefaultValue("")]
+        public string OverrideElementId { get; set; }
+
         protected DataTable dt
         {
             get

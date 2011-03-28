@@ -174,22 +174,28 @@ namespace GoogleChartsNGraphsControls
             }
 
             JAVASCRIPT = JAVASCRIPT.Replace("{formatter}", formatter);
-            string optionsJscode = string.Format(JAVASCRIPT, PageControl.ClientID, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), events);
+            
+            // the name of the control being bound and over-written
+            string ctlid = PageControl.ClientID;
+            if (!string.IsNullOrEmpty(PageControl.OverrideElementId))
+                ctlid = PageControl.OverrideElementId;
+
+            string optionsJscode = string.Format(JAVASCRIPT, ctlid, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), events);
             string build = string.Format("v{0}.{1}.{2}.{3}",
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major, 
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MajorRevision,
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor,
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MinorRevision);
-            optionsJscode = optionsJscode.Replace("{ver}", build);  
-            
-            PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + PageControl.ClientID, optionsJscode, true);
+            optionsJscode = optionsJscode.Replace("{ver}", build);
+
+            PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + ctlid, optionsJscode, true);
 
             if (this.dt == null)
                 throw new Exception(string.Format("Unable to create visualization '{0}' with an empty DataTable ", this.GetType().FullName));
 
             //Bortosky.Google.Visualization.GoogleDataTable gdt = new Bortosky.Google.Visualization.GoogleDataTable(dt);
             string datatableoutput = TransformDataTable.ToGoogleDataTable(dt);
-            PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + PageControl.ClientID, string.Format("var data_{0} = function() {{ {1} }}", PageControl.ClientID, datatableoutput), true);
+            PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + ctlid, string.Format("var data_{0} = function() {{ {1} }}", ctlid, datatableoutput), true);
 
         }
 
@@ -258,6 +264,23 @@ namespace GoogleChartsNGraphsControls
                     if (!string.IsNullOrEmpty(val.ToString()))
                         optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), val));
                 }
+                else if (prop.PropertyType == typeof(TrippleStateBool))
+                {
+                    TrippleStateBool state = (TrippleStateBool)val;
+                    string v;
+                    switch (state)
+                    {
+                        case TrippleStateBool.False:
+                            optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), "false"));
+                            continue;
+                        case TrippleStateBool.True:
+                            optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), "true"));
+                            continue;
+                        default:
+                            continue;
+                    }
+
+                }
                 else if (prop.PropertyType == typeof(bool?))
                 {
                     optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), val.ToString().ToLower()));
@@ -268,17 +291,17 @@ namespace GoogleChartsNGraphsControls
                 }
                 else if (prop.PropertyType == typeof(Color?[]))
                 {
-                    string rgb = RGBtoHex((Color?[]) val);
+                    string rgb = RGBtoHex((Color?[])val);
                     optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
                 }
                 else if (prop.PropertyType == typeof(int?[]))
                 {
                     List<int> lst = new List<int>();
-                    foreach (int? i in (int?[]) val)
+                    foreach (int? i in (int?[])val)
                         if (i != null)
                             lst.Add((int)i);
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), 
-                        string.Format("[ {0} ]",string.Join(",",lst.Select( s => s.ToString()).ToArray()))));
+                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(),
+                        string.Format("[ {0} ]", string.Join(",", lst.Select(s => s.ToString()).ToArray()))));
                 }
                 else
                     optionsList.Add(string.Format("{0}:{1}", prop.Name.GVINameParse(), val.ToString()));
