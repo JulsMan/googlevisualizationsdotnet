@@ -266,20 +266,25 @@ namespace GoogleChartsNGraphsControls
                 }
                 else if (prop.PropertyType == typeof(TrippleStateBool))
                 {
-                    TrippleStateBool state = (TrippleStateBool)val;
-                    string v;
-                    switch (state)
-                    {
-                        case TrippleStateBool.False:
-                            optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), "false"));
-                            continue;
-                        case TrippleStateBool.True:
-                            optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), "true"));
-                            continue;
-                        default:
-                            continue;
-                    }
 
+                    TrippleStateBool state = (TrippleStateBool)val;
+                    string tmp = state.Parse();
+                    if (!string.IsNullOrEmpty(tmp))
+                        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), tmp));
+                }
+                else if (prop.PropertyType == typeof(MapRegion))
+                {
+                    MapRegion state = (MapRegion)val;
+                    string tmp = state.Parse();
+                    if (!string.IsNullOrEmpty(tmp))
+                        optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
+                }
+                else if (val.GetType().IsEnum)
+                {
+                    Enum o = (Enum)val;
+                    string tmp = o.Parse();
+                    if (!string.IsNullOrEmpty(tmp))
+                        optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
                 }
                 else if (prop.PropertyType == typeof(bool?))
                 {

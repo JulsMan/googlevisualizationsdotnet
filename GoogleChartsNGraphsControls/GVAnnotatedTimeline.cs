@@ -50,8 +50,8 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                object o = ViewState["GviAllowHtml"];
-                return o == null ? TrippleStateBool.NotSet : (TrippleStateBool)o;
+                object s = ViewState["GviAllowHtml"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -67,13 +67,13 @@ namespace GoogleChartsNGraphsControls
         displayAnnotations must be false (that is, you cannot show annotations)
         you must pass in the same options and values (except for the allowRedraw and displayAnnotations) as in your first call to draw()")]
         [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviAllowRedraw
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviAllowRedraw
         {
             get
             {
-                bool? s = (bool?)ViewState["GviAllowRedraw"];
-                return (s == null ? null : s);
+                object s = ViewState["GviAllowRedraw"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -87,13 +87,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"If set to true, the chart will show annotations on top of selected values. When this option is set to true, after every numeric column, two optional annotation string columns can be added, one for the annotation title and one for the annotation text.")]
         [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviDisplayAnnotations
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayAnnotations
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayAnnotations"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayAnnotations"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -107,13 +107,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"If set to true, the chart will display a filter contol to filter annotations. Use this option when there are many annotations")]
         [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviDisplayAnnotationsFilter
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayAnnotationsFilter
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayAnnotationsFilter"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayAnnotationsFilter"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -126,13 +126,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display a small bar separator ( | ) between the series values and the date in the legend, where true means yes.")]
         [Category("GoogleOptions")]
-        [DefaultValue(true)]
-        public bool? GviDisplayDateBarSeparator
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayDateBarSeparator
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayDateBarSeparator"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayDateBarSeparator"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -146,13 +146,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display a shortened, rounded version of the values on the top of the graph, to save space; false indicates that it may. For example, if set to false, 56123.45 might be displayed as 56.12k.")]
         [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviDisplayExactValues
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayExactValues
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayExactValues"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayExactValues"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -166,13 +166,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display dots next to the values in the legend text, where true means yes.")]
         [Category("GoogleOptions")]
-        [DefaultValue(true)]
-        public bool? GviDisplayLegendDots
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayLegendDots
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayExactValues"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayExactValues"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -186,13 +186,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display the highlighted values in the legend, where true means yes.")]
         [Category("GoogleOptions")]
-        [DefaultValue(true)]
-        public bool? GviDisplayLegendValues
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayLegendValues
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayLegendValues"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayLegendValues"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -206,13 +206,13 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to show the zoom range selection area (the area at the bottom of the chart), where false means no.
             The outline in the zoom selector is a log scale version of the last series in the chart, scaled to fit the height of the zoom selector.")]
         [Category("GoogleOptions")]
-        [DefaultValue(true)]
-        public bool? GviDisplayRangeSelector
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayRangeSelector
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayRangeSelector"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayRangeSelector"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -226,13 +226,13 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to show the zoom links ('1d 5d 1m' and so on), where false means no.")]
         [Category("GoogleOptions")]
-        [DefaultValue(true)]
-        public bool? GviDisplayZoomButtons
+        [DefaultValue(TrippleStateBool.NotSet)]
+        public TrippleStateBool GviDisplayZoomButtons
         {
             get
             {
-                bool? s = (bool?)ViewState["GviDisplayZoomButtons"];
-                return (s == null ? null : s);
+                object s = ViewState["GviDisplayZoomButtons"];
+                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
             }
 
             set
@@ -281,48 +281,28 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        //[enumstring]
-        //public enum HighlightDotEnum {
-        //    [nullvalue]
-        //    notset,
-        //    nearest,
-        //    last }
-
-        public struct HighlightDotStruct
-        {
-            public string notset;
-            public string nearest;
-            public string last;
-
-        }
-
+    
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description(@"Which dot on the series to highlight, and corresponding values to show in the legend. Select from one of these values:
             'nearest' - The values closest along the X axis to the mouse.
             'last' - The next set of values to the left of the mouse")]
-        [Editor(typeof(CustomDropDownListDesigner), typeof(UITypeEditor))]
-        
-        public string GviHighlightDot
+        public HighlightDot GviHighlightDot
         {
-            get;
-            set;
-            //get
-            //{
-            //    string s = (string)ViewState["GviHighlightDot"];
-            //    return s;
-            //}
 
-            //set
-            //{
-            //    ViewState["GviHighlightDot"] = value;
-            //}
+            get
+            {
+                object s = ViewState["GviHighlightDot"];
+                return s == null? HighlightDot.Nearest: (HighlightDot)s;
+            }
+
+            set
+            {
+                ViewState["GviHighlightDot"] = value;
+            }
         }
-        internal string GetGviHighlightDot()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         [GviConfigOption]
         [Bindable(true)]
