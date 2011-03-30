@@ -41,12 +41,12 @@ namespace GoogleChartsNGraphsControls
             039 - (Southern Europe)
             Geomap does not enable scrolling or dragging behavior, and only limited zooming behavior. A basic zoom out can be enabled by setting the showZoomOut property.")]
         [DefaultValue("world")]
-        public string GviRegion
+        public MapRegion GviRegion
         {
             get
             {
-                string s = (string)ViewState["GviRegion"];
-                return s;
+                object s = ViewState["GviRegion"];
+                return s == null ? MapRegion.World: (MapRegion)s;
             }
 
             set
@@ -61,13 +61,12 @@ namespace GoogleChartsNGraphsControls
         [Description(@"How to display values on the map. Two values are supported:
             regions - Colors a whole region with the appropriate color. This option cannot be used with latitude/longitude addresses. See Regions Example.
             markers - Displays a dot over a region, with the color and size indicating the value. See Markers Example.")]
-        [DefaultValue("regions")]
-        public string GviDataMode
+        public MapDataModes GviDataMode
         {
             get
             {
-                string s = (string)ViewState["GviDataMode"];
-                return s;
+                object s = ViewState["GviDataMode"];
+                return s == null ? MapDataModes.Regions : (MapDataModes)s;
             }
 
             set

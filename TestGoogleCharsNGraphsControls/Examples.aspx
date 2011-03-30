@@ -286,7 +286,7 @@
         
         <p />
          <h3>GeoMap Example</h3>
-        <cc1:GVGeoMap ID="GVGeoMap1" runat="server" Width="400" Height="400" GviDataMode="regions" GviRegion="world"/>
+        <cc1:GVGeoMap ID="GVGeoMap1" runat="server" Width="400" Height="400" GviDataMode="Regions" GviRegion="World"/>
         <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable world = new System.Data.DataTable("World Population");
