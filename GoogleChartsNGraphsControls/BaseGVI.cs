@@ -14,6 +14,8 @@ namespace GoogleChartsNGraphsControls
     {
         
         public static bool REGISTER_GOOGLE_API_JS = false;
+        public static bool USING_EXT_DATASTORE = false;
+
         
         public enum GOOGLECHART
         {

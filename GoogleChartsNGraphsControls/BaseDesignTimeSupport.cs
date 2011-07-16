@@ -95,7 +95,7 @@ namespace GoogleChartsNGraphsControls
     }
 
 
-    public class RenderAttributeLiteral: Attribute
+    public class RenderAttributeLiteral : Attribute
     {
     }
 }

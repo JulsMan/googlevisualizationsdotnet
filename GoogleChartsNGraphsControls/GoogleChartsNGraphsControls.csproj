@@ -87,6 +87,7 @@
     <EmbeddedResource Include="GVOrgChart.bmp" />
     <EmbeddedResource Include="GVTableArrowFormat.bmp" />
     <EmbeddedResource Include="GVTableBarFormat.bmp" />
+    <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="icons\chart_bar.png" />
     <Content Include="icons\chart_curve.png" />
     <Content Include="icons\chart_line.png" />
@@ -109,9 +110,6 @@
     <Content Include="icons\vector.png" />
     <Content Include="icons\world.png" />
     <EmbeddedResource Include="GVMap.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GVI\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
