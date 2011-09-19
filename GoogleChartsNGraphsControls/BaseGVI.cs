@@ -58,74 +58,74 @@ namespace GoogleChartsNGraphsControls
 ";
 
 
-        private static string jscode =
-        @"
+//        private static string jscode =
+//        @"
+//
+//        /********************************************************************************
+//        *      GoogleVisualizationControls for .NET - by Julian King
+//        *      Visualization: {3} 
+//        *      Div Element: {0}
+//        *********************************************************************************/
+//        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
+//        google.setOnLoadCallback(draw_{0});
+//        function draw_{0}() {{
+//                var data = new google.visualization.DataTable(chart_{0});
+//                var chart = new google.visualization.{3}(document.getElementById('{0}'));
+//                chart.draw(data, {1});
+//            }}
+//";
 
-        /********************************************************************************
-        *      GoogleVisualizationControls for .NET - by Julian King
-        *      Visualization: {3} 
-        *      Div Element: {0}
-        *********************************************************************************/
-        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
-        google.setOnLoadCallback(draw_{0});
-        function draw_{0}() {{
-                var data = new google.visualization.DataTable(chart_{0});
-                var chart = new google.visualization.{3}(document.getElementById('{0}'));
-                chart.draw(data, {1});
-            }}
-";
-
-    private static string jscode2 =
-        @"
-
-        /********************************************************************************
-        *      GoogleVisualizationControls.NET {{ver}}
-        *      http://code.google.com/p/googlevisualizationsdotnet/ 
-        *      Visualization: {3} 
-        *      Div Element: {0}
-        *********************************************************************************/
-        var chart_{0} = undefined;
-        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
-        google.setOnLoadCallback( draw_{0} );
-        var regEvts_{0} = function(chart) {{
-            {4}
-        }};
-        function draw_{0}() {{
-                var data = data_{0}();
-                var chart = new google.visualization.{3}(document.getElementById('{0}'));
-                regEvts_{0}(chart);
-                chart.draw(data, {1});
-                chart_{0} = chart;
-            }}
-";
-
-
+//    private static string jscode2 =
+//        @"
+//
+//        /********************************************************************************
+//        *      GoogleVisualizationControls.NET {{ver}}
+//        *      http://code.google.com/p/googlevisualizationsdotnet/ 
+//        *      Visualization: {3} 
+//        *      Div Element: {0}
+//        *********************************************************************************/
+//        var chart_{0} = undefined;
+//        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
+//        google.setOnLoadCallback( draw_{0} );
+//        var regEvts_{0} = function(chart) {{
+//            {4}
+//        }};
+//        function draw_{0}() {{
+//                var data = data_{0}();
+//                var chart = new google.visualization.{3}(document.getElementById('{0}'));
+//                regEvts_{0}(chart);
+//                chart.draw(data, {1});
+//                chart_{0} = chart;
+//            }}
+//";
 
 
 
-    private static string jscode_orig =
-    @"
 
-        /********************************************************************************
-        *      GoogleVisualizationControls for .NET - by Julian King
-        *      Visualization: {3} 
-        *      Div Element: {0}
-        *********************************************************************************/
-        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
-        google.setOnLoadCallback(draw_{0});
-        var regEvts_{0} = function(chart) {{
-            {4}
-        }};
-        function draw_{0}() {{
-                var data = chart_{0}();
-                var chart = new google.visualization.{3}(document.getElementById('{0}'));
-                regEvts_{0}(chart);
-                chart.draw(data, {1});
-            }}
-";
+
+//    private static string jscode_orig =
+//    @"
+//
+//        /********************************************************************************
+//        *      GoogleVisualizationControls for .NET - by Julian King
+//        *      Visualization: {3} 
+//        *      Div Element: {0}
+//        *********************************************************************************/
+//        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
+//        google.setOnLoadCallback(draw_{0});
+//        var regEvts_{0} = function(chart) {{
+//            {4}
+//        }};
+//        function draw_{0}() {{
+//                var data = chart_{0}();
+//                var chart = new google.visualization.{3}(document.getElementById('{0}'));
+//                regEvts_{0}(chart);
+//                chart.draw(data, {1});
+//            }}
+//";
         #endregion
 
-        private static Dictionary<GOOGLECHART, string[]> dic = new Dictionary<GOOGLECHART, string[]>();
+        private static readonly Dictionary<GOOGLECHART, string[]> dic = new Dictionary<GOOGLECHART, string[]>();
         private DataTable dt = new DataTable();
         public BaseGVI()
         {

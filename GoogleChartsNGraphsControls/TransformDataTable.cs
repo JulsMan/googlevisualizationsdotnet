@@ -134,10 +134,10 @@ namespace GoogleChartsNGraphsControls
                 {
                     if (dr[s.ColumnName] != null)
                     {
-                        DateTime dt = (DateTime)dr[s.ColumnName];
-                        TimeSpan t = (dt - new DateTime(1970, 1, 1));
-                        int timestamp = (int)t.TotalSeconds;
-                        tmp.Add(string.Format(@"new Date({0})", timestamp));
+                        DateTime dt1 = new DateTime(1970, 1, 1);
+                        DateTime dt2 = (DateTime)dr[s.ColumnName];
+                        TimeSpan t = new TimeSpan(dt2.Ticks - dt1.Ticks);
+                        tmp.Add(string.Format(@"new Date({0})", t.TotalMilliseconds));
                     }
                 }
                 else if (s.RequiresQuotes)
