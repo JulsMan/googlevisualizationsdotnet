@@ -159,12 +159,11 @@ namespace GoogleChartsNGraphsControls
         internal void RegisterGVIScriptsEx(BaseWebControl PageControl, DataTable dt, GOOGLECHART CHARTTYPE)
         {
             string JAVASCRIPT = jscode3;
+            
 
-            if (!REGISTER_GOOGLE_API_JS)
-            {
-                PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "REGISTER_GOOGLE_API_JS", @"<script type='text/javascript' src='http://www.google.com/jsapi'></script>");
-                REGISTER_GOOGLE_API_JS = true;
-            }
+           
+
+            
 
             string events = RenderGVIEvents(PageControl);
             string options = RenderGVIConfigOptions(PageControl);

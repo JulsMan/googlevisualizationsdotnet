@@ -12,6 +12,7 @@ namespace GoogleChartsNGraphsControls
     public class BaseWebControl: WebControl
     {
         protected BaseGVI gvi = new BaseGVI();
+
         [Bindable(true)]
         [Category("Appearance")]
         [DefaultValue("")]
@@ -108,6 +109,21 @@ namespace GoogleChartsNGraphsControls
         protected override void AddAttributesToRender(HtmlTextWriter writer)
         {
             base.AddAttributesToRender(writer);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (!this.Page.ClientScript.IsClientScriptBlockRegistered("REGISTER_GOOGLE_API_JS"))
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "REGISTER_GOOGLE_API_JS", "\r\n<script type=\"text/javascript\" src=\"http://www.google.com/jsapi\" />\r\n");
+
+            if (!this.Page.ClientScript.IsClientScriptBlockRegistered("REGISTER_GOOGLE_QUERYWRAPPER"))
+            {
+                string qw = Resource1.ResourceManager.GetString("QueryWrapper", System.Globalization.CultureInfo.CurrentCulture);
+                qw = string.Format("\r\n<script type=\"text/javascript\">\r\n {0} \r\n</script>\r\n", qw);
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "REGISTER_GOOGLE_QUERYWRAPPER", qw);
+            }
         }
     }
 }
