@@ -49,9 +49,25 @@ namespace GoogleChartsNGraphsControls
         var chart_{0} = undefined;
         function draw_{0}() {{
                 var data = data_{0}();
-                var chart = new google.visualization.{3}(document.getElementById('{0}'));
+                var container = document.getElementById('{0}');
+                var chart = new google.visualization.{3}(container);
                 
                 {formatter}
+
+                
+
+                chart.reload = function(args, url)
+                {{
+                    if (url == undefined || url == null){{
+                        url = '{QueryString}';
+                    }}
+                    m_SendAndDraw(container, chart, url, args)
+                }};
+                
+                
+                // store a reference in the DOM
+                chart.container = container;
+                chart_{0} = chart;
 
                 chart.draw(data, {1});
             }}
@@ -175,6 +191,15 @@ namespace GoogleChartsNGraphsControls
             }
 
             JAVASCRIPT = JAVASCRIPT.Replace("{formatter}", formatter);
+            if (!string.IsNullOrEmpty(PageControl.QueryString) && PageControl.QueryString.StartsWith("~"))
+            {
+                PageControl.QueryString = PageControl.Page.ResolveUrl(PageControl.QueryString);
+                JAVASCRIPT = JAVASCRIPT.Replace("{QueryString}", PageControl.QueryString);
+            }
+            else
+            {
+                JAVASCRIPT = JAVASCRIPT.Replace("{QueryString}", PageControl.QueryString);
+            }
             
             // the name of the control being bound and over-written
             string ctlid = PageControl.ClientID;

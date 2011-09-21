@@ -6,8 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title></title>
-    <script type='text/javascript' src='http://www.google.com/jsapi'></script>
+    <title>C# Examples </title>
     <style>
         .sloppyCode
         {
@@ -196,7 +195,11 @@
         
         <p />
         <h3>ColumnChart Example</h3>
-        <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400" />
+        <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400"
+        QueryString="~/AjaxUpdateHandler.ashx?type=column" />
+        
+        <asp:Button ID="Button1" runat="server" OnClientClick="chart_GVColumnChart1.reload(); return false;" Text="Ajax Reload" />
+        
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
@@ -331,7 +334,9 @@
         
         <p />
         <h3>Gauge Example</h3>
-        <cc1:GVGauge ID="GVGauge1" runat="server"  Width="250" Height="150"/>
+        <cc1:GVGauge ID="GVGauge1" runat="server"  Width="250" Height="150" QueryString="~\AjaxUpdateHandler.ashx?type=gauge"  GviRedFrom="80" GviRedTo="100" GviYellowFrom="50" GviYellowTo="80"/>
+        
+        <asp:Button ID="ButtonReload" runat="server"  OnClientClick="chart_GVGauge1.reload(); return false;" Text="Ajax Reload" />
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable gauge = new System.Data.DataTable("Computer");
@@ -343,6 +348,11 @@
             gauge.Rows.Add(new object[] { "CPU", 55 });
             gauge.Rows.Add(new object[] { "Network", 68 });
             this.GVGauge1.ChartData(gauge);
+            
+            Ajax Code:
+            On Chart: QueryString="~\AjaxUpdateHandler.ashx?type=gauge"
+            On Button: OnClientClick="chart_GVGauge1.reload(); return false;"
+            <asp:Button ID="Button2" runat="server"  OnClientClick="chart_GVGauge1.reload(); return false;" Text="Ajax Reload" />
         </pre>
         
         

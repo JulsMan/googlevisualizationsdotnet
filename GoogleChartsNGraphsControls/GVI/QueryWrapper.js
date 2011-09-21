@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * A google.visualization.Query Wrapper. Sends a
  * query and draws the visualization with the returned data or outputs an
  * error message.
@@ -81,3 +82,5 @@ QueryWrapper.prototype.handleErrorResponse = function(response) {
 QueryWrapper.prototype.abort = function() {
   this.query.abort();
 };
+
+

@@ -61,7 +61,17 @@ namespace GoogleChartsNGraphsControls {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /**
+        ///   Looks up a localized string similar to jx={getHTTPObject:function(){var A=false;if(typeof ActiveXObject!=&quot;undefined&quot;){try{A=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;)}catch(C){try{A=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;)}catch(B){A=false}}}else{if(window.XMLHttpRequest){try{A=new XMLHttpRequest()}catch(C){A=false}}}return A},load:function(url,callback,format){var http=this.init();if(!http||!url){return }if(http.overrideMimeType){http.overrideMimeType(&quot;text/xml&quot;)}if(!format){var format=&quot;text&quot;}format=format.toLowerCase();var now=&quot;uid=&quot;+new Date().getTime [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string jx {
+            get {
+                return ResourceManager.GetString("jx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ////**
         /// * A google.visualization.Query Wrapper. Sends a
         /// * query and draws the visualization with the returned data or outputs an
         /// * error message.
@@ -74,11 +84,33 @@ namespace GoogleChartsNGraphsControls {
         ///
         ///
         ////**
-        /// * Constructs a new query wrapper with the given query, visualization,        /// [rest of string was truncated]&quot;;.
+        /// * Constructs a new query wrapper with the given query, visualization [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string QueryWrapper {
             get {
                 return ResourceManager.GetString("QueryWrapper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ////**
+        /// * Registered by GoogleVisualizationsDotNet to facilitate the reload() function 
+        /// * for each control.  Reload will proxy this to this call with the control and container
+        /// * data.  Do not call directly. 
+        /// *
+        /// * PLEASE READ:
+        /// * When loading data from the data source, there will be a GET parameter in the request - tqx - with a value like: &quot;reqId:0&quot;. 
+        /// * You must return the same reqId in your response.
+        /// *
+        /// */
+        /// 
+        ///function m_SendAndDraw(container, chart, queryString, args) {
+        ///  if (queryString == u [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SendAndDraw {
+            get {
+                return ResourceManager.GetString("SendAndDraw", resourceCulture);
             }
         }
     }

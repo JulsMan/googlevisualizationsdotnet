@@ -74,7 +74,37 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"Overrides the name of the element being replaced in the DOM with this chart.")]
         [DefaultValue("")]
-        public string OverrideElementId { get; set; }
+        public string OverrideElementId
+        {
+            get
+            {
+                string s = (string)ViewState["OverrideElementId"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["OverrideElementId"] = value;
+            }
+        }
+
+        [Bindable(true)]
+        [Category("AjaxExtensions")]
+        [Description(@"The URL query string associated with this control from which it will GET its data.")]
+        [DefaultValue("")]
+        public string QueryString
+        {
+            get
+            {
+                string s = (string)ViewState["QueryString"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["QueryString"] = value;
+            }
+        }
 
         protected DataTable dt
         {
@@ -115,14 +145,25 @@ namespace GoogleChartsNGraphsControls
         {
             base.OnLoad(e);
 
-            if (!this.Page.ClientScript.IsClientScriptBlockRegistered("REGISTER_GOOGLE_API_JS"))
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "REGISTER_GOOGLE_API_JS", "\r\n<script type=\"text/javascript\" src=\"http://www.google.com/jsapi\" />\r\n");
+            if (!this.Page.ClientScript.IsClientScriptIncludeRegistered("REGISTER_GOOGLE_API_JS"))
+                this.Page.ClientScript.RegisterClientScriptInclude("REGISTER_GOOGLE_API_JS", "http://www.google.com/jsapi");
 
-            if (!this.Page.ClientScript.IsClientScriptBlockRegistered("REGISTER_GOOGLE_QUERYWRAPPER"))
+            //if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_GOOGLE_QUERYWRAPPER"))
+            //{
+            //    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_GOOGLE_QUERYWRAPPER", 
+            //        Resource1.ResourceManager.GetString("QueryWrapper", System.Globalization.CultureInfo.CurrentCulture), true);
+            //}
+
+            if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_JX_AJAX"))
             {
-                string qw = Resource1.ResourceManager.GetString("QueryWrapper", System.Globalization.CultureInfo.CurrentCulture);
-                qw = string.Format("\r\n<script type=\"text/javascript\">\r\n {0} \r\n</script>\r\n", qw);
-                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "REGISTER_GOOGLE_QUERYWRAPPER", qw);
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_JX_AJAX",
+                    Resource1.ResourceManager.GetString("jx", System.Globalization.CultureInfo.CurrentCulture), true);
+            }
+
+            if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_LOCAL_SCRIPTS"))
+            {
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_LOCAL_SCRIPTS",
+                    Resource1.ResourceManager.GetString("SendAndDraw", System.Globalization.CultureInfo.CurrentCulture), true);
             }
         }
     }
