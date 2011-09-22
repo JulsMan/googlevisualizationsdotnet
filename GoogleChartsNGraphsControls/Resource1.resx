@@ -121,9 +121,6 @@
   <data name="jx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>GVI\jx.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="QueryWrapper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>GVI\QueryWrapper.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="SendAndDraw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>GVI\SendAndDraw.js;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

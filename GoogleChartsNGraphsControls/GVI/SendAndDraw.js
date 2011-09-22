@@ -9,6 +9,10 @@
  * You must return the same reqId in your response.
  *
  */
+function m_JustDraw(container, chart, data){
+    var objAjaxCallback = new AjaxCallback(container, chart);
+    objAjaxCallback.fnAjaxCallback(data);
+}
 
 function m_SendAndDraw(container, chart, queryString, args) {
   if (queryString == undefined || queryString == null){
@@ -28,8 +32,10 @@ function AjaxCallback(container, chart)
     this.container = container;
     this.chart = chart;
     this.fnAjaxCallback = function(data){
+        var options = chart.opts == undefined ? {} : chart.opts;
         var dt = new google.visualization.DataTable(data);
-        chart.draw(dt);
+        chart.format(dt);
+        chart.draw(dt, options);
     };
 }
  

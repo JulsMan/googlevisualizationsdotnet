@@ -48,14 +48,15 @@ namespace GoogleChartsNGraphsControls
         google.setOnLoadCallback( draw_{0} );
         var chart_{0} = undefined;
         function draw_{0}() {{
-                var data = data_{0}();
                 var container = document.getElementById('{0}');
                 var chart = new google.visualization.{3}(container);
-                
-                {formatter}
+                var data = __DATATABLE__;
+
 
                 
 
+                
+        /********* Extended Functions **********************/
                 chart.reload = function(args, url)
                 {{
                     if (url == undefined || url == null){{
@@ -63,13 +64,24 @@ namespace GoogleChartsNGraphsControls
                     }}
                     m_SendAndDraw(container, chart, url, args)
                 }};
-                
-                
-                // store a reference in the DOM
+                chart.load = function(data)
+                {{
+                    m_JustDraw(container, chart, data);
+                }};                
+                chart.format = function(data)
+                {{
+                    {formatter}
+                }};
+        /********* Extended Params    **********************/
+                chart.opts = {1};
                 chart.container = container;
+                
+                
+       /********* Save Chart Into DOM **********************/
                 chart_{0} = chart;
 
-                chart.draw(data, {1});
+       /********* Init Chart Load     **********************/
+                chart.load(data);
             }}
 ";
 
@@ -201,6 +213,7 @@ namespace GoogleChartsNGraphsControls
                 JAVASCRIPT = JAVASCRIPT.Replace("{QueryString}", PageControl.QueryString);
             }
             
+
             // the name of the control being bound and over-written
             string ctlid = PageControl.ClientID;
             if (!string.IsNullOrEmpty(PageControl.OverrideElementId))
@@ -214,14 +227,19 @@ namespace GoogleChartsNGraphsControls
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MinorRevision);
             optionsJscode = optionsJscode.Replace("{ver}", build);
 
+
+            // load the datatable...
+            if (dt == null)
+                throw new Exception(string.Format("Unable to create visualization '{0}' with an empty DataTable ", this.GetType().FullName));
+            Bortosky.Google.Visualization.GoogleDataTable gdt = new Bortosky.Google.Visualization.GoogleDataTable(dt);
+            optionsJscode = optionsJscode.Replace("__DATATABLE__", gdt.GetJson());
+
+
             PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + ctlid, optionsJscode, true);
 
-            if (this.dt == null)
-                throw new Exception(string.Format("Unable to create visualization '{0}' with an empty DataTable ", this.GetType().FullName));
-
-            //Bortosky.Google.Visualization.GoogleDataTable gdt = new Bortosky.Google.Visualization.GoogleDataTable(dt);
+            
             string datatableoutput = TransformDataTable.ToGoogleDataTable(dt);
-            PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + ctlid, string.Format("var data_{0} = function() {{ {1} }}", ctlid, datatableoutput), true);
+            //PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + ctlid, string.Format("var data_{0} = function() {{ {1} }}", ctlid, datatableoutput), true);
 
         }
 

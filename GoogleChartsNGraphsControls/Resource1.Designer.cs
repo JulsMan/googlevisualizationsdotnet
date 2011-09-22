@@ -72,29 +72,6 @@ namespace GoogleChartsNGraphsControls {
         /// <summary>
         ///   Looks up a localized string similar to 
         ////**
-        /// * A google.visualization.Query Wrapper. Sends a
-        /// * query and draws the visualization with the returned data or outputs an
-        /// * error message.
-        /// *
-        /// * DISCLAIMER: This is an example code which you can copy and change as
-        /// * required. It is used with the google visualization API which is assumed to
-        /// * be loaded to the page. For more info see:
-        /// * http://code.google.com/apis/chart/interactive/docs/reference.html#Query
-        /// */
-        ///
-        ///
-        ////**
-        /// * Constructs a new query wrapper with the given query, visualization [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string QueryWrapper {
-            get {
-                return ResourceManager.GetString("QueryWrapper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ////**
         /// * Registered by GoogleVisualizationsDotNet to facilitate the reload() function 
         /// * for each control.  Reload will proxy this to this call with the control and container
         /// * data.  Do not call directly. 
@@ -104,9 +81,9 @@ namespace GoogleChartsNGraphsControls {
         /// * You must return the same reqId in your response.
         /// *
         /// */
-        /// 
+        ///
         ///function m_SendAndDraw(container, chart, queryString, args) {
-        ///  if (queryString == u [rest of string was truncated]&quot;;.
+        ///  if (queryString == un [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SendAndDraw {
             get {

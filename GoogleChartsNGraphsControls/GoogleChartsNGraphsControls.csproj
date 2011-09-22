@@ -61,7 +61,6 @@
     <Compile Include="BaseDesignTimeSupport.cs" />
     <Compile Include="BaseGVI.cs" />
     <Compile Include="BaseWebControl.cs" />
-    <Compile Include="GVI\GoogleQueryResponseStruct.cs" />
     <Compile Include="GVOrgChart.cs" />
     <Compile Include="GVGauge.cs" />
     <Compile Include="GVGeoMap.cs" />
@@ -102,7 +101,6 @@
     <EmbeddedResource Include="GVTableBarFormat.bmp" />
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
-    <Content Include="GVI\QueryWrapper.js" />
     <Content Include="GVI\SendAndDraw.js" />
     <Content Include="icons\chart_bar.png" />
     <Content Include="icons\chart_curve.png" />
