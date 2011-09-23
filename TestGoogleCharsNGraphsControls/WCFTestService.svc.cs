@@ -57,5 +57,30 @@ namespace TestGoogleCharsNGraphsControls
 
             return new Bortosky.Google.Visualization.GoogleDataTable(dt).GetJson();       
         }
+
+        [OperationContract]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Wrapped,
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "GVScatterChart1")]
+        public string GVScatterChart1()
+        {
+            Random rand = new Random(Environment.TickCount);
+
+            System.Data.DataTable dt = new System.Data.DataTable("Scatter Example");
+            dt.Columns.AddRange(
+                new System.Data.DataColumn[]{
+                    new System.Data.DataColumn("Age",typeof(int)), 
+                    new System.Data.DataColumn("Weight",typeof(int))
+                });
+            dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+            dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+            dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+            dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+            dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+            dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+
+            return new Bortosky.Google.Visualization.GoogleDataTable(dt).GetJson();  
+        }
     }
 }

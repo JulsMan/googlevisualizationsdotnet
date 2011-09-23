@@ -272,7 +272,10 @@
         
         <p />
         <h3>ScatterChart Example</h3>
-        <cc1:GVScatterChart ID="GVScatterChart1" runat="server" Width="600" Height="400"/>
+        <cc1:GVScatterChart ID="GVScatterChart1" runat="server" Width="600" Height="400" QueryString="~/AjaxUpdateHandler.ashx?type=GVScatterChart1"/>
+         <p />
+         <asp:Button ID="Button3" runat="server"  OnClientClick="chart_GVScatterChart1.reload(); return false;" Text="Ajax Reload" />
+        
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable scatter = new System.Data.DataTable("Scatter Example");

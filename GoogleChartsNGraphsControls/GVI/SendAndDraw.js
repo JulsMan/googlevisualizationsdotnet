@@ -38,13 +38,15 @@ function AjaxCallback(container, chart)
     this.fnAjaxCallback = function(data){
         var options = chart.opts == undefined ? {} : chart.opts;
         if (typeof(data) == 'string'){
-            data = JSON.parse(data);
+            var foo = eval(data);
+            data = JSON.parse(foo);
         }
         var dt = new google.visualization.DataTable(data);
         chart.format(dt);
         chart.draw(dt, options);
     };
 }
+
  
 
 

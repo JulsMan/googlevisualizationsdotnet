@@ -58,6 +58,23 @@ namespace TestGoogleCharsNGraphsControls
                     break;
 
                 }
+                case "GVScatterChart1":
+                {
+                    dt = new System.Data.DataTable("Scatter Example");
+                    dt.Columns.AddRange(
+                        new System.Data.DataColumn[]{
+                    new System.Data.DataColumn("Age",typeof(int)), 
+                    new System.Data.DataColumn("Weight",typeof(int))}
+                    );
+                    dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+                    dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+                    dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+                    dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+                    dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+                    dt.Rows.Add(new object[] { rand.Next(1, 21), rand.Next(20, 100) });
+
+                    break;
+                }
                 default:
                 {
                     dt = new System.Data.DataTable("Computer");
