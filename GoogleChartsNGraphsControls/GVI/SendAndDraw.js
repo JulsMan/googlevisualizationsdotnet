@@ -19,7 +19,11 @@ function m_SendAndDraw(container, chart, queryString, args) {
         alert('Missing ajax query string!');
   }
   if (args != undefined || args != null){
-    queryString = queryString + '?' + args;
+    if (queryString.indexOf('?') == -1){
+        queryString = queryString + '?args=' + args;
+    } else {
+        queryString = queryString + '&args=' + args;
+    }
   }
   var objAjaxCallback = new AjaxCallback(container, chart);
   jx.load(queryString, objAjaxCallback.fnAjaxCallback, 'json');
@@ -33,6 +37,9 @@ function AjaxCallback(container, chart)
     this.chart = chart;
     this.fnAjaxCallback = function(data){
         var options = chart.opts == undefined ? {} : chart.opts;
+        if (typeof(data) == 'string'){
+            data = JSON.parse(data);
+        }
         var dt = new google.visualization.DataTable(data);
         chart.format(dt);
         chart.draw(dt, options);

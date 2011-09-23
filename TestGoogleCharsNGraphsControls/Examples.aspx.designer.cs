@@ -59,13 +59,13 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVPieChart GVPieChart1;
         
         /// <summary>
-        /// GVPieChart3 control.
+        /// DropDownList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVPieChart GVPieChart3;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
         /// GVPieChart2 control.
@@ -147,24 +147,6 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GoogleChartsNGraphsControls.GVGeoMap GVGeoMap1;
-        
-        /// <summary>
-        /// GVGeoMap2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVGeoMap GVGeoMap2;
-        
-        /// <summary>
-        /// HyperLinkGeoBug control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLinkGeoBug;
         
         /// <summary>
         /// GVGauge1 control.

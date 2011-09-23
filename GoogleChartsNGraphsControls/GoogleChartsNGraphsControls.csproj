@@ -83,7 +83,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="TransformDataTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GVAnnotatedTimeline.bmp" />
@@ -102,6 +101,7 @@
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />
+    <None Include="GVI\Visualization.dll" />
     <Content Include="icons\chart_bar.png" />
     <Content Include="icons\chart_curve.png" />
     <Content Include="icons\chart_line.png" />

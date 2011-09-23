@@ -44,6 +44,20 @@ namespace TestGoogleCharsNGraphsControls
                     dt.Rows.Add(new object[] { "2011", rand.Next(100, 1000), rand.Next(75, 700) });
                     break;
                 }
+                case "GVPieChart2":
+                {
+
+                    dt = new System.Data.DataTable("Work Day");
+                    dt.Columns.Add("Activity");
+                    dt.Columns.Add("Daily Percentage", typeof(int));
+                    dt.Rows.Add(new object[] { "Engineering", rand.Next(1, 12) });
+                    dt.Rows.Add(new object[] { "Programming", rand.Next(1, 12) });
+                    dt.Rows.Add(new object[] { "Sleeping", rand.Next(1, 12) });
+                    dt.Rows.Add(new object[] { "Lunch", rand.Next(1, 12) });
+                    dt.Rows.Add(new object[] { "Meetings", rand.Next(1, 12) });
+                    break;
+
+                }
                 default:
                 {
                     dt = new System.Data.DataTable("Computer");

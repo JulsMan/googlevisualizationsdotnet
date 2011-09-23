@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Examples.aspx.cs" Inherits="TestGoogleCharsNGraphsControls.WebForm1" %>
+﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Examples.aspx.cs" Inherits="TestGoogleCharsNGraphsControls.WebForm1" MaintainScrollPositionOnPostback="true" %>
 
 <%@ Register assembly="GoogleChartsNGraphsControls" namespace="GoogleChartsNGraphsControls" tagprefix="cc1" %>
 
@@ -97,6 +97,17 @@
         <p />
         <h3>PieChart Example</h3>
         <cc1:GVPieChart ID="GVPieChart1" runat="server" Width="600" Height="400" />
+        
+        With Postback: <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_OnSelectedIndexChanged" AutoPostBack="true">
+            <asp:ListItem Text="Sun" />
+            <asp:ListItem Text="Mon" />
+            <asp:ListItem Text="Tues" />
+            <asp:ListItem Text="Wed" />
+            <asp:ListItem Text="Thur" />
+            <asp:ListItem Text="Fri" />
+            <asp:ListItem Text="Sat" />
+        </asp:DropDownList>
+        
         <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable dt = new System.Data.DataTable("Work Day");
@@ -115,24 +126,20 @@
         
         <p />
         <h3>PieChart Example</h3>
-        <cc1:GVPieChart ID="GVPieChart3" runat="server" Width="600" Height="400" GviTitle="Title with a single's quote in it!" />
-        <pre class="sloppyCode">
-            Sample Code:
-            System.Data.DataTable dt = new System.Data.DataTable("Work Day");
-            dt.Columns.Add("Activity");
-            dt.Columns.Add("Daily Percentage", typeof(int));
-            dt.Rows.Add(new object[] {"Engineering",5});
-            dt.Rows.Add(new object[] { "Programming", 3 });
-            dt.Rows.Add(new object[] { "Sleeping", 1 });
-            dt.Rows.Add(new object[] { "Lunch", 1 });
-            dt.Rows.Add(new object[] { "Meetings", 1 });
-
-            this.GVPieChart1.ChartData(dt);
-        </pre>
+        <cc1:GVPieChart ID="GVPieChart2" runat="server" Width="600" Height="400" GviTitle="Favorite Pets" 
+         QueryString="~/AjaxUpdateHandler.ashx?type=GVPieChart2" GviLegend="left" GviIs3D="true" />
         
-        <p />
-        <h3>PieChart Example</h3>
-        <cc1:GVPieChart ID="GVPieChart2" runat="server" Width="600" Height="400" GviTitle="Favorite Pets" GviLegend="left" GviIs3D="true" />
+        With AJAX Handler: <select id="Select1" onchange="chart_GVPieChart2.reload( Select1.options[Select1.selectedIndex].value )">
+            <option>Sun</option>
+            <option>Mon</option>
+            <option>Tues</option>
+            <option>Wed</option>
+            <option>Thurs</option>
+            <option>Fri</option>
+            <option>Sun</option>
+        </select>
+         
+        
          <pre class="sloppyCode">
             Sample Code:
              System.Data.DataTable dt = new System.Data.DataTable("Work Day");
@@ -310,12 +317,10 @@
             this.GVGeoMap1.ChartData(world);
         </pre>
         
-        <h3>GeoMap Example - Working Out of the Box</h3>
-        <cc1:GVGeoMap ID="GVGeoMap2" runat="server" Width="400" Height="400" />
         
-        <p />
+        <%--<p />
         <h3>GeoMap Example - Using 'Markers' and 'US' Country</h3>
-        <asp:HyperLink ID="HyperLinkGeoBug" runat="server" NavigateUrl="~/GeoBug.aspx">View Example (for some reason this won't run in the same page)</asp:HyperLink>
+        <cc1:GVGeoMap ID="GVGeoMap3" runat="server" Width="400" Height="400" />
         
         <pre class="sloppyCode">
           System.Data.DataTable projs = new System.Data.DataTable("US Projects");
@@ -330,7 +335,7 @@
 
             this.GVGeoMap2.GviOptionsOverride = "{'region':'US','colors':[0xFF8747, 0xFFB581, 0xc06000], 'dataMode':'markers'}";
             this.GVGeoMap2.ChartData(projs);
-        </pre>
+        </pre>--%>
         
         <p />
         <h3>Gauge Example</h3>

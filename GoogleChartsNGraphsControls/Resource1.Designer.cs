@@ -81,13 +81,19 @@ namespace GoogleChartsNGraphsControls {
         /// * You must return the same reqId in your response.
         /// *
         /// */
-        ///
-        ///function m_SendAndDraw(container, chart, queryString, args) {
-        ///  if (queryString == un [rest of string was truncated]&quot;;.
+        ///function m_JustDraw(container, chart, data){
+        ///    var objAjaxCallback = new AjaxCallback [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SendAndDraw {
             get {
                 return ResourceManager.GetString("SendAndDraw", resourceCulture);
+            }
+        }
+        
+        internal static byte[] Visualization {
+            get {
+                object obj = ResourceManager.GetObject("Visualization", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

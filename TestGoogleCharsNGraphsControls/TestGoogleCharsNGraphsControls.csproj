@@ -44,6 +44,9 @@
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -81,7 +84,6 @@
     <Compile Include="GeoBug.aspx.designer.cs">
       <DependentUpon>GeoBug.aspx</DependentUpon>
     </Compile>
-    <Compile Include="IWCFTestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Examples.aspx.cs">
       <DependentUpon>Examples.aspx</DependentUpon>

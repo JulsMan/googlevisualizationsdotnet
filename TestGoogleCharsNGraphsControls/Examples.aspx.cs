@@ -16,8 +16,6 @@ namespace TestGoogleCharsNGraphsControls
             this.GVMap2.ChartData("Bothell, WA", "Work");
 
 
-            GridView g;
-
 
             // AnnotatedTimeline Test
             List<GoogleChartsNGraphsControls.TimelineEvent> evts = new List<GoogleChartsNGraphsControls.TimelineEvent>();
@@ -60,7 +58,7 @@ namespace TestGoogleCharsNGraphsControls
             this.GVPieChart1.DataSource = dt;
 
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
-            this.GVPieChart2.GviLegend = "left";
+            this.GVPieChart2.GviLegend = "right";
             this.GVPieChart2.GviIs3D = true;
             this.GVPieChart2.DataSource = dt;
 
@@ -172,7 +170,19 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-          
+            //System.Data.DataTable projs = new System.Data.DataTable("US Projects");
+            //projs.Columns.AddRange(new System.Data.DataColumn[] {
+            //    new System.Data.DataColumn("City",typeof(string)), 
+            //    new System.Data.DataColumn("Completion",typeof(int)),
+            //    new System.Data.DataColumn("Comments",typeof(string)) 
+            //});
+            //projs.Rows.Add(new object[] { "Astoria, NY", 95, "Astoria: Almost Done" });
+            //projs.Rows.Add(new object[] { "Novato, CA", 35, "Novato: Just Starting" });
+            //projs.Rows.Add(new object[] { "Duvall, WA", 10, "Duvall: Just Starting" });
+
+            //this.GVGeoMap3.GviOptionsOverride = "{'region':'US','colors':[0xFF8747, 0xFFB581, 0xc06000], 'dataMode':'markers'}";
+            //this.GVGeoMap3.DataSource = projs;
+
 
 
             System.Data.DataTable gauge = new System.Data.DataTable("Computer");
@@ -288,7 +298,29 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
+        protected void DropDownList1_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                Random rand = new Random(Environment.TickCount);
 
+                System.Data.DataTable dt = new System.Data.DataTable("Work Day");
+                dt.Columns.Add("Activity");
+                dt.Columns.Add("Daily Percentage", typeof(int));
+                dt.Rows.Add(new object[] { "Engineering", rand.Next(1,10) });
+                dt.Rows.Add(new object[] { "Programming", rand.Next(1, 10) });
+                dt.Rows.Add(new object[] { "Sleeping", rand.Next(1, 10) });
+                dt.Rows.Add(new object[] { "Lunch", rand.Next(1, 10) });
+                dt.Rows.Add(new object[] { "Meetings", rand.Next(1, 10) });
+
+                this.GVPieChart1.DataSource = dt;
+
+                this.GVPieChart1.GviTitle = string.Format("My Time: {0}", DateTime.Now.ToShortTimeString());
+                this.GVPieChart1.GviLegend = "right";
+                this.GVPieChart1.GviIs3D = true;
+                this.GVPieChart1.DataSource = dt;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

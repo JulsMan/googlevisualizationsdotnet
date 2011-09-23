@@ -50,13 +50,10 @@ namespace GoogleChartsNGraphsControls
         function draw_{0}() {{
                 var container = document.getElementById('{0}');
                 var chart = new google.visualization.{3}(container);
+
                 var data = __DATATABLE__;
 
-
-                
-
-                
-        /********* Extended Functions **********************/
+       /********* Extended Functions **********************/
                 chart.reload = function(args, url)
                 {{
                     if (url == undefined || url == null){{
@@ -72,10 +69,10 @@ namespace GoogleChartsNGraphsControls
                 {{
                     {formatter}
                 }};
+
         /********* Extended Params    **********************/
                 chart.opts = {1};
                 chart.container = container;
-                
                 
        /********* Save Chart Into DOM **********************/
                 chart_{0} = chart;
@@ -238,7 +235,7 @@ namespace GoogleChartsNGraphsControls
             PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + ctlid, optionsJscode, true);
 
             
-            string datatableoutput = TransformDataTable.ToGoogleDataTable(dt);
+            //string datatableoutput = TransformDataTable.ToGoogleDataTable(dt);
             //PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + ctlid, string.Format("var data_{0} = function() {{ {1} }}", ctlid, datatableoutput), true);
 
         }
