@@ -333,12 +333,12 @@ namespace GoogleChartsNGraphsControls
                 }
                 else if (prop.PropertyType == typeof(Color?))
                 {
-                    optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
+                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
                 }
                 else if (prop.PropertyType == typeof(Color?[]))
                 {
                     string rgb = RGBtoHex((Color?[])val);
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
+                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), rgb));
                 }
                 else if (prop.PropertyType == typeof(int?[]))
                 {
@@ -385,7 +385,7 @@ namespace GoogleChartsNGraphsControls
         }
         internal static string RGBtoHex(System.Drawing.Color c)
         {
-            return RGBtoHex(c.R, c.G, c.B);
+            return string.Format("'{0}'",RGBtoHex(c.R, c.G, c.B));
         }
         internal static string RGBtoHex(byte R, byte G, byte B)
         {

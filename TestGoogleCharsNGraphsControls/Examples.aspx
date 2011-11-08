@@ -23,7 +23,7 @@
     <div align="center">
         <h3>Map Example</h3>
         <cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
-            Width="600px" GVILineColor="Goldenrod" GVILineWidth="4"/>
+            Width="600px" GVILineColor="Goldenrod" GVILineWidth="4" GviShowLine="true"/>
             <pre class="sloppyCode">
                 Sample Code:
                 this.GVMap2.ChartData("Duvall, WA", "Home Sweet Home");
@@ -163,7 +163,7 @@
         
          <p />
         <h3>AreaChart Example</h3>
-        <cc1:GVAreaChart ID="GVAreaChart2" runat="server" Width="600" Height="400" />
+        <cc1:GVAreaChart ID="GVAreaChart2" runat="server" Width="600" Height="400" GviColorsByName="Red Green Blue Orange" />
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");

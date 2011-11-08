@@ -76,6 +76,52 @@ namespace GoogleChartsNGraphsControls
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
+        [Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
+        [DefaultValue("")]
+        public string GviColorsByName
+        {
+            get 
+            {
+                Color?[] colors =  ViewState["GviColors"] as Color?[];
+                if ((colors != null) && (colors.Length > 0))
+                    return string.Join(" ", 
+                        colors.Select(c => c.Value.Name).ToArray());
+                return "";
+            }
+            set 
+            {
+                if (string.IsNullOrEmpty(value)) return;
+
+                char[] seperators = new char[] { ' ', ';', ',', '|', '+', '-', '/' };
+                string[] colorsbyname = new string[]{};
+                foreach (char s in seperators)
+                {
+                    colorsbyname = value.Split(s);
+                    if (value.Split(s).Length > 0)
+                        break;
+                }
+
+                List<Color?> colors = new List<Color?>();
+                foreach (string name in colorsbyname)
+                {
+                    try
+                    {
+                        Color? c = Color.FromName(name) as Color?;
+                        if (c != null)
+                            colors.Add(c);
+                    }
+                    catch(Exception ex)
+                    {
+                    }
+                }
+
+                GviColors = colors.ToArray();
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
         [Description("Causes charts to throw user-triggered events such as click or mouse over. Supported only for specific chart types. See Events below.")]
         [DefaultValue(false)]
         public bool? GviEnableEvents
