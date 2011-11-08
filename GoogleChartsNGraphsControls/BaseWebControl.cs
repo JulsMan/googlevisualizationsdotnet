@@ -31,7 +31,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
@@ -140,19 +139,12 @@ namespace GoogleChartsNGraphsControls
         {
             base.AddAttributesToRender(writer);
         }
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
             if (!this.Page.ClientScript.IsClientScriptIncludeRegistered("REGISTER_GOOGLE_API_JS"))
                 this.Page.ClientScript.RegisterClientScriptInclude("REGISTER_GOOGLE_API_JS", "http://www.google.com/jsapi");
-
-            //if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_GOOGLE_QUERYWRAPPER"))
-            //{
-            //    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_GOOGLE_QUERYWRAPPER", 
-            //        Resource1.ResourceManager.GetString("QueryWrapper", System.Globalization.CultureInfo.CurrentCulture), true);
-            //}
 
             if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_JX_AJAX"))
             {

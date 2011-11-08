@@ -29,6 +29,7 @@ namespace GoogleChartsNGraphsControls
     public enum MapDataModes { Regions,Markers }
     public enum OrgChartSize { Small, Medium, Large }
     public enum CurveType { None, Function }
+    public enum WindowsMode { }
 
     public static class BaseDesignTimeSupport
     {

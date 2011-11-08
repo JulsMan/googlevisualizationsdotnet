@@ -45,7 +45,6 @@ namespace GoogleChartsNGraphsControls
         [Description("If set to true, any annotation text that includes HTML tags will be rendered as HTML.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
-
         public TrippleStateBool GviAllowHtml 
         {
             get
