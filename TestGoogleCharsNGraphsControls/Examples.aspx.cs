@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 
 namespace TestGoogleCharsNGraphsControls
 {
@@ -89,6 +90,7 @@ namespace TestGoogleCharsNGraphsControls
             barchart.Rows.Add(new object[] { "2006", 660, 1120 });
             barchart.Rows.Add(new object[] { "2007", 1030, 540 });
             this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+            this.GVBarChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyanh };
             this.GVBarChart1.DataSource = barchart;
 
 
