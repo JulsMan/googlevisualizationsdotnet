@@ -144,7 +144,7 @@ namespace GoogleChartsNGraphsControls
             base.OnLoad(e);
 
             if (!this.Page.ClientScript.IsClientScriptIncludeRegistered("REGISTER_GOOGLE_API_JS"))
-                this.Page.ClientScript.RegisterClientScriptInclude("REGISTER_GOOGLE_API_JS", "http://www.google.com/jsapi");
+                this.Page.ClientScript.RegisterClientScriptInclude("REGISTER_GOOGLE_API_JS", "https://www.google.com/jsapi");
 
             if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_JX_AJAX"))
             {
