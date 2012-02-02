@@ -99,6 +99,18 @@ namespace TestGoogleCharsNGraphsControls
             this.GVColumnChart1.DataSource = barchart;
 
 
+            System.Data.DataTable gnattchart = new System.Data.DataTable("Something Performance");
+            gnattchart.Columns.Add("Year", typeof(string));
+            gnattchart.Columns.Add("Something", typeof(int));
+            gnattchart.Rows.Add(new object[] { "2004", 400 });
+            gnattchart.Rows.Add(new object[] { "2005", 460 });
+            gnattchart.Rows.Add(new object[] { "2006", 1120 });
+            gnattchart.Rows.Add(new object[] { "2007", 540 });
+            this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
+            this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.DeepPink, Color.Violet, Color.Turquoise, Color.Salmon };
+            this.GVGanttChart1.DataSource = gnattchart;
+
+
 
             System.Data.DataTable rv = new System.Data.DataTable("Revenue/Licenses");
             rv.Columns.Add("Revenue", typeof(int));

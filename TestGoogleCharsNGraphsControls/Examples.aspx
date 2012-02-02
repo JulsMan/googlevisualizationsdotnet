@@ -186,7 +186,7 @@
         <cc1:GVBarChart ID="GVBarChart1" runat="server" Width="600" Height="400"  />
          <pre class="sloppyCode">
             Sample Code:
-             System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
+            System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
             barchart.Columns.Add("Year", typeof(string));
             barchart.Columns.Add("Sales", typeof(int));
             barchart.Columns.Add("Expenses", typeof(int));
@@ -197,6 +197,27 @@
             this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
             this.GVBarChart1.ChartData(barchart);
         </pre>
+        
+        
+        
+        
+        <p />
+        <h3>Gantt Chart Example</h3>
+        <cc1:GVGanttChart ID="GVGanttChart1" runat="server" Width="600" Height="400" />
+         <pre class="sloppyCode">
+            Sample Code:
+             System.Data.DataTable chart = new System.Data.DataTable("Something Performance");
+            barchart.Columns.Add("Year", typeof(string));
+            barchart.Columns.Add("Something", typeof(int));
+            barchart.Rows.Add(new object[] { "2004",  400 });
+            barchart.Rows.Add(new object[] { "2005",  460 });
+            barchart.Rows.Add(new object[] { "2006",  1120 });
+            barchart.Rows.Add(new object[] { "2007", 540 });
+            this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
+            this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan, Color.CadetBlue, Color.DeepPink };
+            this.GVGanttChart1.DataSource = barchart;
+        </pre>
+        
         
         
         

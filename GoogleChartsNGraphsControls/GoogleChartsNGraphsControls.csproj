@@ -61,6 +61,7 @@
     <Compile Include="BaseDesignTimeSupport.cs" />
     <Compile Include="BaseGVI.cs" />
     <Compile Include="BaseWebControl.cs" />
+    <Compile Include="GVGanttChart.cs" />
     <Compile Include="GVOrgChart.cs" />
     <Compile Include="GVGauge.cs" />
     <Compile Include="GVGeoMap.cs" />
@@ -98,6 +99,7 @@
     <EmbeddedResource Include="GVOrgChart.bmp" />
     <EmbeddedResource Include="GVTableArrowFormat.bmp" />
     <EmbeddedResource Include="GVTableBarFormat.bmp" />
+    <EmbeddedResource Include="GVGanttChart.bmp" />
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />
@@ -112,6 +114,7 @@
     <Content Include="icons\color_swatch.png" />
     <Content Include="icons\comment.png" />
     <Content Include="icons\font.png" />
+    <Content Include="icons\gantt.png" />
     <Content Include="icons\layers.png" />
     <Content Include="icons\lightbulb.png" />
     <Content Include="icons\lightning.png" />
