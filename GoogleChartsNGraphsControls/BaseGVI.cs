@@ -70,6 +70,9 @@ namespace GoogleChartsNGraphsControls
                     {formatter}
                 }};
 
+        /********* User Defined Functions **********************/
+                {4}
+
         /********* Extended Params    **********************/
                 chart.opts = {1};
                 chart.container = container;
@@ -190,9 +193,14 @@ namespace GoogleChartsNGraphsControls
 
             
 
-            string events = RenderGVIEvents(PageControl);
+            List<string> events = RenderGVIEvents(PageControl);
             string options = RenderGVIConfigOptions(PageControl);
             string formatter = RenderFormatter(PageControl);
+
+
+            //JAVASCRIPT = JAVASCRIPT.Replace("__UDF__", string.Join("\n", events.ToArray()));
+            
+
             if ((PageControl.GviOptionsOverride != null) && (!string.IsNullOrEmpty(PageControl.GviOptionsOverride.ToString())))
             {
                 // the override switch is in play ... use the json struct here to override the manually set items...
@@ -216,7 +224,7 @@ namespace GoogleChartsNGraphsControls
             if (!string.IsNullOrEmpty(PageControl.OverrideElementId))
                 ctlid = PageControl.OverrideElementId;
 
-            string optionsJscode = string.Format(JAVASCRIPT, ctlid, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), events);
+            string optionsJscode = string.Format(JAVASCRIPT, ctlid, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), string.Join("\n",events.ToArray()));
             string build = string.Format("v{0}.{1}.{2}.{3}",
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major, 
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MajorRevision,
@@ -241,7 +249,7 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        internal string RenderGVIEvents(WebControl PageControl)
+        internal List<string> RenderGVIEvents(WebControl PageControl)
         {
             List<string> eventsList = new List<string>();
             System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
@@ -254,14 +262,14 @@ namespace GoogleChartsNGraphsControls
 
                 object value = prop.GetValue(PageControl,null);
                 
-                if (value == null) continue;
+                if ((value == null) || (string.IsNullOrEmpty(value.ToString()))) continue;
 
-                string foo = string.Format("chart.{0} = {1};", option.EventName, value);
+                string foo = string.Format("google.visualization.events.addListener(chart, '{0}', function(o,a,b,c) {{ {1}(chart,a,b,c); }} );", option.EventName, value);
                 foo = foo.Replace(";;", ";");
                 eventsList.Add(foo);
             }
 
-            return string.Join(Environment.NewLine, eventsList.ToArray());
+            return eventsList;
         }
         /// <summary>
         /// Renders a JSON string of all the config options.

@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AjaxUpdateHandler.ashx" />
+    <Content Include="Events.Examples.js" />
     <Content Include="WCFTestService.svc" />
   </ItemGroup>
   <ItemGroup>

@@ -583,6 +583,61 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+
+        [GviEventOption(EventName = "rangeChange")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Zoom range changed. Fired after the user modified the visible time range but not after a call to setVisibleChartRange method.
+            Note: It is advised not to use the event properties, but rather get them by calling getVisibleChartRange method.
+            start: Date. The start time of the zoom range.
+            end: Date. The end time of the zoom range.")]
+        public string OnEvent_GviRangeChange
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviRangeChange"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviRangeChange"] = value;
+            }
+        }
+
+
+        [GviEventOption(EventName = "select")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"When the user clicks on an annotation flag (marker), the corresponding cell in the data table is selected. The visualization then fires this event.")]
+        public string OnEvent_GviSelect
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviSelect"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviSelect"] = value;
+            }
+        }
+
+        [GviEventOption(EventName = "ready")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The chart is ready for external method calls. If you want to interact with the chart, and call methods after you draw it, you should set up a listener for this event before you call the draw method, and call them only after the event was fired.")]
+        public string OnEvent_GviReady
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviReady"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviReady"] = value;
+            }
+        }
        
         public void ChartData(TimelineEvent[] ListOfEvents)
         {
