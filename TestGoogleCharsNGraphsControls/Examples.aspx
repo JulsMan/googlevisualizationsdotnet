@@ -234,8 +234,8 @@
         
         
         <p />
-        <h3>ColumnChart Example</h3>
-        <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400"
+        <h3>ColumnChart Example with AJAX and Animation</h3>
+        <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"
         QueryString="~/AjaxUpdateHandler.ashx?type=column" />
         
         <asp:Button ID="Button1" runat="server" OnClientClick="chart_GVColumnChart1.reload(); return false;" Text="Ajax Reload" />

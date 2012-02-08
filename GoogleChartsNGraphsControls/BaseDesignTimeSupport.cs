@@ -26,10 +26,14 @@ namespace GoogleChartsNGraphsControls
         Middle_East, Northern_Asia, 
         Northern_Europe, Western_Europe, Southern_Europe
     }
-    public enum MapDataModes { Regions,Markers }
+    public enum MapDisplayModes { Auto, Regions,Markers }
+    public enum MapResolution { Countries, Provinces, Metros }
     public enum OrgChartSize { Small, Medium, Large }
     public enum CurveType { None, Function }
     public enum WindowsMode { }
+    public enum AnimationEasing { Linear, In, Out, InAndOut }
+
+   
 
     public static class BaseDesignTimeSupport
     {

@@ -105,6 +105,46 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviAnimationOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The duration of the animation, in milliseconds. For details, see the animation documentation.")]
+        public int? GviAnimation_Duration
+        {
+            get
+            {
+                int? s = (int?)ViewState["Animation_Duration"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["Animation_Duration"] = value;
+            }
+        }
+
+        [GviAnimationOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The easing function applied to the animation. The following options are available:
+            'linear' - Constant speed.
+            'in' - Ease in - Start slow and speed up.
+            'out' - Ease out - Start fast and slow down.
+            'inAndOut' - Ease in and out - Start slow, speed up, then slow down.")]
+        public AnimationEasing GviAnimation_Easing
+        {
+            get
+            {
+                object s = ViewState["GviAnimation_Easing"];
+                return s == null ? AnimationEasing.Linear : (AnimationEasing)ViewState["GviAnimation_Easing"];
+            }
+
+            set
+            {
+                ViewState["GviAnimation_Easing"] = value;
+            }
+        }
+
         protected DataTable dt
         {
             get

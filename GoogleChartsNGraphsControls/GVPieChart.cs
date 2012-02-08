@@ -190,6 +190,111 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviEventOption(EventName = "animationfinish")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Fired when transition animation is complete.")]
+        public string OnEvent_GviAnimationFinish
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviAnimationFinish"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviAnimationFinish"] = value;
+            }
+        }
+
+        [GviEventOption(EventName = "error")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Fired when an error occurs when attempting to render the chart: 
+            Properties: id, message")]
+        public string OnEvent_GviError
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviError"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviError"] = value;
+            }
+        }
+
+        [GviEventOption(EventName = "onmouseover")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Fired when the user mouses over a visual entity. Passes back the row and column indices of the corresponding data table element. A point or annotation correlates to a cell in the data table, a legend entry to a column (row index is null), and a category to a row (column index is null).
+            Properties: row, column")]
+        public string OnEvent_GviOnMouseOver
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviOnMouseOver"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviOnMouseOver"] = value;
+            }
+        }
+
+        [GviEventOption(EventName = "onmouseout")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Fired when the user mouses away from a visual entity. Passes back the row and column indices of the corresponding data table element. A point or annotation correlates to a cell in the data table, a legend entry to a column (row index is null), and a category to a row (column index is null).
+            Properties: row, column")]
+        public string OnEvent_GviOnMouseOut
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviOnMouseOut"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviOnMouseOut"] = value;
+            }
+        }
+
+        [GviEventOption(EventName = "ready")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The chart is ready for external method calls. If you want to interact with the chart, and call methods after you draw it, you should set up a listener for this event before you call the draw method, and call them only after the event was fired.")]
+        public string OnEvent_GviReady
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviReady"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviReady"] = value;
+            }
+        }
+
+        [GviEventOption(EventName = "select")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Fired when the user clicks a visual entity. To learn what has been selected, call getSelection().")]
+        public string OnEvent_GviSelect
+        {
+            get
+            {
+                string s = (string)ViewState["OnEvent_GviSelect"];
+                return s;
+            }
+            set
+            {
+                ViewState["OnEvent_GviSelect"] = value;
+            }
+        }
+
         public void ChartData(string Name, int Value)
         {
            
