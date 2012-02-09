@@ -69,7 +69,7 @@
     <Content Include="App_Themes\female_user.png" />
     <Content Include="App_Themes\male_user.png" />
     <Content Include="App_Themes\unknown_user.png" />
-    <Content Include="GeoBug.aspx" />
+    <Content Include="GeoMaps.aspx" />
     <Content Include="Web.config" />
     <Content Include="Examples.aspx" />
   </ItemGroup>
@@ -77,12 +77,12 @@
     <Compile Include="AjaxUpdateHandler.ashx.cs">
       <DependentUpon>AjaxUpdateHandler.ashx</DependentUpon>
     </Compile>
-    <Compile Include="GeoBug.aspx.cs">
-      <DependentUpon>GeoBug.aspx</DependentUpon>
+    <Compile Include="GeoMaps.aspx.cs">
+      <DependentUpon>GeoMaps.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GeoBug.aspx.designer.cs">
-      <DependentUpon>GeoBug.aspx</DependentUpon>
+    <Compile Include="GeoMaps.aspx.designer.cs">
+      <DependentUpon>GeoMaps.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Examples.aspx.cs">
@@ -126,7 +126,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3774</DevelopmentServerPort>
+          <DevelopmentServerPort>2696</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

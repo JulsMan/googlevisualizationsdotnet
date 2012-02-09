@@ -31,9 +31,10 @@ namespace GoogleChartsNGraphsControls
     public enum OrgChartSize { Small, Medium, Large }
     public enum CurveType { None, Function }
     public enum WindowsMode { }
-    public enum AnimationEasing { Linear, In, Out, InAndOut }
-
-   
+    public enum AnimationEasing { None,Linear, In, Out, InAndOut }
+    public enum AxisTitlesPosition { None, In, Out}
+    public enum FocusTarget { None, Datrum, Category}
+    public enum CandlestickTheme { None, Maximized }
 
     public static class BaseDesignTimeSupport
     {

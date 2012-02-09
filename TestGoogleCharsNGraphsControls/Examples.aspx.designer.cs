@@ -95,15 +95,6 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVBarChart GVBarChart1;
         
         /// <summary>
-        /// GVGanttChart1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVGanttChart GVGanttChart1;
-        
-        /// <summary>
         /// GVColumnChart1 control.
         /// </summary>
         /// <remarks>
@@ -156,15 +147,6 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
-        
-        /// <summary>
-        /// GVGeoMap1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVGeoMap GVGeoMap1;
         
         /// <summary>
         /// GVGauge1 control.

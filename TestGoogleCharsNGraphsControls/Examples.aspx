@@ -213,8 +213,8 @@
         
         
         
-        <p />
-        <h3>Gantt Chart Example</h3>
+       <%-- <p />
+        <b style="color:#FFA500">New</b> <h3>Gantt Chart Example</h3>
         <cc1:GVGanttChart ID="GVGanttChart1" runat="server" Width="600" Height="400" />
          <pre class="sloppyCode">
             Sample Code:
@@ -228,15 +228,33 @@
             this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
             this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan, Color.CadetBlue, Color.DeepPink };
             this.GVGanttChart1.DataSource = barchart;
-        </pre>
+        </pre>--%>
         
+        
+        
+      <%-- <p />
+        <b style="color:#FFA500">New</b> <h3>Gantt Chart Example</h3>
+        <cc1:GVGanttChart ID="GVGanttChart2" runat="server" Width="600" Height="400" />
+         <pre class="sloppyCode">
+            Sample Code:
+             System.Data.DataTable chart = new System.Data.DataTable("Something Performance");
+            barchart.Columns.Add("Year", typeof(string));
+            barchart.Columns.Add("Something", typeof(int));
+            barchart.Rows.Add(new object[] { "2004",  400 });
+            barchart.Rows.Add(new object[] { "2005",  460 });
+            barchart.Rows.Add(new object[] { "2006",  1120 });
+            barchart.Rows.Add(new object[] { "2007", 540 });
+            this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
+            this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan, Color.CadetBlue, Color.DeepPink };
+            this.GVGanttChart1.DataSource = barchart;
+        </pre>--%>
         
         
         
         <p />
         <h3>ColumnChart Example with AJAX and Animation</h3>
         <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"
-        QueryString="~/AjaxUpdateHandler.ashx?type=column" />
+        QueryString="~/AjaxUpdateHandler.ashx?type=column" GviFormatterHook="MyColumnChartDataFormatter" />
         
         <asp:Button ID="Button1" runat="server" OnClientClick="chart_GVColumnChart1.reload(); return false;" Text="Ajax Reload" />
         
@@ -329,49 +347,9 @@
             this.GVScatterChart1.ChartData(scatter);
         </pre>
         
-        
-        <p />
-         <h3>GeoMap Example</h3>
-        <cc1:GVGeoMap ID="GVGeoMap1" runat="server" Width="400" Height="400" GviDataMode="Regions" GviRegion="World"/>
-        <pre class="sloppyCode">
-            Sample Code:
-            System.Data.DataTable world = new System.Data.DataTable("World Population");
-            world.Columns.AddRange(new System.Data.DataColumn[] {
-                new System.Data.DataColumn("Country",typeof(string)), 
-                new System.Data.DataColumn("Population",typeof(int))
-            });
-            world.Rows.Add(new object[] { "Germany", 200 });
-            world.Rows.Add(new object[] { "United States", 350 });
-            world.Rows.Add(new object[] { "Brazil", 250 });
-            world.Rows.Add(new object[] { "Canada", 75 });
-            world.Rows.Add(new object[] { "France", 290 });
-            world.Rows.Add(new object[] { "Russia", 700 });
-            world.Rows.Add(new object[] { "China", 1300 });
-            world.Rows.Add(new object[] { "India", 1000 });
-
-            
-            this.GVGeoMap1.ChartData(world);
-        </pre>
+       
         
         
-        <%--<p />
-        <h3>GeoMap Example - Using 'Markers' and 'US' Country</h3>
-        <cc1:GVGeoMap ID="GVGeoMap3" runat="server" Width="400" Height="400" />
-        
-        <pre class="sloppyCode">
-          System.Data.DataTable projs = new System.Data.DataTable("US Projects");
-            projs.Columns.AddRange(new System.Data.DataColumn[] {
-                new System.Data.DataColumn("City",typeof(string)), 
-                new System.Data.DataColumn("Completion",typeof(int)),
-                new System.Data.DataColumn("Comments",typeof(string)) 
-            });
-            projs.Rows.Add(new object[] { "Astoria, NY", 95, "Astoria: Almost Done" });
-            projs.Rows.Add(new object[] { "Novato, CA", 35, "Novato: Just Starting" });
-            projs.Rows.Add(new object[] { "Duvall, WA", 10, "Duvall: Just Starting" });
-
-            this.GVGeoMap2.GviOptionsOverride = "{'region':'US','colors':[0xFF8747, 0xFFB581, 0xc06000], 'dataMode':'markers'}";
-            this.GVGeoMap2.ChartData(projs);
-        </pre>--%>
         
         <p />
         <h3>Gauge Example</h3>

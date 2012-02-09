@@ -33,7 +33,22 @@ function MyAreaChartSelectHandler(chart,a,b,c)
 }
 
 
-function MyAreaChartMouseOverHandler(chart,a,b,c)
+/*
+    Apply the formatter to the chart data or anything else, its my hook into GoogleVisualizations
+      data.setCell(4, 0, 'Mike');
+      data.setCell(4, 1, 12000);
+      data.setCell(4, 2, false);
+
+              var formatter = new google.visualization.NumberFormat({prefix: '$'});
+              formatter.format(data, 1); // Apply formatter to second column
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1]);
+
+*/
+function MyColumnChartDataFormatter(chart,data)
 {
-   
+    var formatter = new google.visualization.NumberFormat({prefix: '$'});
+     formatter.format(data, 2); // Apply formatter to second column
+     formatter.format(data, 1); // Apply formatter to second column
 }

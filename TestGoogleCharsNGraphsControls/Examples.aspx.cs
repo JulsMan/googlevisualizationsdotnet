@@ -99,16 +99,16 @@ namespace TestGoogleCharsNGraphsControls
             this.GVColumnChart1.DataSource = barchart;
 
 
-            System.Data.DataTable gnattchart = new System.Data.DataTable("Something Performance");
-            gnattchart.Columns.Add("Year", typeof(string));
-            gnattchart.Columns.Add("Something", typeof(int));
-            gnattchart.Rows.Add(new object[] { "2004", 400 });
-            gnattchart.Rows.Add(new object[] { "2005", 460 });
-            gnattchart.Rows.Add(new object[] { "2006", 1120 });
-            gnattchart.Rows.Add(new object[] { "2007", 540 });
-            this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
-            this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.DeepPink, Color.Violet, Color.Turquoise, Color.Salmon };
-            this.GVGanttChart1.DataSource = gnattchart;
+            //System.Data.DataTable gnattchart = new System.Data.DataTable("Something Performance");
+            //gnattchart.Columns.Add("Year", typeof(string));
+            //gnattchart.Columns.Add("Something", typeof(int));
+            //gnattchart.Rows.Add(new object[] { "2004", 400 });
+            //gnattchart.Rows.Add(new object[] { "2005", 460 });
+            //gnattchart.Rows.Add(new object[] { "2006", 1120 });
+            //gnattchart.Rows.Add(new object[] { "2007", 540 });
+            //this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
+            //this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.DeepPink, Color.Violet, Color.Turquoise, Color.Salmon };
+            //this.GVGanttChart1.DataSource = gnattchart;
 
 
 
@@ -167,20 +167,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-            System.Data.DataTable world = new System.Data.DataTable("World Population");
-            world.Columns.AddRange(new System.Data.DataColumn[] {
-                new System.Data.DataColumn("Country",typeof(string)), 
-                new System.Data.DataColumn("Population",typeof(int))
-            });
-            world.Rows.Add(new object[] { "Germany", 200 });
-            world.Rows.Add(new object[] { "United States", 350 });
-            world.Rows.Add(new object[] { "Brazil", 250 });
-            world.Rows.Add(new object[] { "Canada", 75 });
-            world.Rows.Add(new object[] { "France", 290 });
-            world.Rows.Add(new object[] { "Russia", 700 });
-            world.Rows.Add(new object[] { "China", 1300 });
-            world.Rows.Add(new object[] { "India", 1000 });
-            this.GVGeoMap1.DataSource = world;
+           
 
 
 

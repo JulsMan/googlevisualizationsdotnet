@@ -42,7 +42,7 @@ function AjaxCallback(container, chart)
             data = JSON.parse(foo);
         }
         var dt = new google.visualization.DataTable(data);
-        chart.format(dt);
+        chart.formatters(chart, dt);
         chart.draw(dt, options);
     };
 }

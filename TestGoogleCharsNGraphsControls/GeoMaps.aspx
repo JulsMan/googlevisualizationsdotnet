@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GeoBug.aspx.cs" Inherits="TestGoogleCharsNGraphsControls.GeoBug" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GeoMaps.aspx.cs" EnableViewState="false" Inherits="TestGoogleCharsNGraphsControls.GeoBug" %>
 
 <%@ Register Assembly="GoogleChartsNGraphsControls" Namespace="GoogleChartsNGraphsControls"
     TagPrefix="cc1" %>
@@ -22,9 +22,36 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    
+     <div>
+            <p />
+         <h3>GeoMap Example</h3>
+        <cc1:GVGeoMap ID="GVGeoMap1" runat="server" Width="400" Height="400" GviDataMode="Regions" GviRegion="World"/>
+        <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable world = new System.Data.DataTable("World Population");
+            world.Columns.AddRange(new System.Data.DataColumn[] {
+                new System.Data.DataColumn("Country",typeof(string)), 
+                new System.Data.DataColumn("Population",typeof(int))
+            });
+            world.Rows.Add(new object[] { "Germany", 200 });
+            world.Rows.Add(new object[] { "United States", 350 });
+            world.Rows.Add(new object[] { "Brazil", 250 });
+            world.Rows.Add(new object[] { "Canada", 75 });
+            world.Rows.Add(new object[] { "France", 290 });
+            world.Rows.Add(new object[] { "Russia", 700 });
+            world.Rows.Add(new object[] { "China", 1300 });
+            world.Rows.Add(new object[] { "India", 1000 });
+
+            
+            this.GVGeoMap1.ChartData(world);
+        </pre>
+    </div>
+    
+    
     <div>
+        <p />
         <cc1:GVGeoMap ID="GVGeoMap2" runat="server" />
-        
         <pre class="sloppyCode">
           System.Data.DataTable projs = new System.Data.DataTable("US Projects");
             projs.Columns.AddRange(new System.Data.DataColumn[] {
@@ -41,8 +68,7 @@
         </pre>
     </div>
     
-    <div>
-    </div>
+   
     </form>
 </body>
 </html>

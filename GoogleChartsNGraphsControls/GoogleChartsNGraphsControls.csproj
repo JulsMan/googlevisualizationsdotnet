@@ -61,6 +61,7 @@
     <Compile Include="BaseDesignTimeSupport.cs" />
     <Compile Include="BaseGVI.cs" />
     <Compile Include="BaseWebControl.cs" />
+    <Compile Include="GVCandlestickChart.cs" />
     <Compile Include="GVGanttChart.cs" />
     <Compile Include="GVOrgChart.cs" />
     <Compile Include="GVGauge.cs" />
@@ -100,6 +101,7 @@
     <EmbeddedResource Include="GVTableArrowFormat.bmp" />
     <EmbeddedResource Include="GVTableBarFormat.bmp" />
     <EmbeddedResource Include="GVGanttChart.bmp" />
+    <Content Include="GVCandlestickChart.bmp" />
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />

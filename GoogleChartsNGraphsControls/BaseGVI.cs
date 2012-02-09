@@ -22,7 +22,8 @@ namespace GoogleChartsNGraphsControls
             AREACHART, TIMELINE, GEOMAP, BARCHART,
             COLUMNCHART, GAUGE, LINECHART, MAP,
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
-            SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR
+            SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
+            CANDLESTICK, COMBO
         }
 
         #region Formatter - for use with the IGoogleFormatter only
@@ -52,7 +53,12 @@ namespace GoogleChartsNGraphsControls
                 var chart = new google.visualization.{3}(container);
 
                 var data = __DATATABLE__;
-
+        
+       /********* Formatter Hooks: your function will be called before render  ********/
+                chart.formatters = function(chart,data){{
+                    /*FORMATTERS*/
+                }}
+ 
        /********* Extended Functions **********************/
                 chart.reload = function(args, url)
                 {{
@@ -174,6 +180,8 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.SCATTERCHART, new string[] { "corechart", "ScatterChart" });
                 dic.Add(GOOGLECHART.TABLEARROW, new string[] { "table", "Table" });
                 dic.Add(GOOGLECHART.TABLEBAR, new string[] { "table", "Table" });
+                dic.Add(GOOGLECHART.CANDLESTICK, new string[] { "candlestickchart", "CandlestickChart" });
+                dic.Add(GOOGLECHART.COMBO, new string[] { "combochart", "ComboChart" });
             }
         }
 
@@ -239,6 +247,13 @@ namespace GoogleChartsNGraphsControls
             Bortosky.Google.Visualization.GoogleDataTable gdt = new Bortosky.Google.Visualization.GoogleDataTable(dt);
             optionsJscode = optionsJscode.Replace("__DATATABLE__", gdt.GetJson());
 
+            /*
+             * This allows you to manipulate the data 
+             *  var formatter = new google.visualization.NumberFormat({prefix: '$'});
+             *  formatter.format(data, 1); // Apply formatter to second column
+             */
+            if (!string.IsNullOrEmpty(PageControl.GviFormatterHook))
+                optionsJscode = optionsJscode.Replace("/*FORMATTERS*/", string.Format("{0}(chart, data);", PageControl.GviFormatterHook));
 
             PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + ctlid, optionsJscode, true);
 
@@ -385,6 +400,7 @@ namespace GoogleChartsNGraphsControls
                 if (prop.PropertyType == typeof(AnimationEasing))
                 {
                     AnimationEasing state = (AnimationEasing)val;
+                    if (state == AnimationEasing.None) continue;
                     string tmp = state.Parse();
                     if (!string.IsNullOrEmpty(tmp))
                         optionsList.Add(string.Format("{0}:'{1}'", prop.Name.Replace("Animation_","").GVINameParse(), tmp));

@@ -810,7 +810,7 @@ namespace GoogleChartsNGraphsControls
         {
             List<Color?> tmp = new List<Color?>();
             tmp.Add(this.GVIBackgroundColor == null ? Color.Transparent : this.GVIBackgroundColor);
-            tmp.AddRange(this.GviColors);
+            if (this.GviColors != null) tmp.AddRange(this.GviColors);
 
             this.GviIsStacked = true;
             this.GviColors = tmp.ToArray();

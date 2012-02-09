@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using System.ComponentModel;
 using System.Data;
 using System.Web.UI;
+using System.Drawing;
 
 namespace GoogleChartsNGraphsControls
 {
@@ -50,24 +51,108 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
+        [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"Write a javascript function that inherits 'chart' and registers the events you want...")]
-        [DefaultValue(null)]
-        public object GviRegisterEvents
+        [Description("The background color for the chart.")]
+        [DefaultValue("")]
+        public Color? GVIBackgroundColor
         {
             get
             {
-                object s = (object)ViewState["GviRegisterEvents"];
+                Color? s = (Color?)ViewState["GVIBackgroundColor"];
                 return s;
             }
 
             set
             {
-                ViewState["GviRegisterEvents"] = value;
+                ViewState["GVIBackgroundColor"] = value;
             }
         }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
+        [DefaultValue("")]
+        public Color?[] GviColors
+        {
+            get
+            {
+                Color?[] s = (Color?[])ViewState["GviColors"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviColors"] = value;
+            }
+        }
+
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
+        [DefaultValue("")]
+        public string GviColorsByName
+        {
+            get
+            {
+                Color?[] colors = ViewState["GviColors"] as Color?[];
+                if ((colors != null) && (colors.Length > 0))
+                    return string.Join(" ",
+                        colors.Select(c => c.Value.Name).ToArray());
+                return "";
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value)) return;
+
+                char[] seperators = new char[] { ' ', ';', ',', '|', '+', '-', '/' };
+                string[] colorsbyname = new string[] { };
+                foreach (char s in seperators)
+                {
+                    colorsbyname = value.Split(s);
+                    if (value.Split(s).Length > 0)
+                        break;
+                }
+
+                List<Color?> colors = new List<Color?>();
+                foreach (string name in colorsbyname)
+                {
+                    try
+                    {
+                        Color? c = Color.FromName(name) as Color?;
+                        if (c != null)
+                            colors.Add(c);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+
+                GviColors = colors.ToArray();
+            }
+        }
+
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description(@"Write a javascript function that inherits 'chart' and registers the events you want...")]
+        //[DefaultValue(null)]
+        //public object GviRegisterEvents
+        //{
+        //    get
+        //    {
+        //        object s = (object)ViewState["GviRegisterEvents"];
+        //        return s;
+        //    }
+
+        //    set
+        //    {
+        //        ViewState["GviRegisterEvents"] = value;
+        //    }
+        //}
 
         [Bindable(true)]
         [Category("GoogleOptions")]
@@ -136,7 +221,7 @@ namespace GoogleChartsNGraphsControls
             get
             {
                 object s = ViewState["GviAnimation_Easing"];
-                return s == null ? AnimationEasing.Linear : (AnimationEasing)ViewState["GviAnimation_Easing"];
+                return s == null ? AnimationEasing.None : (AnimationEasing)ViewState["GviAnimation_Easing"];
             }
 
             set
@@ -144,6 +229,33 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GviAnimation_Easing"] = value;
             }
         }
+
+
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Hooks into the rendering of the chart.  The data is passed to your hook before being rendered into the chart view.
+                Your function should have the following signature fn(chart, data);
+                ie.  
+                    fn(chart,data){
+                        var formatter = new google.visualization.NumberFormat({prefix: '$'});
+                        formatter.format(data, 1); // Apply formatter to second column
+                    }   
+                ")]
+        [DefaultValue(null)]
+        public string GviFormatterHook
+        {
+            get
+            {
+                string s = (string)ViewState["GviFormatterHook"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFormatterHook"] = value;
+            }
+        }
+
 
         protected DataTable dt
         {
