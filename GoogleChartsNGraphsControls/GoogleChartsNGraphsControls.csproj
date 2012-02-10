@@ -101,7 +101,7 @@
     <EmbeddedResource Include="GVTableArrowFormat.bmp" />
     <EmbeddedResource Include="GVTableBarFormat.bmp" />
     <EmbeddedResource Include="GVGanttChart.bmp" />
-    <Content Include="GVCandlestickChart.bmp" />
+    <EmbeddedResource Include="GVCandlestickChart.bmp" />
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />

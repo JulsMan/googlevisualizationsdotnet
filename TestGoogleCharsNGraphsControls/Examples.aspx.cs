@@ -43,8 +43,27 @@ namespace TestGoogleCharsNGraphsControls
 
 
             this.GVAnnotatedTimeline1.ChartData(evts.ToArray());
-
             this.GVAnnotatedTimeline2.ChartData(evts.Where(d => d.EventCategory == "Sold Erasers").ToArray());
+
+
+
+            System.Data.DataTable candlestick = new System.Data.DataTable("Stock");
+            candlestick.Columns.AddRange(new System.Data.DataColumn[]{
+                    new System.Data.DataColumn("DayOfWeek", typeof(String)),
+                    new System.Data.DataColumn("Morning", typeof(int)),
+                    new System.Data.DataColumn("Afternoon", typeof(int)),
+                    new System.Data.DataColumn("Evening", typeof(int)),
+                    new System.Data.DataColumn("Night", typeof(int))
+                });
+            candlestick.Rows.Add(new object[] { "Mon", 20, 28, 38, 45 });
+            candlestick.Rows.Add(new object[] { "Tues", 31, 38, 55, 66 });
+            candlestick.Rows.Add(new object[] { "Wed", 50, 55, 77, 80});
+            candlestick.Rows.Add(new object[] { "Thurs", 50, 77, 66, 77});
+            candlestick.Rows.Add(new object[] { "Fri", 15, 66, 22, 68});
+
+            this.GVCandlestickChart1.GviTitle = "Stock Value over Week";
+            this.GVCandlestickChart1.DataSource = candlestick;
+            this.GVCandlestickChart1.DataBind();
 
 
             System.Data.DataTable dt = new System.Data.DataTable("Work Day");

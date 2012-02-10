@@ -14,7 +14,7 @@ using System.Drawing.Design;
 
 namespace GoogleChartsNGraphsControls
 {
-    [DefaultProperty("Text")]
+    [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVAnnotatedTimeline runat=server></{0}:GVAnnotatedTimeline>")]
     [ToolboxBitmap(typeof(GVAnnotatedTimeline))]
     public class GVAnnotatedTimeline : BaseWebControl

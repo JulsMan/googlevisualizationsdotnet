@@ -139,5 +139,16 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GVITitlePosition"] = value;
             }
         }
+
+
+    
+
+        protected override void RenderContents(HtmlTextWriter output)
+        {
+
+            this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.CANDLESTICK);
+            output.Write(Text);
+        }
     }
 }

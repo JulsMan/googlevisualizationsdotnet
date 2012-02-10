@@ -16,6 +16,7 @@ namespace GoogleChartsNGraphsControls
     [ToolboxBitmap(typeof(GVOrgChart))]
     public class GVOrgChart : BaseWebControl
     {
+
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]

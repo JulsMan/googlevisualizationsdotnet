@@ -10,7 +10,7 @@ using System.Drawing;
 
 namespace GoogleChartsNGraphsControls
 {
-    public class BaseWebControl: WebControl
+    public abstract class BaseWebControl: WebControl
     {
         protected BaseGVI gvi = new BaseGVI();
 
@@ -31,6 +31,25 @@ namespace GoogleChartsNGraphsControls
                 ViewState["Text"] = value;
             }
         }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Text to display above the chart.")]
+        [DefaultValue("Pie Chart")]
+        public string GviTitle
+        {
+            get
+            {
+                string s = (string)ViewState["GviTitle"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviTitle"] = value;
+            }
+        }
+
 
         [GviConfigOption]
         [Bindable(true)]

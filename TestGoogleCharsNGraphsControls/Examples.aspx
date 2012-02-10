@@ -101,6 +101,35 @@
             </pre>
             
         <p />
+        
+        <span style="color:#FFA500">New</span>!!!  &nbsp; <h3>CandleStick Example</h3>
+        A candlestick chart is used to show an opening and closing value overlaid on top of a total variance.,<br/> 
+        Candlestick charts are often used to show stock value behavior. <br/> 
+        In this chart, items where the opening value is less than the closing value (a gain) are drawn as filled boxes, <br/> 
+        and items where the opening value is more than the closing value (a loss) are drawn as hollow boxes.<br/> 
+        
+        <cc1:GVCandlestickChart ID="GVCandlestickChart1" runat="server" Width="600" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out" />
+        <pre class="sloppyCode">
+        Sample Code:
+        System.Data.DataTable candlestick = new System.Data.DataTable("Stock");
+            candlestick.Columns.AddRange(new System.Data.DataColumn[]{
+                    new System.Data.DataColumn("DayOfWeek", typeof(String)),
+                    new System.Data.DataColumn("Morning", typeof(int)),
+                    new System.Data.DataColumn("Afternoon", typeof(int)),
+                    new System.Data.DataColumn("Evening", typeof(int)),
+                    new System.Data.DataColumn("Night", typeof(int))
+                });
+            candlestick.Rows.Add(new object[] { "Mon", 20, 28, 38, 45 });
+            candlestick.Rows.Add(new object[] { "Tues", 31, 38, 55, 66 });
+            candlestick.Rows.Add(new object[] { "Wed", 50, 55, 77, 80});
+            candlestick.Rows.Add(new object[] { "Thurs", 50, 77, 66, 77});
+            candlestick.Rows.Add(new object[] { "Fri", 15, 66, 22, 68});
+
+            this.GVCandlestickChart1.GviTitle = "Stock Value over Week";
+            this.GVCandlestickChart1.DataSource = candlestick;
+            this.GVCandlestickChart1.DataBind();
+        </pre>
+        
         <h3>PieChart Example</h3>
         <cc1:GVPieChart ID="GVPieChart1" runat="server" Width="600" Height="400" />
         

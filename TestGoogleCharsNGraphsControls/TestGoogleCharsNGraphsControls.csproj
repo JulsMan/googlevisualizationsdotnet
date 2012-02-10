@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleChartsNGraphsControls, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GoogleChartsNGraphsControls\bin\Debug\GoogleChartsNGraphsControls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -95,12 +99,6 @@
     <Compile Include="WCFTestService.svc.cs">
       <DependentUpon>WCFTestService.svc</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GoogleChartsNGraphsControls\GoogleChartsNGraphsControls.csproj">
-      <Project>{30D276B0-B6B3-410F-B723-C128AC58FDA1}</Project>
-      <Name>GoogleChartsNGraphsControls</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AjaxUpdateHandler.ashx" />

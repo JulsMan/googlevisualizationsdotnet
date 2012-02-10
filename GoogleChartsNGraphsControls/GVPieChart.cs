@@ -33,24 +33,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("Text to display above the chart.")]
-        [DefaultValue("Pie Chart")]
-        public string GviTitle
-        {
-            get
-            {
-                string s = (string)ViewState["GviTitle"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviTitle"] = value;
-            }
-        }
+       
 
         [GviConfigOption]
         [Bindable(true)]
