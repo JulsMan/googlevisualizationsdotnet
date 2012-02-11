@@ -22,6 +22,12 @@
 <body>
     <form id="form1" runat="server">
     <div align="center">
+    
+        <pre>
+            <asp:PlaceHolder ID="PlaceHolder1" runat="server" />
+        </pre>
+    
+    
         <h3>Map Example</h3>
         <cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
             Width="600px" GVILineColor="Goldenrod" GVILineWidth="4" GviShowLine="true"/>

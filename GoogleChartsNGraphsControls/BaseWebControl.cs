@@ -36,7 +36,6 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("Text to display above the chart.")]
-        [DefaultValue("Pie Chart")]
         public string GviTitle
         {
             get
@@ -274,6 +273,78 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GviFormatterHook"] = value;
             }
         }
+
+
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Hooks into the rendering of the chart.  The data is passed to your hook before being rendered into the chart view.
+                Your function should have the following signature fn(chart, view);
+                ie.  
+                    fn(chart, dataView){
+                        dataView.setColumns([{calc: function(data, row) { return data.getFormattedValue(row, 0); }, type:'string'}, 1]);
+                    }   
+                ")]
+        [DefaultValue(null)]
+        public string GviViewFormatHook
+        {
+            get
+            {
+                string s = (string)ViewState["GviViewFormatHook"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviViewFormatHook"] = value;
+            }
+        }
+
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"")]
+        [DefaultValue(null)]
+        public string GviFormatHAxis
+        {
+            get
+            {
+                string s = (string)ViewState["GviViewFormatHook"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviViewFormatHook"] = value;
+            }
+        }
+
+
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"")]
+        [DefaultValue(null)]
+        public string GviFormatVAxis
+        {
+            get
+            {
+                string s = (string)ViewState["GviViewFormatHook"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviViewFormatHook"] = value;
+            }
+        }
+
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Configurable Horizontal Axis")]
+        public HAxis GVIHAxis 
+        { 
+            get; 
+            set; 
+        }
+
 
 
         protected DataTable dt

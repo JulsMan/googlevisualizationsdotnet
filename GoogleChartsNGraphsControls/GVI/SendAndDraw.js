@@ -43,7 +43,10 @@ function AjaxCallback(container, chart)
         }
         var dt = new google.visualization.DataTable(data);
         chart.formatters(chart, dt);
-        chart.draw(dt, options);
+        var view = new google.visualization.DataView(dt);
+        chart.formatView(chart, view);
+        
+        chart.draw(view, options);
     };
 }
 

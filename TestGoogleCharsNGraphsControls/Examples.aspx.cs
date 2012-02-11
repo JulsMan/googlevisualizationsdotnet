@@ -12,6 +12,11 @@ namespace TestGoogleCharsNGraphsControls
     {
         protected void Page_Init()
         {
+
+            GoogleChartsNGraphsControls.HAxis hx = new GoogleChartsNGraphsControls.HAxis();
+            hx.Title = "foobar";
+            this.PlaceHolder1.Controls.Add(new LiteralControl(hx.ToString()));
+
             // Map Test
             this.GVMap2.ChartData("Duvall, WA", "Home Sweet Home");
             this.GVMap2.ChartData("Bothell, WA", "Work");
@@ -44,7 +49,7 @@ namespace TestGoogleCharsNGraphsControls
 
             this.GVAnnotatedTimeline1.ChartData(evts.ToArray());
             this.GVAnnotatedTimeline2.ChartData(evts.Where(d => d.EventCategory == "Sold Erasers").ToArray());
-
+            
 
 
             System.Data.DataTable candlestick = new System.Data.DataTable("Stock");

@@ -53,10 +53,16 @@ namespace GoogleChartsNGraphsControls
                 var chart = new google.visualization.{3}(container);
 
                 var data = __DATATABLE__;
-        
+       
+       
+         
        /********* Formatter Hooks: your function will be called before render  ********/
                 chart.formatters = function(chart,data){{
                     /*FORMATTERS*/
+                }}
+       /********* View Hooks: DataTables are placed in a View and invoke your functions before going to render ********/
+                chart.formatView = function(chart,view){{
+                    /*VIEW_FUNCTIONS*/
                 }}
  
        /********* Extended Functions **********************/

@@ -19,14 +19,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("The background color for the chart.")]
-        [DefaultValue(AxisTitlesPosition.Out)]
-        public AxisTitlesPosition GVIAxisTitlesPosition
+        [DefaultValue(Position.Out)]
+        public Position GVIAxisTitlesPosition
         {
             get
             {
                 object s = ViewState["GVIAxisTitlesPosition"];
-                if (s == null) return AxisTitlesPosition.Out;
-                AxisTitlesPosition ss = (AxisTitlesPosition)ViewState["GVIAxisTitlesPosition"];
+                if (s == null) return Position.Out;
+                Position ss = (Position)ViewState["GVIAxisTitlesPosition"];
                 return ss;
             }
 
@@ -61,13 +61,13 @@ namespace GoogleChartsNGraphsControls
             'datum' - Focus on a single data point. Correlates to a cell in the data table.
             'category' - Focus on a grouping of all data points along the major axis. Correlates to a row in the data table.
             In focusTarget 'category' the tooltip displays all the category values. This may be useful for comparing values of different series.")]
-        [DefaultValue(FocusTarget.None)]
+        [DefaultValue(FocusTarget.Default)]
         public FocusTarget GVIFocusTarget
         {
             get
             {
                 object s = ViewState["GVIFocusTarget"];
-                if (s == null) return FocusTarget.None;
+                if (s == null) return FocusTarget.Default;
                 FocusTarget ss = (FocusTarget)ViewState["GVIFocusTarget"];
                 return ss;
             }
@@ -102,13 +102,13 @@ namespace GoogleChartsNGraphsControls
             in - Draw the title inside the chart area.
             out - Draw the title outside the chart area.
             none - Omit the title.")]
-        [DefaultValue(CandlestickTheme.None)]
+        [DefaultValue(CandlestickTheme.Default)]
         public CandlestickTheme GVITheme
         {
             get
             {
                 object s = ViewState["GVITheme"];
-                if (s == null) return CandlestickTheme.None;
+                if (s == null) return CandlestickTheme.Default;
                 CandlestickTheme ss = (CandlestickTheme)ViewState["GVITheme"];
                 return ss;
             }
