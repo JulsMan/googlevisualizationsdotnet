@@ -13,9 +13,7 @@ namespace TestGoogleCharsNGraphsControls
         protected void Page_Init()
         {
 
-            GoogleChartsNGraphsControls.HAxis hx = new GoogleChartsNGraphsControls.HAxis();
-            hx.Title = "foobar";
-            this.PlaceHolder1.Controls.Add(new LiteralControl(hx.ToString()));
+
 
             // Map Test
             this.GVMap2.ChartData("Duvall, WA", "Home Sweet Home");
@@ -100,8 +98,18 @@ namespace TestGoogleCharsNGraphsControls
             dt2.Rows.Add(new object[] { "2008", 410000, 442000 });
             dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
             dt2.Rows.Add(new object[] { "2010", 480000, 435000});
-            this.GVAreaChart2.DataSource = dt2;
 
+            this.GVAreaChart2.DataSource = dt2;
+            
+            GoogleChartsNGraphsControls.HAxis hx = new GoogleChartsNGraphsControls.HAxis();
+            hx.SlantedText = true;
+            hx.Title = "Hoz Axis Title";
+            this.GVAreaChart2.GVIHAxisOptions = hx;
+
+            GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
+            an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
+            an.Duration = 1000;
+            this.GVAreaChart2.GviAnimationOptions = an;
 
 
 
@@ -185,8 +193,16 @@ namespace TestGoogleCharsNGraphsControls
             scatter.Rows.Add(new object[] { 12, 92 });
             scatter.Rows.Add(new object[] { 5, 50 });
             this.GVScatterChart1.GviTitle = "Age vs Weight Comparison";
-            this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
-            this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
+            //this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
+            hx = new GoogleChartsNGraphsControls.HAxis();
+            hx.Title = "Child Age";
+            hx.ShowTextEvery = 1;
+            hx.SlantedText = true;
+            //this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
+            this.GVScatterChart1.GVIHAxisOptions = hx;
+            an = new GoogleChartsNGraphsControls.Animation(GoogleChartsNGraphsControls.AnimationEasing.InAndOut, 1000);
+            this.GVScatterChart1.GviAnimationOptions = an;
+
             this.GVScatterChart1.DataSource = scatter;
 
 

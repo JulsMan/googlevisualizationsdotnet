@@ -12,6 +12,12 @@ namespace GoogleChartsNGraphsControls
 {
     public abstract class BaseWebControl: WebControl
     {
+        public BaseWebControl()
+        {
+            this.GviAnimationOptions = null;
+            this.GVIHAxisOptions = null;
+        }
+
         protected BaseGVI gvi = new BaseGVI();
 
         [Bindable(true)]
@@ -208,6 +214,33 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviConfigOption]
+        [GviClass("animation")]
+        [Bindable(true)]
+        [Category("AjaxExtensions")]
+        [Description(@"JSON class for animation of charts")]
+        [DefaultValue("")]
+        public string GviAnimation
+        {
+            get
+            {
+                if (this.GviAnimationOptions == null)
+                    return (string)ViewState["GviAnimationOptions"];
+                else
+                    return this.GviAnimationOptions.ToString();
+            }
+
+            set
+            {
+                ViewState["GviAnimationOptions"] = value;
+            }
+        }
+        public Animation GviAnimationOptions
+        {
+            get;
+            set;
+        }
+
         [GviAnimationOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
@@ -216,13 +249,18 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                int? s = (int?)ViewState["Animation_Duration"];
-                return s;
+                if (this.GviAnimationOptions == null)
+                    this.GviAnimationOptions = new Animation();
+
+                return this.GviAnimationOptions.Duration;
             }
 
             set
             {
-                ViewState["Animation_Duration"] = value;
+                if (this.GviAnimationOptions == null)
+                    this.GviAnimationOptions = new Animation();
+
+                this.GviAnimationOptions.Duration = value;
             }
         }
 
@@ -238,13 +276,18 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                object s = ViewState["GviAnimation_Easing"];
-                return s == null ? AnimationEasing.None : (AnimationEasing)ViewState["GviAnimation_Easing"];
+                if (this.GviAnimationOptions == null)
+                    this.GviAnimationOptions = new Animation();
+
+                return this.GviAnimationOptions.Easing;
             }
 
             set
             {
-                ViewState["GviAnimation_Easing"] = value;
+                if (this.GviAnimationOptions == null)
+                    this.GviAnimationOptions = new Animation();
+
+                this.GviAnimationOptions.Easing = value;
             }
         }
 
@@ -317,7 +360,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
+        
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description(@"")]
@@ -326,8 +369,10 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                string s = (string)ViewState["GviViewFormatHook"];
-                return s;
+                if (this.GVIHAxisOptions == null)
+                    return (string)ViewState["GviViewFormatHook"];
+                else
+                    return this.GVIHAxisOptions.ToString();
             }
 
             set
@@ -338,13 +383,32 @@ namespace GoogleChartsNGraphsControls
 
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description("Configurable Horizontal Axis")]
-        public HAxis GVIHAxis 
-        { 
-            get; 
-            set; 
+        public HAxis GVIHAxisOptions
+        {
+            get;
+            set;
         }
+        
+        [GviConfigOption]
+        [GviClass("hAxis")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Configurable Horizontal Axis")]
+        public string GVIHAxis
+        {
+            get
+            {
+                if (this.GVIHAxisOptions == null)
+                    return (string)ViewState["GVIHAxisOptions"];
+                else
+                    return this.GVIHAxisOptions.ToString();
+            }
 
+            set
+            {
+                ViewState["GVIHAxisOptions"] = value;
+            }
+        }
 
 
         protected DataTable dt

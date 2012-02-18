@@ -382,13 +382,12 @@ namespace GoogleChartsNGraphsControls
                     optionsList.Add(string.Format("{0}:{1}", prop.Name.GVINameParse(), val.ToString()));
             }
 
-            optionsList.Add(RenderGVIAnimationOptions(PageControl));
-
+            //optionsList.Add(RenderGVIAnimationOptions(PageControl));
+            optionsList.Add(RenderGVIClassOptions(PageControl));
             return string.Format("{{ {0} }}", string.Join(",", optionsList.ToArray()));
         }
 
-
-        private string RenderGVIAnimationOptions(WebControl PageControl)
+        private string RenderGVIClassOptions(WebControl PageControl)
         {
             List<string> optionsList = new List<string>();
 
@@ -396,34 +395,58 @@ namespace GoogleChartsNGraphsControls
 
             foreach (System.Reflection.PropertyInfo prop in props)
             {
-                GviAnimationOption option = prop.GetCustomAttributes(typeof(GviAnimationOption), false)
-                .Cast<GviAnimationOption>().FirstOrDefault();
-
+                GviClass option = prop.GetCustomAttributes(typeof(GviClass), false)
+                    .Cast<GviClass>().FirstOrDefault();
+                
                 if (option == null) continue;
-                object val = prop.GetValue(PageControl, null); 
-                if (val == null) continue;
 
-                if (prop.PropertyType == typeof(AnimationEasing))
-                {
-                    AnimationEasing state = (AnimationEasing)val;
-                    if (state == AnimationEasing.None) continue;
-                    string tmp = state.Parse();
-                    if (!string.IsNullOrEmpty(tmp))
-                        optionsList.Add(string.Format("{0}:'{1}'", prop.Name.Replace("Animation_","").GVINameParse(), tmp));
-                }
-                else if (prop.PropertyType == typeof(int?))
-                {
-                    optionsList.Add(string.Format("{0}:{1}", prop.Name.Replace("Animation_","").GVINameParse(),val));
-                }
-                else
-                {
-                }
+                object val = prop.GetValue(PageControl, null);
+
+                if ((val == null) || (string.IsNullOrEmpty(val.ToString())))
+                    continue;
+
+                optionsList.Add(string.Format("{0}: {1}", option.ToString(), val.ToString()));
             }
 
-            if (optionsList.Count > 0)
-                return string.Format("animation: {{ {0} }}", string.Join(",", optionsList.ToArray()));
-            return "";
+            return string.Join(", ", optionsList.ToArray());
         }
+
+        //private string RenderGVIAnimationOptions(WebControl PageControl)
+        //{
+        //    List<string> optionsList = new List<string>();
+
+        //    System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
+
+        //    foreach (System.Reflection.PropertyInfo prop in props)
+        //    {
+        //        GviAnimationOption option = prop.GetCustomAttributes(typeof(GviAnimationOption), false)
+        //        .Cast<GviAnimationOption>().FirstOrDefault();
+
+        //        if (option == null) continue;
+        //        object val = prop.GetValue(PageControl, null); 
+        //        if (val == null) continue;
+
+        //        if (prop.PropertyType == typeof(AnimationEasing))
+        //        {
+        //            AnimationEasing state = (AnimationEasing)val;
+        //            if (state == AnimationEasing.None) continue;
+        //            string tmp = state.Parse();
+        //            if (!string.IsNullOrEmpty(tmp))
+        //                optionsList.Add(string.Format("{0}:'{1}'", prop.Name.Replace("Animation_","").GVINameParse(), tmp));
+        //        }
+        //        else if (prop.PropertyType == typeof(int?))
+        //        {
+        //            optionsList.Add(string.Format("{0}:{1}", prop.Name.Replace("Animation_","").GVINameParse(),val));
+        //        }
+        //        else
+        //        {
+        //        }
+        //    }
+
+        //    if (optionsList.Count > 0)
+        //        return string.Format("animation: {{ {0} }}", string.Join(",", optionsList.ToArray()));
+        //    return "";
+        //}
         internal string RenderFormatter(WebControl PageControl)
         {
             if (PageControl as IGoogleFormatter == null)

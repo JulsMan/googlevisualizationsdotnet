@@ -41,9 +41,43 @@ namespace GoogleChartsNGraphsControls
     public enum CandlestickTheme { Default, Maximized }
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
 
+    [DataContract(Name = "animation")]
+    [Newtonsoft.Json.JsonObject(Title = "animation", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
+    public class Animation
+    {
+        public Animation() { }
+        public Animation(AnimationEasing Easing, int Duration)
+        {
+            this.Easing = Easing;
+            this.Duration = (int?)Duration;
+        }
 
+        [DataMember(Name = "duration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "duration", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Duration
+        {
+            get;
+            set;
+        }
+
+        [DataMember(Name = "easing")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "easing", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AnimationEasing Easing
+        {
+            get;
+            set;
+        }
+
+
+        public override string ToString()
+        {
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            return s;
+        }
+    }
 
     [DataContract(Name="hAxis")]
+    [Newtonsoft.Json.JsonObject(Title = "hAxis", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
     public class HAxis
     {
         public HAxis()
@@ -273,8 +307,7 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-            return s;
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
         }
 
     }
