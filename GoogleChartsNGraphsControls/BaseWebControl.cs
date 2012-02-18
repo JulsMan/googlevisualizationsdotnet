@@ -15,7 +15,7 @@ namespace GoogleChartsNGraphsControls
         public BaseWebControl()
         {
             this.GviAnimationOptions = null;
-            this.GVIHAxisOptions = null;
+            this.GVIHAxisClass = null;
         }
 
         protected BaseGVI gvi = new BaseGVI();
@@ -360,7 +360,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description(@"")]
@@ -369,10 +368,10 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                if (this.GVIHAxisOptions == null)
+                if (this.GVIHAxisClass == null)
                     return (string)ViewState["GviViewFormatHook"];
                 else
-                    return this.GVIHAxisOptions.ToString();
+                    return this.GVIHAxisClass.ToString();
             }
 
             set
@@ -381,32 +380,62 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+
+
         [Bindable(true)]
         [Category("GoogleOptions")]
-        public HAxis GVIHAxisOptions
+        public hAxis GVIHAxisClass
         {
             get;
             set;
         }
-        
-        [GviConfigOption]
+
         [GviClass("hAxis")]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description("Configurable Horizontal Axis")]
+        [Description("Configurable Vertical Axis")]
         public string GVIHAxis
         {
             get
             {
-                if (this.GVIHAxisOptions == null)
-                    return (string)ViewState["GVIHAxisOptions"];
+                if (this.GVIHAxisClass == null)
+                    return (string)ViewState["GVIHAxis"];
                 else
-                    return this.GVIHAxisOptions.ToString();
+                    return this.GVIHAxisClass.ToString();
             }
 
             set
             {
-                ViewState["GVIHAxisOptions"] = value;
+                ViewState["GVIHAxis"] = value;
+            }
+        }
+
+
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        public vAxis GVIVAxisClass
+        {
+            get;
+            set;
+        }
+
+        [GviClass("vAxis")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Configurable Vertical Axis")]
+        public string GVIVAxis
+        {
+            get
+            {
+                if (this.GVIVAxisClass == null)
+                    return (string)ViewState["GVIVAxis"];
+                else
+                    return this.GVIVAxisClass.ToString();
+            }
+
+            set
+            {
+                ViewState["GVIVAxis"] = value;
             }
         }
 

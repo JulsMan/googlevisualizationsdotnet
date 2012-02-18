@@ -76,11 +76,30 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
-    [DataContract(Name="hAxis")]
+    [DataContract(Name = "hAxis")]
     [Newtonsoft.Json.JsonObject(Title = "hAxis", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
-    public class HAxis
+    public class hAxis : Axis 
     {
-        public HAxis()
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+        }
+    }
+
+    [DataContract(Name = "vAxis")]
+    [Newtonsoft.Json.JsonObject(Title = "vAxis", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
+    public class vAxis : Axis 
+    {
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+        }
+    }
+
+    [Newtonsoft.Json.JsonObject()]
+    public abstract class Axis
+    {
+        public Axis()
         {
             this.Baseline = null;
             this.BaselineColor = null;
@@ -305,10 +324,7 @@ namespace GoogleChartsNGraphsControls
         //    return s;
         //}
 
-        public override string ToString()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
-        }
+       
 
     }
     

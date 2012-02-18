@@ -289,219 +289,219 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object with members to configure various horizontal axis elements. To specify properties of this object, you can use object literal notation, as shown here:
-            {title: 'Hello',  titleTextStyle: {color: '#FF0000'}}")]
-        [DefaultValue("")]
-        public object GviHAxis
-        {
-            get
-            {
-                string s = (string)ViewState["GviHAxis"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"An object with members to configure various horizontal axis elements. To specify properties of this object, you can use object literal notation, as shown here:
+//            {title: 'Hello',  titleTextStyle: {color: '#FF0000'}}")]
+//        [DefaultValue("")]
+//        public object GviHAxis
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviHAxis"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"hAxis property that specifies the baseline for the horizontal axis. If the baseline is smaller than the highest grid line or smaller than the lowest grid line, it will be rounded to the closest gridline.")]
-        [DefaultValue("")]
-        public int? GviHAxis_baseline
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviHAxis_baseline"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"hAxis property that specifies the baseline for the horizontal axis. If the baseline is smaller than the highest grid line or smaller than the lowest grid line, it will be rounded to the closest gridline.")]
+//        [DefaultValue("")]
+//        public int? GviHAxis_baseline
+//        {
+//            get
+//            {
+//                int? s = (int?)ViewState["GviHAxis_baseline"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_baseline"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_baseline"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"hAxis property that specifies the color of the baseline for the horizontal axis. Can be any HTML color string, for example: 'red' or '#00cc00'")]
-        [DefaultValue("")]
-        public Color? GviHAxis_baselineColor
-        {
-            get
-            {
-                Color? s = (Color?)ViewState["GviHAxis_baselineColor"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"hAxis property that specifies the color of the baseline for the horizontal axis. Can be any HTML color string, for example: 'red' or '#00cc00'")]
+//        [DefaultValue("")]
+//        public Color? GviHAxis_baselineColor
+//        {
+//            get
+//            {
+//                Color? s = (Color?)ViewState["GviHAxis_baselineColor"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_baselineColor"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_baselineColor"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"The direction in which the values along the horizontal axis grow. Specify -1 to reverse the order of the values. (1 or -1)")]
-        [DefaultValue("")]
-        public string GviHAxis_direction
-        {
-            get
-            {
-                string s = (string)ViewState["GviHAxis_direction"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"The direction in which the values along the horizontal axis grow. Specify -1 to reverse the order of the values. (1 or -1)")]
+//        [DefaultValue("")]
+//        public string GviHAxis_direction
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviHAxis_direction"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_direction"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_direction"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"hAxis property that makes the horizontal axis a logarithmic scale (requires all values to be positive). Set to true for yes.")]
-        [DefaultValue("")]
-        public bool? GviHAxis_logScale
-        {
-            get
-            {
-                bool? s = (bool?)ViewState["GviHAxis_logScale"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"hAxis property that makes the horizontal axis a logarithmic scale (requires all values to be positive). Set to true for yes.")]
+//        [DefaultValue("")]
+//        public bool? GviHAxis_logScale
+//        {
+//            get
+//            {
+//                bool? s = (bool?)ViewState["GviHAxis_logScale"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_logScale"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_logScale"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object that specifies the horizontal axis text style. The object has this format:
-            {color: <string>, fontName: <string>, fontSize: <number>}
-            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
-        [DefaultValue("")]
-        public object GviHAxis_textStyle
-        {
-            get
-            {
-                string s = (string)ViewState["GviHAxis_textStyle"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"An object that specifies the horizontal axis text style. The object has this format:
+//            {color: <string>, fontName: <string>, fontSize: <number>}
+//            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
+//        [DefaultValue("")]
+//        public object GviHAxis_textStyle
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviHAxis_textStyle"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_textStyle"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_textStyle"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Position of the horizontal axis text, relative to the chart area. Supported values: 'out', 'in', 'none'.")]
-        [DefaultValue("")]
-        public string GviHAxis_textPosition
-        {
-            get
-            {
-                string s = (string)ViewState["GviHAxis_textPosition"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"Position of the horizontal axis text, relative to the chart area. Supported values: 'out', 'in', 'none'.")]
+//        [DefaultValue("")]
+//        public string GviHAxis_textPosition
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviHAxis_textPosition"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_textPosition"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_textPosition"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"hAxis property that specifies a title for the horizontal axis.")]
-        [DefaultValue("")]
-        public string GviHAxis_title
-        {
-            get
-            {
-                string s = (string)ViewState["GviHAxis_title"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"hAxis property that specifies a title for the horizontal axis.")]
+//        [DefaultValue("")]
+//        public string GviHAxis_title
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviHAxis_title"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_title"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_title"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object that specifies the horizontal axis title text style. The object has this format:
-            {color: <string>, fontName: <string>, fontSize: <number>}
-            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
-        [DefaultValue("")]
-        public object GviHAxis_titleTextStyle
-        {
-            get
-            {
-                string s = (string)ViewState["GviHAxis_titleTextStyle"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"An object that specifies the horizontal axis title text style. The object has this format:
+//            {color: <string>, fontName: <string>, fontSize: <number>}
+//            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
+//        [DefaultValue("")]
+//        public object GviHAxis_titleTextStyle
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviHAxis_titleTextStyle"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_titleTextStyle"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_titleTextStyle"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"hAxis property that specifies the highest horizontal axis grid line. The actual grid line will be the greater of two values: the maxValue option value, or the highest data value, rounded up to the next higher grid mark.")]
-        [DefaultValue("")]
-        public int? GviHAxis_maxValue
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviHAxis_maxValue"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"hAxis property that specifies the highest horizontal axis grid line. The actual grid line will be the greater of two values: the maxValue option value, or the highest data value, rounded up to the next higher grid mark.")]
+//        [DefaultValue("")]
+//        public int? GviHAxis_maxValue
+//        {
+//            get
+//            {
+//                int? s = (int?)ViewState["GviHAxis_maxValue"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_maxValue"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_maxValue"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"hAxis property that specifies the lowest horizontal axis grid line. The actual grid line will be the lower of two values: the minValue option value, or the lowest data value, rounded down to the next lower grid mark.")]
-        [DefaultValue("")]
-        public int? GviHAxis_minValue
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviHAxis_minValue"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"hAxis property that specifies the lowest horizontal axis grid line. The actual grid line will be the lower of two values: the minValue option value, or the lowest data value, rounded down to the next lower grid mark.")]
+//        [DefaultValue("")]
+//        public int? GviHAxis_minValue
+//        {
+//            get
+//            {
+//                int? s = (int?)ViewState["GviHAxis_minValue"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviHAxis_minValue"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviHAxis_minValue"] = value;
+//            }
+//        }
 
         [GviConfigOption]
         [Bindable(true)]
@@ -669,123 +669,123 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object with members to configure various vertical axis elements. To specify properties of this object, you can use object literal notation, as shown here: {title: 'Hello',  titleTextStyle: {color: '#FF0000'}}")]
-        [DefaultValue("")]
-        public object GviVAxis
-        {
-            get
-            {
-                string s = (string)ViewState["GviVAxis"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"An object with members to configure various vertical axis elements. To specify properties of this object, you can use object literal notation, as shown here: {title: 'Hello',  titleTextStyle: {color: '#FF0000'}}")]
+//        [DefaultValue("")]
+//        public object GviVAxis
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviVAxis"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviVAxis"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviVAxis"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"The direction in which the values along the vertical axis grow. Specify -1 to reverse the order of the values.")]
-        [DefaultValue("")]
-        public string GviVAxis_direction
-        {
-            get
-            {
-                string s = (string)ViewState["GviVAxis_direction"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"The direction in which the values along the vertical axis grow. Specify -1 to reverse the order of the values.")]
+//        [DefaultValue("")]
+//        public string GviVAxis_direction
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviVAxis_direction"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviVAxis_direction"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviVAxis_direction"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Position of the vertical axis text, relative to the chart area. Supported values: 'out', 'in', 'none'.")]
-        [DefaultValue("")]
-        public string GviVAxis_textPosition
-        {
-            get
-            {
-                string s = (string)ViewState["GviVAxis_textPosition"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"Position of the vertical axis text, relative to the chart area. Supported values: 'out', 'in', 'none'.")]
+//        [DefaultValue("")]
+//        public string GviVAxis_textPosition
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviVAxis_textPosition"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviVAxis_textPosition"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviVAxis_textPosition"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object that specifies the vertical axis text style. The object has this format:
-            {color: <string>, fontName: <string>, fontSize: <number>}
-            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
-        [DefaultValue("")]
-        public object GviVAxis_textStyle
-        {
-            get
-            {
-                string s = (string)ViewState["GviVAxis_textStyle"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"An object that specifies the vertical axis text style. The object has this format:
+//            {color: <string>, fontName: <string>, fontSize: <number>}
+//            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
+//        [DefaultValue("")]
+//        public object GviVAxis_textStyle
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviVAxis_textStyle"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviVAxis_textStyle"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviVAxis_textStyle"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"vAxis property that specifies a title for the vertical axis.")]
-        [DefaultValue("")]
-        public string GviVAxis_title
-        {
-            get
-            {
-                string s = (string)ViewState["GviVAxis_title"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"vAxis property that specifies a title for the vertical axis.")]
+//        [DefaultValue("")]
+//        public string GviVAxis_title
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviVAxis_title"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviVAxis_title"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviVAxis_title"] = value;
+//            }
+//        }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object that specifies the vertical axis text style. The object has this format:
-            {color: <string>, fontName: <string>, fontSize: <number>}
-            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
-        [DefaultValue("")]
-        public object GviVAxis_titleTextStyle
-        {
-            get
-            {
-                string s = (string)ViewState["GviVAxis_titleTextStyle"];
-                return s;
-            }
+//        [GviConfigOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"An object that specifies the vertical axis text style. The object has this format:
+//            {color: <string>, fontName: <string>, fontSize: <number>}
+//            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
+//        [DefaultValue("")]
+//        public object GviVAxis_titleTextStyle
+//        {
+//            get
+//            {
+//                string s = (string)ViewState["GviVAxis_titleTextStyle"];
+//                return s;
+//            }
 
-            set
-            {
-                ViewState["GviVAxis_titleTextStyle"] = value;
-            }
-        }
+//            set
+//            {
+//                ViewState["GviVAxis_titleTextStyle"] = value;
+//            }
+//        }
 
         public void ChartData(string Name, int Value)
         {

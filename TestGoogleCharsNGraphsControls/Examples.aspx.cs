@@ -101,10 +101,10 @@ namespace TestGoogleCharsNGraphsControls
 
             this.GVAreaChart2.DataSource = dt2;
             
-            GoogleChartsNGraphsControls.HAxis hx = new GoogleChartsNGraphsControls.HAxis();
+            GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
             hx.SlantedText = true;
             hx.Title = "Hoz Axis Title";
-            this.GVAreaChart2.GVIHAxisOptions = hx;
+            this.GVAreaChart2.GVIHAxisClass = hx;
 
             GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
             an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
@@ -121,13 +121,25 @@ namespace TestGoogleCharsNGraphsControls
             barchart.Rows.Add(new object[] { "2005", 1170, 460 });
             barchart.Rows.Add(new object[] { "2006", 660, 1120 });
             barchart.Rows.Add(new object[] { "2007", 1030, 540 });
-            this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+            //this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+
+            hx = new GoogleChartsNGraphsControls.hAxis();
+            hx.Title = "In Thousands";
+            hx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Currency;
+            hx.SlantedText = true;
+            this.GVBarChart1.GVIHAxisClass = hx;
+
             this.GVBarChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan };
             this.GVBarChart1.DataSource = barchart;
 
 
 
-            this.GVColumnChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+            //this.GVColumnChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+            GoogleChartsNGraphsControls.vAxis vx = new GoogleChartsNGraphsControls.vAxis();
+            vx.BaselineColor = Color.Green;
+            vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
+            vx.Title = "By Year";
+            this.GVColumnChart1.GVIVAxisClass = vx;
             this.GVColumnChart1.DataSource = barchart;
 
 
@@ -194,15 +206,14 @@ namespace TestGoogleCharsNGraphsControls
             scatter.Rows.Add(new object[] { 5, 50 });
             this.GVScatterChart1.GviTitle = "Age vs Weight Comparison";
             //this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
-            hx = new GoogleChartsNGraphsControls.HAxis();
+            hx = new GoogleChartsNGraphsControls.hAxis();
             hx.Title = "Child Age";
             hx.ShowTextEvery = 1;
             hx.SlantedText = true;
             //this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
-            this.GVScatterChart1.GVIHAxisOptions = hx;
+            this.GVScatterChart1.GVIHAxisClass = hx;
             an = new GoogleChartsNGraphsControls.Animation(GoogleChartsNGraphsControls.AnimationEasing.InAndOut, 1000);
             this.GVScatterChart1.GviAnimationOptions = an;
-
             this.GVScatterChart1.DataSource = scatter;
 
 
