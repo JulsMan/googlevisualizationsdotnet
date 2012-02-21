@@ -14,6 +14,7 @@ namespace GoogleChartsNGraphsControls
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVMap runat=server></{0}:GVMap>")]
     [ToolboxBitmap(typeof(GVMap))]
+    [Newtonsoft.Json.JsonObject()]
     public class GVMap : BaseWebControl
     {
 
@@ -23,6 +24,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [DefaultValue(false)]
         [PersistenceMode(PersistenceMode.EncodedInnerDefaultProperty)]
+        [Newtonsoft.Json.JsonIgnore()]
         public bool? GviEnableScrollWheel
         {
             get
@@ -42,6 +44,7 @@ namespace GoogleChartsNGraphsControls
         [Description("If set to true, shows the location description as a tooltip when the mouse is positioned above a point marker.")]
         [Category("GoogleOptions")]
         [DefaultValue(false)]
+        [Newtonsoft.Json.JsonIgnore()]
         public bool? GviShowTip
         {
             get
@@ -61,6 +64,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("If set to true, shows a Google Maps polyline through all the points.")]
         [DefaultValue(false)]
+        [Newtonsoft.Json.JsonIgnore()]
         public bool? GviShowLine
         {
             get
@@ -81,6 +85,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("If showLine is true, defines the line color. For example: '#800000'.")]
         [DefaultValue("")]
+        [Newtonsoft.Json.JsonIgnore()]
         public Color? GviLineColor
         {
             get
@@ -100,6 +105,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("If showLine is true, defines the line width (in pixels).")]
         [DefaultValue(10)]
+        [Newtonsoft.Json.JsonIgnore()]
         public int? GviLineWidth
         {
             get
@@ -119,6 +125,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The type of map to show. Possible values are 'normal', 'terrain', 'satellite' or 'hybrid'.")]
         [DefaultValue("hybrid")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviMapType
         {
             get
@@ -138,6 +145,7 @@ namespace GoogleChartsNGraphsControls
         [Description("Show a map type selector that enables the viewer to switch between [map, satellite, hybrid, terrain]. When useMapTypeControl is false (default) no selector is presented and the type is determined by the mapType option.")]
         [Category("GoogleOptions")]
         [DefaultValue(false)]
+        [Newtonsoft.Json.JsonIgnore()]
         public bool? GviUseMapTypeControl
         {
             get
@@ -157,6 +165,7 @@ namespace GoogleChartsNGraphsControls
         [Description("An integer indicating the initial zoom level of the map, where 0 is completely zoomed out (whole world) and 19 is the maximum zoom level. (See 'Zoom Levels' in the Google Maps API.)")]
         [Category("GoogleOptions")]
         [DefaultValue(4)]
+        [Newtonsoft.Json.JsonIgnore()]
         public int? GviZoomLevel
         {
             get
@@ -171,22 +180,24 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        protected DataTable dt
-        {
-            get
-            {
-                DataTable s = (DataTable)ViewState["GoogleDataTable"];
-                return ((s == null) ? new DataTable() : s);
-            }
 
-            set
-            {
-                ViewState["GoogleDataTable"] = value;
-            }
-        }
+        //protected DataTable dt
+        //{
+        //    get
+        //    {
+        //        DataTable s = (DataTable)ViewState["GoogleDataTable"];
+        //        return ((s == null) ? new DataTable() : s);
+        //    }
+
+        //    set
+        //    {
+        //        ViewState["GoogleDataTable"] = value;
+        //    }
+        //}
 
         public void ChartData(string Address, string LocationName)
         {
+           
             if ((this.dt == null) || (this.dt.Columns.Count == 0))
             {
                 this.dt = new DataTable();

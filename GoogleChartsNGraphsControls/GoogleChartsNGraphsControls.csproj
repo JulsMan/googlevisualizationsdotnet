@@ -69,6 +69,7 @@
     <Compile Include="BaseDesignTimeSupport.cs" />
     <Compile Include="BaseGVI.cs" />
     <Compile Include="BaseWebControl.cs" />
+    <Compile Include="CustomConverters.cs" />
     <Compile Include="GVCandlestickChart.cs" />
     <Compile Include="GVGanttChart.cs" />
     <Compile Include="GVOrgChart.cs" />

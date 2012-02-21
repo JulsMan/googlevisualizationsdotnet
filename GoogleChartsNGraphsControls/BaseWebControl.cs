@@ -10,6 +10,8 @@ using System.Drawing;
 
 namespace GoogleChartsNGraphsControls
 {
+    [Newtonsoft.Json.JsonObject(Title="options")]
+
     public abstract class BaseWebControl: WebControl
     {
         public BaseWebControl()
@@ -24,6 +26,7 @@ namespace GoogleChartsNGraphsControls
         [Category("Appearance")]
         [DefaultValue("")]
         [Localizable(true)]
+        [Newtonsoft.Json.JsonIgnore()]
         public string Text
         {
             get
@@ -42,6 +45,8 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("Text to display above the chart.")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "title", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviTitle
         {
             get
@@ -61,6 +66,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"Override the GviOptions here by entering your own options JSON.  If this is used then other config options will ignored.")]
         [DefaultValue(null)]
+        [Newtonsoft.Json.JsonIgnore()]
         public object GviOptionsOverride
         {
             get
@@ -79,7 +85,10 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("The background color for the chart.")]
-        [DefaultValue("")]
+        [DefaultValue(null)]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backgroundColor", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, TypeNameHandling=Newtonsoft.Json.TypeNameHandling.Objects )]
+        [Newtonsoft.Json.JsonConverter(typeof(Color?))]
+        [Newtonsoft.Json.JsonIgnore()]
         public Color? GVIBackgroundColor
         {
             get
@@ -99,6 +108,8 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
         [DefaultValue("")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "colors", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonIgnore()]
         public Color?[] GviColors
         {
             get
@@ -114,11 +125,11 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
         [DefaultValue("")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviColorsByName
         {
             get
@@ -182,6 +193,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"Overrides the name of the element being replaced in the DOM with this chart.")]
         [DefaultValue("")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string OverrideElementId
         {
             get
@@ -200,6 +212,7 @@ namespace GoogleChartsNGraphsControls
         [Category("AjaxExtensions")]
         [Description(@"The URL query string associated with this control from which it will GET its data.")]
         [DefaultValue("")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string QueryString
         {
             get
@@ -220,6 +233,7 @@ namespace GoogleChartsNGraphsControls
         [Category("AjaxExtensions")]
         [Description(@"JSON class for animation of charts")]
         [DefaultValue("")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviAnimation
         {
             get
@@ -235,6 +249,8 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GviAnimationOptions"] = value;
             }
         }
+
+        [Newtonsoft.Json.JsonIgnore()]
         public Animation GviAnimationOptions
         {
             get;
@@ -245,6 +261,7 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description(@"The duration of the animation, in milliseconds. For details, see the animation documentation.")]
+        [Newtonsoft.Json.JsonIgnore()]
         public int? GviAnimation_Duration
         {
             get
@@ -272,6 +289,7 @@ namespace GoogleChartsNGraphsControls
             'in' - Ease in - Start slow and speed up.
             'out' - Ease out - Start fast and slow down.
             'inAndOut' - Ease in and out - Start slow, speed up, then slow down.")]
+        [Newtonsoft.Json.JsonIgnore()]
         public AnimationEasing GviAnimation_Easing
         {
             get
@@ -303,6 +321,7 @@ namespace GoogleChartsNGraphsControls
                     }   
                 ")]
         [DefaultValue(null)]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviFormatterHook
         {
             get
@@ -328,6 +347,7 @@ namespace GoogleChartsNGraphsControls
                     }   
                 ")]
         [DefaultValue(null)]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviViewFormatHook
         {
             get
@@ -346,6 +366,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"")]
         [DefaultValue(null)]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviFormatHAxis
         {
             get
@@ -364,6 +385,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"")]
         [DefaultValue(null)]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GviFormatVAxis
         {
             get
@@ -384,6 +406,7 @@ namespace GoogleChartsNGraphsControls
 
         [Bindable(true)]
         [Category("GoogleOptions")]
+        [Newtonsoft.Json.JsonIgnore()]
         public hAxis GVIHAxisClass
         {
             get;
@@ -394,6 +417,7 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("Configurable Vertical Axis")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GVIHAxis
         {
             get
@@ -413,6 +437,7 @@ namespace GoogleChartsNGraphsControls
 
         [Bindable(true)]
         [Category("GoogleOptions")]
+        [Newtonsoft.Json.JsonIgnore()]
         public vAxis GVIVAxisClass
         {
             get;
@@ -423,6 +448,7 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("Configurable Vertical Axis")]
+        [Newtonsoft.Json.JsonIgnore()]
         public string GVIVAxis
         {
             get
@@ -439,7 +465,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
+        [Newtonsoft.Json.JsonIgnore()]
         protected DataTable dt
         {
             get
@@ -453,15 +479,18 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GoogleDataTable"] = value;
             }
         }
+
         public void ChartData(DataTable dt)
         {
             this.dt = dt;
         }
+        [Newtonsoft.Json.JsonIgnore()]
         public DataTable DataSource 
         {
             get { return this.dt; }
             set { this.dt = value; } 
         }
+
         protected override HtmlTextWriterTag TagKey
         {
             get
@@ -492,6 +521,11 @@ namespace GoogleChartsNGraphsControls
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_LOCAL_SCRIPTS",
                     Resource1.ResourceManager.GetString("SendAndDraw", System.Globalization.CultureInfo.CurrentCulture), true);
             }
+        }
+
+        public override string ToString()
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, new CustomConvertersColorToRGB());
         }
     }
 }
