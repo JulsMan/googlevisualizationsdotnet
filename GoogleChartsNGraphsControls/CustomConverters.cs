@@ -61,7 +61,32 @@ namespace GoogleChartsNGraphsControls
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteValue(ConverterTools.RGBtoHex((Color)value));
+            List<Color> clr = new List<Color>();
+
+            if (value is Color[])
+            {
+                foreach (Color c in ((Color[])value))
+                    clr.Add(c);
+            }
+            else if (value is Color?[])
+            {
+                foreach (Color? c in ((Color?[])value))
+                    if (c != null)
+                        clr.Add(c as Color);
+            }
+            else if (value is Color?)
+            {
+                if (value != null)
+                    clr.Add(c as Color);
+            }
+            else
+                clr.Add(c);
+
+            
+            writer.WriteStartArray();
+            foreach (Color c in clr)
+               writer.WriteRawValue(ConverterTools.RGBtoHex(c));
+            writer.WriteEndArray();
         }
     }
 

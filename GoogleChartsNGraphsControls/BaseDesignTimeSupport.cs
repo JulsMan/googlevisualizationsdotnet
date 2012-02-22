@@ -42,7 +42,6 @@ namespace GoogleChartsNGraphsControls
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
 
     [DataContract(Name = "animation")]
-    [Newtonsoft.Json.JsonObject(Title = "animation", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
     public class Animation
     {
         public Animation() { }
@@ -53,7 +52,6 @@ namespace GoogleChartsNGraphsControls
         }
 
         [DataMember(Name = "duration")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "duration", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Duration
         {
             get;
@@ -61,7 +59,6 @@ namespace GoogleChartsNGraphsControls
         }
 
         [DataMember(Name = "easing")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "easing", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AnimationEasing Easing
         {
             get;
@@ -77,7 +74,6 @@ namespace GoogleChartsNGraphsControls
     }
 
     [DataContract(Name = "hAxis")]
-    [Newtonsoft.Json.JsonObject(Title = "hAxis", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
     public class hAxis : Axis 
     {
         public override string ToString()
@@ -87,7 +83,6 @@ namespace GoogleChartsNGraphsControls
     }
 
     [DataContract(Name = "vAxis")]
-    [Newtonsoft.Json.JsonObject(Title = "vAxis", IsReference = true, MemberSerialization = Newtonsoft.Json.MemberSerialization.OptOut)]
     public class vAxis : Axis 
     {
         public override string ToString()
@@ -96,7 +91,6 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
-    [Newtonsoft.Json.JsonObject()]
     public abstract class Axis
     {
         public Axis()
@@ -126,7 +120,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         [DataMember(Name="baseline")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "baseline", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Baseline { get; set; }
 
         /// <summary>
@@ -134,14 +127,12 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         [DataMember(Name = "baselinecolor")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "baselinecolor", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Drawing.Color? BaselineColor { get; set; }
 
         /// <summary>
         /// The direction in which the values along the horizontal axis grow. Specify -1 to reverse the order of the values.
         /// </summary>
         [DataMember(Name = "direction")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "direction", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Direction { get; set; }
 
         /// <summary>
@@ -150,8 +141,7 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         /// 
-        [DataMember]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "gridlines", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [DataMember(Name="gridlines")]
         public Gridlines Gridlines { get; set; }
 
         /// <summary>
@@ -161,7 +151,6 @@ namespace GoogleChartsNGraphsControls
         /// The actual formatting applied to the label is derived from the locale the API has been loaded with. For more details, see loading charts with a specific locale.
         /// This option is only supported for a continuous axis.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "format", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [DataMember(Name = "format")]
         public string Format { get; set; }
 
@@ -221,14 +210,12 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         [DataMember(Name = "logscale")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "logscale", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? LogScale { get; set; }
 
         /// <summary>
         /// Position of the horizontal axis text, relative to the chart area. Supported values: 'out', 'in', 'none'.
         /// </summary>
         [DataMember(Name = "textPosition")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "textPosition", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Position TextPosition { get; set; }
 
         /// <summary>
@@ -237,14 +224,12 @@ namespace GoogleChartsNGraphsControls
         /// The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.
         /// </summary>
         [DataMember(Name = "textStyle")]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "textStyle", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string TextStyle { get; set; }
 
         /// <summary>
         /// hAxis property that specifies the title of the horizontal axis.
         /// </summary>
         [DataMember(Name = "title", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "title", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Title { get; set; }
 
         /// <summary>
@@ -253,7 +238,6 @@ namespace GoogleChartsNGraphsControls
         /// The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.
         /// </summary>
         [DataMember(Name = "titleTextStyle", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "titleTextStyle", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string TitleTextStyle { get; set; }
 
         /// <summary>
@@ -261,7 +245,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a discrete axis.
         /// </summary>
         [DataMember(Name = "slantedText", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "slantedText", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? SlantedText { get; set; }
 
         /// <summary>
@@ -269,7 +252,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a discrete axis.
         /// </summary>
         [DataMember(Name = "slantedTextAngle", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "slantedTextAngle", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? SlantedTextAngle { get; set; }
 
         /// <summary>
@@ -284,7 +266,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a discrete axis.
         /// </summary>
         [DataMember(Name = "showTextEvery", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "showTextEvery", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? ShowTextEvery { get; set; }
 
         /// <summary>
@@ -292,7 +273,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         [DataMember(Name = "maxValue", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "maxValue", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? MaxValue { get; set; }
 
         /// <summary>
@@ -300,7 +280,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         [DataMember(Name = "minValue", IsRequired = false, EmitDefaultValue = true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "minValue", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? MinValue { get; set; }
 
         /// <summary>
@@ -311,7 +290,6 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         [DataMember(Name = "viewWindowMode",IsRequired=false, EmitDefaultValue=true)]
-        [Newtonsoft.Json.JsonProperty(PropertyName = "viewWindowMode", NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, DefaultValueHandling=Newtonsoft.Json.DefaultValueHandling.Ignore)]
         public WindowMode ViewWindowMode { get; set; }
 
 

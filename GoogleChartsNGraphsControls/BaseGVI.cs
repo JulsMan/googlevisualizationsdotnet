@@ -301,7 +301,7 @@ namespace GoogleChartsNGraphsControls
         {
             List<string> optionsList = new List<string>();
             
-            string test = PageControl.ToString();
+            return PageControl.ToString();
 
             System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
 
