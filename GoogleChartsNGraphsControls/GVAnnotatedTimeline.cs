@@ -11,12 +11,14 @@ using System.Data;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing.Design;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVAnnotatedTimeline runat=server></{0}:GVAnnotatedTimeline>")]
     [ToolboxBitmap(typeof(GVAnnotatedTimeline))]
+    [DataContract]
     public class GVAnnotatedTimeline : BaseWebControl
     {
 

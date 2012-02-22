@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVTableArrowFormat runat=server></{0}:GVTableArrowFormat>")]
     [ToolboxBitmap(typeof(GVTableArrowFormat))]
+    [DataContract]
     public class GVTableArrowFormat : BaseWebControl, IGoogleFormatter
     {
 

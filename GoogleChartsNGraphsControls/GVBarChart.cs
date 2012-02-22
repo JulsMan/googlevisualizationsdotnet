@@ -7,12 +7,14 @@ using System.Web.UI;
 using System.Drawing;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVBarChart runat=server></{0}:GVBarChart>")]
     [ToolboxBitmap(typeof(GVBarChart))]
+    [DataContract]
     public class GVBarChart : BaseWebControl
     {
 

@@ -5,12 +5,14 @@ using System.Text;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVGanttChart runat=server></{0}:GVGanttChart>")]
     [ToolboxBitmap(typeof(GVGanttChart))]
+    [DataContract]
     public class GVGanttChart : BaseWebControl
     {
         [Bindable(true)]

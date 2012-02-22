@@ -7,12 +7,14 @@ using System.Web.UI;
 using System.Drawing;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVSparkLine runat=server></{0}:GVSparkLine>")]
     [ToolboxBitmap(typeof(GVSparkLine))]
+    [DataContract]
     public class GVSparkLine : BaseWebControl
     {
         [Bindable(true)]

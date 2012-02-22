@@ -7,12 +7,14 @@ using System.Web.UI;
 using System.Drawing;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVMotionChart runat=server></{0}:GVMotionChart>")]
     [ToolboxBitmap(typeof(GVMotionChart))]
+    [DataContract]
     public class GVMotionChart : BaseWebControl
     {
         [Bindable(true)]

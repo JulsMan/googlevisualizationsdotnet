@@ -8,12 +8,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using System.Data;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVGeoMap runat=server></{0}:GVGeoMap>")]
     [ToolboxBitmap(typeof(GVGeoMap))]
+    [DataContract]
     public class GVGeoMap : BaseWebControl
     {
 

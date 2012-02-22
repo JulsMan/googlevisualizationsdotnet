@@ -5,12 +5,14 @@ using System.Text;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVCandlestickChart runat=server></{0}:GVCandlestickChart>")]
     [ToolboxBitmap(typeof(GVCandlestickChart))]
+    [DataContract]
     public class GVCandlestickChart: BaseWebControl
     {
 

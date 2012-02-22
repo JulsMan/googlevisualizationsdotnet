@@ -168,7 +168,7 @@ namespace GoogleChartsNGraphsControls
         /// <summary>
         /// Pre-canned formats for common stuff, or you can roll your own
         /// </summary>
-        [Newtonsoft.Json.JsonIgnore()]
+        
         public AxisFormat Formatted
         {
             private get { return AxisFormat.Default; }
