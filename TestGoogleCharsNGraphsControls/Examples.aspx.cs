@@ -245,6 +245,11 @@ namespace TestGoogleCharsNGraphsControls
             gauge.Rows.Add(new object[] { "Memory", 80 });
             gauge.Rows.Add(new object[] { "CPU", 55 });
             gauge.Rows.Add(new object[] { "Network", 68 });
+
+            this.GVGauge1.GviRedFrom = 90;
+            this.GVGauge1.GviRedTo = 100;
+            this.GVGauge1.GviYellowFrom = 75;
+            this.GVGauge1.GviYellowTo = 90;
             this.GVGauge1.DataSource = gauge;
 
 

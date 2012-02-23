@@ -40,6 +40,8 @@ namespace GoogleChartsNGraphsControls
     public enum FocusTarget { Default, Datrum, Category }
     public enum CandlestickTheme { Default, Maximized }
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
+    public enum TablePage { Default, Enable, Event, Disable}
+    public enum TableFormatters { Default, Arrow, Bar, Color, Date, Number, Pattern}
 
     [DataContract(Name = "animation")]
     public class Animation

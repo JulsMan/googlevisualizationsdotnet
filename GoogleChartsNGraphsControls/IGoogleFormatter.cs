@@ -18,4 +18,17 @@ namespace GoogleChartsNGraphsControls
         string Formatter { get; }        // BarFormat
         int? GviFormatColumn { get; set;  }
     }
+
+
+
+    public class GoogleTableFormatter
+    {
+        public GoogleTableFormatter()
+        {
+        }
+        public enum FormatType {Arrow, Bar, Color, Date, Number, Pattern }
+        string GviFormatterParams { get; set; }
+        FormatType Formatter { get; }        // BarFormat
+        int? GviFormatColumn { get; set; }
+    }
 }

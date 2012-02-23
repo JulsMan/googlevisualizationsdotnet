@@ -202,11 +202,6 @@ namespace GoogleChartsNGraphsControls
         {
             string JAVASCRIPT = jscode3;
             
-
-           
-
-            
-
             List<string> events = RenderGVIEvents(PageControl);
             string options = RenderGVIConfigOptions(PageControl);
             string formatter = RenderFormatter(PageControl);
@@ -214,12 +209,6 @@ namespace GoogleChartsNGraphsControls
 
             //JAVASCRIPT = JAVASCRIPT.Replace("__UDF__", string.Join("\n", events.ToArray()));
             
-
-            if ((PageControl.GviOptionsOverride != null) && (!string.IsNullOrEmpty(PageControl.GviOptionsOverride.ToString())))
-            {
-                // the override switch is in play ... use the json struct here to override the manually set items...
-                options = PageControl.GviOptionsOverride.ToString();
-            }
 
             JAVASCRIPT = JAVASCRIPT.Replace("{formatter}", formatter);
             if (!string.IsNullOrEmpty(PageControl.QueryString) && PageControl.QueryString.StartsWith("~"))
@@ -231,6 +220,11 @@ namespace GoogleChartsNGraphsControls
             {
                 JAVASCRIPT = JAVASCRIPT.Replace("{QueryString}", PageControl.QueryString);
             }
+
+
+            // Check if manual override for Chart option is in effect
+            if ((PageControl.GviOptionsOverride != null) && (!string.IsNullOrEmpty(PageControl.GviOptionsOverride.ToString())))
+                options = PageControl.GviOptionsOverride.ToString();
             
 
             // the name of the control being bound and over-written
@@ -238,7 +232,10 @@ namespace GoogleChartsNGraphsControls
             if (!string.IsNullOrEmpty(PageControl.OverrideElementId))
                 ctlid = PageControl.OverrideElementId;
 
+            // interpolate the options into the canned Javascript
             string optionsJscode = string.Format(JAVASCRIPT, ctlid, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), string.Join("\n",events.ToArray()));
+            
+            // add version information onto each ChartJavascript
             string build = string.Format("v{0}.{1}.{2}.{3}",
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major, 
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.MajorRevision,
@@ -303,117 +300,117 @@ namespace GoogleChartsNGraphsControls
             
             return PageControl.ToString();
 
-            System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
+            //System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
 
-            foreach (System.Reflection.PropertyInfo prop in props)
-            {
+            //foreach (System.Reflection.PropertyInfo prop in props)
+            //{
 
 
-                GviConfigOption option = prop.GetCustomAttributes(typeof(GviConfigOption), false)
-                .Cast<GviConfigOption>().FirstOrDefault();
+            //    GviConfigOption option = prop.GetCustomAttributes(typeof(GviConfigOption), false)
+            //    .Cast<GviConfigOption>().FirstOrDefault();
 
-                if (option == null) continue;
+            //    if (option == null) continue;
                 
-                object val = prop.GetValue(PageControl, null); 
+            //    object val = prop.GetValue(PageControl, null); 
 
-                if (val == null) continue;
+            //    if (val == null) continue;
 
-                // convert any ' that is not at the end of the values into a \'
-                // example 'Bruce Lee's gee!' ==> 'Bruce Lee\'s gee'
-                if (val is string)
-                {
-                    List<string> matches = new List<string>();
-                    foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(val.ToString(), @"\w\'\w", System.Text.RegularExpressions.RegexOptions.Compiled))
-                        matches.Add(m.Value);
+            //    // convert any ' that is not at the end of the values into a \'
+            //    // example 'Bruce Lee's gee!' ==> 'Bruce Lee\'s gee'
+            //    if (val is string)
+            //    {
+            //        List<string> matches = new List<string>();
+            //        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(val.ToString(), @"\w\'\w", System.Text.RegularExpressions.RegexOptions.Compiled))
+            //            matches.Add(m.Value);
 
-                    foreach (string s in matches)
-                    {
-                        string repl = s.Replace("'", @"\'");
-                        val = val.ToString().Replace(s, repl);
-                    }
-                }
+            //        foreach (string s in matches)
+            //        {
+            //            string repl = s.Replace("'", @"\'");
+            //            val = val.ToString().Replace(s, repl);
+            //        }
+            //    }
 
-                if (prop.PropertyType == typeof(string))
-                {
-                    if (!string.IsNullOrEmpty(val.ToString()))
-                        optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), val));
-                }
-                else if (prop.PropertyType == typeof(TrippleStateBool))
-                {
+            //    if (prop.PropertyType == typeof(string))
+            //    {
+            //        if (!string.IsNullOrEmpty(val.ToString()))
+            //            optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), val));
+            //    }
+            //    else if (prop.PropertyType == typeof(TrippleStateBool))
+            //    {
 
-                    TrippleStateBool state = (TrippleStateBool)val;
-                    string tmp = state.Parse();
-                    if (!string.IsNullOrEmpty(tmp))
-                        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), tmp));
-                }
-                else if (prop.PropertyType == typeof(MapRegion))
-                {
-                    MapRegion state = (MapRegion)val;
-                    string tmp = state.Parse();
-                    if (!string.IsNullOrEmpty(tmp))
-                        optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
-                }
-                else if (val.GetType().IsEnum)
-                {
-                    Enum o = (Enum)val;
-                    string tmp = o.Parse();
-                    if (!string.IsNullOrEmpty(tmp))
-                        optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
-                }
-                else if (prop.PropertyType == typeof(bool?))
-                {
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), val.ToString().ToLower()));
-                }
-                else if (prop.PropertyType == typeof(Color?))
-                {
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
-                }
-                else if (prop.PropertyType == typeof(Color?[]))
-                {
-                    string rgb = RGBtoHex((Color?[])val);
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), rgb));
-                }
-                else if (prop.PropertyType == typeof(int?[]))
-                {
-                    List<int> lst = new List<int>();
-                    foreach (int? i in (int?[])val)
-                        if (i != null)
-                            lst.Add((int)i);
-                    optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(),
-                        string.Format("[ {0} ]", string.Join(",", lst.Select(s => s.ToString()).ToArray()))));
-                }
-                else
-                    optionsList.Add(string.Format("{0}:{1}", prop.Name.GVINameParse(), val.ToString()));
-            }
+            //        TrippleStateBool state = (TrippleStateBool)val;
+            //        string tmp = state.Parse();
+            //        if (!string.IsNullOrEmpty(tmp))
+            //            optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), tmp));
+            //    }
+            //    else if (prop.PropertyType == typeof(MapRegion))
+            //    {
+            //        MapRegion state = (MapRegion)val;
+            //        string tmp = state.Parse();
+            //        if (!string.IsNullOrEmpty(tmp))
+            //            optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
+            //    }
+            //    else if (val.GetType().IsEnum)
+            //    {
+            //        Enum o = (Enum)val;
+            //        string tmp = o.Parse();
+            //        if (!string.IsNullOrEmpty(tmp))
+            //            optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
+            //    }
+            //    else if (prop.PropertyType == typeof(bool?))
+            //    {
+            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), val.ToString().ToLower()));
+            //    }
+            //    else if (prop.PropertyType == typeof(Color?))
+            //    {
+            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
+            //    }
+            //    else if (prop.PropertyType == typeof(Color?[]))
+            //    {
+            //        string rgb = RGBtoHex((Color?[])val);
+            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), rgb));
+            //    }
+            //    else if (prop.PropertyType == typeof(int?[]))
+            //    {
+            //        List<int> lst = new List<int>();
+            //        foreach (int? i in (int?[])val)
+            //            if (i != null)
+            //                lst.Add((int)i);
+            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(),
+            //            string.Format("[ {0} ]", string.Join(",", lst.Select(s => s.ToString()).ToArray()))));
+            //    }
+            //    else
+            //        optionsList.Add(string.Format("{0}:{1}", prop.Name.GVINameParse(), val.ToString()));
+            //}
 
-            //optionsList.Add(RenderGVIAnimationOptions(PageControl));
-            optionsList.Add(RenderGVIClassOptions(PageControl));
-            return string.Format("{{ {0} }}", string.Join(",", optionsList.ToArray()));
+            ////optionsList.Add(RenderGVIAnimationOptions(PageControl));
+            //optionsList.Add(RenderGVIClassOptions(PageControl));
+            //return string.Format("{{ {0} }}", string.Join(",", optionsList.ToArray()));
         }
 
-        private string RenderGVIClassOptions(WebControl PageControl)
-        {
-            List<string> optionsList = new List<string>();
+        //private string RenderGVIClassOptions(WebControl PageControl)
+        //{
+        //    List<string> optionsList = new List<string>();
 
-            System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
+        //    System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
 
-            foreach (System.Reflection.PropertyInfo prop in props)
-            {
-                GviClass option = prop.GetCustomAttributes(typeof(GviClass), false)
-                    .Cast<GviClass>().FirstOrDefault();
+        //    foreach (System.Reflection.PropertyInfo prop in props)
+        //    {
+        //        GviClass option = prop.GetCustomAttributes(typeof(GviClass), false)
+        //            .Cast<GviClass>().FirstOrDefault();
                 
-                if (option == null) continue;
+        //        if (option == null) continue;
 
-                object val = prop.GetValue(PageControl, null);
+        //        object val = prop.GetValue(PageControl, null);
 
-                if ((val == null) || (string.IsNullOrEmpty(val.ToString())))
-                    continue;
+        //        if ((val == null) || (string.IsNullOrEmpty(val.ToString())))
+        //            continue;
 
-                optionsList.Add(string.Format("{0}: {1}", option.ToString(), val.ToString()));
-            }
+        //        optionsList.Add(string.Format("{0}: {1}", option.ToString(), val.ToString()));
+        //    }
 
-            return string.Join(", ", optionsList.ToArray());
-        }
+        //    return string.Join(", ", optionsList.ToArray());
+        //}
 
         internal string RenderFormatter(WebControl PageControl)
         {
@@ -434,23 +431,23 @@ namespace GoogleChartsNGraphsControls
             //fmtstr = System.Text.RegularExpressions.Regex.Replace(fmtstr, "{\w}", "");
             return fmtstr;
         }
-        internal static string RGBtoHex(System.Drawing.Color?[] c)
-        {
-            List<string> foo = new List<string>();
-            foreach(Color? cc in c)
-                if (cc != null)
-                    foo.Add(RGBtoHex((Color) cc));
+        //internal static string RGBtoHex(System.Drawing.Color?[] c)
+        //{
+        //    List<string> foo = new List<string>();
+        //    foreach(Color? cc in c)
+        //        if (cc != null)
+        //            foo.Add(RGBtoHex((Color) cc));
 
-            return string.Format("[ {0} ]", string.Join(",",foo.ToArray()));
-        }
-        internal static string RGBtoHex(System.Drawing.Color c)
-        {
-            return string.Format("'{0}'",RGBtoHex(c.R, c.G, c.B));
-        }
-        internal static string RGBtoHex(byte R, byte G, byte B)
-        {
-            return String.Format("#{0:X2}{1:X2}{2:X2}", R, G, B);
-        }
+        //    return string.Format("[ {0} ]", string.Join(",",foo.ToArray()));
+        //}
+        //internal static string RGBtoHex(System.Drawing.Color c)
+        //{
+        //    return string.Format("'{0}'",RGBtoHex(c.R, c.G, c.B));
+        //}
+        //internal static string RGBtoHex(byte R, byte G, byte B)
+        //{
+        //    return String.Format("#{0:X2}{1:X2}{2:X2}", R, G, B);
+        //}
     }
 
     

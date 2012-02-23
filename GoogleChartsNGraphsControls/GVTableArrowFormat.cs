@@ -17,21 +17,29 @@ namespace GoogleChartsNGraphsControls
     public class GVTableArrowFormat : BaseWebControl, IGoogleFormatter
     {
 
+        public GVTableArrowFormat()
+        {
+            this.GviPage = TablePage.Default;
+            this.GviSort = TablePage.Default;
+
+        }
+
         [Bindable(true)]
         [Category("Appearance")]
-        [DefaultValue("")]
+        [DefaultValue("1")]
         [Localizable(true)]
-        public string GviTitle
+        [Description("A List of columns you want formatted with arrows.")]
+        public string GviFormatColumns
         {
             get
             {
-                String s = (String)ViewState["GviTitle"];
+                String s = (String)ViewState["GviFormatColumns"];
                 return ((s == null) ? String.Empty : s);
             }
 
             set
             {
-                ViewState["GviTitle"] = value;
+                ViewState["GviFormatColumns"] = value;
             }
         }
 
@@ -40,6 +48,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"If set to true, formatted values of cells that include HTML tags will be rendered as HTML. If set to false, most custom formatters will not work properly.")]
         [DefaultValue(false)]
+        [DataMember(Name = "allowHtml")]
         public bool? GviAllowHtml
         {
             get
@@ -60,6 +69,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("Determines if alternating color style will be assigned to odd and even rows.")]
         [DefaultValue(true)]
+        [DataMember(Name = "alternatingRowStyle")]
         public bool? GVIAlternatingRowStyle
         {
             get
@@ -87,6 +97,7 @@ namespace GoogleChartsNGraphsControls
             rowNumberCell - Assigns a class name to the cells in the row number column (<td> element). Note: the showRowNumber option must be set to true.
             Example: var cssClassNames = {headerRow: 'bigAndBoldClass', hoverTableRow: 'highlightClass'};")]
         [DefaultValue(null)]
+        [DataMember(Name = "cssClassNames")]
         public object GVICssClassNames
         {
             get
@@ -106,6 +117,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The row number for the first row in the dataTable. Used only if showRowNumber is true.")]
         [DefaultValue(1)]
+        [DataMember(Name = "firstRowNumber")]
         public int? GVIFirstRowNumber
         {
             get
@@ -121,24 +133,25 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Sets the height of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a vertical scroll bar.")]
-        [DefaultValue(1)]
-        public string GVIHeight
-        {
-            get
-            {
-                string s = (string)ViewState["GVIHeight"];
-                return s;
-            }
+        //[GviConfigOption]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description(@"Sets the height of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a vertical scroll bar.")]
+        //[DefaultValue(1)]
+        //[DataMember(Name = "")]
+        //public string GVIHeight
+        //{
+        //    get
+        //    {
+        //        string s = (string)ViewState["GVIHeight"];
+        //        return s;
+        //    }
 
-            set
-            {
-                ViewState["GVIHeight"] = value;
-            }
-        }
+        //    set
+        //    {
+        //        ViewState["GVIHeight"] = value;
+        //    }
+        //}
 
 
         [GviConfigOption]
@@ -149,11 +162,12 @@ namespace GoogleChartsNGraphsControls
             'event' - The table will include page-forward and page-back buttons, but clicking them will trigger a 'page' event and will not change the displayed page. This option should be used when the code implements its own page turning logic. See the TableQueryWrapper example for an example of how to handle paging events manually.
             'disable' - [Default] Paging is not supported.")]
         [DefaultValue("disable")]
-        public string GviPage
+        [DataMember(Name = "page")]
+        public TablePage GviPage
         {
             get
             {
-                string s = (string)ViewState["GviPage"];
+                TablePage s = (TablePage)ViewState["GviPage"];
                 return s;
             }
 
@@ -168,6 +182,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The number of rows in each page, when paging is enabled with the page option.")]
         [DefaultValue(10)]
+        [DataMember(Name = "pageSize")]
         public int? GviPageSize
         {
             get
@@ -187,6 +202,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"Adds basic support for right-to-left languages (such as Arabic or Hebrew) by reversing the column order of the table, so that column zero is the rightmost column, and the last column is the leftmost column. This does not affect the column index in the underlying data, only the order of display. Full bi-directional (BiDi) language display is not supported by the table visualization even with this option. This option will be ignored if you enable paging (using the page option), or if the table has scroll bars because you have specified height and width options smaller than the required table size.")]
         [DefaultValue(false)]
+        [DataMember(Name = "rtlTable")]
         public bool? GviRtlTable
         {
             get
@@ -206,6 +222,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"Sets the horizontal scrolling position, in pixels, if the table has horizontal scroll bars because you have set the width property. The table will open scrolled that many pixels past the leftmost column.")]
         [DefaultValue(0)]
+        [DataMember(Name = "scrollLeftStartPosition")]
         public int? GviScrollLeftStartPosition
         {
             get
@@ -225,6 +242,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("If set to true, shows the row number as the first column of the table.")]
         [DefaultValue(false)]
+        [DataMember(Name = "showRowNumber")]
         public bool? GviShowRowNumber
         {
             get
@@ -247,11 +265,12 @@ namespace GoogleChartsNGraphsControls
             'event' - When users click on the column header, a 'sort' event will be triggered, but the rows will not be automatically sorted. This option should be used when the page implements its own sort. See the TableQueryWrapper example for an example of how to handle sorting events manually.
             'disable' - Clicking a column header has no effect.")]
         [DefaultValue("enable")]
-        public string[] GviSort
+        [DataMember(Name = "sort")]
+        public TablePage GviSort
         {
             get
             {
-                string[] s = (string[])ViewState["GviSort"];
+                TablePage s = (TablePage)ViewState["GviSort"];
                 return s;
             }
 
@@ -267,6 +286,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The order in which the initial sort column is sorted. True for ascending, false for descending. Ignored if sortColumn is not specified.")]
         [DefaultValue(false)]
+        [DataMember(Name = "sortAscending")]
         public bool? GviSortAscending
         {
             get
@@ -287,6 +307,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The default font face for all text in the chart. You can override this using properties for specific chart elements.")]
         [DefaultValue(-1)]
+        [DataMember(Name = "sortColumn")]
         public int? GviSortColumn
         {
             get
@@ -306,6 +327,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"The first table page to display. Used only if page is in mode enable/event.")]
         [DefaultValue(0)]
+        [DataMember(Name = "startPage")]
         public int? GviStartPage
         {
             get
@@ -320,24 +342,24 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
-        [DefaultValue("automatic")]
-        public string GviWidth
-        {
-            get
-            {
-                string s = (string)ViewState["GviWidth"];
-                return s;
-            }
+        //[GviConfigOption]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        //[DefaultValue("automatic")]
+        //public string GviWidth
+        //{
+        //    get
+        //    {
+        //        string s = (string)ViewState["GviWidth"];
+        //        return s;
+        //    }
 
-            set
-            {
-                ViewState["GviWidth"] = value;
-            }
-        }
+        //    set
+        //    {
+        //        ViewState["GviWidth"] = value;
+        //    }
+        //}
 
 
         public void ChartData(string Name, int Value)

@@ -23,6 +23,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The lowest value for a range marked by a green color.")]
         [DefaultValue(null)]
+        [DataMember(Name="greenFrom")]
         public int? GviGreenFrom
         {
             get
@@ -42,6 +43,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The highest value for a range marked by a green color.")]
         [DefaultValue(null)]
+        [DataMember(Name = "greenTo")]
         public int? GviGreenTo
         {
             get
@@ -61,6 +63,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("Labels for major tick marks. The number of labels define the number of major ticks in all gauges. The default is five major ticks, with the labels of the minimal and maximal gauge value.")]
         [DefaultValue(null)]
+        [DataMember(Name = "majorTicks")]
         public object GviMajorTicks
         {
             get
@@ -80,6 +83,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The maximal value of a gauge.")]
         [DefaultValue(100)]
+        [DataMember(Name = "max")]
         public int? GviMax
         {
             get
@@ -99,6 +103,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The minimal value of a gauge.")]
         [DefaultValue(0)]
+        [DataMember(Name = "min")]
         public int? GviMin
         {
             get
@@ -118,6 +123,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The number of minor tick section in each major tick section.")]
         [DefaultValue(0)]
+        [DataMember(Name = "minorTicks")]
         public int? GviMinorTicks
         {
             get
@@ -137,6 +143,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The lowest value for a range marked by a red color.")]
         [DefaultValue(0)]
+        [DataMember(Name = "redFrom")]
         public int? GviRedFrom
         {
             get
@@ -156,6 +163,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The highest value for a range marked by a red color.")]
         [DefaultValue(0)]
+        [DataMember(Name = "redTo")]
         public int? GviRedTo
         {
             get
@@ -175,6 +183,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The lowest value for a range marked by a yellow color.")]
         [DefaultValue(0)]
+        [DataMember(Name = "yellowFrom")]
         public int? GviYellowFrom
         {
             get
@@ -194,6 +203,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The highest value for a range marked by a yellow color.")]
         [DefaultValue(0)]
+        [DataMember(Name = "yellowTo")]
         public int? GviYellowTo
         {
             get

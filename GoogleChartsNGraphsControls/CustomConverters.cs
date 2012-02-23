@@ -72,15 +72,15 @@ namespace GoogleChartsNGraphsControls
             {
                 foreach (Color? c in ((Color?[])value))
                     if (c != null)
-                        clr.Add(c as Color);
+                        clr.Add((Color)c);
             }
             else if (value is Color?)
             {
                 if (value != null)
-                    clr.Add(c as Color);
+                    clr.Add((Color)value);
             }
-            else
-                clr.Add(c);
+            else if (value is Color)
+                clr.Add((Color)value);
 
             
             writer.WriteStartArray();
