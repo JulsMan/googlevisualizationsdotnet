@@ -21,6 +21,12 @@ namespace GoogleChartsNGraphsControls
         {
             this.GviPage = TablePage.Default;
             this.GviSort = TablePage.Default;
+            this.GviTableFormatter = new TableFormatter() 
+            {
+                  Formatter = TableFormatter.FormatType.Arrow, 
+                  GviFormatColumn = 1
+            };
+            
 
         }
 
@@ -342,26 +348,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
-        //[DefaultValue("automatic")]
-        //public string GviWidth
-        //{
-        //    get
-        //    {
-        //        string s = (string)ViewState["GviWidth"];
-        //        return s;
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GviWidth"] = value;
-        //    }
-        //}
-
-
+        
         public void ChartData(string Name, int Value)
         {
 
@@ -394,32 +381,7 @@ namespace GoogleChartsNGraphsControls
 
         #region IGoogleFormatter Members
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleFormatOptions")]
-        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
-        [DefaultValue("")]
-        public string GviFormatterParams
-        {
-            get
-            {
-                string s = (string)ViewState["GviFormatterParams"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviFormatterParams"] = value;
-            }
-        }
-
-        public string Formatter
-        {
-            get
-            {
-                return "ArrowFormat";
-            }
-        }
+       
 
         [GviConfigOption]
         [Bindable(true)]
@@ -430,15 +392,48 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                int? s = (int?)ViewState["GviFormatColumn"];
+                return this.GviFormatter.GviFormatColumn;
+            }
+
+            set
+            {
+                this.GviFormatter.GviFormatColumn = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleFormatOptions")]
+        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        [DefaultValue("")]
+        public TableFormatter.FormatType GviFormatType
+        {
+            get
+            {
+                return this.GviFormatter.Formatter;
+            }
+            set
+            {
+                this.GviFormatter.Formatter = value;
+            }
+        }
+
+
+        public TableFormatter GviFormatter
+        {
+            get
+            {
+                TableFormatter s = (TableFormatter)ViewState["GviTableFormatter"];
                 return s;
             }
 
             set
             {
-                ViewState["GviFormatColumn"] = value;
+                ViewState["GviTableFormatter"] = value;
             }
         }
+
+
 
         #endregion
     }

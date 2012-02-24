@@ -16,23 +16,9 @@ namespace GoogleChartsNGraphsControls
     [DataContract]
     public class GVTableBarFormat : BaseWebControl, IGoogleFormatter
     {
-
-        [Bindable(true)]
-        [Category("Appearance")]
-        [DefaultValue("")]
-        [Localizable(true)]
-        public string GviTitle
+        public GVTableBarFormat()
         {
-            get
-            {
-                String s = (String)ViewState["GviTitle"];
-                return ((s == null) ? String.Empty : s);
-            }
-
-            set
-            {
-                ViewState["GviTitle"] = value;
-            }
+            this.GviFormatter = new TableFormatter() { Formatter = TableFormatter.FormatType.Bar, GviFormatColumn = 1 };
         }
 
         [GviConfigOption]
@@ -409,13 +395,44 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                int? s = (int?)ViewState["GviFormatColumn"];
-                return s;
+               
             }
 
             set
             {
                 ViewState["GviFormatColumn"] = value;
+            }
+        }
+
+
+        public TableFormatter GviFormatter
+        {
+            get
+            {
+                TableFormatter s = (TableFormatter)ViewState["GviFormatter"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFormatter"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleFormatOptions")]
+        [Description(@"Sets the width of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a horizontal scroll bar.")]
+        [DefaultValue(null)]
+        public TableFormatter.FormatType GviFormatType
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
             }
         }
 

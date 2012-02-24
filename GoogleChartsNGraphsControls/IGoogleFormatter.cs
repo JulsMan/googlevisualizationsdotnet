@@ -14,21 +14,13 @@ namespace GoogleChartsNGraphsControls
          */
 
 
-        string GviFormatterParams { get; set; }
-        string Formatter { get; }        // BarFormat
-        int? GviFormatColumn { get; set;  }
-    }
+        TableFormatter GviFormatter { get; set; }
 
-
-
-    public class GoogleTableFormatter
-    {
-        public GoogleTableFormatter()
-        {
-        }
-        public enum FormatType {Arrow, Bar, Color, Date, Number, Pattern }
-        string GviFormatterParams { get; set; }
-        FormatType Formatter { get; }        // BarFormat
+        TableFormatter.FormatType GviFormatType { get; set; }
         int? GviFormatColumn { get; set; }
     }
+
+
+
+    
 }
