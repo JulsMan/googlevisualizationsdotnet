@@ -268,20 +268,28 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-            System.Data.DataTable tblBar = new System.Data.DataTable("DataTable - Arrow Formatter");
+            System.Data.DataTable tblBar = new System.Data.DataTable("DataTable - Bar + Arrow Formatter");
             tblBar.Columns.AddRange(new System.Data.DataColumn[] {
                 new System.Data.DataColumn("Department",typeof(string)), 
                 new System.Data.DataColumn("Manager",typeof(string)),
-                new System.Data.DataColumn("Revenue",typeof(int))
+                new System.Data.DataColumn("Revenue",typeof(int)),
+                new System.Data.DataColumn("Revenue Change",typeof(float))
             });
-            tblBar.Rows.Add(new object[] { "Shoes", "Lady Gaga",10700 });
-            tblBar.Rows.Add(new object[] { "Sports", "Reggie Bush",-15200 });
-            tblBar.Rows.Add(new object[] { "Toys", "Reggie Bush", 12500 });
-            tblBar.Rows.Add(new object[] { "Electronics", "Daft Punk",-2100});
-            tblBar.Rows.Add(new object[] { "Food", "Wolfgang Puck", 22600 });
-            tblBar.Rows.Add(new object[] { "Art", "Leo Davinci",1100 });
+            tblBar.Rows.Add(new object[] { "Shoes", "Lady Gaga",10700, 12f });
+            tblBar.Rows.Add(new object[] { "Sports", "Reggie Bush",-15200, -7.3f });
+            tblBar.Rows.Add(new object[] { "Toys", "Reggie Bush", 12500, 2.1f });
+            tblBar.Rows.Add(new object[] { "Electronics", "Daft Punk",-2100, -6.3});
+            tblBar.Rows.Add(new object[] { "Food", "Wolfgang Puck", 22600, 5.3f });
+            tblBar.Rows.Add(new object[] { "Art", "Leo Davinci",1100, 44.3f });
             this.GVTableBarFormat1.GviFormatColumn = 2;
             this.GVTableBarFormat1.GviOptionsOverride = "{allowHtml: true, showRowNumber: true}";
+
+            this.GVTableBarFormat1.GviFormatter.Add(
+                new GoogleChartsNGraphsControls.TableFormatter() 
+                { 
+                    Formatter = GoogleChartsNGraphsControls.TableFormatter.FormatType.ArrowFormat, 
+                    GviFormatColumn = 3 
+                });
             this.GVTableBarFormat1.DataSource = tblBar;
 
 

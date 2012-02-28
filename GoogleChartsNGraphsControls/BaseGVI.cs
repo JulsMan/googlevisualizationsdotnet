@@ -342,7 +342,7 @@ namespace GoogleChartsNGraphsControls
                 lst.Add(fmtstr);
             }
 
-            return string.Join(",", lst.ToArray());
+            return string.Join(" \n", lst.ToArray());
         }
 
 

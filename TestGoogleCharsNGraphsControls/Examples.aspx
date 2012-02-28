@@ -432,10 +432,10 @@
         
          <p />
         <h3>Data Table: Bar Format Example</h3>
-        <cc1:GVTableBarFormat ID="GVTableBarFormat1" runat="server"  Height="300" Width="400" GviFormatColumn="2"/>
+        <cc1:GVTableBarFormat ID="GVTableBarFormat1" runat="server"  Height="300" Width="500" GviFormatColumn="2"/>
          <pre class="sloppyCode">
             Sample Code:
-            System.Data.DataTable tblBar = new System.Data.DataTable("DataTable - Arrow Formatter");
+            System.Data.DataTable tblBar = new System.Data.DataTable("DataTable - Combo Bar & Arrow Formatter");
             tblBar.Columns.AddRange(new System.Data.DataColumn[] {
                 new System.Data.DataColumn("Department",typeof(string)), 
                 new System.Data.DataColumn("Manager",typeof(string)),

@@ -15,14 +15,18 @@ namespace GoogleChartsNGraphsControls
         List<TableFormatter> GviFormatter { get; set; }
 
     }
-
-
     public class TableFormatter
     {
         public TableFormatter()
         {
             this.Formatter = FormatType.ArrowFormat;
         }
+        public TableFormatter(FormatType Formatter, int FormatColumn)
+        {
+            this.Formatter = Formatter;
+            this.GviFormatColumn = (int?) FormatColumn;
+        }
+
         public enum FormatType { ArrowFormat, BarFormat, ColorFormat, DateFormat, NumberFormat, PatternFormat }
 
         public FormatType Formatter { get; set; }        // BarFormat
@@ -33,8 +37,4 @@ namespace GoogleChartsNGraphsControls
             return this.Formatter.ToString();
         }
     }
-
-
-
-    
 }
