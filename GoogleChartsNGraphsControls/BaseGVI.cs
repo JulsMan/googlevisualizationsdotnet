@@ -333,17 +333,19 @@ namespace GoogleChartsNGraphsControls
                 .Cast<IGoogleFormatter>()
                 .ToArray();
 
-            string fmtstr = BaseGVI.formatjs;
+            List<string> lst = new List<string>();
             foreach (var f in formatters)
             {
+                string fmtstr = BaseGVI.formatjs;
                 // add the Formatter prop
                 fmtstr = fmtstr.Replace("{Formatter}", f.ToString());
                 fmtstr = fmtstr.Replace("{FormatColumn}", f.GviFormatColumn.ToString());
                 fmtstr = fmtstr.Replace("{FormatterParams}", "");
                 //fmtstr = System.Text.RegularExpressions.Regex.Replace(fmtstr, "{\w}", "");
+                lst.Add(fmtstr);
             }
 
-            return fmtstr;
+            return string.Join(",", lst.ToArray());
         }
 
 
