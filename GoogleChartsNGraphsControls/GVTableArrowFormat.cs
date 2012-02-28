@@ -21,7 +21,7 @@ namespace GoogleChartsNGraphsControls
         {
             this.GviPage = TablePage.Default;
             this.GviSort = TablePage.Default;
-            this.GviTableFormatter = new TableFormatter() 
+            this.GviFormatter = new TableFormatter() 
             {
                   Formatter = TableFormatter.FormatType.Arrow, 
                   GviFormatColumn = 1

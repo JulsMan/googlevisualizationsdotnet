@@ -296,96 +296,7 @@ namespace GoogleChartsNGraphsControls
         /// <returns></returns>
         internal string RenderGVIConfigOptions(WebControl PageControl)
         {
-            List<string> optionsList = new List<string>();
-            
             return PageControl.ToString();
-
-            //System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
-
-            //foreach (System.Reflection.PropertyInfo prop in props)
-            //{
-
-
-            //    GviConfigOption option = prop.GetCustomAttributes(typeof(GviConfigOption), false)
-            //    .Cast<GviConfigOption>().FirstOrDefault();
-
-            //    if (option == null) continue;
-                
-            //    object val = prop.GetValue(PageControl, null); 
-
-            //    if (val == null) continue;
-
-            //    // convert any ' that is not at the end of the values into a \'
-            //    // example 'Bruce Lee's gee!' ==> 'Bruce Lee\'s gee'
-            //    if (val is string)
-            //    {
-            //        List<string> matches = new List<string>();
-            //        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(val.ToString(), @"\w\'\w", System.Text.RegularExpressions.RegexOptions.Compiled))
-            //            matches.Add(m.Value);
-
-            //        foreach (string s in matches)
-            //        {
-            //            string repl = s.Replace("'", @"\'");
-            //            val = val.ToString().Replace(s, repl);
-            //        }
-            //    }
-
-            //    if (prop.PropertyType == typeof(string))
-            //    {
-            //        if (!string.IsNullOrEmpty(val.ToString()))
-            //            optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), val));
-            //    }
-            //    else if (prop.PropertyType == typeof(TrippleStateBool))
-            //    {
-
-            //        TrippleStateBool state = (TrippleStateBool)val;
-            //        string tmp = state.Parse();
-            //        if (!string.IsNullOrEmpty(tmp))
-            //            optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), tmp));
-            //    }
-            //    else if (prop.PropertyType == typeof(MapRegion))
-            //    {
-            //        MapRegion state = (MapRegion)val;
-            //        string tmp = state.Parse();
-            //        if (!string.IsNullOrEmpty(tmp))
-            //            optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
-            //    }
-            //    else if (val.GetType().IsEnum)
-            //    {
-            //        Enum o = (Enum)val;
-            //        string tmp = o.Parse();
-            //        if (!string.IsNullOrEmpty(tmp))
-            //            optionsList.Add(string.Format("'{0}':'{1}'", prop.Name.GVINameParse(), tmp));
-            //    }
-            //    else if (prop.PropertyType == typeof(bool?))
-            //    {
-            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), val.ToString().ToLower()));
-            //    }
-            //    else if (prop.PropertyType == typeof(Color?))
-            //    {
-            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), RGBtoHex((Color)val)));
-            //    }
-            //    else if (prop.PropertyType == typeof(Color?[]))
-            //    {
-            //        string rgb = RGBtoHex((Color?[])val);
-            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(), rgb));
-            //    }
-            //    else if (prop.PropertyType == typeof(int?[]))
-            //    {
-            //        List<int> lst = new List<int>();
-            //        foreach (int? i in (int?[])val)
-            //            if (i != null)
-            //                lst.Add((int)i);
-            //        optionsList.Add(string.Format("'{0}':{1}", prop.Name.GVINameParse(),
-            //            string.Format("[ {0} ]", string.Join(",", lst.Select(s => s.ToString()).ToArray()))));
-            //    }
-            //    else
-            //        optionsList.Add(string.Format("{0}:{1}", prop.Name.GVINameParse(), val.ToString()));
-            //}
-
-            ////optionsList.Add(RenderGVIAnimationOptions(PageControl));
-            //optionsList.Add(RenderGVIClassOptions(PageControl));
-            //return string.Format("{{ {0} }}", string.Join(",", optionsList.ToArray()));
         }
 
         //private string RenderGVIClassOptions(WebControl PageControl)
@@ -417,20 +328,25 @@ namespace GoogleChartsNGraphsControls
             if (PageControl as IGoogleFormatter == null)
                 return "";
 
-            IGoogleFormatter formatter = PageControl as IGoogleFormatter;
+            IGoogleFormatter[] formatters = PageControl.GetType().GetProperties()
+                .Where(c => c.GetType() == typeof(IGoogleFormatter))
+                .Cast<IGoogleFormatter>()
+                .ToArray();
 
             string fmtstr = BaseGVI.formatjs;
-            
-            // add the Formatter prop
-            fmtstr = fmtstr.Replace("{Formatter}", formatter.Formatter);
-            if (formatter.GviFormatColumn == null)
-                formatter.GviFormatColumn = 1;
-            
-            fmtstr = fmtstr.Replace("{FormatColumn}", formatter.GviFormatColumn.ToString());
-            fmtstr = fmtstr.Replace("{FormatterParams}", formatter.GviFormatterParams);
-            //fmtstr = System.Text.RegularExpressions.Regex.Replace(fmtstr, "{\w}", "");
+            foreach (var f in formatters)
+            {
+                // add the Formatter prop
+                fmtstr = fmtstr.Replace("{Formatter}", f.ToString());
+                fmtstr = fmtstr.Replace("{FormatColumn}", f.GviFormatColumn.ToString());
+                fmtstr = fmtstr.Replace("{FormatterParams}", "");
+                //fmtstr = System.Text.RegularExpressions.Regex.Replace(fmtstr, "{\w}", "");
+            }
+
             return fmtstr;
         }
+
+
         //internal static string RGBtoHex(System.Drawing.Color?[] c)
         //{
         //    List<string> foo = new List<string>();

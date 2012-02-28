@@ -320,17 +320,7 @@ namespace GoogleChartsNGraphsControls
 
 
 
-    public class TableFormatter
-    {
-        public TableFormatter()
-        {
-            this.Formatter = FormatType.Arrow;
-        }
-        public enum FormatType { Arrow, Bar, Color, Date, Number, Pattern }
-
-        public FormatType Formatter { get; set; }        // BarFormat
-        public int? GviFormatColumn { get; set; }
-    }
+   
 
 
     public static class BaseDesignTimeSupport

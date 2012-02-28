@@ -395,12 +395,17 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-               
+                if (GviFormatter == null)
+                    this.GviFormatter = new TableFormatter();
+                return this.GviFormatter.GviFormatColumn;
             }
 
             set
             {
-                ViewState["GviFormatColumn"] = value;
+                if (this.GviFormatter == null)
+                    this.GviFormatter = new TableFormatter();
+
+                this.GviFormatter.GviFormatColumn = value;
             }
         }
 
