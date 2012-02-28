@@ -204,7 +204,10 @@ namespace GoogleChartsNGraphsControls
             
             List<string> events = RenderGVIEvents(PageControl);
             string options = RenderGVIConfigOptions(PageControl);
-            string formatter = RenderFormatter(PageControl);
+            string formatter = string.Empty;
+
+            if (PageControl is IGoogleTableFormatterControl)
+                formatter = RenderFormatter((IGoogleTableFormatterControl)PageControl);
 
 
             //JAVASCRIPT = JAVASCRIPT.Replace("__UDF__", string.Join("\n", events.ToArray()));
@@ -323,18 +326,12 @@ namespace GoogleChartsNGraphsControls
         //    return string.Join(", ", optionsList.ToArray());
         //}
 
-        internal string RenderFormatter(WebControl PageControl)
+        internal string RenderFormatter(IGoogleTableFormatterControl PageControl)
         {
-            if (PageControl as IGoogleFormatter == null)
-                return "";
-
-            IGoogleFormatter[] formatters = PageControl.GetType().GetProperties()
-                .Where(c => c.GetType() == typeof(IGoogleFormatter))
-                .Cast<IGoogleFormatter>()
-                .ToArray();
+            if (PageControl == null) return string.Empty;
 
             List<string> lst = new List<string>();
-            foreach (var f in formatters)
+            foreach (var f in PageControl.GviFormatter.ToArray())
             {
                 string fmtstr = BaseGVI.formatjs;
                 // add the Formatter prop

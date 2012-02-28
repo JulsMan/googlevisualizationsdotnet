@@ -14,18 +14,22 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVTableArrowFormat runat=server></{0}:GVTableArrowFormat>")]
     [ToolboxBitmap(typeof(GVTableArrowFormat))]
     [DataContract]
-    public class GVTableArrowFormat : BaseWebControl, IGoogleFormatter
+    public class GVTableArrowFormat : BaseWebControl, IGoogleTableFormatterControl
     {
 
         public GVTableArrowFormat()
         {
             this.GviPage = TablePage.Default;
             this.GviSort = TablePage.Default;
-            this.GviFormatter = new TableFormatter() 
+            this.GviFormatter = new List<TableFormatter>();
+            if (this.GviFormatter.Count == 0)
             {
-                  Formatter = TableFormatter.FormatType.Arrow, 
-                  GviFormatColumn = 1
-            };
+                this.GviFormatter.Add(new TableFormatter()
+                {
+                    Formatter = TableFormatter.FormatType.ArrowFormat,
+                    GviFormatColumn = 1
+                });
+            }
             
 
         }
@@ -392,12 +396,18 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                return this.GviFormatter.GviFormatColumn;
+                if (this.GviFormatter.Count == 0)
+                    this.GviFormatter.Add(new TableFormatter());
+
+                return this.GviFormatter.First().GviFormatColumn;
             }
 
             set
             {
-                this.GviFormatter.GviFormatColumn = value;
+                if (this.GviFormatter.Count == 0)
+                    this.GviFormatter.Add(new TableFormatter());
+
+                this.GviFormatter.First().GviFormatColumn = value;
             }
         }
 
@@ -410,20 +420,26 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                return this.GviFormatter.Formatter;
+                if (this.GviFormatter.Count == 0)
+                    this.GviFormatter.Add(new TableFormatter());
+
+                return this.GviFormatter.First().Formatter;
             }
             set
             {
-                this.GviFormatter.Formatter = value;
+                if (this.GviFormatter.Count == 0)
+                    this.GviFormatter.Add(new TableFormatter());
+
+                this.GviFormatter.First().Formatter = value;
             }
         }
 
 
-        public TableFormatter GviFormatter
+        public List<TableFormatter> GviFormatter
         {
             get
             {
-                TableFormatter s = (TableFormatter)ViewState["GviTableFormatter"];
+                List<TableFormatter> s = (List<TableFormatter>)ViewState["GviTableFormatter"];
                 return s;
             }
 
@@ -432,8 +448,6 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GviTableFormatter"] = value;
             }
         }
-
-
 
         #endregion
     }

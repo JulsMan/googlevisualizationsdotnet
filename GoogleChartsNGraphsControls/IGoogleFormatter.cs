@@ -5,25 +5,25 @@ using System.Text;
 
 namespace GoogleChartsNGraphsControls
 {
-    public interface IGoogleFormatter
+    public interface IGoogleTableFormatterControl
     {
         /*
          * var formatter = new google.visualization.BarFormat({width: 120});
          * formatter.format(data, 1); // Apply formatter to second column
          * 
          */
-        int? GviFormatColumn { get; set; }
+        List<TableFormatter> GviFormatter { get; set; }
 
     }
 
 
-    public class TableFormatter : IGoogleFormatter
+    public class TableFormatter
     {
         public TableFormatter()
         {
-            this.Formatter = FormatType.Arrow;
+            this.Formatter = FormatType.ArrowFormat;
         }
-        public enum FormatType { Arrow, Bar, Color, Date, Number, Pattern }
+        public enum FormatType { ArrowFormat, BarFormat, ColorFormat, DateFormat, NumberFormat, PatternFormat }
 
         public FormatType Formatter { get; set; }        // BarFormat
         public int? GviFormatColumn { get; set; }
