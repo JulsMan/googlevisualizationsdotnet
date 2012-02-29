@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Examples.aspx.cs" EnableViewState="false" Inherits="TestGoogleCharsNGraphsControls.WebForm1" MaintainScrollPositionOnPostback="true" %>
+﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" EnableViewState="false" Inherits="TestGoogleCharsNGraphsControls.WebForm1" MaintainScrollPositionOnPostback="true" %>
 
 <%@ Register assembly="GoogleChartsNGraphsControls" namespace="GoogleChartsNGraphsControls" tagprefix="cc1" %>
 

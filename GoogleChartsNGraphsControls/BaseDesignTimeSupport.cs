@@ -10,12 +10,13 @@ using System.Web.UI;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using System.Drawing;
 
 namespace GoogleChartsNGraphsControls
 {
     public enum TrippleStateBool { Default, True, False, NotSet}
     public enum TitlePosition { Default, In, Out, None }
-    public enum Legend { Default, Right, Top, Bottom, None }
+    public enum LegendPostion { Default, Right, Top, Bottom, In, None }
     public enum HighlightDot { Default, Nearest, Last }
     public enum WindowMode { Default, Window, Opaque, Transparent }
     public enum ScaleType { Default, Fixed, Maximized, AllMaximaized, AllFixed }
@@ -316,9 +317,50 @@ namespace GoogleChartsNGraphsControls
         public int? Count { get; set; }
     }
 
+    [DataContract(Name="legend")]
+    public class Legend
+    {
+        public Legend() 
+        {
+            this.LegendPosition = LegendPostion.Default;
+            this.TextStyle = new TextStyle();
+        }
 
+        [DataMember(Name = "postition", IsRequired = false, EmitDefaultValue = true)]
+        public LegendPostion LegendPosition
+        {
+            get;
+            set;
+        }
 
-   
+        [DataMember(Name = "textStyle", IsRequired = false, EmitDefaultValue = true)]
+        public TextStyle TextStyle
+        {
+            get;
+            set;
+        }
+    }
+
+    /// <summary>
+    /// {color: <string>, fontName: <string>, fontSize: <number>}
+    /// </summary>
+    [DataContract(Name = "textStyle")]
+    public class TextStyle
+    {
+        public TextStyle()
+        {
+            this.Color = Color.Black;
+        }
+
+        [DataMember(Name="color")]
+        public Color Color { get; set; }
+
+        [DataMember(Name = "fontName")]
+        public string FontName { get; set; }
+
+        [DataMember(Name = "fontSize")]
+        public int? FontSize { get; set; }
+    }
 
 
     public static class BaseDesignTimeSupport

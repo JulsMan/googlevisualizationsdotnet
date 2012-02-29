@@ -530,6 +530,7 @@ namespace GoogleChartsNGraphsControls
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
             myconverters.Add(new CustomConvertersColorToRGB());
             myconverters.Add(new CustomConvertersAxis());
+            myconverters.Add(new CustomConvertersLegend());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {
