@@ -85,8 +85,7 @@
     <Compile Include="GVBarChart.cs" />
     <Compile Include="GVMap.cs" />
     <Compile Include="GVPieChart.cs" />
-    <Compile Include="GVTableArrowFormat.cs" />
-    <Compile Include="GVTableBarFormat.cs" />
+    <Compile Include="GVTable.cs" />
     <Compile Include="IGoogleFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -107,8 +106,7 @@
     <EmbeddedResource Include="GVGeoMap.bmp" />
     <EmbeddedResource Include="GVGauge.bmp" />
     <EmbeddedResource Include="GVOrgChart.bmp" />
-    <EmbeddedResource Include="GVTableArrowFormat.bmp" />
-    <EmbeddedResource Include="GVTableBarFormat.bmp" />
+    <EmbeddedResource Include="GVTable.bmp" />
     <EmbeddedResource Include="GVGanttChart.bmp" />
     <EmbeddedResource Include="GVCandlestickChart.bmp" />
     <Content Include="GVI\GVisualizationPanel.js" />

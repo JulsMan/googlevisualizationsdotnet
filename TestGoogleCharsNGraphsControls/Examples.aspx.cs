@@ -281,6 +281,7 @@ namespace TestGoogleCharsNGraphsControls
             tblBar.Rows.Add(new object[] { "Electronics", "Daft Punk",-2100, -6.3});
             tblBar.Rows.Add(new object[] { "Food", "Wolfgang Puck", 22600, 5.3f });
             tblBar.Rows.Add(new object[] { "Art", "Leo Davinci",1100, 44.3f });
+            
             this.GVTableBarFormat1.GviFormatColumn = 2;
             this.GVTableBarFormat1.GviOptionsOverride = "{allowHtml: true, showRowNumber: true}";
 

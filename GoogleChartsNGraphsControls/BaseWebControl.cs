@@ -352,104 +352,120 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description(@"")]
+        //[DefaultValue(null)]
+        //public string GviFormatHAxis
+        //{
+        //    get
+        //    {
+        //        string s = (string)ViewState["GviViewFormatHook"];
+        //        return s;
+        //    }
+
+        //    set
+        //    {
+        //        ViewState["GviViewFormatHook"] = value;
+        //    }
+        //}
+
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description(@"")]
+        //[DefaultValue(null)]
+        //public string GviFormatVAxis
+        //{
+        //    get
+        //    {
+        //        if (this.GVIHAxisClass == null)
+        //            return (string)ViewState["GviViewFormatHook"];
+        //        else
+        //            return this.GVIHAxisClass.ToString();
+        //    }
+
+        //    set
+        //    {
+        //        ViewState["GviViewFormatHook"] = value;
+        //    }
+        //}
+
+
+
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"")]
-        [DefaultValue(null)]
-        public string GviFormatHAxis
+        [DataMember(Name = "hAxis", EmitDefaultValue = true, IsRequired = false)]
+        public hAxis GVIHAxisClass
         {
             get
             {
-                string s = (string)ViewState["GviViewFormatHook"];
+                hAxis s = (hAxis)ViewState["GVIHAxisClass"];
                 return s;
             }
 
             set
             {
-                ViewState["GviViewFormatHook"] = value;
+                ViewState["GVIHAxisClass"] = value;
             }
         }
 
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"")]
-        [DefaultValue(null)]
-        public string GviFormatVAxis
-        {
-            get
-            {
-                if (this.GVIHAxisClass == null)
-                    return (string)ViewState["GviViewFormatHook"];
-                else
-                    return this.GVIHAxisClass.ToString();
-            }
+        //[GviClass("hAxis")]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description("Configurable Vertical Axis")]
+        //public string GVIHAxis
+        //{
+        //    get
+        //    {
+        //        if (this.GVIHAxisClass == null)
+        //            return (string)ViewState["GVIHAxis"];
+        //        else
+        //            return this.GVIHAxisClass.ToString();
+        //    }
 
-            set
-            {
-                ViewState["GviViewFormatHook"] = value;
-            }
-        }
-
-
-
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [DataMember(Name = "hAxis")]
-        public hAxis GVIHAxisClass
-        {
-            get;
-            set;
-        }
-
-        [GviClass("hAxis")]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("Configurable Vertical Axis")]
-        public string GVIHAxis
-        {
-            get
-            {
-                if (this.GVIHAxisClass == null)
-                    return (string)ViewState["GVIHAxis"];
-                else
-                    return this.GVIHAxisClass.ToString();
-            }
-
-            set
-            {
-                ViewState["GVIHAxis"] = value;
-            }
-        }
+        //    set
+        //    {
+        //        ViewState["GVIHAxis"] = value;
+        //    }
+        //}
 
 
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [DataMember(Name="vAxis")]
+        [DataMember(Name = "vAxis", EmitDefaultValue = true, IsRequired = false)]
         public vAxis GVIVAxisClass
         {
-            get;
-            set;
-        }
-
-        [GviClass("vAxis")]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("Configurable Vertical Axis")]
-        public string GVIVAxis
-        {
             get
             {
-                if (this.GVIVAxisClass == null)
-                    return (string)ViewState["GVIVAxis"];
-                else
-                    return this.GVIVAxisClass.ToString();
+                vAxis s = (vAxis)ViewState["GVIVAxisClass"];
+                return s;
             }
 
             set
             {
-                ViewState["GVIVAxis"] = value;
+                ViewState["GVIVAxisClass"] = value;
             }
         }
+
+        //[GviClass("vAxis")]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description("Configurable Vertical Axis")]
+        //public string GVIVAxis
+        //{
+        //    get
+        //    {
+        //        if (this.GVIVAxisClass == null)
+        //            return (string)ViewState["GVIVAxis"];
+        //        else
+        //            return this.GVIVAxisClass.ToString();
+        //    }
+
+        //    set
+        //    {
+        //        ViewState["GVIVAxis"] = value;
+        //    }
+        //}
 
         
         protected DataTable dt
@@ -513,6 +529,7 @@ namespace GoogleChartsNGraphsControls
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
             myconverters.Add(new CustomConvertersColorToRGB());
+            myconverters.Add(new CustomConvertersAxis());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {

@@ -412,7 +412,7 @@
         
          <p />
         <h3>Data Table: Arrow Format Example</h3>
-        <cc1:GVTableArrowFormat ID="GVTableArrowFormat1" runat="server" Height="300" Width="400" GviFormatColumn="1" />
+        <cc1:GVTable ID="GVTableArrowFormat1" runat="server" Height="300" Width="400" GviFormatColumn="1" />
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable tblArrow = new System.Data.DataTable("DataTable - Arrow Formatter");
@@ -432,7 +432,7 @@
         
          <p />
         <h3>Data Table: Bar Format Example</h3>
-        <cc1:GVTableBarFormat ID="GVTableBarFormat1" runat="server"  Height="300" Width="500" GviFormatColumn="2"/>
+        <cc1:GVTable ID="GVTableBarFormat1" runat="server"  Height="300" Width="500" GviFormatType="BarFormat" GviFormatColumn="2" />
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable tblBar = new System.Data.DataTable("DataTable - Combo Bar & Arrow Formatter");

@@ -12,12 +12,12 @@ namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
     [ToolboxData("<{0}:GVTableArrowFormat runat=server></{0}:GVTableArrowFormat>")]
-    [ToolboxBitmap(typeof(GVTableArrowFormat))]
+    [ToolboxBitmap(typeof(GVTable))]
     [DataContract]
-    public class GVTableArrowFormat : BaseWebControl, IGoogleTableFormatterControl
+    public class GVTable : BaseWebControl, IGoogleTableFormatterControl
     {
 
-        public GVTableArrowFormat()
+        public GVTable()
         {
             this.GviPage = TablePage.Default;
             this.GviSort = TablePage.Default;
@@ -34,24 +34,6 @@ namespace GoogleChartsNGraphsControls
 
         }
 
-        [Bindable(true)]
-        [Category("Appearance")]
-        [DefaultValue("1")]
-        [Localizable(true)]
-        [Description("A List of columns you want formatted with arrows.")]
-        public string GviFormatColumns
-        {
-            get
-            {
-                String s = (String)ViewState["GviFormatColumns"];
-                return ((s == null) ? String.Empty : s);
-            }
-
-            set
-            {
-                ViewState["GviFormatColumns"] = value;
-            }
-        }
 
         [GviConfigOption]
         [Bindable(true)]
@@ -141,27 +123,6 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GVIFirstRowNumber"] = value;
             }
         }
-
-
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description(@"Sets the height of the visualization's container element. You can use standard HTML units (for example, '100px', '80em', '60'). If no units are specified the number is assumed to be pixels. If not specified, the browser will set the width automatically to fit the table; if set smaller than the size required by the table, will add a vertical scroll bar.")]
-        //[DefaultValue(1)]
-        //[DataMember(Name = "")]
-        //public string GVIHeight
-        //{
-        //    get
-        //    {
-        //        string s = (string)ViewState["GVIHeight"];
-        //        return s;
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GVIHeight"] = value;
-        //    }
-        //}
 
 
         [GviConfigOption]
@@ -290,7 +251,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
@@ -352,41 +312,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        
-        public void ChartData(string Name, int Value)
-        {
-
-            if ((this.dt == null) || (this.dt.Columns.Count == 0))
-            {
-                this.dt = new DataTable();
-                this.dt.Columns.Add("Name", typeof(String));
-                this.dt.Columns.Add("Value", typeof(decimal));
-            }
-
-            this.dt.Rows.Add(new object[] { Name, (decimal)Value });
-        }
-        public void ChartData(string Name, decimal Value)
-        {
-            if ((this.dt == null) || (this.dt.Columns.Count == 0))
-            {
-                this.dt = new DataTable();
-                this.dt.Columns.Add("Name", typeof(String));
-                this.dt.Columns.Add("Value", typeof(decimal));
-            }
-
-            this.dt.Rows.Add(new object[] { Name, Value });
-        }
-        protected override void RenderContents(HtmlTextWriter output)
-        {
-            this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TABLEARROW);
-            output.Write(Text);
-        }
-
-        #region IGoogleFormatter Members
-
-       
-
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleFormatOptions")]
@@ -434,7 +359,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
+        [Bindable(false)]
         public List<TableFormatter> GviFormatter
         {
             get
@@ -449,6 +374,41 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        #endregion
+
+        public void ChartData(string Name, int Value)
+        {
+
+            if ((this.dt == null) || (this.dt.Columns.Count == 0))
+            {
+                this.dt = new DataTable();
+                this.dt.Columns.Add("Name", typeof(String));
+                this.dt.Columns.Add("Value", typeof(decimal));
+            }
+
+            this.dt.Rows.Add(new object[] { Name, (decimal)Value });
+        }
+        public void ChartData(string Name, decimal Value)
+        {
+            if ((this.dt == null) || (this.dt.Columns.Count == 0))
+            {
+                this.dt = new DataTable();
+                this.dt.Columns.Add("Name", typeof(String));
+                this.dt.Columns.Add("Value", typeof(decimal));
+            }
+
+            this.dt.Rows.Add(new object[] { Name, Value });
+        }
+        protected override void RenderContents(HtmlTextWriter output)
+        {
+            this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TABLEARROW);
+            output.Write(Text);
+        }
+
+
+       
+
+
+
     }
 }

@@ -200,7 +200,7 @@ namespace TestGoogleCharsNGraphsControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVTableArrowFormat GVTableArrowFormat1;
+        protected global::GoogleChartsNGraphsControls.GVTable GVTableArrowFormat1;
         
         /// <summary>
         /// GVTableBarFormat1 control.
@@ -209,7 +209,7 @@ namespace TestGoogleCharsNGraphsControls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVTableBarFormat GVTableBarFormat1;
+        protected global::GoogleChartsNGraphsControls.GVTable GVTableBarFormat1;
         
         /// <summary>
         /// GVOrgChart1 control.

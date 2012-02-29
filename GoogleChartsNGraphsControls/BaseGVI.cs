@@ -337,7 +337,7 @@ namespace GoogleChartsNGraphsControls
                 // add the Formatter prop
                 fmtstr = fmtstr.Replace("{Formatter}", f.ToString());
                 fmtstr = fmtstr.Replace("{FormatColumn}", f.GviFormatColumn.ToString());
-                fmtstr = fmtstr.Replace("{FormatterParams}", "");
+                fmtstr = fmtstr.Replace("{FormatterParams}", f.FormatterParams);
                 //fmtstr = System.Text.RegularExpressions.Regex.Replace(fmtstr, "{\w}", "");
                 lst.Add(fmtstr);
             }
@@ -346,23 +346,7 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        //internal static string RGBtoHex(System.Drawing.Color?[] c)
-        //{
-        //    List<string> foo = new List<string>();
-        //    foreach(Color? cc in c)
-        //        if (cc != null)
-        //            foo.Add(RGBtoHex((Color) cc));
 
-        //    return string.Format("[ {0} ]", string.Join(",",foo.ToArray()));
-        //}
-        //internal static string RGBtoHex(System.Drawing.Color c)
-        //{
-        //    return string.Format("'{0}'",RGBtoHex(c.R, c.G, c.B));
-        //}
-        //internal static string RGBtoHex(byte R, byte G, byte B)
-        //{
-        //    return String.Format("#{0:X2}{1:X2}{2:X2}", R, G, B);
-        //}
     }
 
     

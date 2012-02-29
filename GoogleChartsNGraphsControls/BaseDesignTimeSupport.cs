@@ -80,7 +80,7 @@ namespace GoogleChartsNGraphsControls
     {
         public override string ToString()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            return base.ToString();
         }
     }
 
@@ -89,10 +89,11 @@ namespace GoogleChartsNGraphsControls
     {
         public override string ToString()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            return base.ToString();
         }
     }
 
+    [DataContract()]
     public abstract class Axis
     {
         public Axis()
@@ -121,20 +122,20 @@ namespace GoogleChartsNGraphsControls
         /// The baseline for the horizontal axis.
         /// This option is only supported for a continuous axis.
         /// </summary>
-        [DataMember(Name="baseline")]
+        [DataMember(Name="baseline", IsRequired=false, EmitDefaultValue=true)]
         public int? Baseline { get; set; }
 
         /// <summary>
         /// The color of the baseline for the horizontal axis. Can be any HTML color string, for example: 'red' or '#00cc00'.
         /// This option is only supported for a continuous axis.
         /// </summary>
-        [DataMember(Name = "baselinecolor")]
+        [DataMember(Name = "baselinecolor", IsRequired = false, EmitDefaultValue = true)]
         public System.Drawing.Color? BaselineColor { get; set; }
 
         /// <summary>
         /// The direction in which the values along the horizontal axis grow. Specify -1 to reverse the order of the values.
         /// </summary>
-        [DataMember(Name = "direction")]
+        [DataMember(Name = "direction", IsRequired = false, EmitDefaultValue = true)]
         public int? Direction { get; set; }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace GoogleChartsNGraphsControls
         /// This option is only supported for a continuous axis.
         /// </summary>
         /// 
-        [DataMember(Name="gridlines")]
+        [DataMember(Name = "gridlines", IsRequired = false, EmitDefaultValue = true)]
         public Gridlines Gridlines { get; set; }
 
         /// <summary>
@@ -153,7 +154,7 @@ namespace GoogleChartsNGraphsControls
         /// The actual formatting applied to the label is derived from the locale the API has been loaded with. For more details, see loading charts with a specific locale.
         /// This option is only supported for a continuous axis.
         /// </summary>
-        [DataMember(Name = "format")]
+        [DataMember(Name = "format", IsRequired = false, EmitDefaultValue = true)]
         public string Format { get; set; }
 
         /// <summary>
@@ -211,13 +212,13 @@ namespace GoogleChartsNGraphsControls
         /// hAxis property that makes the horizontal axis a logarithmic scale (requires all values to be positive). Set to true for yes.
         /// This option is only supported for a continuous axis.
         /// </summary>
-        [DataMember(Name = "logscale")]
+        [DataMember(Name = "logscale", IsRequired = false, EmitDefaultValue = true)]
         public bool? LogScale { get; set; }
 
         /// <summary>
         /// Position of the horizontal axis text, relative to the chart area. Supported values: 'out', 'in', 'none'.
         /// </summary>
-        [DataMember(Name = "textPosition")]
+        [DataMember(Name = "textPosition", IsRequired = false, EmitDefaultValue = true)]
         public Position TextPosition { get; set; }
 
         /// <summary>
@@ -225,7 +226,7 @@ namespace GoogleChartsNGraphsControls
         /// {color: <string>, fontName: <string>, fontSize: <number>}
         /// The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.
         /// </summary>
-        [DataMember(Name = "textStyle")]
+        [DataMember(Name = "textStyle", IsRequired = false, EmitDefaultValue = true)]
         public string TextStyle { get; set; }
 
         /// <summary>
@@ -295,14 +296,11 @@ namespace GoogleChartsNGraphsControls
         public WindowMode ViewWindowMode { get; set; }
 
 
-        //public override string ToString()
-        //{
-        //    MemoryStream stream1 = new MemoryStream();
-        //    DataContractJsonSerializer ser = new DataContractJsonSerializer(this.GetType());
-        //    ser.WriteObject(stream1, this);
-        //    string s =  new StreamReader(stream1).ReadToEnd();
-        //    return s;
-        //}
+        public override string ToString()
+        {
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            return s;
+        }
 
        
 

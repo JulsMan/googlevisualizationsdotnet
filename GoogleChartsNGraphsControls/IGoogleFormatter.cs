@@ -26,9 +26,15 @@ namespace GoogleChartsNGraphsControls
             this.Formatter = Formatter;
             this.GviFormatColumn = (int?) FormatColumn;
         }
+        public TableFormatter(FormatType Formatter, int FormatColumn, string FormatParamsJson)
+            : this(Formatter, FormatColumn)
+        {
+            this.FormatterParams = FormatParamsJson;
+        }
+
 
         public enum FormatType { ArrowFormat, BarFormat, ColorFormat, DateFormat, NumberFormat, PatternFormat }
-
+        public string FormatterParams { get; set; }     // Json params
         public FormatType Formatter { get; set; }        // BarFormat
         public int? GviFormatColumn { get; set; }
 
