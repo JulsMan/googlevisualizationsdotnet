@@ -80,8 +80,9 @@ namespace TestGoogleCharsNGraphsControls
 
             this.GVPieChart1.DataSource = dt;
 
+
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
-            this.GVPieChart2.GviLegend = "right";
+            this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend(GoogleChartsNGraphsControls.LegendPostion.Bottom); 
             this.GVPieChart2.GviIs3D = true;
             this.GVPieChart2.DataSource = dt;
 
@@ -104,7 +105,7 @@ namespace TestGoogleCharsNGraphsControls
             GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
             hx.SlantedText = true;
             hx.Title = "Hoz Axis Title";
-            this.GVAreaChart2.GVIHAxisClass = hx;
+            this.GVAreaChart2.GviHAxisClass = hx;
 
             GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
             an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
@@ -127,7 +128,7 @@ namespace TestGoogleCharsNGraphsControls
             hx.Title = "In Thousands";
             hx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Currency;
             hx.SlantedText = true;
-            this.GVBarChart1.GVIHAxisClass = hx;
+            this.GVBarChart1.GviHAxisClass = hx;
 
             this.GVBarChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan };
             this.GVBarChart1.DataSource = barchart;
@@ -139,7 +140,7 @@ namespace TestGoogleCharsNGraphsControls
             vx.BaselineColor = Color.Green;
             vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
             vx.Title = "By Year";
-            this.GVColumnChart1.GVIVAxisClass = vx;
+            this.GVColumnChart1.GviVAxisClass = vx;
             this.GVColumnChart1.DataSource = barchart;
 
 
@@ -211,7 +212,7 @@ namespace TestGoogleCharsNGraphsControls
             hx.ShowTextEvery = 1;
             hx.SlantedText = true;
             //this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
-            this.GVScatterChart1.GVIHAxisClass = hx;
+            this.GVScatterChart1.GviHAxisClass = hx;
             an = new GoogleChartsNGraphsControls.Animation(GoogleChartsNGraphsControls.AnimationEasing.InAndOut, 1000);
             this.GVScatterChart1.GviAnimationOptions = an;
             this.GVScatterChart1.DataSource = scatter;
@@ -382,7 +383,7 @@ namespace TestGoogleCharsNGraphsControls
                 this.GVPieChart1.DataSource = dt;
 
                 this.GVPieChart1.GviTitle = string.Format("My Time: {0}", DateTime.Now.ToShortTimeString());
-                this.GVPieChart1.GviLegend = "right";
+                this.GVPieChart1.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
                 this.GVPieChart1.GviIs3D = true;
                 this.GVPieChart1.DataSource = dt;
             }

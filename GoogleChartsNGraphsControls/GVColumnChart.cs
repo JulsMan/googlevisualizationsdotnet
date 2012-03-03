@@ -525,50 +525,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Position and type of legend. Can be one of the following:
-            'right' - To the right of the chart.
-            'left' - To the left of the chart.
-            'top' - Above the chart.
-            'bottom' - Below the chart.
-            'none' - No legend is displayed.")]
-        [DefaultValue("")]
-        public string GviLegend
-        {
-            get
-            {
-                string s = (string)ViewState["GviLegend"];
-                return s;
-            }
 
-            set
-            {
-                ViewState["GviLegend"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object that specifies the legend text style. The object has this format:
-            {color: <string>, fontName: <string>, fontSize: <number>}
-            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
-        [DefaultValue("")]
-        public object GviLegendTextStyle
-        {
-            get
-            {
-                string s = (string)ViewState["GviLegendTextStyle"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviLegendTextStyle"] = value;
-            }
-        }
 
         [GviConfigOption]
         [Bindable(true)]

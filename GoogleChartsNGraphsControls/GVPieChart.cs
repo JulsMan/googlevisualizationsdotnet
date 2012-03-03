@@ -156,25 +156,6 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"The location of the legend on the chart. Choose from one of the following values: 'top', 'bottom', 'left', 'right', 'none'.")]
-        [DefaultValue("")]
-        public string GviLegend
-        {
-            get
-            {
-                string s = (string)ViewState["GviLegend"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviLegend"] = value;
-            }
-        }
-
         [GviEventOption(EventName = "animationfinish")]
         [Bindable(true)]
         [Category("GoogleOptions")]

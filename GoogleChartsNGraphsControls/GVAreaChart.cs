@@ -56,29 +56,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Position and type of legend. Can be one of the following:
-            'right' - To the right of the chart.
-            'left' - To the left of the chart.
-            'top' - Above the chart.
-            'bottom' - Below the chart.
-            'none' - No legend is displayed.")]
-        [DefaultValue("")]
-        public string GviLegend
-        {
-            get
-            {
-                string s = (string)ViewState["GviLegend"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviLegend"] = value;
-            }
-        }
 
         [GviConfigOption]
         [Bindable(true)]

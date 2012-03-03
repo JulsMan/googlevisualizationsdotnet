@@ -20,7 +20,7 @@ namespace GoogleChartsNGraphsControls
     public enum HighlightDot { Default, Nearest, Last }
     public enum WindowMode { Default, Window, Opaque, Transparent }
     public enum ScaleType { Default, Fixed, Maximized, AllMaximaized, AllFixed }
-    public enum LegendPosition { Default, SameRow, NewRow }
+    public enum TimelineLegend { Default, SameRow, NewRow }
     public enum PieSliceText { Default, Percentage, Value, Label, None }
     public enum MapRegion 
     {
@@ -43,6 +43,7 @@ namespace GoogleChartsNGraphsControls
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
     public enum TablePage { Default, Enable, Event, Disable}
     public enum TableFormatters { Default, Arrow, Bar, Color, Date, Number, Pattern}
+
 
     [DataContract(Name = "animation")]
     public class Animation
@@ -326,6 +327,17 @@ namespace GoogleChartsNGraphsControls
             this.TextStyle = new TextStyle();
         }
 
+        public Legend(LegendPostion Position): this()
+        {
+            this.LegendPosition = Position;
+        }
+
+        public Legend(LegendPostion Position, TextStyle TextStyle)
+            : this(Position)
+        {
+            this.TextStyle = TextStyle;
+        }
+
         [DataMember(Name = "postition", IsRequired = false, EmitDefaultValue = true)]
         public LegendPostion LegendPosition
         {
@@ -338,6 +350,12 @@ namespace GoogleChartsNGraphsControls
         {
             get;
             set;
+        }
+
+        public override string ToString()
+        {
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            return s;
         }
     }
 
@@ -360,6 +378,12 @@ namespace GoogleChartsNGraphsControls
 
         [DataMember(Name = "fontSize")]
         public int? FontSize { get; set; }
+
+        public override string ToString()
+        {
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            return s;
+        }
     }
 
 

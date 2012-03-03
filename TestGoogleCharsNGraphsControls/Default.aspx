@@ -168,7 +168,7 @@
         <p />
         <h3>PieChart Example</h3>
         <cc1:GVPieChart ID="GVPieChart2" runat="server" Width="600" Height="400" GviTitle="Favorite Pets" 
-         QueryString="~/AjaxUpdateHandler.ashx?type=GVPieChart2" GviLegend="left" GviIs3D="true" />
+         QueryString="~/AjaxUpdateHandler.ashx?type=GVPieChart2" GviIs3D="true" />
         
         With AJAX Handler: <select id="Select1" onchange="chart_GVPieChart2.reload( Select1.options[Select1.selectedIndex].value )">
             <option>Sun</option>

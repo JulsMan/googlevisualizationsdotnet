@@ -22,6 +22,10 @@ namespace GoogleChartsNGraphsControls
     public class GVAnnotatedTimeline : BaseWebControl
     {
 
+        public GVAnnotatedTimeline(): base()
+        {
+            this.GviLegendPosition = TimelineLegend.SameRow;
+        }
 
         [Bindable(true)]
         [Category("Appearance")]
@@ -310,11 +314,11 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("Whether to put the colored legend on the same row with the zoom buttons and the date ('sameRow'), or on a new row ('newRow').")]
         [DefaultValue("")]
-        public string GviLegendPosition
+        public TimelineLegend GviLegendPosition
         {
             get
             {
-                string s = (string)ViewState["GviLegendPosition"];
+                TimelineLegend s = (TimelineLegend)ViewState["GviLegendPosition"];
                 return s;
             }
 

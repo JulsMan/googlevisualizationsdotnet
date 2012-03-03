@@ -118,6 +118,7 @@ namespace GoogleChartsNGraphsControls
 
         public override bool CanConvert(Type objectType)
         {
+            
             if (objectType == typeof(Legend))
                 return true;
             return false;
@@ -130,10 +131,10 @@ namespace GoogleChartsNGraphsControls
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value == null) return;
 
             writer.WriteStartObject();
-            writer.WriteValue(Newtonsoft.Json.JsonConvert.SerializeObject(value));
+            if ((value != null) && ((Legend)value).LegendPosition != LegendPostion.Default)
+                writer.WriteValue(value.ToString());
             writer.WriteEndObject();
         }
     }

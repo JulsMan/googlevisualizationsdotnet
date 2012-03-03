@@ -17,7 +17,7 @@ namespace GoogleChartsNGraphsControls
         public BaseWebControl()
         {
             this.GviAnimationOptions = null;
-            this.GVIHAxisClass = null;
+            this.GviHAxisClass = null;
         }
 
         protected BaseGVI gvi = new BaseGVI();
@@ -395,7 +395,7 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [DataMember(Name = "hAxis", EmitDefaultValue = true, IsRequired = false)]
-        public hAxis GVIHAxisClass
+        public hAxis GviHAxisClass
         {
             get
             {
@@ -433,7 +433,7 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [DataMember(Name = "vAxis", EmitDefaultValue = true, IsRequired = false)]
-        public vAxis GVIVAxisClass
+        public vAxis GviVAxisClass
         {
             get
             {
@@ -447,25 +447,42 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        //[GviClass("vAxis")]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("Configurable Vertical Axis")]
-        //public string GVIVAxis
-        //{
-        //    get
-        //    {
-        //        if (this.GVIVAxisClass == null)
-        //            return (string)ViewState["GVIVAxis"];
-        //        else
-        //            return this.GVIVAxisClass.ToString();
-        //    }
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Legend Postion")]
+        [DefaultValue(null)]
+        public LegendPostion GviLegendPosition
+        {
+            get
+            {
+                if (this.GviLegend == null)
+                    this.GviLegend = new Legend();
+                return this.GviLegend.LegendPosition;
+            }
 
-        //    set
-        //    {
-        //        ViewState["GVIVAxis"] = value;
-        //    }
-        //}
+            set
+            {
+                if (this.GviLegend == null)
+                    this.GviLegend = new Legend();
+                this.GviLegend.LegendPosition = value;
+            }
+        }
+
+        [Bindable(false)]
+        [Description("Chart Legend")]
+        [DataMember(Name = "legend", EmitDefaultValue = true, IsRequired = false)]
+        public Legend GviLegend
+        {
+            get
+            {
+                return (Legend)ViewState["GVILegend"];
+            }
+
+            set
+            {
+                ViewState["GVILegend"] = value;
+            }
+        }
 
         
         protected DataTable dt
