@@ -72,7 +72,8 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None,  
+                new Newtonsoft.Json.JsonConverter[]{new CustomConverterEnum()});
             return s;
         }
     }
@@ -300,7 +301,10 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, new Newtonsoft.Json.JsonConverter[]
+                { 
+                    new CustomConverterEnum()
+                });
             return s;
         }
 
@@ -354,7 +358,11 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
+            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None,
+                new Newtonsoft.Json.JsonConverter[]
+                { 
+                    new CustomConverterEnum()
+                });
             return s;
         }
     }

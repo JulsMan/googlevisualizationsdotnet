@@ -132,10 +132,38 @@ namespace GoogleChartsNGraphsControls
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
 
-            writer.WriteStartObject();
+
             if ((value != null) && ((Legend)value).LegendPosition != LegendPostion.Default)
-                writer.WriteValue(value.ToString());
-            writer.WriteEndObject();
+            {
+                string s = value.ToString();
+                writer.WriteRaw(s);
+            }
+            else
+            {
+                writer.WriteRaw("{}");
+            }
+        }
+    }
+
+
+    internal class CustomConverterEnum : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            if (objectType.BaseType == typeof(Enum))
+                return true;
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            string s = Enum.GetName(value.GetType(), value);
+            writer.WriteValue(s.LowerCaseFirst());
         }
     }
 }

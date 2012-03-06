@@ -82,7 +82,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
-            this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend(GoogleChartsNGraphsControls.LegendPostion.Bottom); 
+            this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend(GoogleChartsNGraphsControls.LegendPostion.None); 
             this.GVPieChart2.GviIs3D = true;
             this.GVPieChart2.DataSource = dt;
 
@@ -383,7 +383,7 @@ namespace TestGoogleCharsNGraphsControls
                 this.GVPieChart1.DataSource = dt;
 
                 this.GVPieChart1.GviTitle = string.Format("My Time: {0}", DateTime.Now.ToShortTimeString());
-                this.GVPieChart1.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
+                this.GVPieChart1.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.None }; 
                 this.GVPieChart1.GviIs3D = true;
                 this.GVPieChart1.DataSource = dt;
             }
