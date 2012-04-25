@@ -101,6 +101,10 @@ namespace TestGoogleCharsNGraphsControls
             dt2.Rows.Add(new object[] { "2010", 480000, 435000});
 
             this.GVAreaChart2.DataSource = dt2;
+
+
+            this.GVLineChart1.DataSource = dt2;
+
             
             GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
             hx.SlantedText = true;

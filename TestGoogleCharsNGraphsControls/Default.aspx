@@ -229,6 +229,31 @@
         
         
         <p />
+        <h3>LineChart Example</h3>
+        <cc1:GVLineChart ID="GVLineChart1" runat="server" Width="600" Height="400" 
+            GviColorsByName="Red Green Blue Orange">
+        </cc1:GVLineChart>
+        
+        
+         <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");
+            dt2.Columns.Add("Year");
+            dt2.Columns.Add("Expenses", typeof(int));
+            dt2.Columns.Add("Sales", typeof(int));
+            dt2.Rows.Add(new object[] { "2004", 215000, 225000});
+            dt2.Rows.Add(new object[] { "2005", 300000, 320000});
+            dt2.Rows.Add(new object[] { "2006", 326000, 356000});
+            dt2.Rows.Add(new object[] { "2007", 485000, 490000});
+            dt2.Rows.Add(new object[] { "2008", 410000, 442000 });
+            dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
+            dt2.Rows.Add(new object[] { "2010", 480000, 435000});
+            this.GVLineChart1.ChartData(dt2);
+        </pre>
+        
+        
+        
+        <p />
         <h3>BarChart Example</h3>
         <cc1:GVBarChart ID="GVBarChart1" runat="server" Width="600" Height="400"  />
          <pre class="sloppyCode">

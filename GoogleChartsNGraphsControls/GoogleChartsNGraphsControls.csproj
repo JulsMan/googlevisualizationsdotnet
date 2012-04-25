@@ -72,6 +72,7 @@
     <Compile Include="CustomConverters.cs" />
     <Compile Include="GVCandlestickChart.cs" />
     <Compile Include="GVGanttChart.cs" />
+    <Compile Include="GVLineChart.cs" />
     <Compile Include="GVOrgChart.cs" />
     <Compile Include="GVGauge.cs" />
     <Compile Include="GVGeoMap.cs" />
@@ -113,6 +114,7 @@
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />
     <None Include="GVI\Visualization.dll" />
+    <EmbeddedResource Include="GVLineChart.bmp" />
     <Content Include="icons\chart_bar.png" />
     <Content Include="icons\chart_curve.png" />
     <Content Include="icons\chart_line.png" />
