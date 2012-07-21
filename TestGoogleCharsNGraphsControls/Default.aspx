@@ -46,7 +46,7 @@
        
         </script>
         <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server"  Width="800" Height="400" 
-        GVIDisplayAnnotations="True" GviDisplayDateBarSeparator="True" GviAllowRedraw="True" GviHighlightDot="Last"
+        GVIDisplayAnnotations="True" GviDisplayDateBarSeparator="True" GviAllowRedraw="True" GviHighlightDot="Last" GviTitle="Get Options to Show"
          OnEvent_GviSelect="MyTimeLineSelectHandler" OnEvent_GviRangeChange="MyTimeLineRangeChange"/>
         <pre class="sloppyCode">
                 Sample Code:

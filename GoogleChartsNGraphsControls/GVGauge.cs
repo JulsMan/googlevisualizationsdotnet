@@ -224,5 +224,24 @@ namespace GoogleChartsNGraphsControls
             output.Write(String.Empty);
         }
 
+        public override string ToString()
+        {
+            List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
+            myconverters.Add(new CustomConvertersColorToRGB());
+            myconverters.Add(new CustomConvertersAxis());
+            myconverters.Add(new CustomConvertersLegend());
+            myconverters.Add(new CustomConverterEnum());
+
+            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                Converters = myconverters
+            };
+
+            string s = string.Empty;
+            s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
+            return s;
+        }
+
     }
 }

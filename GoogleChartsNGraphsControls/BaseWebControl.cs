@@ -555,7 +555,9 @@ namespace GoogleChartsNGraphsControls
                  NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
                  Converters = myconverters
             };
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
+
+            string s = string.Empty;
+            s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
             return s;
         }
     }
