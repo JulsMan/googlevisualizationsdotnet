@@ -46,8 +46,8 @@
        
         </script>
         <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server"  Width="800" Height="400" 
-        GVIDisplayAnnotations="True" GviDisplayDateBarSeparator="True" GviAllowRedraw="True" GviHighlightDot="Last" GviTitle="Get Options to Show"
-         OnEvent_GviSelect="MyTimeLineSelectHandler" OnEvent_GviRangeChange="MyTimeLineRangeChange"/>
+        GVIDisplayAnnotations="True" GviDisplayDateBarSeparator="True" GviAllowRedraw="True" GviHighlightDot="Last" GviTitle="Get Options to Show" 
+        GviOptionsOverride="{displayAnnotations:false}" OnEvent_GviSelect="MyTimeLineSelectHandler" OnEvent_GviRangeChange="MyTimeLineRangeChange"/>
         <pre class="sloppyCode">
                 Sample Code:
             List<GoogleChartsNGraphsControls.TimelineEvent> evts = new List<GoogleChartsNGraphsControls.TimelineEvent>();

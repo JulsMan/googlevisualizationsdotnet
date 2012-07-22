@@ -65,11 +65,11 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"Override the GviOptions here by entering your own options JSON.  If this is used then other config options will ignored.")]
         [DefaultValue(null)]
-        public object GviOptionsOverride
+        public string GviOptionsOverride
         {
             get
             {
-                object s = (object)ViewState["GviOptionsOverride"];
+                string s = (string)ViewState["GviOptionsOverride"];
                 return s;
             }
 

@@ -201,10 +201,9 @@ namespace GoogleChartsNGraphsControls
         internal void RegisterGVIScriptsEx(BaseWebControl PageControl, DataTable dt, GOOGLECHART CHARTTYPE)
         {
             string JAVASCRIPT = jscode3;
-            
+            string options,formatter= string.Empty;
             List<string> events = RenderGVIEvents(PageControl);
-            string options = RenderGVIConfigOptions(PageControl);
-            string formatter = string.Empty;
+           
 
             if (PageControl is IGoogleTableFormatterControl)
                 formatter = RenderFormatter((IGoogleTableFormatterControl)PageControl);
@@ -225,9 +224,12 @@ namespace GoogleChartsNGraphsControls
             }
 
 
+            
             // Check if manual override for Chart option is in effect
             if ((PageControl.GviOptionsOverride != null) && (!string.IsNullOrEmpty(PageControl.GviOptionsOverride.ToString())))
                 options = PageControl.GviOptionsOverride.ToString();
+            else
+                options = RenderGVIConfigOptions(PageControl);
             
 
             // the name of the control being bound and over-written
