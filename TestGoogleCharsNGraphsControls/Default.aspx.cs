@@ -44,7 +44,7 @@ namespace TestGoogleCharsNGraphsControls
             evts.Add(new GoogleChartsNGraphsControls.TimelineEvent("Sold Erasers", new DateTime(2008, 1, 5), 26004));
             evts.Add(new GoogleChartsNGraphsControls.TimelineEvent("Sold Erasers", new DateTime(2008, 1, 6), 39001));
 
-
+            this.GVAnnotatedTimeline1.GviDisplayAnnotations = GoogleChartsNGraphsControls.TrippleStateBool.True;
             this.GVAnnotatedTimeline1.ChartData(evts.ToArray());
             this.GVAnnotatedTimeline2.ChartData(evts.Where(d => d.EventCategory == "Sold Erasers").ToArray());
             
@@ -101,6 +101,8 @@ namespace TestGoogleCharsNGraphsControls
             dt2.Rows.Add(new object[] { "2010", 480000, 435000});
 
             this.GVAreaChart2.DataSource = dt2;
+            this.GVAreaChart2.GviLegend = new GoogleChartsNGraphsControls.Legend(GoogleChartsNGraphsControls.LegendPostion.Bottom);
+
 
 
             this.GVLineChart1.DataSource = dt2;

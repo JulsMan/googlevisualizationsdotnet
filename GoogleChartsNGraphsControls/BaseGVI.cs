@@ -304,29 +304,6 @@ namespace GoogleChartsNGraphsControls
             return PageControl.ToString();
         }
 
-        //private string RenderGVIClassOptions(WebControl PageControl)
-        //{
-        //    List<string> optionsList = new List<string>();
-
-        //    System.Reflection.PropertyInfo[] props = PageControl.GetType().GetProperties();
-
-        //    foreach (System.Reflection.PropertyInfo prop in props)
-        //    {
-        //        GviClass option = prop.GetCustomAttributes(typeof(GviClass), false)
-        //            .Cast<GviClass>().FirstOrDefault();
-                
-        //        if (option == null) continue;
-
-        //        object val = prop.GetValue(PageControl, null);
-
-        //        if ((val == null) || (string.IsNullOrEmpty(val.ToString())))
-        //            continue;
-
-        //        optionsList.Add(string.Format("{0}: {1}", option.ToString(), val.ToString()));
-        //    }
-
-        //    return string.Join(", ", optionsList.ToArray());
-        //}
 
         internal string RenderFormatter(IGoogleTableFormatterControl PageControl)
         {
