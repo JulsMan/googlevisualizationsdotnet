@@ -82,8 +82,9 @@ namespace TestGoogleCharsNGraphsControls
 
 
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
-            this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend(GoogleChartsNGraphsControls.LegendPostion.None); 
+            this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
             this.GVPieChart2.GviIs3D = true;
+            this.GVPieChart2.GviOptionsOverride = "{\"is3D\":true,\"title\":\"Where I Spend My Time\",\"legend\":{position: 'left', textStyle: {color: 'blue', fontSize: 16}}}";
             this.GVPieChart2.DataSource = dt;
 
           
@@ -100,8 +101,9 @@ namespace TestGoogleCharsNGraphsControls
             dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
             dt2.Rows.Add(new object[] { "2010", 480000, 435000});
 
+            //this.GVAreaChart2.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom };
             this.GVAreaChart2.DataSource = dt2;
-            this.GVAreaChart2.GviLegend = new GoogleChartsNGraphsControls.Legend(GoogleChartsNGraphsControls.LegendPostion.Bottom);
+           
 
 
 

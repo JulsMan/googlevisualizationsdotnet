@@ -447,10 +447,11 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+
+        [GviLegendOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description(@"Legend Postion")]
-        [DefaultValue(null)]
         public LegendPostion GviLegendPosition
         {
             get

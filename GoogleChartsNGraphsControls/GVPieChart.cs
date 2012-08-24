@@ -119,6 +119,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("If set to true, displays a three-dimensional chart.")]
         [DefaultValue(false)]
+        [DataMember(Name="is3D", IsRequired=false)]
         public bool? GviIs3D
         {
             get
