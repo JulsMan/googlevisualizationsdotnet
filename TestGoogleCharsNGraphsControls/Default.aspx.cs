@@ -84,7 +84,8 @@ namespace TestGoogleCharsNGraphsControls
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
             this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
             this.GVPieChart2.GviIs3D = true;
-            this.GVPieChart2.GviOptionsOverride = "{\"is3D\":true,\"title\":\"Where I Spend My Time\",\"legend\":{position: 'left', textStyle: {color: 'blue', fontSize: 16}}}";
+            this.GVPieChart2.GviOptionsOverride = "{\"is3D\":true,\"title\":\"Where I Spend My Time\",\"legend\":{position: 'left', textStyle: {color: 'blue', fontSize: 16}}}";
+
             this.GVPieChart2.DataSource = dt;
 
           
