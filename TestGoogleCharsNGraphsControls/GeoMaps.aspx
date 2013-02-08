@@ -28,7 +28,6 @@
          <h3>GeoMap Example</h3>
         <cc1:GVGeoMap ID="GVGeoMap1" runat="server" Width="400" Height="400" GviDataMode="Regions" GviRegion="World"/>
         <pre class="sloppyCode">
-            Sample Code:
             System.Data.DataTable world = new System.Data.DataTable("World Population");
             world.Columns.AddRange(new System.Data.DataColumn[] {
                 new System.Data.DataColumn("Country",typeof(string)), 
@@ -43,8 +42,10 @@
             world.Rows.Add(new object[] { "China", 1300 });
             world.Rows.Add(new object[] { "India", 1000 });
 
-            
-            this.GVGeoMap1.ChartData(world);
+            this.GVGeoMap1.GviRegion = GoogleChartsNGraphsControls.MapRegion.World;
+            this.GVGeoMap1.GviDisplayMode = GoogleChartsNGraphsControls.MapDisplayModes.Regions;
+            this.GVGeoMap1.GviColors = new Color?[] { Color.Blue, Color.Cornsilk, Color.DarkMagenta, Color.DarkTurquoise, Color.FloralWhite };
+            this.GVGeoMap1.DataSource = world;
         </pre>
     </div>
     

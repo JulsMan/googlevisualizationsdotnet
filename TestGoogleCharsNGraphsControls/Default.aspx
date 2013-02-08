@@ -22,15 +22,20 @@
 <body>
     <form id="form1" runat="server">
     <div align="center">
-    
+        
+
+
         <pre>
             <asp:PlaceHolder ID="PlaceHolder1" runat="server" />
         </pre>
     
-    
-        <h3>Map Example</h3>
-        <cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
+        
+        <a href="GeoMaps.aspx">More Maps</a><cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
             Width="600px" GVILineColor="Goldenrod" GVILineWidth="4" GviShowLine="true"/>
+
+
+        <h3>Map ExamplMap Example</h3>
+        
             <pre class="sloppyCode">
                 Sample Code:
                 this.GVMap2.ChartData("Duvall, WA", "Home Sweet Home");
@@ -41,8 +46,7 @@
      
         
         <p />
-        <h3>Annotated Timeline Example</h3>
-        <script type="text/javascript">
+        <h3>Annotated Timeline Example     <script type="text/javascript">
        
         </script>
         <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server"  Width="800" Height="400" 

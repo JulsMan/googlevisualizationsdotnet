@@ -11,7 +11,7 @@ using System.Runtime.Serialization;
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVTableArrowFormat runat=server></{0}:GVTableArrowFormat>")]
+    [ToolboxData("<{0}:GVTable runat=server></{0}:GVTable>")]
     [ToolboxBitmap(typeof(GVTable))]
     [DataContract]
     public class GVTable : BaseWebControl, IGoogleTableFormatterControl
