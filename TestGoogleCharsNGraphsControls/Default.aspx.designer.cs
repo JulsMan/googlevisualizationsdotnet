@@ -139,6 +139,15 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
+        /// GVComboChart1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVComboChart GVComboChart1;
+        
+        /// <summary>
         /// GVSparkLine1 control.
         /// </summary>
         /// <remarks>

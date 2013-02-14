@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Data;
 
 namespace TestGoogleCharsNGraphsControls
 {
@@ -152,6 +153,39 @@ namespace TestGoogleCharsNGraphsControls
             this.GVColumnChart1.GviVAxisClass = vx;
             this.GVColumnChart1.DataSource = barchart;
 
+
+
+
+            /*
+             * var data = google.visualization.arrayToDataTable([
+          ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
+          ['2004/05',  165,      938,         522,             998,           450,      614.6],
+          ['2005/06',  135,      1120,        599,             1268,          288,      682],
+          ['2006/07',  157,      1167,        587,             807,           397,      623],
+          ['2007/08',  139,      1110,        615,             968,           215,      609.4],
+          ['2008/09',  136,      691,         629,             1026,          366,      569.6]
+        ]);
+             */
+            DataTable combo = new DataTable("Monthly Coffee Production by Country");
+            combo.Columns.Add("Year", typeof(DateTime));
+            combo.Columns.Add("Bolivia", typeof(int));
+            combo.Columns.Add("Ecuador", typeof(int));
+            combo.Columns.Add("Madagascar", typeof(int));
+            combo.Columns.Add("Papua New Guinea", typeof(int));
+            combo.Columns.Add("Rwanda", typeof(int));
+            combo.Columns.Add("Average", typeof(int));
+
+            combo.Rows.Add(new object[] { new DateTime(2004, 5, 1),  165,   938,    522,    998,    450,    614 });
+            combo.Rows.Add(new object[] { new DateTime(2004, 6, 1),  135,   1120,   599,    1268,   288,    682 });
+            combo.Rows.Add(new object[] { new DateTime(2004, 7, 1),  157,   1167,   587,    807,    397,    623 });
+            combo.Rows.Add(new object[] { new DateTime(2004, 8, 1),  139,   1110,   615,    968,    215,    609 });
+            combo.Rows.Add(new object[] { new DateTime(2004, 9, 1),  136,   691,    629,    1026,   366,    569 });
+
+
+            this.GVComboChart1.GviOptionsOverride = "{ seriesType:'bars', series:{5:{type:'line'}} }";
+
+            this.GVComboChart1.DataSource = combo;
+            this.GVComboChart1.DataBind();
 
             //System.Data.DataTable gnattchart = new System.Data.DataTable("Something Performance");
             //gnattchart.Columns.Add("Year", typeof(string));
