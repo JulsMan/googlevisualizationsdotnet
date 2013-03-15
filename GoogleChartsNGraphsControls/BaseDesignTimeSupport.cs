@@ -43,7 +43,50 @@ namespace GoogleChartsNGraphsControls
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
     public enum TablePage { Default, Enable, Event, Disable}
     public enum TableFormatters { Default, Arrow, Bar, Color, Date, Number, Pattern}
+    public enum SeriesType { Line, Area, Bars, Candlesticks, SteppedArea }
 
+    /// <summary>
+    /// TODO: Need to implement this, still need to create valid series JSON and to auto-apply this to the 
+    /// best guessed column in the series for the combochart
+    /// series: [{color: 'black', visibleInLegend: false},{}, {}, {color: 'red', visibleInLegend: false}]
+    ///series: {0:{color: 'black', visibleInLegend: false}, 3:{color: 'red', visibleInLegend: false}}
+    ///series:{4:{type:'line'}}
+    ///
+    /// </summary>
+    [DataContract(Name = "series")]
+    public class ComboChartColumnFormatClass
+    {
+        private List<ComboColumnFormat> formattedColumns = new List<ComboColumnFormat>();
+        [DataContract()]
+        public class ComboColumnFormat
+        {
+            private string[] keycolumnnames = new string[] {"AVERAGE", "AVG" };
+           public ComboColumnFormat()
+            {
+                this.LineSeries = SeriesType.Line;
+            }
+           public ComboColumnFormat(SeriesType type): this()
+            {
+               this.LineSeries = type;
+            }
+
+            public int? ColumnLineNumber { get; set; }
+            public string ColumnLineName { get; set; }
+
+
+             [DataContract(Name="type")]
+            public SeriesType LineSeries { get; set; }
+             [DataContract(Name="color")]
+            public Color? color { get; set; }
+        }
+
+        public void Add(ComboColumnFormat colmn)
+        {
+        }
+        public void Add(ComboColumnFormat colmn, int iColumnNumberToApply)
+        {
+        }
+    }
 
     [DataContract(Name = "animation")]
     public class Animation

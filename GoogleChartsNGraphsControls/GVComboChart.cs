@@ -18,6 +18,11 @@ namespace GoogleChartsNGraphsControls
     public class GVComboChart : BaseWebControl
     {
 
+        public GVComboChart()
+            : base()
+        {
+            this.GviSeriesType = SeriesType.Bars;
+        }
 
         [Bindable(true)]
         [Category("Appearance")]
@@ -747,6 +752,27 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The default line type for any series not specified in the series property. 
+            Available values are 'line', 'area', 'bars', 'candlesticks' and 'steppedArea'.")]
+        [DataMember(Name = "seriesType", EmitDefaultValue = false, IsRequired = true)]
+        [DefaultValue(SeriesType.Bars)]
+        public SeriesType GviSeriesType
+        {
+            get
+            {
+                object s = ViewState["GviSeriesType"];
+                if (s == null) return SeriesType.Bars;
+                SeriesType ss = (SeriesType)ViewState["GviSeriesType"];
+                return ss;
+            }
+            set
+            {
+                ViewState["GviSeriesType"] = value;
+            }
+        }
 
         public void ChartData(string Name, int Value)
         {
@@ -774,6 +800,10 @@ namespace GoogleChartsNGraphsControls
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
+
+            // combocharts need to have an Average column or an average column specified to show the average line
+
+
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.COMBO);
             output.Write(Text);
         }

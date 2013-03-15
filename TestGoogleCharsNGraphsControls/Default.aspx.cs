@@ -181,11 +181,36 @@ namespace TestGoogleCharsNGraphsControls
             combo.Rows.Add(new object[] { new DateTime(2004, 8, 1),  139,   1110,   615,    968,    215,    609 });
             combo.Rows.Add(new object[] { new DateTime(2004, 9, 1),  136,   691,    629,    1026,   366,    569 });
 
-
-            this.GVComboChart1.GviOptionsOverride = "{ seriesType:'bars', series:{5:{type:'line'}} }";
+            //this.GVComboChart1.GviOptionsOverride = "{ seriesType:'bars', series:{5:{type:'line'}} }";
 
             this.GVComboChart1.DataSource = combo;
             this.GVComboChart1.DataBind();
+
+
+
+            //DataTable combo2 = new DataTable("Monthly Coffee Production by Country");
+            //combo2.Columns.Add("Year", typeof(DateTime));
+            //combo2.Columns.Add("Bolivia", typeof(int));
+            //combo2.Columns.Add("Ecuador", typeof(int));
+            //combo2.Columns.Add("Madagascar", typeof(int));
+            //combo2.Columns.Add("Papua New Guinea", typeof(int));
+            //combo2.Columns.Add("Rwanda", typeof(int));
+
+            //// NOTE: This will be a calculated column as part of the ComboChart features
+            ////combo2.Columns.Add("Average", typeof(int));
+
+            //combo2.Rows.Add(new object[] { new DateTime(2004, 5, 1), 165, 938, 522, 998, 450 });
+            //combo2.Rows.Add(new object[] { new DateTime(2004, 6, 1), 135, 1120, 599, 1268, 288 });
+            //combo2.Rows.Add(new object[] { new DateTime(2004, 7, 1), 157, 1167, 587, 807, 397 });
+            //combo2.Rows.Add(new object[] { new DateTime(2004, 8, 1), 139, 1110, 615, 968, 215 });
+            //combo2.Rows.Add(new object[] { new DateTime(2004, 9, 1), 136, 691, 629, 1026, 366});
+
+
+            //this.GVComboChart2.GviOptionsOverride = "{ seriesType:'bars', series:{4:{type:'line'}} }";
+
+            //this.GVComboChart2.DataSource = combo2;
+            //this.GVComboChart2.DataBind();
+
 
             //System.Data.DataTable gnattchart = new System.Data.DataTable("Something Performance");
             //gnattchart.Columns.Add("Year", typeof(string));
