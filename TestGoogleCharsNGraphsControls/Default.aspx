@@ -303,9 +303,12 @@
             }
             function fnOnSelect() {
                 try {
-
-                    var sel = chart_GVBarChartEvents.getSelection();
-                    alert('You selected -  column(' + sel[0].column + '), row(' + sel[0].row + ')');
+                    var chart = chart_GVBarChartEvents;
+                    var sel = chart.getSelection();
+                    var dt = chart.getData();
+                    alert('You selected col[' + sel[0].column + '], row[' + sel[0].row + ']' + 
+                    '\nData: ' + dt.getColumnLabel(sel[0].column) + ' was ' + dt.getValue(sel[0].row, sel[0].column) 
+                    + ' for ' + dt.getValue(sel[0].row, 0));
                 }
                 catch (err) {
                     alert('Oops!  OnSelect Error = ' + err);
@@ -346,9 +349,12 @@
             }
             function fnOnSelect() {
                 try {
-
-                    var sel = chart_GVBarChartEvents.getSelection();
-                    alert('You selected -  column(' + sel[0].column + '), row(' + sel[0].row + ')');
+                    var chart = chart_GVBarChartEvents;
+                    var sel = chart.getSelection();
+                    var dt = chart.getData();
+                    alert('You selected col[' + sel[0].column + '], row[' + sel[0].row + ']' + 
+                    '\nData: ' + dt.getColumnLabel(sel[0].column) + ' was ' + dt.getValue(sel[0].row, sel[0].column) 
+                    + ' for ' + dt.getValue(sel[0].row, 0));
                 }
                 catch (err) {
                     alert('Oops!  OnSelect Error = ' + err);

@@ -35,19 +35,20 @@ function AjaxCallback(container, chart)
 {
     this.container = container;
     this.chart = chart;
-    this.fnAjaxCallback = function(data){
+    this.fnAjaxCallback = function (data) {
         var options = chart.opts == undefined ? {} : chart.opts;
-        if (typeof(data) == 'string'){
+        if (typeof (data) == 'string') {
             var foo = eval(data);
             data = JSON.parse(foo);
         }
         var dt = new google.visualization.DataTable(data);
         chart.formatters(chart, dt);
         chart.format(dt);
-        
+
         var view = new google.visualization.DataView(dt);
         chart.formatView(chart, view);
-        
+        chart.__DataTable = dt;     // easy way to get the dataTable later if needed!
+        chart.getData = function() { return chart.__DataTable; }  // for good measure!
         chart.draw(view, options);
     };
 }
