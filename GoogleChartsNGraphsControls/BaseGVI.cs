@@ -94,7 +94,8 @@ namespace GoogleChartsNGraphsControls
 
        /********* Init Chart Load     **********************/
                 chart.load(data);
-            }}
+
+}}
 ";
 
 
@@ -287,7 +288,7 @@ namespace GoogleChartsNGraphsControls
                 
                 if ((value == null) || (string.IsNullOrEmpty(value.ToString()))) continue;
 
-                string foo = string.Format("google.visualization.events.addListener(chart, '{0}', function(o,a,b,c) {{ {1}(chart,a,b,c); }} );", option.EventName, value);
+                string foo = string.Format("google.visualization.events.addListener(chart, '{0}', {1});", option.EventName, value);
                 foo = foo.Replace(";;", ";");
                 eventsList.Add(foo);
             }

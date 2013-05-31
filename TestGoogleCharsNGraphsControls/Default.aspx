@@ -273,7 +273,88 @@
             this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
             this.GVBarChart1.ChartData(barchart);
         </pre>
+
+
+
+
+        <p />
+        <h3>BarChart With Events Example</h3>
+        <cc1:GVBarChart ID="GVBarChartEvents" runat="server" Width="600" Height="400" GviOnError="fnOnError" GviOnMouseout="fnOnOut" GviOnMouseover="fnOnOver" GviOnReady="fnOnReady" GviOnSelect="fnOnSelect"  />
+         <pre class="sloppyCode">
+
+             &lt;cc1:GVBarChart ID=&quot;GVBarChart3&quot; runat=&quot;server&quot; Width=&quot;600&quot; Height=&quot;400&quot; GviOnError=&quot;fnOnError&quot; GviOnMouseout=&quot;fnOnOut&quot; GviOnMouseover=&quot;fnOnOver&quot; GviOnReady=&quot;fnOnReady&quot; GviOnSelect=&quot;fnOnSelect&quot;  /&gt;
+
+           &lt;script type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;
+            function fnOnError(id, msg) {
+                try {
+                    alert(chart_GVBarChartEvents.container.id + ' Error: ' + id + ' - ' + msg);
+                }
+                catch (err) {
+                }
+            }
+            function fnOnOut(evt) {
+                window.console &amp;&amp; console.log(chart_GVBarChartEvents.container.id + ' mouse out at ' + evt.row + ':' + evt.column);
+            }
+            function fnOnOver(evt) {
+                window.console &amp;&amp; console.log(chart_GVBarChartEvents.container.id + ' mouse over at ' + evt.row + ':' + evt.column);
+            }
+            function fnOnReady() {
+                window.console &amp;&amp; console.log(chart_GVBarChartEvents.container.id + ' is ready!');
+            }
+            function fnOnSelect() {
+                try {
+
+                    var sel = chart_GVBarChartEvents.getSelection();
+                    alert('You selected -  column(' + sel[0].column + '), row(' + sel[0].row + ')');
+                }
+                catch (err) {
+                    alert('Oops!  OnSelect Error = ' + err);
+                }
+            }
+        &lt;/script&gt;
+
+
+            Sample Code:
+            System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
+            barchart.Columns.Add("Year", typeof(string));
+            barchart.Columns.Add("Sales", typeof(int));
+            barchart.Columns.Add("Expenses", typeof(int));
+            barchart.Rows.Add(new object[] { "2004", 1000, 400 });
+            barchart.Rows.Add(new object[] { "2005", 1170, 460 });
+            barchart.Rows.Add(new object[] { "2006", 660, 1120 });
+            barchart.Rows.Add(new object[] { "2007", 1030, 540 });
+            this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+            this.GVBarChart1.ChartData(barchart);
+        </pre>
         
+        <script type="text/javascript" language="javascript">
+            function fnOnError(id, msg) {
+                try {
+                    alert(chart_GVBarChartEvents.container.id + ' Error: ' + id + ' - ' + msg);
+                }
+                catch (err) {
+                }
+            }
+            function fnOnOut(evt) {
+                window.console && console.log(chart_GVBarChartEvents.container.id + ' mouse out at ' + evt.row + ':' + evt.column);
+            }
+            function fnOnOver(evt) {
+                window.console && console.log(chart_GVBarChartEvents.container.id + ' mouse over at ' + evt.row + ':' + evt.column);
+            }
+            function fnOnReady() {
+                window.console && console.log(chart_GVBarChartEvents.container.id + ' is ready!');
+            }
+            function fnOnSelect() {
+                try {
+
+                    var sel = chart_GVBarChartEvents.getSelection();
+                    alert('You selected -  column(' + sel[0].column + '), row(' + sel[0].row + ')');
+                }
+                catch (err) {
+                    alert('Oops!  OnSelect Error = ' + err);
+                }
+            }
+        </script>
         
         
         

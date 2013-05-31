@@ -485,7 +485,122 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        
+        [GviConfigOption]
+        [GviEventOption("select")]
+        [Bindable(true)]
+        [Category("Events")]
+        [Description("Fired when the user clicks a visual entity. To learn what has been selected, call getSelection().")]
+        [DataMember(Name = "select", EmitDefaultValue = true, IsRequired = false)]
+        public string GviOnSelect
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnSelect"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviOnSelect"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [GviEventOption("animationfinish")]
+        [Bindable(true)]
+        [Category("Events")]
+        [Description("Fired when transition animation is complete.")]
+        [DataMember(Name = "animationfinish", EmitDefaultValue = true, IsRequired = false)]
+        public string GviAnimationFinish
+        {
+            get
+            {
+                string s = (string)ViewState["GviAnimationFinish"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviAnimationFinish"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [GviEventOption("error")]
+        [Bindable(true)]
+        [Category("Events")]
+        [Description("Fired when an error occurs when attempting to render the chart. (id, message)")]
+        [DataMember(Name = "error", EmitDefaultValue = true, IsRequired = false)]
+        public string GviOnError
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnError"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviOnError"] = value;
+            }
+        }
+
+
+        [GviConfigOption]
+        [GviEventOption("onmouseover")]
+        [Bindable(true)]
+        [Category("Events")]
+        [Description("Fired when the user mouses over a visual entity. Passes back the row and column indices of the corresponding data table element. A bar correlates to a cell in the data table, a legend entry to a column (row index is null), and a category to a row (column index is null). (row, column)")]
+        [DataMember(Name = "onmouseover", EmitDefaultValue = true, IsRequired = false)]
+        public string GviOnMouseover
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnMouseover"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviOnMouseover"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [GviEventOption("onmouseout")]
+        [Bindable(true)]
+        [Category("Events")]
+        [Description("Fired when the user mouses away from a visual entity. Passes back the row and column indices of the corresponding data table element. A bar correlates to a cell in the data table, a legend entry to a column (row index is null), and a category to a row (column index is null). (row, column)")]
+        [DataMember(Name = "onmouseout", EmitDefaultValue = true, IsRequired = false)]
+        public string GviOnMouseout
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnMouseout"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviOnMouseout"] = value;
+            }
+        }
+
+
+        [GviConfigOption]
+        [GviEventOption("ready")]
+        [Bindable(true)]
+        [Category("Events")]
+        [Description("The chart is ready for external method calls. If you want to interact with the chart, and call methods after you draw it, you should set up a listener for this event before you call the draw method, and call them only after the event was fired.")]
+        [DataMember(Name = "ready", EmitDefaultValue = true, IsRequired = false)]
+        public string GviOnReady
+        {
+            get
+            {
+                string s = (string)ViewState["GviOnReady"];
+                return s;
+            }
+            set
+            {
+                ViewState["GviOnReady"] = value;
+            }
+        }
+
         protected DataTable dt
         {
             get

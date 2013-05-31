@@ -55,6 +55,7 @@ namespace GoogleChartsNGraphsControls
     {
         public GviConfigOption() { }
     }
+   
     public class GviAnimationOption : Attribute
     {
         public GviAnimationOption() { }

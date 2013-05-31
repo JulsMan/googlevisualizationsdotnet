@@ -155,6 +155,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
+            this.GVBarChartEvents.DataSource = barchart;
 
             /*
              * var data = google.visualization.arrayToDataTable([

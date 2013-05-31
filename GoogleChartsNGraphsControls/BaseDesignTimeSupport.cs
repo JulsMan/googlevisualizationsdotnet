@@ -56,16 +56,19 @@ namespace GoogleChartsNGraphsControls
     [DataContract(Name = "series")]
     public class ComboChartColumnFormatClass
     {
+        private string[] keycolumnnames = new string[] { "AVERAGE", "AVG" };
         private List<ComboColumnFormat> formattedColumns = new List<ComboColumnFormat>();
+
+
         [DataContract()]
         public class ComboColumnFormat
         {
-            private string[] keycolumnnames = new string[] {"AVERAGE", "AVG" };
-           public ComboColumnFormat()
+            
+            public ComboColumnFormat()
             {
                 this.LineSeries = SeriesType.Line;
             }
-           public ComboColumnFormat(SeriesType type): this()
+            public ComboColumnFormat(SeriesType type): this()
             {
                this.LineSeries = type;
             }
@@ -74,17 +77,28 @@ namespace GoogleChartsNGraphsControls
             public string ColumnLineName { get; set; }
 
 
-             [DataContract(Name="type")]
+             [DataMember(Name="type")]
             public SeriesType LineSeries { get; set; }
-             [DataContract(Name="color")]
+             [DataMember(Name = "color")]
             public Color? color { get; set; }
         }
 
-        public void Add(ComboColumnFormat colmn)
+        public void Add(ComboColumnFormat column)
         {
+            this.formattedColumns.Add(column);
         }
-        public void Add(ComboColumnFormat colmn, int iColumnNumberToApply)
+        public void Add(ComboColumnFormat column, int iColumnNumberToApply)
         {
+            column.ColumnLineNumber = iColumnNumberToApply;
+        }
+        public void Add(ComboColumnFormat column, string columnNameToApply)
+        {
+            column.ColumnLineName = columnNameToApply;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 
