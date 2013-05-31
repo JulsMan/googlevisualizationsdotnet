@@ -279,7 +279,41 @@
 
         <p />
         <h3>BarChart With Events Example</h3>
-        <cc1:GVBarChart ID="GVBarChartEvents" runat="server" Width="600" Height="400" GviOnError="fnOnError" GviOnMouseout="fnOnOut" GviOnMouseover="fnOnOver" GviOnReady="fnOnReady" GviOnSelect="fnOnSelect"  />
+        <cc1:GVBarChart ID="GVBarChartEvents" runat="server" Width="600" Height="400" GviOnError="fnOnError" 
+        GviOnMouseout="fnOnOut" GviOnMouseover="fnOnOver" GviOnReady="fnOnReady" GviOnSelect="fnOnSelect"  />
+        
+         <script type="text/javascript" language="javascript">
+             function fnOnError(id, msg) {
+                 try {
+                     alert(chart_GVBarChartEvents.container.id + ' Error: ' + id + ' - ' + msg);
+                 }
+                 catch (err) {
+                 }
+             }
+             function fnOnOut(evt) {
+                 window.console && console.log(chart_GVBarChartEvents.container.id + ' mouse out at ' + evt.row + ':' + evt.column);
+             }
+             function fnOnOver(evt) {
+                 window.console && console.log(chart_GVBarChartEvents.container.id + ' mouse over at ' + evt.row + ':' + evt.column);
+             }
+             function fnOnReady() {
+                 window.console && console.log(chart_GVBarChartEvents.container.id + ' is ready!');
+             }
+             function fnOnSelect() {
+                 try {
+                     var chart = chart_GVBarChartEvents;
+                     var sel = chart.getSelection();
+                     var dt = chart.getData();
+                     alert('You selected col[' + sel[0].column + '], row[' + sel[0].row + ']' +
+                    '\nData: ' + dt.getColumnLabel(sel[0].column) + ' was ' + dt.getValue(sel[0].row, sel[0].column)
+                    + ' for ' + dt.getValue(sel[0].row, 0));
+                 }
+                 catch (err) {
+                     alert('Oops!  OnSelect Error = ' + err);
+                 }
+             }
+        </script> 
+         
          <pre class="sloppyCode">
 
              &lt;cc1:GVBarChart ID=&quot;GVBarChart3&quot; runat=&quot;server&quot; Width=&quot;600&quot; Height=&quot;400&quot; GviOnError=&quot;fnOnError&quot; GviOnMouseout=&quot;fnOnOut&quot; GviOnMouseover=&quot;fnOnOver&quot; GviOnReady=&quot;fnOnReady&quot; GviOnSelect=&quot;fnOnSelect&quot;  /&gt;
@@ -330,37 +364,7 @@
             this.GVBarChart1.ChartData(barchart);
         </pre>
         
-        <script type="text/javascript" language="javascript">
-            function fnOnError(id, msg) {
-                try {
-                    alert(chart_GVBarChartEvents.container.id + ' Error: ' + id + ' - ' + msg);
-                }
-                catch (err) {
-                }
-            }
-            function fnOnOut(evt) {
-                window.console && console.log(chart_GVBarChartEvents.container.id + ' mouse out at ' + evt.row + ':' + evt.column);
-            }
-            function fnOnOver(evt) {
-                window.console && console.log(chart_GVBarChartEvents.container.id + ' mouse over at ' + evt.row + ':' + evt.column);
-            }
-            function fnOnReady() {
-                window.console && console.log(chart_GVBarChartEvents.container.id + ' is ready!');
-            }
-            function fnOnSelect() {
-                try {
-                    var chart = chart_GVBarChartEvents;
-                    var sel = chart.getSelection();
-                    var dt = chart.getData();
-                    alert('You selected col[' + sel[0].column + '], row[' + sel[0].row + ']' + 
-                    '\nData: ' + dt.getColumnLabel(sel[0].column) + ' was ' + dt.getValue(sel[0].row, sel[0].column) 
-                    + ' for ' + dt.getValue(sel[0].row, 0));
-                }
-                catch (err) {
-                    alert('Oops!  OnSelect Error = ' + err);
-                }
-            }
-        </script>
+       
         
         
         
