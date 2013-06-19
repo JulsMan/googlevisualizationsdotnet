@@ -81,18 +81,18 @@ namespace GoogleChartsNGraphsControls
     /// <summary>
     ///  Signifies that this class will be run and will fill in another, usually string, value with JSON
     /// </summary>
-    public class GviClass : Attribute
-    {
-        private string JSONClassName;
-        public GviClass(string JSONClassName)
-        {
-            this.JSONClassName = JSONClassName;
-        }
-        public override string ToString()
-        {
-            return this.JSONClassName;
-        }
-    }
+    //public class GviClass : Attribute
+    //{
+    //    private string JSONClassName;
+    //    public GviClass(string JSONClassName)
+    //    {
+    //        this.JSONClassName = JSONClassName;
+    //    }
+    //    public override string ToString()
+    //    {
+    //        return this.JSONClassName;
+    //    }
+    //}
     public static class GviExtensions
     {
         public static string LowerCaseFirst(this string str)

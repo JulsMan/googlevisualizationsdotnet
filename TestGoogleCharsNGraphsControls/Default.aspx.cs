@@ -34,7 +34,7 @@ namespace TestGoogleCharsNGraphsControls
             GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
             an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
             an.Duration = 1000;
-            this.GVAreaChart2.GviAnimationOptions = an;
+            this.GVAreaChart2.GviAnimationClass = an;
 
             hx = new GoogleChartsNGraphsControls.hAxis();
             hx.Title = "In Thousands";
@@ -118,7 +118,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
-            this.GVPieChart2.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
+            this.GVPieChart2.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
             this.GVPieChart2.GviIs3D = true;
             this.GVPieChart2.GviOptionsOverride = "{\"is3D\":true,\"title\":\"Where I Spend My Time\",\"legend\":{position: 'left', textStyle: {color: 'blue', fontSize: 16}}}";
 
@@ -155,7 +155,7 @@ namespace TestGoogleCharsNGraphsControls
             GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
             an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
             an.Duration = 1000;
-            this.GVAreaChart2.GviAnimationOptions = an;
+            this.GVAreaChart2.GviAnimationClass = an;
 
 
 
@@ -320,7 +320,7 @@ namespace TestGoogleCharsNGraphsControls
             //this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
             this.GVScatterChart1.GviHAxisClass = hx;
             an = new GoogleChartsNGraphsControls.Animation(GoogleChartsNGraphsControls.AnimationEasing.InAndOut, 1000);
-            this.GVScatterChart1.GviAnimationOptions = an;
+            this.GVScatterChart1.GviAnimationClass = an;
             this.GVScatterChart1.DataSource = scatter;
 
 
@@ -489,7 +489,7 @@ namespace TestGoogleCharsNGraphsControls
                 this.GVPieChart1.DataSource = dt;
 
                 this.GVPieChart1.GviTitle = string.Format("My Time: {0}", DateTime.Now.ToShortTimeString());
-                this.GVPieChart1.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.None }; 
+                this.GVPieChart1.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.None }; 
                 this.GVPieChart1.GviIs3D = true;
                 this.GVPieChart1.DataSource = dt;
             }

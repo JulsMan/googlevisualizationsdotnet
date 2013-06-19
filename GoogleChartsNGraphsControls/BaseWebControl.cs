@@ -16,7 +16,7 @@ namespace GoogleChartsNGraphsControls
     {
         public BaseWebControl()
         {
-            this.GviAnimationOptions = null;
+            this.GviAnimationClass = null;
             this.GviHAxisClass = null;
         }
 
@@ -223,7 +223,7 @@ namespace GoogleChartsNGraphsControls
         }
 
         [GviConfigOption]
-        [GviClass("animation")]
+        //[GviClass("animation")]
         [Bindable(true)]
         [Category("AjaxExtensions")]
         [Description(@"JSON class for animation of charts")]
@@ -232,10 +232,10 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                if (this.GviAnimationOptions == null)
-                    return (string)ViewState["GviAnimationOptions"];
+                if (this.GviAnimationClass == null)
+                    return (string)ViewState["GviAnimationClass"];
                 else
-                    return this.GviAnimationOptions.ToString();
+                    return this.GviAnimationClass.ToString();
             }
 
             set
@@ -245,61 +245,61 @@ namespace GoogleChartsNGraphsControls
         }
 
         [DataMember(Name="animation")]
-        public Animation GviAnimationOptions
+        public Animation GviAnimationClass
         {
             get;
             set;
         }
 
-        [GviAnimationOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"The duration of the animation, in milliseconds. For details, see the animation documentation.")]
-        public int? GviAnimation_Duration
-        {
-            get
-            {
-                if (this.GviAnimationOptions == null)
-                    this.GviAnimationOptions = new Animation();
+//        [GviAnimationOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"The duration of the animation, in milliseconds. For details, see the animation documentation.")]
+//        public int? GviAnimation_Duration
+//        {
+//            get
+//            {
+//                if (this.GviAnimationClass == null)
+//                    this.GviAnimationClass = new Animation();
 
-                return this.GviAnimationOptions.Duration;
-            }
+//                return this.GviAnimationClass.Duration;
+//            }
 
-            set
-            {
-                if (this.GviAnimationOptions == null)
-                    this.GviAnimationOptions = new Animation();
+//            set
+//            {
+//                if (this.GviAnimationClass == null)
+//                    this.GviAnimationClass = new Animation();
 
-                this.GviAnimationOptions.Duration = value;
-            }
-        }
+//                this.GviAnimationClass.Duration = value;
+//            }
+//        }
 
-        [GviAnimationOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"The easing function applied to the animation. The following options are available:
-            'linear' - Constant speed.
-            'in' - Ease in - Start slow and speed up.
-            'out' - Ease out - Start fast and slow down.
-            'inAndOut' - Ease in and out - Start slow, speed up, then slow down.")]
-        public AnimationEasing GviAnimation_Easing
-        {
-            get
-            {
-                if (this.GviAnimationOptions == null)
-                    this.GviAnimationOptions = new Animation();
+//        [GviAnimationOption]
+//        [Bindable(true)]
+//        [Category("GoogleOptions")]
+//        [Description(@"The easing function applied to the animation. The following options are available:
+//            'linear' - Constant speed.
+//            'in' - Ease in - Start slow and speed up.
+//            'out' - Ease out - Start fast and slow down.
+//            'inAndOut' - Ease in and out - Start slow, speed up, then slow down.")]
+//        public AnimationEasing GviAnimation_Easing
+//        {
+//            get
+//            {
+//                if (this.GviAnimationClass == null)
+//                    this.GviAnimationClass = new Animation();
 
-                return this.GviAnimationOptions.Easing;
-            }
+//                return this.GviAnimationClass.Easing;
+//            }
 
-            set
-            {
-                if (this.GviAnimationOptions == null)
-                    this.GviAnimationOptions = new Animation();
+//            set
+//            {
+//                if (this.GviAnimationClass == null)
+//                    this.GviAnimationClass = new Animation();
 
-                this.GviAnimationOptions.Easing = value;
-            }
-        }
+//                this.GviAnimationClass.Easing = value;
+//            }
+//        }
 
 
         [Bindable(true)]
@@ -392,61 +392,65 @@ namespace GoogleChartsNGraphsControls
 
 
 
-        [Bindable(true)]
-        [Category("GoogleOptions")]
+
         [DataMember(Name = "hAxis", EmitDefaultValue = true, IsRequired = false)]
         public hAxis GviHAxisClass
         {
-            get
-            {
-                hAxis s = (hAxis)ViewState["GVIHAxisClass"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GVIHAxisClass"] = value;
-            }
+            get;
+            set;
         }
 
+        [GviConfigOption]
         //[GviClass("hAxis")]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("Configurable Vertical Axis")]
-        //public string GVIHAxis
-        //{
-        //    get
-        //    {
-        //        if (this.GVIHAxisClass == null)
-        //            return (string)ViewState["GVIHAxis"];
-        //        else
-        //            return this.GVIHAxisClass.ToString();
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GVIHAxis"] = value;
-        //    }
-        //}
-
-
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [DataMember(Name = "vAxis", EmitDefaultValue = true, IsRequired = false)]
-        public vAxis GviVAxisClass
+        [Description(@"JSON for hAxis")]
+        [DefaultValue("")]
+        public string GviHAxis
         {
             get
             {
-                vAxis s = (vAxis)ViewState["GVIVAxisClass"];
-                return s;
+                if (this.GviHAxisClass == null)
+                    return (string)ViewState["GviHAxisClass"];
+                else
+                    return this.GviHAxisClass.ToString();
             }
 
             set
             {
-                ViewState["GVIVAxisClass"] = value;
+                ViewState["GviHAxisClass"] = value;
             }
         }
+       
+        [DataMember(Name = "vAxis", EmitDefaultValue = true, IsRequired = false, Order=5)]
+        public vAxis GviVAxisClass
+        {
+            get;
+            set;
+        }
 
+
+        [GviConfigOption]
+        //[GviClass("vAxis")]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"JSON for vAxis")]
+        [DefaultValue("")]
+        public string GviVAxis
+        {
+            get
+            {
+                if (this.GviVAxisClass == null)
+                    return (string)ViewState["GviVAxisClass"];
+                else
+                    return this.GviVAxisClass.ToString();
+            }
+
+            set
+            {
+                ViewState["GviVAxisClass"] = value;
+            }
+        }
 
         [GviLegendOption]
         [Bindable(true)]
@@ -456,34 +460,51 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                if (this.GviLegend == null)
-                    this.GviLegend = new Legend();
-                return this.GviLegend.LegendPosition;
+                if (this.GviLegendClass == null)
+                    this.GviLegendClass = new Legend();
+                return this.GviLegendClass.LegendPosition;
             }
 
             set
             {
-                if (this.GviLegend == null)
-                    this.GviLegend = new Legend();
-                this.GviLegend.LegendPosition = value;
+                if (this.GviLegendClass == null)
+                    this.GviLegendClass = new Legend();
+                this.GviLegendClass.LegendPosition = value;
             }
         }
 
         [Bindable(false)]
         [Description("Chart Legend")]
-        [DataMember(Name = "legend", EmitDefaultValue = true, IsRequired = false)]
-        public Legend GviLegend
+        [DataMember(Name = "legend")]
+        public Legend GviLegendClass
+        {
+            get;
+            set;
+        }
+
+        [GviConfigOption]
+        //[GviClass("legend")]
+        [Bindable(true)]
+        [Category("AjaxExtensions")]
+        [Description(@"JSON class for legend")]
+        [DefaultValue("")]
+        public string GviLengend
         {
             get
             {
-                return (Legend)ViewState["GVILegend"];
+                if (this.GviLegendClass == null)
+                    return (string)ViewState["GviLegendClass"];
+                else
+                    return this.GviLegendClass.ToString();
+
             }
 
             set
             {
-                ViewState["GVILegend"] = value;
+                ViewState["GviLegendClass"] = value;
             }
         }
+
 
         [GviConfigOption]
         [GviEventOption("select")]

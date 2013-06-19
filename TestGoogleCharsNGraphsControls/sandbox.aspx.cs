@@ -22,24 +22,26 @@ namespace TestGoogleCharsNGraphsControls
                 dt.Rows.Add(new object[] { "2006", 660, 1120 });
                 dt.Rows.Add(new object[] { "2007", 1030, 540 });
 
-                this.GVColumnChart1.GviLegend = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom };
 
-                GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
-                an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
-                an.Duration = 2500;
-                this.GVColumnChart1.GviAnimationOptions = an;
 
+                //GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
+                //an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
+                //an.Duration = 2500;
+                //this.GVColumnChart1.GviAnimationClass = an;
+
+
+                //this.GVColumnChart1.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom };
 
                 GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
                 hx.SlantedText = true;
                 hx.Title = "Hoz Axis Title";
                 this.GVColumnChart1.GviHAxisClass = hx;
 
-                GoogleChartsNGraphsControls.vAxis vx = new GoogleChartsNGraphsControls.vAxis();
-                vx.BaselineColor = System.Drawing.Color.Green;
-                vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
-                vx.Title = "By Year";
-                this.GVColumnChart1.GviVAxisClass = vx;
+                //GoogleChartsNGraphsControls.vAxis vx = new GoogleChartsNGraphsControls.vAxis();
+                //vx.BaselineColor = System.Drawing.Color.Green;
+                //vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
+                //vx.Title = "By Year";
+                //this.GVColumnChart1.GviVAxisClass = vx;
 
                 this.GVColumnChart1.ChartData(dt);
             }

@@ -394,7 +394,8 @@ namespace GoogleChartsNGraphsControls
             };
             settings.Converters.Add(new CustomConverterEnum());
 
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
+            string s =  Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
+            return s;
         }
 
        
