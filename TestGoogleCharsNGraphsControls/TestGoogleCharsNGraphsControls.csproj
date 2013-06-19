@@ -75,6 +75,7 @@
     <Content Include="App_Themes\male_user.png" />
     <Content Include="App_Themes\unknown_user.png" />
     <Content Include="GeoMaps.aspx" />
+    <Content Include="sandbox.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sandbox.aspx.cs">
+      <DependentUpon>sandbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sandbox.aspx.designer.cs">
+      <DependentUpon>sandbox.aspx</DependentUpon>
     </Compile>
     <Compile Include="WCFTestService.svc.cs">
       <DependentUpon>WCFTestService.svc</DependentUpon>

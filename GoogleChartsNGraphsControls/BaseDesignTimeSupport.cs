@@ -11,17 +11,27 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace GoogleChartsNGraphsControls
 {
+    [Serializable()]
     public enum TrippleStateBool { Default, True, False, NotSet}
+    [Serializable()]
     public enum TitlePosition { Default, In, Out, None }
+    [Serializable()]
     public enum LegendPostion { Default, Right, Top, Bottom, In, None }
+    [Serializable()]
     public enum HighlightDot { Default, Nearest, Last }
+    [Serializable()]
     public enum WindowMode { Default, Window, Opaque, Transparent }
+    [Serializable()]
     public enum ScaleType { Default, Fixed, Maximized, AllMaximaized, AllFixed }
+    [Serializable()]
     public enum TimelineLegend { Default, SameRow, NewRow }
+    [Serializable()]
     public enum PieSliceText { Default, Percentage, Value, Label, None }
+    [Serializable()]
     public enum MapRegion 
     {
         Default,
@@ -31,18 +41,31 @@ namespace GoogleChartsNGraphsControls
         Middle_East, Northern_Asia, 
         Northern_Europe, Western_Europe, Southern_Europe
     }
+    [Serializable()]
     public enum MapDisplayModes { Default, Auto, Regions, Markers }
+    [Serializable()]
     public enum MapResolution { Default, Countries, Provinces, Metros }
+    [Serializable()]
     public enum OrgChartSize { Default, Small, Medium, Large }
+    [Serializable()]
     public enum CurveType { Default, None, Function }
+    [Serializable()]
     public enum ViewWindowsMode { Default, Pretty, Maximized, Explicit }
+    [Serializable()]
     public enum AnimationEasing { Default, None, Linear, In, Out, InAndOut }
+    [Serializable()]
     public enum Position { Default, In, Out }
+    [Serializable()]
     public enum FocusTarget { Default, Datrum, Category }
+    [Serializable()]
     public enum CandlestickTheme { Default, Maximized }
+    [Serializable()]
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
+    [Serializable()]
     public enum TablePage { Default, Enable, Event, Disable}
+    [Serializable()]
     public enum TableFormatters { Default, Arrow, Bar, Color, Date, Number, Pattern}
+    [Serializable()]
     public enum SeriesType { Line, Area, Bars, Candlesticks, SteppedArea }
 
     /// <summary>
@@ -102,6 +125,7 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
+    [Serializable()]
     [DataContract(Name = "animation")]
     public class Animation
     {
@@ -129,12 +153,17 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None,  
-                new Newtonsoft.Json.JsonConverter[]{new CustomConverterEnum()});
-            return s;
+            Newtonsoft.Json.JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            };
+            settings.Converters.Add(new CustomConverterEnum());
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
         }
     }
 
+    [Serializable()]
     [DataContract(Name = "hAxis")]
     public class hAxis : Axis 
     {
@@ -144,6 +173,7 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
+    [Serializable()]
     [DataContract(Name = "vAxis")]
     public class vAxis : Axis 
     {
@@ -153,6 +183,7 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
+    [Serializable()]
     [DataContract()]
     public abstract class Axis
     {
@@ -220,7 +251,6 @@ namespace GoogleChartsNGraphsControls
         /// <summary>
         /// Pre-canned formats for common stuff, or you can roll your own
         /// </summary>
-        
         public AxisFormat Formatted
         {
             private get { return AxisFormat.Default; }
@@ -358,20 +388,24 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, new Newtonsoft.Json.JsonConverter[]
-                { 
-                    new CustomConverterEnum()
-                });
-            return s;
+            Newtonsoft.Json.JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            };
+            settings.Converters.Add(new CustomConverterEnum());
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
         }
 
        
 
     }
-    
+
+    [Serializable()]
     [DataContract(Name = "gridlines")]
     public class Gridlines
     {
+        public Gridlines() { }
         [DataMember(Name = "color")]
         public System.Drawing.Color? Color { get; set; }
 
@@ -379,6 +413,7 @@ namespace GoogleChartsNGraphsControls
         public int? Count { get; set; }
     }
 
+    [Serializable()]
     [DataContract(Name="legend")]
     public class Legend
     {
@@ -415,18 +450,20 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None,
-                new Newtonsoft.Json.JsonConverter[]
-                { 
-                    new CustomConverterEnum()
-                });
-            return s;
+            Newtonsoft.Json.JsonSerializerSettings settings = new JsonSerializerSettings()
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            };
+            settings.Converters.Add(new CustomConverterEnum());
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
         }
     }
 
     /// <summary>
     /// {color: <string>, fontName: <string>, fontSize: <number>}
     /// </summary>
+    [Serializable()]
     [DataContract(Name = "textStyle")]
     public class TextStyle
     {
