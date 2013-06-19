@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 namespace GoogleChartsNGraphsControls
 {
     [DataContract]
-    public abstract class BaseWebControl: WebControl
+    public abstract class BaseWebControl: WebControl, IPostBackEventHandler
     {
         public BaseWebControl()
         {
@@ -677,5 +677,79 @@ namespace GoogleChartsNGraphsControls
         //    s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
         //    return s;
         //}
+
+
+
+        /*************************************************************************
+         * 
+         * Support for ASP.NET events
+         * 
+         ************************************************************************************/
+        // Defines a key for storing the delegate for the Click event
+        // in the Events list.
+        private static readonly object ClickEvent = new object();
+
+        // Defines the Click event using the event property syntax.
+        // The Events property stores all the event delegates of
+        // a control as name/value pairs. 
+        public event EventHandler Click
+        {
+            // When a user attaches an event handler to the Click event 
+            // (Click += myHandler;), the Add method 
+            // adds the handler to the 
+            // delegate for the Click event (keyed by ClickEvent 
+            // in the Events list).
+            add
+            {
+                Events.AddHandler(ClickEvent, value);
+            }
+            // When a user removes an event handler from the Click event 
+            // (Click -= myHandler;), the Remove method 
+            // removes the handler from the 
+            // delegate for the Click event (keyed by ClickEvent 
+            // in the Events list).
+            remove
+            {
+                Events.RemoveHandler(ClickEvent, value);
+            }
+        }
+
+        // Invokes delegates registered with the Click event.
+        //
+        protected virtual void OnClick(EventArgs e)
+        {
+            // Retrieves the event delegate for the Click event
+            // from the Events property (which stores
+            // the control's event delegates). You must
+            // cast the retrieved delegate to the type of your 
+            // event delegate.
+            EventHandler clickEventDelegate = (EventHandler)Events[ClickEvent];
+            if (clickEventDelegate != null)
+            {
+                clickEventDelegate(this, e);
+            }
+        }
+
+        // Method of IPostBackEventHandler that raises change events.
+        void IPostBackEventHandler.RaisePostBackEvent(string eventArgument)
+        {
+            OnClick(new EventArgs());
+        }
+        //public void RaisePostBackEvent(string eventArgument)
+        //{
+
+        //    OnClick(new EventArgs());
+        //}
+
+        // each control must implement this in the concrete 
+        //protected override void Render(HtmlTextWriter output)
+        //{
+
+        //    output.Write("<INPUT TYPE = submit name = " + this.UniqueID +
+        //       " Value = 'Click Me' />");
+        //}
+
+
+        
     }
 }

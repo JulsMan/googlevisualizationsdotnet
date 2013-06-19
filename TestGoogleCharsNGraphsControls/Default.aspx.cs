@@ -11,6 +11,41 @@ namespace TestGoogleCharsNGraphsControls
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+
+        protected void GVBarChart1_Click(object sender, EventArgs e)
+        {
+            Random num = new Random(Environment.TickCount);
+
+            System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
+            barchart.Columns.Add("Year", typeof(string));
+            barchart.Columns.Add("Sales", typeof(int));
+            barchart.Columns.Add("Expenses", typeof(int));
+            barchart.Rows.Add(new object[] { "2004", num.Next(100, 1000), num.Next(100, 400) });
+            barchart.Rows.Add(new object[] { "2005", num.Next(100, 1170), num.Next(100, 460) });
+            barchart.Rows.Add(new object[] { "2006", num.Next(100, 660), num.Next(100, 1120) });
+            barchart.Rows.Add(new object[] { "2007", num.Next(100, 1030), num.Next(100, 540) });
+            //this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+
+            GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
+            hx.SlantedText = true;
+            hx.Title = "Hoz Axis Title";
+            this.GVAreaChart2.GviHAxisClass = hx;
+
+            GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
+            an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
+            an.Duration = 1000;
+            this.GVAreaChart2.GviAnimationOptions = an;
+
+            hx = new GoogleChartsNGraphsControls.hAxis();
+            hx.Title = "In Thousands";
+            hx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Currency;
+            hx.SlantedText = true;
+            this.GVBarChart1.GviHAxisClass = hx;
+
+            this.GVBarChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan };
+            this.GVBarChart1.DataSource = barchart;
+        }
+
         protected void Page_Init()
         {
 
@@ -144,6 +179,8 @@ namespace TestGoogleCharsNGraphsControls
             this.GVBarChart1.DataSource = barchart;
 
 
+
+            
 
             //this.GVColumnChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
             GoogleChartsNGraphsControls.vAxis vx = new GoogleChartsNGraphsControls.vAxis();

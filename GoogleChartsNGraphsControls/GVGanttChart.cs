@@ -776,6 +776,11 @@ namespace GoogleChartsNGraphsControls
             this.gvi.RegisterGVIScriptsEx(this, TableWithLeadTime(this.dt), BaseGVI.GOOGLECHART.BARCHART);
             output.Write(Text);
         }
+        // Support for IPostBackEventHandler
+        //protected override void Render(HtmlTextWriter output)
+        //{
+        //    RenderContents(output);
+        //}
 
         /*
          * 

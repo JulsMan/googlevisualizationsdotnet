@@ -152,7 +152,11 @@ namespace GoogleChartsNGraphsControls
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.CANDLESTICK);
             output.Write(Text);
         }
-
+        // Support for IPostBackEventHandler
+        //protected override void Render(HtmlTextWriter output)
+        //{
+        //    RenderContents(output);
+        //}
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();

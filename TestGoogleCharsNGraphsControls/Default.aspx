@@ -259,7 +259,7 @@
         
         <p />
         <h3>BarChart Example</h3>
-        <cc1:GVBarChart ID="GVBarChart1" runat="server" Width="600" Height="400"  />
+        <cc1:GVBarChart ID="GVBarChart1" runat="server" Width="600" Height="400"  OnClick="GVBarChart1_Click" />
          <pre class="sloppyCode">
             Sample Code:
             System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
