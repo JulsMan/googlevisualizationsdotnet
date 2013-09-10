@@ -167,6 +167,7 @@ namespace GoogleChartsNGraphsControls
     [DataContract(Name = "hAxis")]
     public class hAxis : Axis 
     {
+        public hAxis() : base() { }
         public override string ToString()
         {
             return base.ToString();
@@ -177,6 +178,7 @@ namespace GoogleChartsNGraphsControls
     [DataContract(Name = "vAxis")]
     public class vAxis : Axis 
     {
+        public vAxis() : base() { }
         public override string ToString()
         {
             return base.ToString();

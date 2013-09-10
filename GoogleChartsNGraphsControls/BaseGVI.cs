@@ -302,7 +302,9 @@ namespace GoogleChartsNGraphsControls
         /// <returns></returns>
         internal string RenderGVIConfigOptions(WebControl PageControl)
         {
-            return PageControl.ToString();
+            var s =  PageControl.ToString();
+            s = FixJSON(s);
+            return s;
         }
 
 
@@ -325,7 +327,34 @@ namespace GoogleChartsNGraphsControls
             return string.Join(" \n", lst.ToArray());
         }
 
+        internal string FixJSON(string JSON)
+        {
+            /*
+             * chart.opts =              * {"title":"Company Sales/Expenses","colors":['#FF0000','#008000','#0000FF','#FFA500'],
+             * "animation":{"duration":1000,"easing":"out"},"hAxis":{"textPosition":"default","title":"Hoz Axis Title","slantedText":true,"viewWindowMode":"default"}};
+             *
+             * all options with "title": or "xxxxx": => xxxxx:
+             */
 
+            System.Text.RegularExpressions.Regex rxfix = new System.Text.RegularExpressions.Regex("\"\\w.+?\":.", System.Text.RegularExpressions.RegexOptions.Compiled | System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Singleline);
+            System.Text.RegularExpressions.MatchCollection mc =  rxfix.Matches(JSON);
+
+            foreach (System.Text.RegularExpressions.Match m in mc)
+            {
+                string replace = m.Value;
+                string replacewith = string.Empty;
+                // strip first '"'
+                if (m.Value.StartsWith("\""))
+                    replacewith = m.Value.TrimStart('"');
+                if (m.Value.Contains("\":"))
+                    replacewith = replacewith.Replace("\":", ":");
+
+                JSON = JSON.Replace(replace, replacewith);
+
+            }
+
+            return JSON;
+        }
 
     }
 

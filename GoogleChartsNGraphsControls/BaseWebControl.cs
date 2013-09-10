@@ -59,6 +59,50 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"Where to place the chart title, compared to the chart area. Supported values:
+            in - Draw the title inside the chart area.
+            out - Draw the title outside the chart area.
+            none - Omit the title")]
+        [DefaultValue("")]
+        [DataMember(Name = "titlePosition", IsRequired = false, EmitDefaultValue = true)]
+        public string GviTitlePosition
+        {
+            get
+            {
+                string s = (string)ViewState["GviTitlePosition"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviTitlePosition"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"An object that specifies the title text style. The object has this format:
+            {color: <string>, fontName: <string>, fontSize: <number>}
+            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
+        [DefaultValue("")]
+        [DataMember(Name = "titleTextStyle", IsRequired = false, EmitDefaultValue = true)]
+        public object GviTitleTextStyle
+        {
+            get
+            {
+                string s = (string)ViewState["GviTitleTextStyle"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviTitleTextStyle"] = value;
+            }
+        }
 
         [GviConfigOption]
         [Bindable(true)]
@@ -98,6 +142,47 @@ namespace GoogleChartsNGraphsControls
             set
             {
                 ViewState["GVIBackgroundColor"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The default font size, in pixels, of all text in the chart. You can override this using properties for specific chart elements.")]
+        [DefaultValue(false)]
+        [DataMember(Name = "fontSize", IsRequired = false, EmitDefaultValue = true)]
+        public int? GviFontSize
+        {
+            get
+            {
+                int? s = (int?)ViewState["GviFontSize"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFontSize"] = value;
+            }
+        }
+
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The default font face for all text in the chart. You can override this using properties for specific chart elements.")]
+        [DefaultValue("")]
+        [DataMember(Name = "fontName", IsRequired = false, EmitDefaultValue = true)]
+        public string GviFontName
+        {
+            get
+            {
+                string s = (string)ViewState["GviFontName"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviFontName"] = value;
             }
         }
 
@@ -251,55 +336,55 @@ namespace GoogleChartsNGraphsControls
             set;
         }
 
-//        [GviAnimationOption]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"The duration of the animation, in milliseconds. For details, see the animation documentation.")]
-//        public int? GviAnimation_Duration
-//        {
-//            get
-//            {
-//                if (this.GviAnimationClass == null)
-//                    this.GviAnimationClass = new Animation();
+        [GviAnimationOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The duration of the animation, in milliseconds. For details, see the animation documentation.")]
+        public int? GviAnimation_Duration
+        {
+            get
+            {
+                if (this.GviAnimationClass == null)
+                    this.GviAnimationClass = new Animation();
 
-//                return this.GviAnimationClass.Duration;
-//            }
+                return this.GviAnimationClass.Duration;
+            }
 
-//            set
-//            {
-//                if (this.GviAnimationClass == null)
-//                    this.GviAnimationClass = new Animation();
+            set
+            {
+                if (this.GviAnimationClass == null)
+                    this.GviAnimationClass = new Animation();
 
-//                this.GviAnimationClass.Duration = value;
-//            }
-//        }
+                this.GviAnimationClass.Duration = value;
+            }
+        }
 
-//        [GviAnimationOption]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"The easing function applied to the animation. The following options are available:
-//            'linear' - Constant speed.
-//            'in' - Ease in - Start slow and speed up.
-//            'out' - Ease out - Start fast and slow down.
-//            'inAndOut' - Ease in and out - Start slow, speed up, then slow down.")]
-//        public AnimationEasing GviAnimation_Easing
-//        {
-//            get
-//            {
-//                if (this.GviAnimationClass == null)
-//                    this.GviAnimationClass = new Animation();
+        [GviAnimationOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The easing function applied to the animation. The following options are available:
+            'linear' - Constant speed.
+            'in' - Ease in - Start slow and speed up.
+            'out' - Ease out - Start fast and slow down.
+            'inAndOut' - Ease in and out - Start slow, speed up, then slow down.")]
+        public AnimationEasing GviAnimation_Easing
+        {
+            get
+            {
+                if (this.GviAnimationClass == null)
+                    this.GviAnimationClass = new Animation();
 
-//                return this.GviAnimationClass.Easing;
-//            }
+                return this.GviAnimationClass.Easing;
+            }
 
-//            set
-//            {
-//                if (this.GviAnimationClass == null)
-//                    this.GviAnimationClass = new Animation();
+            set
+            {
+                if (this.GviAnimationClass == null)
+                    this.GviAnimationClass = new Animation();
 
-//                this.GviAnimationClass.Easing = value;
-//            }
-//        }
+                this.GviAnimationClass.Easing = value;
+            }
+        }
 
 
         [Bindable(true)]
@@ -391,7 +476,45 @@ namespace GoogleChartsNGraphsControls
         //}
 
 
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The maximal value to show in the Y axis.")]
+        [DefaultValue(null)]
+        [DataMember(Name = "max", IsRequired = false, EmitDefaultValue = true)]
+        public int? GviMax
+        {
+            get
+            {
+                int? s = (int?)ViewState["GviMax"];
+                return s;
+            }
 
+            set
+            {
+                ViewState["GviMax"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The minimal value to show in the Y axis.")]
+        [DefaultValue(null)]
+        [DataMember(Name="min", IsRequired=false, EmitDefaultValue=true)]
+        public int? GviMin
+        {
+            get
+            {
+                int? s = (int?)ViewState["GviMin"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviMin"] = value;
+            }
+        }
 
         [DataMember(Name = "hAxis", EmitDefaultValue = true, IsRequired = false)]
         public hAxis GviHAxisClass

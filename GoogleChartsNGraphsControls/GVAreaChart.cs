@@ -60,46 +60,9 @@ namespace GoogleChartsNGraphsControls
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description("The maximal value to show in the Y axis.")]
-        [DefaultValue(null)]
-        public int? GviMax
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviMax"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviMax"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("The minimal value to show in the Y axis.")]
-        [DefaultValue(null)]
-        public int? GviMin
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviMin"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviMin"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
         [Description("If set to false, removes the labels of the categories (the X axis labels).")]
         [DefaultValue(true)]
+        [DataMember(Name="showCategoryLabels",IsRequired=false, EmitDefaultValue=true)]
         public bool? GviShowCategoryLabels
         {
             get
@@ -120,6 +83,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("If set to false, removes the labels of the values (the Y axis labels).")]
         [DefaultValue(true)]
+        [DataMember(Name = "showValueLabels", IsRequired = false, EmitDefaultValue = true)]
         public bool? GviShowValueLabels
         {
             get
@@ -138,27 +102,9 @@ namespace GoogleChartsNGraphsControls
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"Text to display above the chart.")]
-        [DefaultValue("")]
-        public string GviTitle
-        {
-            get
-            {
-                string s = (string)ViewState["GviTitle"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviTitle"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
         [Description("The interval at which to show value axis labels. For example, if min is 0, max is 100, and valueLabelsInterval is 20, the chart will show axis labels at (0, 20, 40, 60, 80 100).")]
         [DefaultValue(null)]
+        [DataMember(Name = "valueLabelsInterval", IsRequired = false, EmitDefaultValue = true)]
         public int? GviValueLabelsInterval
         {
             get
@@ -313,11 +259,7 @@ namespace GoogleChartsNGraphsControls
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.AREACHART);
             output.Write(Text);
         }
-        // Support for IPostBackEventHandler
-        //protected override void Render(HtmlTextWriter output)
-        //{
-        //    RenderContents(output);
-        //}
+
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
@@ -325,6 +267,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterTrippleStateBool());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {

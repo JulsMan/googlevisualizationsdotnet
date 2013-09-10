@@ -24,7 +24,7 @@ namespace GoogleChartsNGraphsControls
 
         public GVAnnotatedTimeline(): base()
         {
-            this.GviLegendPosition = TimelineLegend.SameRow;
+            this.GviLegendPosition =  LegendPostion.Default;
         }
 
         [Bindable(true)]
@@ -51,6 +51,7 @@ namespace GoogleChartsNGraphsControls
         [Description("If set to true, any annotation text that includes HTML tags will be rendered as HTML.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name="allowHtml",IsRequired=false)]
         public TrippleStateBool GviAllowHtml 
         {
             get
@@ -73,6 +74,7 @@ namespace GoogleChartsNGraphsControls
         you must pass in the same options and values (except for the allowRedraw and displayAnnotations) as in your first call to draw()")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "allowRedraw", IsRequired = false)]
         public TrippleStateBool GviAllowRedraw
         {
             get
@@ -114,6 +116,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"If set to true, the chart will display a filter contol to filter annotations. Use this option when there are many annotations")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayAnnotiationsFilter", IsRequired = false)]
         public TrippleStateBool GviDisplayAnnotationsFilter
         {
             get
@@ -133,6 +136,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to display a small bar separator ( | ) between the series values and the date in the legend, where true means yes.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayDateBarSeparator", IsRequired = false)]
         public TrippleStateBool GviDisplayDateBarSeparator
         {
             get
@@ -153,6 +157,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to display a shortened, rounded version of the values on the top of the graph, to save space; false indicates that it may. For example, if set to false, 56123.45 might be displayed as 56.12k.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayExactValues", IsRequired = false)]
         public TrippleStateBool GviDisplayExactValues
         {
             get
@@ -173,6 +178,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to display dots next to the values in the legend text, where true means yes.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayLegendDots", IsRequired = false)]
         public TrippleStateBool GviDisplayLegendDots
         {
             get
@@ -193,6 +199,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to display the highlighted values in the legend, where true means yes.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayLengengValues", IsRequired = false)]
         public TrippleStateBool GviDisplayLegendValues
         {
             get
@@ -213,6 +220,7 @@ namespace GoogleChartsNGraphsControls
             The outline in the zoom selector is a log scale version of the last series in the chart, scaled to fit the height of the zoom selector.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayRangeSelector", IsRequired = false)]
         public TrippleStateBool GviDisplayRangeSelector
         {
             get
@@ -233,6 +241,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to show the zoom links ('1d 5d 1m' and so on), where false means no.")]
         [Category("GoogleOptions")]
         [DefaultValue(TrippleStateBool.NotSet)]
+        [DataMember(Name = "displayZoomButtons", IsRequired = false)]
         public TrippleStateBool GviDisplayZoomButtons
         {
             get
@@ -253,6 +262,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("A suffix to be added to all values in the scales and the legend.")]
         [DefaultValue("")]
+        [DataMember(Name = "allValuesSuffix", IsRequired = false)]
         public string GviAllValuesSuffix
         {
             get
@@ -273,6 +283,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The format used to display the date information in the top right corner. The format of this field is as specified by the java SimpleDateFormat class.")]
         [DefaultValue("")]
+        [DataMember(Name = "dateFormat", IsRequired = false)]
         public string GviDateFormat
         {
             get
@@ -294,6 +305,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Which dot on the series to highlight, and corresponding values to show in the legend. Select from one of these values:
             'nearest' - The values closest along the X axis to the mouse.
             'last' - The next set of values to the left of the mouse")]
+        [DataMember(Name = "highlistDot", IsRequired = false)]
         public HighlightDot GviHighlightDot
         {
 
@@ -310,24 +322,25 @@ namespace GoogleChartsNGraphsControls
         }
        
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("Whether to put the colored legend on the same row with the zoom buttons and the date ('sameRow'), or on a new row ('newRow').")]
-        [DefaultValue("")]
-        public TimelineLegend GviLegendPosition
-        {
-            get
-            {
-                TimelineLegend s = (TimelineLegend)ViewState["GviLegendPosition"];
-                return s;
-            }
+        //[GviConfigOption]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description("Whether to put the colored legend on the same row with the zoom buttons and the date ('sameRow'), or on a new row ('newRow').")]
+        //[DefaultValue("")]
+        //[DataMember(Name = "legendPosition", IsRequired = false)]
+        //public override TimelineLegend GviLegendPosition
+        //{
+        //    get
+        //    {
+        //        TimelineLegend s = (TimelineLegend)ViewState["GviLegendPosition"];
+        //        return s;
+        //    }
 
-            set
-            {
-                ViewState["GviLegendPosition"] = value;
-            }
-        }
+        //    set
+        //    {
+        //        ViewState["GviLegendPosition"] = value;
+        //    }
+        //}
 
 
         [GviConfigOption]
@@ -341,6 +354,7 @@ namespace GoogleChartsNGraphsControls
             You are not required to include a format for every series on the chart; any unspecified series will use the default format.
             If this option is specified, the displayExactValues option is ignored")]
         [DefaultValue("")]
+        [DataMember(Name = "numberFormats", IsRequired = false)]
         public string GviNumberFormats
         {
             get
@@ -372,6 +386,7 @@ namespace GoogleChartsNGraphsControls
             'allfixed' - Same as 'fixed,' but used when multiple scales are displayed. This setting adjusts each scale to the series to which it applies (use this in conjunction with scaleColumns).
             If you specify the min and/or max options, they will take precedence over the minimum and maximum values determined by your scale type.")]
         [DefaultValue("")]
+        [DataMember(Name = "scaleType", IsRequired = false)]
         public string GviScaleType
         {
             get
@@ -392,6 +407,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The Window Mode (wmode) parameter for the Flash chart. Available values are: 'opaque', 'window' or 'transparent'.")]
         [DefaultValue("")]
+        [DataMember(Name = "wmode", IsRequired = false)]
         public string GviWmode
         {
             get
@@ -412,6 +428,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("Sets the end date/time of the selected zoom range.")]
         [DefaultValue("")]
+        [DataMember(Name = "zoomEndTime", IsRequired = false)]
         public DateTime? GviZoomEndTime
         {
             get
@@ -432,6 +449,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("Sets the start date/time of the selected zoom range.")]
         [DefaultValue("")]
+        [DataMember(Name = "zoomStartTime", IsRequired = false)]
         public DateTime? GviZoomStartTime
         {
             get
@@ -452,6 +470,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description("The width (in percent) of the annotations area, out of the entire chart area. Must be a number in the range 5-80.")]
         [DefaultValue(25)]
+        [DataMember(Name = "annotationsWidth", IsRequired = false)]
         public int? GviAnnotationsWidth
         {
             get
@@ -471,6 +490,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"A number from 0—100 (inclusive) specifying the alpha of the fill below each line in the line graph. 100 means 100% opaque fill, 0 means no fill at all. The fill color is the same color as the line above it.")]
         [DefaultValue(null)]
+        [DataMember(Name = "fill", IsRequired = false)]
         public int? GviFill
         {
             get
@@ -490,6 +510,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"The maximum value to show on the Y axis. If the maximum data point exceeds this value, this setting will be ignored, and the chart will be adjusted to show the next major tick mark above the maximum data point. This will take precedence over the Y axis maximum determined by scaleType.")]
         [DefaultValue(null)]
+        [DataMember(Name = "max", IsRequired = false)]
         public int? GviMax
         {
             get
@@ -509,6 +530,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"The minimum value to show on the Y axis. If the minimum data point is less than this value, this setting will be ignored, and the chart will be adjusted to show the next major tick mark below the minimum data point. This will take precedence over the Y axis minimum determined by scaleType.")]
         [DefaultValue(null)]
+        [DataMember(Name = "min", IsRequired = false)]
         public int? GviMin
         {
             get
@@ -529,6 +551,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"A number from 0—10 (inclusive) specifying the thickness of the lines, where 0 is the thinnest.")]
         [DefaultValue(0)]
+        [DataMember(Name = "thickness", IsRequired = false)]
         public int? GviThickness
         {
             get
@@ -544,25 +567,25 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        [GviConfigOption]
-        [TypeConverter(typeof(WebColorConverter))]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("The colors to use for the chart lines and labels. An array of strings. Each element is a string in a valid HTML color format. For example 'red' or '#00cc00'.")]
-        [DefaultValue("")]
-        public Color?[] GviColors
-        {
-            get
-            {
-                Color?[] s = (Color?[])ViewState["GviColors"];
-                return s;
-            }
+        //[GviConfigOption]
+        //[TypeConverter(typeof(WebColorConverter))]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description("The colors to use for the chart lines and labels. An array of strings. Each element is a string in a valid HTML color format. For example 'red' or '#00cc00'.")]
+        //[DefaultValue("")]
+        //public Color?[] GviColors
+        //{
+        //    get
+        //    {
+        //        Color?[] s = (Color?[])ViewState["GviColors"];
+        //        return s;
+        //    }
 
-            set
-            {
-                ViewState["GviColors"] = value;
-            }
-        }
+        //    set
+        //    {
+        //        ViewState["GviColors"] = value;
+        //    }
+        //}
 
         [GviConfigOption]
         [Bindable(true)]
@@ -576,6 +599,7 @@ namespace GoogleChartsNGraphsControls
             Any values after the third in the array will be ignored.
             When displaying more than one scale, it is advisable to set the scaleType option to either 'allfixed' or 'allmaximized'.")]
         [DefaultValue(0)]
+        [DataMember(Name = "scaleColumns", IsRequired = false)]
         public int?[] GviScaleColumns
         {
             get
@@ -716,6 +740,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterTrippleStateBool());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {

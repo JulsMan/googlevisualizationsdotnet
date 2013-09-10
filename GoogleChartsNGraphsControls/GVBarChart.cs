@@ -232,64 +232,27 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
-        [DefaultValue("")]
-        public Color?[] GviColors
-        {
-            get
-            {
-                Color?[] s = (Color?[])ViewState["GviColors"];
-                return s;
-            }
+        //[GviConfigOption]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description("Use this to assign specific colors to each data series. Colors are specified in the Chart API color format. Color i is used for data column i, wrapping around to the beginning if there are more data columns than colors. If variations of a single color is acceptable for all series, use the color option instead.")]
+        //[DefaultValue("")]
+        //public Color?[] GviColors
+        //{
+        //    get
+        //    {
+        //        Color?[] s = (Color?[])ViewState["GviColors"];
+        //        return s;
+        //    }
 
-            set
-            {
-                ViewState["GviColors"] = value;
-            }
-        }
-
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("The default font size, in pixels, of all text in the chart. You can override this using properties for specific chart elements.")]
-        [DefaultValue(false)]
-        public int? GviFontSize
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviFontSize"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviEnableEvents"] = value;
-            }
-        }
+        //    set
+        //    {
+        //        ViewState["GviColors"] = value;
+        //    }
+        //}
 
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("The default font face for all text in the chart. You can override this using properties for specific chart elements.")]
-        [DefaultValue("")]
-        public string GviFontName
-        {
-            get
-            {
-                string s = (string)ViewState["GviFontSize"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviEnableEvents"] = value;
-            }
-        }
+       
 
 //        [GviConfigOption]
 //        [Bindable(true)]
@@ -544,67 +507,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Text to display above the chart.")]
-        [DefaultValue("")]
-        public string GviTitle
-        {
-            get
-            {
-                string s = (string)ViewState["GviTitle"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviTitle"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Where to place the chart title, compared to the chart area. Supported values:
-            in - Draw the title inside the chart area.
-            out - Draw the title outside the chart area.
-            none - Omit the title")]
-        [DefaultValue("")]
-        public string GviTitlePosition
-        {
-            get
-            {
-                string s = (string)ViewState["GviTitlePosition"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviTitlePosition"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"An object that specifies the title text style. The object has this format:
-            {color: <string>, fontName: <string>, fontSize: <number>}
-            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
-        [DefaultValue("")]
-        public object GviTitleTextStyle
-        {
-            get
-            {
-                string s = (string)ViewState["GviTitleTextStyle"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviTitleTextStyle"] = value;
-            }
-        }
+       
 
         [GviConfigOption]
         [Bindable(true)]

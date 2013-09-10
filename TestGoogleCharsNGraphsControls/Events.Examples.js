@@ -51,4 +51,13 @@ function MyColumnChartDataFormatter(chart,data)
     var formatter = new google.visualization.NumberFormat({prefix: '$'});
      formatter.format(data, 2); // Apply formatter to second column
      formatter.format(data, 1); // Apply formatter to second column
-}
+ }
+
+
+ function MyAreaChartMouseOverHandler(a, b, c) {
+     if (console != undefined) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+     }
+ }
