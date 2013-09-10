@@ -50,14 +50,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description("If set to true, any annotation text that includes HTML tags will be rendered as HTML.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name="allowHtml",IsRequired=false)]
         public TrippleStateBool GviAllowHtml 
         {
             get
             {
                 object s = ViewState["GviAllowHtml"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -73,14 +73,14 @@ namespace GoogleChartsNGraphsControls
         displayAnnotations must be false (that is, you cannot show annotations)
         you must pass in the same options and values (except for the allowRedraw and displayAnnotations) as in your first call to draw()")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "allowRedraw", IsRequired = false)]
         public TrippleStateBool GviAllowRedraw
         {
             get
             {
                 object s = ViewState["GviAllowRedraw"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -95,13 +95,13 @@ namespace GoogleChartsNGraphsControls
         [Description(@"If set to true, the chart will show annotations on top of selected values. When this option is set to true, after every numeric column, two optional annotation string columns can be added, one for the annotation title and one for the annotation text.")]
         [Category("GoogleOptions")]
         [DataMember(Name = "displayAnnotations", EmitDefaultValue = true, IsRequired = false)]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         public TrippleStateBool GviDisplayAnnotations
         {
             get
             {
                 object s = ViewState["GviDisplayAnnotations"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -115,14 +115,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"If set to true, the chart will display a filter contol to filter annotations. Use this option when there are many annotations")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayAnnotiationsFilter", IsRequired = false)]
         public TrippleStateBool GviDisplayAnnotationsFilter
         {
             get
             {
                 object s = ViewState["GviDisplayAnnotationsFilter"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -135,14 +135,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display a small bar separator ( | ) between the series values and the date in the legend, where true means yes.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayDateBarSeparator", IsRequired = false)]
         public TrippleStateBool GviDisplayDateBarSeparator
         {
             get
             {
                 object s = ViewState["GviDisplayDateBarSeparator"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -156,14 +156,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display a shortened, rounded version of the values on the top of the graph, to save space; false indicates that it may. For example, if set to false, 56123.45 might be displayed as 56.12k.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayExactValues", IsRequired = false)]
         public TrippleStateBool GviDisplayExactValues
         {
             get
             {
                 object s = ViewState["GviDisplayExactValues"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -177,14 +177,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display dots next to the values in the legend text, where true means yes.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayLegendDots", IsRequired = false)]
         public TrippleStateBool GviDisplayLegendDots
         {
             get
             {
                 object s = ViewState["GviDisplayExactValues"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -198,14 +198,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to display the highlighted values in the legend, where true means yes.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayLengengValues", IsRequired = false)]
         public TrippleStateBool GviDisplayLegendValues
         {
             get
             {
                 object s = ViewState["GviDisplayLegendValues"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -219,14 +219,14 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Whether to show the zoom range selection area (the area at the bottom of the chart), where false means no.
             The outline in the zoom selector is a log scale version of the last series in the chart, scaled to fit the height of the zoom selector.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayRangeSelector", IsRequired = false)]
         public TrippleStateBool GviDisplayRangeSelector
         {
             get
             {
                 object s = ViewState["GviDisplayRangeSelector"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set
@@ -240,14 +240,14 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Description(@"Whether to show the zoom links ('1d 5d 1m' and so on), where false means no.")]
         [Category("GoogleOptions")]
-        [DefaultValue(TrippleStateBool.NotSet)]
+        [DefaultValue(TrippleStateBool.Default)]
         [DataMember(Name = "displayZoomButtons", IsRequired = false)]
         public TrippleStateBool GviDisplayZoomButtons
         {
             get
             {
                 object s = ViewState["GviDisplayZoomButtons"];
-                return s == null ? TrippleStateBool.NotSet : (TrippleStateBool)s;
+                return s == null ? TrippleStateBool.Default : (TrippleStateBool)s;
             }
 
             set

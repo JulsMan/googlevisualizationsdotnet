@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 namespace GoogleChartsNGraphsControls
 {
     [Serializable()]
-    public enum TrippleStateBool { Default, True, False, NotSet}
+    public enum TrippleStateBool { Default, True, False}
     [Serializable()]
     public enum TitlePosition { Default, In, Out, None }
     [Serializable()]

@@ -161,11 +161,24 @@ namespace GoogleChartsNGraphsControls
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value == null) 
+            if (value == null)
                 writer.WriteValue("");
- 
-            string s = Enum.GetName(value.GetType(), value);
-            writer.WriteValue(s.LowerCaseFirst());
+
+            if (value.GetType() == typeof(TrippleStateBool))
+            {
+                string s = Enum.GetName(value.GetType(), value);
+                if (string.Compare(s, "default", true) == 0)
+                {
+                    writer.WriteValue("Default");
+                    return;
+                }
+                writer.WriteValue(s.LowerCaseFirst());
+            }
+            else
+            {
+                string s = Enum.GetName(value.GetType(), value);
+                writer.WriteValue(s.LowerCaseFirst());
+            }
         }
     }
    
@@ -175,6 +188,7 @@ namespace GoogleChartsNGraphsControls
         {
             if (objectType.BaseType == typeof(TrippleStateBool))
                 return true;
+
             return false;
         }
 

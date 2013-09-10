@@ -13,6 +13,8 @@
     <form id="form1" runat="server">
     <div>
         <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server"  GviDisplayZoomButtons="False" Width="900" Height="500" />
+
+
     </div>
     </form>
 </body>
