@@ -29,7 +29,8 @@ namespace TestGoogleCharsNGraphsControls
                 //an.Duration = 2500;
                 //this.GVColumnChart1.GviAnimationClass = an;
 
-
+                this.GVAreaChart1.DataSource = dt;
+                this.GVAreaChart1.DataBind();
                 //this.GVColumnChart1.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom };
 
                 GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
@@ -37,16 +38,16 @@ namespace TestGoogleCharsNGraphsControls
                 hx.BaselineColor = System.Drawing.Color.Red;
                 hx.SlantedText = true;
                 hx.Title = "Hoz Axis Title";
-                //this.GVColumnChart1.GviHAxisClass = hx;
+                this.GVAreaChart1.GviHAxisClass = hx;
 
-                //GoogleChartsNGraphsControls.vAxis vx = new GoogleChartsNGraphsControls.vAxis();
-                //vx.BaselineColor = System.Drawing.Color.Green;
-                //vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
-                //vx.Title = "By Year";
-                //this.GVColumnChart1.GviVAxisClass = vx;
+                GoogleChartsNGraphsControls.vAxis vx = new GoogleChartsNGraphsControls.vAxis();
+                vx.BaselineColor = System.Drawing.Color.Green;
+                vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
+                vx.Title = "By Year";
+                this.GVAreaChart1.GviVAxisClass = vx;
 
-                //this.GVColumnChart1.ChartData(dt);
 
+                
 
 
                 List<GoogleChartsNGraphsControls.TimelineEvent> evts = new List<GoogleChartsNGraphsControls.TimelineEvent>();

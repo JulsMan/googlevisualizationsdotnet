@@ -397,6 +397,7 @@ namespace GoogleChartsNGraphsControls
             settings.Converters.Add(new CustomConverterEnum());
 
             string s =  Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
+            //s = BaseGVI.FixJSON(s);
             return s;
         }
 

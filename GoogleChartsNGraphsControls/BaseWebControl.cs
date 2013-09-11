@@ -26,7 +26,6 @@ namespace GoogleChartsNGraphsControls
         [Category("Appearance")]
         [DefaultValue("")]
         [Localizable(true)]
-        [DataMember]
         public string Text
         {
             get
@@ -545,7 +544,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
        
-        [DataMember(Name = "vAxis", EmitDefaultValue = true, IsRequired = false, Order=5)]
+        [DataMember(Name = "vAxis", EmitDefaultValue = true, IsRequired = false)]
         public vAxis GviVAxisClass
         {
             get;

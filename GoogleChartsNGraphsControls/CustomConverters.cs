@@ -107,8 +107,17 @@ namespace GoogleChartsNGraphsControls
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            //if (value is hAxis)
+            //{
+            //    writer.WritePropertyName("hAxis");
+            //}
+            //else if (value is vAxis)
+            //{
+            //     writer.WritePropertyName("hAxis");
+            //}
+            writer.WriteWhitespace(" ");
             string json = ((Axis)value).ToString();
-            writer.WriteRaw(json);
+            writer.WriteRawValue(json);
 
         }
     }
@@ -204,4 +213,8 @@ namespace GoogleChartsNGraphsControls
             writer.WriteRawValue(s.LowerCaseFirst());
         }
     }
+
+
+  
+
 }

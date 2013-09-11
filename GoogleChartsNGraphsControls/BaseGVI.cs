@@ -303,8 +303,8 @@ namespace GoogleChartsNGraphsControls
         internal string RenderGVIConfigOptions(WebControl PageControl)
         {
             var s =  PageControl.ToString();
-            s = FixJSON(s);
-            return s;
+            //s = FixJSON(s);
+            return UglyJSONAxisFix(s);
         }
 
 
@@ -327,10 +327,21 @@ namespace GoogleChartsNGraphsControls
             return string.Join(" \n", lst.ToArray());
         }
 
-        internal string FixJSON(string JSON)
+        /// <summary>
+        /// Ugly bug, where if two Axis are placed, then the second has a '"' in front of it, remove it forefully
+        /// </summary>
+        /// <param name="JSON"></param>
+        /// <returns></returns>
+        internal static string UglyJSONAxisFix(string JSON)
+        {
+            return JSON;
+            //return JSON.Replace("vAxis\"", "\"vAxis\"").Replace("hAvis\"", "\"hAxis\"");
+        }
+        internal static string FixJSON(string JSON)
         {
             /*
-             * chart.opts =              * {"title":"Company Sales/Expenses","colors":['#FF0000','#008000','#0000FF','#FFA500'],
+             * chart.opts = 
+             * {"title":"Company Sales/Expenses","colors":['#FF0000','#008000','#0000FF','#FFA500'],
              * "animation":{"duration":1000,"easing":"out"},"hAxis":{"textPosition":"default","title":"Hoz Axis Title","slantedText":true,"viewWindowMode":"default"}};
              *
              * all options with "title": or "xxxxx": => xxxxx:
