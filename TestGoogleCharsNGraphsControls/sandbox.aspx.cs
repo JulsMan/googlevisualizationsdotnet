@@ -22,16 +22,15 @@ namespace TestGoogleCharsNGraphsControls
                 dt.Rows.Add(new object[] { "2006", 660, 1120 });
                 dt.Rows.Add(new object[] { "2007", 1030, 540 });
 
-
-
-                //GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
-                //an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
-                //an.Duration = 2500;
-                //this.GVColumnChart1.GviAnimationClass = an;
-
                 this.GVAreaChart1.DataSource = dt;
                 this.GVAreaChart1.DataBind();
-                //this.GVColumnChart1.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom };
+
+                GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation();
+                an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
+                an.Duration = 2500;
+                this.GVAreaChart1.GviAnimationClass = an;
+
+                this.GVAreaChart1.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom };
 
                 GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
                 hx.Baseline = 1;
@@ -45,6 +44,9 @@ namespace TestGoogleCharsNGraphsControls
                 vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
                 vx.Title = "By Year";
                 this.GVAreaChart1.GviVAxisClass = vx;
+
+
+
 
 
                 
