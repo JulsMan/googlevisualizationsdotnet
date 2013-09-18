@@ -170,6 +170,7 @@ namespace GoogleChartsNGraphsControls
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            
             if (value == null)
                 writer.WriteValue("");
 

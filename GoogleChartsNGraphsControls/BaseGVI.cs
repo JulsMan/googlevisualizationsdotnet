@@ -334,8 +334,8 @@ namespace GoogleChartsNGraphsControls
         /// <returns></returns>
         internal static string UglyJSONAxisFix(string JSON)
         {
-            return JSON;
-            //return JSON.Replace("vAxis\"", "\"vAxis\"").Replace("hAvis\"", "\"hAxis\"");
+            //return JSON;
+            return JSON.Replace("}null}", "}}");
         }
         internal static string FixJSON(string JSON)
         {
