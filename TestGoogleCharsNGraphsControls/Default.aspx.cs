@@ -179,6 +179,7 @@ namespace TestGoogleCharsNGraphsControls
             this.GVBarChart1.DataSource = barchart;
 
 
+            
 
             
 
@@ -193,6 +194,10 @@ namespace TestGoogleCharsNGraphsControls
 
 
             this.GVBarChartEvents.DataSource = barchart;
+
+            // stacked chart
+            this.GVBarChartStacked.DataSource = barchart;
+            this.GVBarChartStacked.DataBind();
 
             /*
              * var data = google.visualization.arrayToDataTable([
@@ -276,7 +281,6 @@ namespace TestGoogleCharsNGraphsControls
             rv.Rows.Add(new object[] { 511, 146 });
             rv.Rows.Add(new object[] { 505, 151 });
             rv.Rows.Add(new object[] { 509, 149 });
-            this.GVSparkLine1.GviLabelPosition = "left";
             this.GVSparkLine1.DataSource = rv;
 
 

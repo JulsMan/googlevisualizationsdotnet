@@ -19,174 +19,81 @@ namespace GoogleChartsNGraphsControls
     public class GVMap : BaseWebControl
     {
 
+       
+
         [GviConfigOption]
         [Bindable(true)]
-        [Description("If set to true, enables zooming in and out using the mouse scroll wheel.")]
+        [Category("GoogleOptions")]
+        [Description(@"Which type of map this is. The DataTable format must match the value specified. The following values are supported:
+            'auto' - Choose based on the format of the DataTable.
+            'regions' - This is a region map
+            'markers' - This is a marker map.")]
+        [DefaultValue("displayMode")]
+        [DataMember(Name = "displayMode", EmitDefaultValue=true, IsRequired=false)]
+        public MapDisplayModes GviDisplayMode
+        {
+            get
+            {
+                MapDisplayModes? s = (MapDisplayModes?)ViewState["GviDisplayMode"];
+                return s == null ? MapDisplayModes.Default : (MapDisplayModes)s;
+            }
+
+            set
+            {
+                ViewState["GviDisplayMode"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Description(@"The area to display on the map. (Surrounding areas will be displayed as well.) Can be one of the following:
+'world' - A map of the entire world.
+A continent or a sub-continent, specified by its 3-digit code, e.g., '011' for Western Africa.
+A country, specified by its ISO 3166-1 alpha-2 code, e.g., 'AU' for Australia.
+A state in the United States, specified by its ISO 3166-2:US code, e.g., 'US-AL' for Alabama. Note that the resolution option must be set to either 'provinces' or 'metros'.")]
         [Category("GoogleOptions")]
         [DefaultValue(false)]
-        [PersistenceMode(PersistenceMode.EncodedInnerDefaultProperty)]
-        public bool? GviEnableScrollWheel
+        [DataMember(Name = "region", EmitDefaultValue = true, IsRequired = false)]
+        public MapRegion GviRegion
         {
             get
             {
-                bool? s = (bool?)ViewState["GviEnableScrollWheel"];
-                return (s == null ? false : s);
+                MapRegion? s = (MapRegion?)ViewState["GviRegion"];
+                return s == null ? MapRegion.Default : (MapRegion)s;
             }
 
             set
             {
-                ViewState["GviEnableScrollWheel"] = value;
+                ViewState["GviRegion"] = value;
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Description("If set to true, shows the location description as a tooltip when the mouse is positioned above a point marker.")]
-        [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviShowTip
-        {
-            get
-            {
-                bool? s = (bool?)ViewState["ShowTip"];
-                return (s==null?false:s);
-            }
-
-            set
-            {
-                ViewState["ShowTip"] = value;
-            }
-        }
 
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description("If set to true, shows a Google Maps polyline through all the points.")]
-        [DefaultValue(false)]
-        public bool? GviShowLine
+        [Description(@"The resolution of the map borders. Choose one of the following values:
+                        'countries' - Supported for all regions, except for US state regions.
+                        'provinces' - Supported only for country regions and US state regions. 
+                            Not supported for all countries; please test a country to see whether this option is supported.
+                        'metros' - Supported for the US country region and US state regions only.")]
+        [DefaultValue("displayMode")]
+        [DataMember(Name = "resolution", EmitDefaultValue = true, IsRequired = false)]
+        public MapResolution GviResolution
         {
             get
             {
-                bool? s = (bool?)ViewState["GviShowLine"];
-                return (s == null ? false : s);
+                MapResolution? s = (MapResolution?)ViewState["GviResolution"];
+                return s == null ? MapResolution.Default : (MapResolution)s;
             }
 
             set
             {
-                ViewState["GviShowLine"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [TypeConverter(typeof(WebColorConverter))]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("If showLine is true, defines the line color. For example: '#800000'.")]
-        [DefaultValue("")]
-        public Color? GviLineColor
-        {
-            get
-            {
-                Color? s = (Color?)ViewState["GviLineColor"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviLineColor"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("If showLine is true, defines the line width (in pixels).")]
-        [DefaultValue(10)]
-        public int? GviLineWidth
-        {
-            get
-            {
-                int? s = (int?)ViewState["GviLineWidth"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviLineWidth"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("The type of map to show. Possible values are 'normal', 'terrain', 'satellite' or 'hybrid'.")]
-        [DefaultValue("hybrid")]
-        public string GviMapType
-        {
-            get
-            {
-                string s = (string)ViewState["MapType"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["MapType"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Description("Show a map type selector that enables the viewer to switch between [map, satellite, hybrid, terrain]. When useMapTypeControl is false (default) no selector is presented and the type is determined by the mapType option.")]
-        [Category("GoogleOptions")]
-        [DefaultValue(false)]
-        public bool? GviUseMapTypeControl
-        {
-            get
-            {
-                bool? s = (bool?)ViewState["UseMapTypeControl"];
-                return ((s == null) ? false : s);
-            }
-
-            set
-            {
-                ViewState["UseMapTypeControl"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Description("An integer indicating the initial zoom level of the map, where 0 is completely zoomed out (whole world) and 19 is the maximum zoom level. (See 'Zoom Levels' in the Google Maps API.)")]
-        [Category("GoogleOptions")]
-        [DefaultValue(4)]
-        public int? GviZoomLevel
-        {
-            get
-            {
-                int? s = (int?)ViewState["UseMapTypeControl"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["UseMapTypeControl"] = value;
+                ViewState["GviResolution"] = value;
             }
         }
 
 
-        //protected DataTable dt
-        //{
-        //    get
-        //    {
-        //        DataTable s = (DataTable)ViewState["GoogleDataTable"];
-        //        return ((s == null) ? new DataTable() : s);
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GoogleDataTable"] = value;
-        //    }
-        //}
 
         public void ChartData(string Address, string LocationName)
         {

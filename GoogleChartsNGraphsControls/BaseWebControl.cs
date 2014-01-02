@@ -61,23 +61,22 @@ namespace GoogleChartsNGraphsControls
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"Where to place the chart title, compared to the chart area. Supported values:
-            in - Draw the title inside the chart area.
-            out - Draw the title outside the chart area.
-            none - Omit the title")]
-        [DefaultValue("")]
-        [DataMember(Name = "titlePosition", IsRequired = false, EmitDefaultValue = true)]
-        public string GviTitlePosition
+        [Description(@"A theme is a set of predefined option values that work together to achieve a specific chart behavior or visual effect. Currently only one theme is available:
+            'maximized' - Maximizes the area of the chart, and draws the legend and all of the labels inside the chart area. Sets the following options:")]
+        [DefaultValue(TitlePosition.Out)]
+        [DataMember(Name = "titlePosition", EmitDefaultValue = true, IsRequired = false)]
+        public TitlePosition GVITitlePosition
         {
             get
             {
-                string s = (string)ViewState["GviTitlePosition"];
-                return s;
+                object s = ViewState["GVITitlePosition"];
+                if (s == null) return TitlePosition.Out;
+                TitlePosition ss = (TitlePosition)ViewState["GVITitlePosition"];
+                return ss;
             }
-
             set
             {
-                ViewState["GviTitlePosition"] = value;
+                ViewState["GVITitlePosition"] = value;
             }
         }
 
@@ -141,6 +140,231 @@ namespace GoogleChartsNGraphsControls
             set
             {
                 ViewState["GVIBackgroundColor"] = value;
+            }
+        }
+
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The color of the chart border, as an HTML color string.")]
+        [DefaultValue("")]
+        [DataMember(Name = "backgroundColor.stroke", EmitDefaultValue = true, IsRequired = false)]
+        public Color? GVIBackgroundColor_stroke
+        {
+            get
+            {
+                Color? s = (Color?)ViewState["GVIBackgroundColor_stroke"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GVIBackgroundColor_stroke"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The border width, in pixels.")]
+        [DefaultValue(0)]
+        [DataMember(Name = "backgroundColor.strokeWidth", EmitDefaultValue = true, IsRequired = false)]
+        public int? GVIBackgroundColor_strokeWidth
+        {
+            get
+            {
+                int? s = (int?)ViewState["GVIBackgroundColor_strokeWidth"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GVIBackgroundColor_strokeWidth"] = value;
+            }
+        }
+
+       
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("The chart fill color, as an HTML color string.")]
+        [DefaultValue("")]
+        [DataMember(Name = "backgroundColor.fill", EmitDefaultValue = true, IsRequired = false)]
+        public Color? GVIBackgroundColor_fill
+        {
+            get
+            {
+                Color? s = (Color?)ViewState["GVIBackgroundColor_fill"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GVIBackgroundColor_fill"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Whether the chart throws user-based events or reacts to user interaction. If false, the chart will not throw 'select' or other interaction-based events (but will throw ready or error events), and will not display hovertext or otherwise change depending on user input.")]
+        [DefaultValue(true)]
+        [DataMember(Name = "enableInteractivity", EmitDefaultValue = true, IsRequired = false)]
+        public bool? GVIEnableInteractivity
+        {
+            get
+            {
+                return (bool?)ViewState["GVIEnableInteractivity"];
+            }
+            set
+            {
+                ViewState["GVIEnableInteractivity"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"The type of the entity that receives focus on mouse hover. Also affects which entity is selected by mouse click, and which data table element is associated with events. Can be one of the following:
+            'datum' - Focus on a single data point. Correlates to a cell in the data table.
+            'category' - Focus on a grouping of all data points along the major axis. Correlates to a row in the data table.
+            In focusTarget 'category' the tooltip displays all the category values. This may be useful for comparing values of different series.")]
+        [DefaultValue(FocusTarget.Default)]
+        [DataMember(Name = "focusTarget", EmitDefaultValue = true, IsRequired = false)]
+        public FocusTarget GVIFocusTarget
+        {
+            get
+            {
+                object s = ViewState["GVIFocusTarget"];
+                if (s == null) return FocusTarget.Default;
+                FocusTarget ss = (FocusTarget)ViewState["GVIFocusTarget"];
+                return ss;
+            }
+            set
+            {
+                ViewState["GVIFocusTarget"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("An object with members to configure the placement and size of the chart area (where the chart itself is drawn, excluding axis and legends). Two formats are supported: a number, or a number followed by %. A simple number is a value in pixels; a number followed by % is a percentage. Example: chartArea:{left:20,top:0,width:\"50%\",height:\"75%\"}")]
+        [DefaultValue("")]
+        [DataMember(Name = "chartArea", EmitDefaultValue = true, IsRequired = false)]
+        public string GviChartArea
+        {
+            get
+            {
+                string s = (string)ViewState["GviChartArea"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviChartArea"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("How far to draw the chart from the left border.")]
+        [DefaultValue("")]
+        [DataMember(Name = "chartArea.left", EmitDefaultValue = true, IsRequired = false)]
+        public string GviChartArea_left
+        {
+            get
+            {
+                string s = (string)ViewState["GviChartArea_left"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviChartArea_left"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("How far to draw the chart from the top border.")]
+        [DefaultValue("")]
+        [DataMember(Name = "chartArea.top", EmitDefaultValue = true, IsRequired = false)]
+        public string GviChartArea_top
+        {
+            get
+            {
+                string s = (string)ViewState["GviChartArea_top"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviChartArea_top"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Chart area width.")]
+        [DefaultValue("")]
+        [DataMember(Name = "chartArea.width", EmitDefaultValue = true, IsRequired = false)]
+        public string GviChartArea_width
+        {
+            get
+            {
+                string s = (string)ViewState["GviChartArea_width"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviChartArea_width"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description("Chart area height.")]
+        [DefaultValue("")]
+        [DataMember(Name = "chartArea.height", EmitDefaultValue = true, IsRequired = false)]
+        public string GviChartArea_height
+        {
+            get
+            {
+                string s = (string)ViewState["GviChartArea_height"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviChartArea_height"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"If set to true, will draw series from bottom to top. The default is to draw top-to-bottom.")]
+        [DefaultValue(false)]
+        [DataMember(Name = "reverseCategories", EmitDefaultValue = true, IsRequired = false)]
+        public bool? GviReverseCategories
+        {
+            get
+            {
+                bool? s = (bool?)ViewState["GviReverseCategories"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviReverseCategories"] = value;
             }
         }
 
@@ -627,7 +851,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
         [GviConfigOption]
         [GviEventOption("select")]
         [Bindable(true)]
@@ -744,6 +967,27 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"An object that specifies the tooltip text style. The object has this format:
+            {textStyle: {color: 'black', fontName: Tahoma, fontSize: 10}, showColorCode: true}
+            The color can be any HTML color string, for example: 'red' or '#00cc00'. Also see fontName and fontSize.")]
+        [DefaultValue("")]
+        [DataMember(Name = "tooltip", EmitDefaultValue = true, IsRequired = false)]
+        public string GviTooltip
+        {
+            get
+            {
+                string s = (string)ViewState["GviTooltipTextStyle"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviTooltipTextStyle"] = value;
+            }
+        }
 
         //[GviConfigOption]
         //[Bindable(true)]

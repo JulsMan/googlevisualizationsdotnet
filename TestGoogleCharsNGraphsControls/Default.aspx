@@ -275,6 +275,23 @@
         </pre>
 
 
+         <p />
+        <h3>BarChart Stacked Example</h3>
+        <cc1:GVBarChart ID="GVBarChartStacked" runat="server" Width="600" Height="400"  OnClick="GVBarChart1_Click" GviIsStacked="true" />
+         <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
+            barchart.Columns.Add("Year", typeof(string));
+            barchart.Columns.Add("Sales", typeof(int));
+            barchart.Columns.Add("Expenses", typeof(int));
+            barchart.Rows.Add(new object[] { "2004", 1000, 400 });
+            barchart.Rows.Add(new object[] { "2005", 1170, 460 });
+            barchart.Rows.Add(new object[] { "2006", 660, 1120 });
+            barchart.Rows.Add(new object[] { "2007", 1030, 540 });
+            this.GVBarChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'red'} }";
+            this.GVBarChart1.ChartData(barchart);
+        </pre>
+
 
 
         <p />

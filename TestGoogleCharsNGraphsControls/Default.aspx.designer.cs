@@ -121,6 +121,15 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVBarChart GVBarChart1;
         
         /// <summary>
+        /// GVBarChartStacked control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVBarChart GVBarChartStacked;
+        
+        /// <summary>
         /// GVBarChartEvents control.
         /// </summary>
         /// <remarks>

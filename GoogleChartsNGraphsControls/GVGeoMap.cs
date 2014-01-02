@@ -98,44 +98,6 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [TypeConverter(typeof(WebColorConverter))]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("Color gradient to assign to values in the visualization. You must have at least two values; the gradient will include all your values, plus calculated intermediary values, with the lightest color as the smallest value, and the darkest color as the highest.")]
-        [DefaultValue("")]
-        public Color?[] GviColors
-        {
-            get
-            {
-                Color?[] s = (Color?[])ViewState["GviColors"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviColors"] = value;
-            }
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description("If true, display a legend for the map.")]
-        [DefaultValue("hybrid")]
-        public bool? GviShowLegend
-        {
-            get
-            {
-                bool? s = (bool?)ViewState["GviShowLegend"];
-                return s;
-            }
-
-            set
-            {
-                ViewState["GviShowLegend"] = value;
-            }
-        }
 
         [GviConfigOption]
         [Bindable(true)]

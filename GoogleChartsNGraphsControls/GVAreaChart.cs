@@ -15,59 +15,31 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVAreaChart runat=server></{0}:GVAreaChart>")]
     [ToolboxBitmap(typeof(GVAreaChart))]
     [DataContract]
-    public class GVAreaChart : BaseWebControl
+    public class GVAreaChart : BaseWebControl, IsStackable
     {
 
-        //[Bindable(true)]
-        //[Category("Appearance")]
-        //[DefaultValue("")]
-        //[Localizable(true)]
-        //public string Text
-        //{
-        //    get
-        //    {
-        //        String s = (String)ViewState["Text"];
-        //        return ((s == null) ? String.Empty : s);
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["Text"] = value;
-        //    }
-        //}
-
-
-      
-
-
-      
-
-
-
-
-        public void ChartData(string Name, int Value)
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"If set to true, bar values are stacked (accumulated).")]
+        [DefaultValue(false)]
+        [DataMember(Name = "isStacked", EmitDefaultValue = true, IsRequired = false)]
+        public bool? GviIsStacked
         {
-
-            if ((this.dt == null) || (this.dt.Columns.Count == 0))
+            get
             {
-                this.dt = new DataTable();
-                this.dt.Columns.Add("Name", typeof(String));
-                this.dt.Columns.Add("Value", typeof(decimal));
+                bool? s = (bool?)ViewState["GviIsStacked"];
+                return s;
             }
 
-            this.dt.Rows.Add(new object[] { Name, (decimal)Value });
-        }
-        public void ChartData(string Name, decimal Value)
-        {
-            if ((this.dt == null) || (this.dt.Columns.Count == 0))
+            set
             {
-                this.dt = new DataTable();
-                this.dt.Columns.Add("Name", typeof(String));
-                this.dt.Columns.Add("Value", typeof(decimal));
+                bool? s = value as bool?;
+                ViewState["GviIsStacked"] = s;
             }
-
-            this.dt.Rows.Add(new object[] { Name, Value });
         }
+
+    
 
         protected override void RenderContents(HtmlTextWriter output)
         {
