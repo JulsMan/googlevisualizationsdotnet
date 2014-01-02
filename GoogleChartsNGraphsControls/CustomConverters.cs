@@ -191,7 +191,36 @@ namespace GoogleChartsNGraphsControls
             }
         }
     }
-   
+
+    internal class CustomConverterComboSeries : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            if (objectType == typeof(ComboChartLineSeries))
+                return true;
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+
+            if (value == null)
+                writer.WriteValue("");
+
+            if (value.GetType() == typeof(ComboChartLineSeries))
+            {
+                ComboChartLineSeries v = (ComboChartLineSeries)value;
+                writer.WriteRawValue(v.ToString());
+            }
+           
+        }
+    }
+
     internal class CustomConverterTrippleStateBool : JsonConverter
     {
         public override bool CanConvert(Type objectType)

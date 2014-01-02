@@ -12,6 +12,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Drawing;
 using Newtonsoft.Json;
+using System.Data;
 
 namespace GoogleChartsNGraphsControls
 {
@@ -67,6 +68,8 @@ namespace GoogleChartsNGraphsControls
     public enum TableFormatters { Default, Arrow, Bar, Color, Date, Number, Pattern}
     [Serializable()]
     public enum SeriesType { Line, Area, Bars, Candlesticks, SteppedArea }
+    [Serializable()]
+    public enum Orientation { Default, Horizonal, Vertical }
 
     /// <summary>
     /// TODO: Need to implement this, still need to create valid series JSON and to auto-apply this to the 
@@ -76,54 +79,12 @@ namespace GoogleChartsNGraphsControls
     ///series:{4:{type:'line'}}
     ///
     /// </summary>
-    [DataContract(Name = "series")]
-    public class ComboChartColumnFormatClass
-    {
-        private string[] keycolumnnames = new string[] { "AVERAGE", "AVG" };
-        private List<ComboColumnFormat> formattedColumns = new List<ComboColumnFormat>();
-
-
-        [DataContract()]
-        public class ComboColumnFormat
-        {
-            
-            public ComboColumnFormat()
-            {
-                this.LineSeries = SeriesType.Line;
-            }
-            public ComboColumnFormat(SeriesType type): this()
-            {
-               this.LineSeries = type;
-            }
-
-            public int? ColumnLineNumber { get; set; }
-            public string ColumnLineName { get; set; }
-
-
-             [DataMember(Name="type")]
-            public SeriesType LineSeries { get; set; }
-             [DataMember(Name = "color")]
-            public Color? color { get; set; }
-        }
-
-        public void Add(ComboColumnFormat column)
-        {
-            this.formattedColumns.Add(column);
-        }
-        public void Add(ComboColumnFormat column, int iColumnNumberToApply)
-        {
-            column.ColumnLineNumber = iColumnNumberToApply;
-        }
-        public void Add(ComboColumnFormat column, string columnNameToApply)
-        {
-            column.ColumnLineName = columnNameToApply;
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
-    }
+    //[DataContract(Name = "series")]
+    //public class ComboChartLineSeries
+    //{
+    //    [DataMember(Name = "REPLACE_WITH_SERIES")]
+    //    public string DataRowNumber { get; set; }
+    //}
 
     [Serializable()]
     [DataContract(Name = "animation")]
@@ -492,6 +453,18 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
+    [Serializable()]
+    [DataContract(Name = "series")]
+    public class ComboChartLineSeries
+    {
+        public int Column { get; set; }
+        public SeriesType LineType { get; set; }
+
+        public override string ToString() 
+        {
+            return string.Format("{{ {0}: {{ type:'{1}' }} }}", Column, LineType.ToString().ToLower());
+        }
+    }
 
     public static class BaseDesignTimeSupport
     {

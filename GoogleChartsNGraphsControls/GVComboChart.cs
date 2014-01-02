@@ -22,6 +22,7 @@ namespace GoogleChartsNGraphsControls
             : base()
         {
             this.GviSeriesType = SeriesType.Bars;
+            this.GviComboChartLine = new ComboChartLineSeries() { LineType = SeriesType.Line, Column = 0 };
         }
 
 
@@ -46,7 +47,7 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-
+       
 
         [GviConfigOption]
         [Bindable(true)]
@@ -54,15 +55,13 @@ namespace GoogleChartsNGraphsControls
         [Description(@"The default line type for any series not specified in the series property. 
             Available values are 'line', 'area', 'bars', 'candlesticks' and 'steppedArea'.")]
         [DataMember(Name = "seriesType", EmitDefaultValue = false, IsRequired = true)]
-        [DefaultValue(SeriesType.Bars)]
         public SeriesType GviSeriesType
         {
             get
             {
-                object s = ViewState["GviSeriesType"];
+                SeriesType? s = (SeriesType?) ViewState["GviSeriesType"];
                 if (s == null) return SeriesType.Bars;
-                SeriesType ss = (SeriesType)ViewState["GviSeriesType"];
-                return ss;
+                return (SeriesType) s;
             }
             set
             {
@@ -70,9 +69,22 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
-
+        [DataMember(Name="series")]
+        public ComboChartLineSeries GviComboChartLine
+        {
+            get
+            {
+                return (ComboChartLineSeries)ViewState["GviComboChartLine"];
+            }
+            set
+            {
+                ViewState["GviComboChartLine"] = value;
+            }
+        }
        
+
+
+
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
@@ -83,11 +95,7 @@ namespace GoogleChartsNGraphsControls
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.COMBO);
             output.Write(Text);
         }
-        // Support for IPostBackEventHandler
-        //protected override void Render(HtmlTextWriter output)
-        //{
-        //    RenderContents(output);
-        //}
+      
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
@@ -95,6 +103,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterComboSeries());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {

@@ -225,7 +225,11 @@ namespace TestGoogleCharsNGraphsControls
             combo.Rows.Add(new object[] { new DateTime(2004, 9, 1),  136,   691,    629,    1026,   366,    569 });
 
             //this.GVComboChart1.GviOptionsOverride = "{ seriesType:'bars', series:{5:{type:'line'}} }";
-
+            this.GVComboChart1.GviComboChartLine = new GoogleChartsNGraphsControls.ComboChartLineSeries() 
+            { 
+                Column = 5, 
+                LineType = GoogleChartsNGraphsControls.SeriesType.Line 
+            };
             this.GVComboChart1.DataSource = combo;
             this.GVComboChart1.DataBind();
 

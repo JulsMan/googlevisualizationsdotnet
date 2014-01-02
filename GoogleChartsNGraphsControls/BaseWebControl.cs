@@ -989,6 +989,26 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+
+        //[GviConfigOption]
+        //[Bindable(true)]
+        //[Category("GoogleOptions")]
+        //[Description("The orientation of the chart. When set to 'vertical', rotates the axes of the chart so that (for instance) a column chart becomes a bar chart, and an area chart grows rightward instead of up:")]
+        //[DataMember(Name = "orientation", EmitDefaultValue = true, IsRequired = false)]
+        //[DefaultValue(Orientation.Horizonal)]
+        //public Orientation GviOrientation
+        //{
+        //    get
+        //    {
+        //        Orientation? s = (Orientation?)ViewState["GviOrientation"];
+        //        return s == null ? Orientation.Default : (Orientation)s;
+        //    }
+        //    set
+        //    {
+        //        ViewState["GviOrientation"] = value;
+        //    }
+        //}
+
         //[GviConfigOption]
         //[Bindable(true)]
         //[Category("GoogleOptions")]
