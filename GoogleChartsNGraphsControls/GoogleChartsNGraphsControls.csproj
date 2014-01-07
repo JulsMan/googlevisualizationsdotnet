@@ -90,6 +90,9 @@
     <Compile Include="BaseGVI.cs" />
     <Compile Include="BaseWebControl.cs" />
     <Compile Include="BaseInterfaces.cs" />
+    <Compile Include="GVTimeline.cs" />
+    <Compile Include="GVDonutChart.cs" />
+    <Compile Include="GVHistogram.cs" />
     <Compile Include="GVComboChart.cs" />
     <Compile Include="CustomConverters.cs" />
     <Compile Include="GVCandlestickChart.cs" />
@@ -133,11 +136,13 @@
     <EmbeddedResource Include="GVGanttChart.bmp" />
     <EmbeddedResource Include="GVCandlestickChart.bmp" />
     <EmbeddedResource Include="GVComboChart.bmp" />
+    <EmbeddedResource Include="GVDonutChart.bmp" />
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />
     <None Include="GVI\Visualization.dll" />
     <EmbeddedResource Include="GVLineChart.bmp" />
+    <Content Include="GVTimeline.bmp" />
     <Content Include="icons\chart_bar.png" />
     <Content Include="icons\chart_curve.png" />
     <Content Include="icons\chart_line.png" />

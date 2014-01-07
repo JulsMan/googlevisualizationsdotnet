@@ -5,52 +5,65 @@ using System.Text;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Drawing;
-using System.Web.UI.WebControls;
 using System.Data;
+using System.Web.UI.WebControls;
 using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVBarChart runat=server></{0}:GVBarChart>")]
-    [ToolboxBitmap(typeof(GVBarChart))]
+    [ToolboxData("<{0}:GVDonutChart runat=server></{0}:GVDonutChart>")]
+    [ToolboxBitmap(typeof(GVDonutChart))]
     [DataContract]
-    public class GVBarChart : BaseWebControl, IsStackable
+    public class GVDonutChart : BaseWebControl
     {
-
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"If set to true, bar values are stacked (accumulated).")]
+        [Description(@"3D chart")]
         [DefaultValue(false)]
-        [DataMember(Name="isStacked", EmitDefaultValue=true, IsRequired = false)]
-        public bool? GviIsStacked
+        [DataMember(Name="is3d", EmitDefaultValue=true, IsRequired=false)]
+        public bool? GviIs3D
         {
             get
             {
-                bool? s = (bool?)ViewState["GviIsStacked"];
+                bool? s = (bool?)ViewState["GviIs3D"];
                 return s;
             }
 
             set
             {
-                bool? s = value as bool?;
-                ViewState["GviIsStacked"] = s;
+                ViewState["GviIs3D"] = value;
             }
         }
 
-      
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"If between 0 and 1, displays a donut chart. The hole with have a radius equal to number times the radius of the chart.")]
+        [DefaultValue(0.4)]
+        [DataMember(Name = "pieHole", EmitDefaultValue = true, IsRequired = false)]
+        public decimal? GviPieHole 
+        {
+            get
+            {
+                decimal? s = (decimal?)ViewState["GviPieHole"];
+                return (s == null) ? (decimal?)0.4 : s;
+
+            }
+            set
+            {
+                ViewState["GviPieHole"] = value;
+            }
+        }
         protected override void RenderContents(HtmlTextWriter output)
         {
+           
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.BARCHART);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.PIECHART);
             output.Write(Text);
         }
-        // Support for IPostBackEventHandler
-        //protected override void Render(HtmlTextWriter output)
-        //{
-        //    RenderContents(output);
-        //}
+
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
@@ -69,5 +82,6 @@ namespace GoogleChartsNGraphsControls
             s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
             return s;
         }
+
     }
 }

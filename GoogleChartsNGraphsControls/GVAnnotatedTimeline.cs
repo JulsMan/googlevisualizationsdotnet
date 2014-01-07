@@ -706,7 +706,7 @@ namespace GoogleChartsNGraphsControls
         }
         protected override void RenderContents(HtmlTextWriter output)
         {
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TIMELINE);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.ANNOTATEDTIMELINE);
             output.Write(Text);
         }
         // Support for IPostBackEventHandler

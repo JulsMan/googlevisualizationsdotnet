@@ -16,6 +16,9 @@ namespace TestGoogleCharsNGraphsControls
         {
             Random num = new Random(Environment.TickCount);
 
+           
+
+
             System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");
             barchart.Columns.Add("Year", typeof(string));
             barchart.Columns.Add("Sales", typeof(int));
@@ -49,6 +52,8 @@ namespace TestGoogleCharsNGraphsControls
         protected void Page_Init()
         {
 
+            chart_timeline();
+            chart_histogram();
 
 
             // Map Test
@@ -115,7 +120,8 @@ namespace TestGoogleCharsNGraphsControls
             dt.Rows.Add(new object[] { "Meetings", 1 });
 
             this.GVPieChart1.DataSource = dt;
-
+            this.GVDonutChart1.DataSource = dt;
+            this.GVDonutChart1.DataBind();
 
             this.GVPieChart2.GviTitle = "Where I Spend My Time";
             this.GVPieChart2.GviLegendClass = new GoogleChartsNGraphsControls.Legend() { LegendPosition = GoogleChartsNGraphsControls.LegendPostion.Bottom }; 
@@ -145,6 +151,9 @@ namespace TestGoogleCharsNGraphsControls
 
 
             this.GVLineChart1.DataSource = dt2;
+
+            this.GVLineChart22.GviIsStacked = true;
+            this.GVLineChart22.DataSource = dt2;
 
             
             GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
@@ -333,9 +342,8 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-           
 
-
+          
 
             //System.Data.DataTable projs = new System.Data.DataTable("US Projects");
             //projs.Columns.AddRange(new System.Data.DataColumn[] {
@@ -472,10 +480,65 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
+        private void chart_timeline()
+        {
+            DataTable dt = new DataTable("Presidents");
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("President", typeof(string)), 
+                new DataColumn("Start", typeof(DateTime)), 
+                new DataColumn("End", typeof(DateTime))
+            });
+            dt.Rows.Add(new object[] {"Washington", new DateTime(1789,3,29), new DateTime(1797,2,3) });
+            dt.Rows.Add(new object[] { "Adams", new DateTime(1797, 2, 3), new DateTime(1801, 2, 3) });
+            dt.Rows.Add(new object[] { "Jefferson", new DateTime(1801, 2, 3), new DateTime(1809, 2, 3) });
+
+            this.GVTimeline1.DataSource = dt;
+            this.GVTimeline1.DataBind();
+
+        }
 
 
+        private void chart_histogram()
+        {
+            DataTable dt = new DataTable("Length of Dinosaurs (in meters)");
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("Dinosaur", typeof(string)), 
+                new DataColumn("Length", typeof(decimal))
+            });
 
+          dt.Rows.Add( new object[] {"Acrocanthosaurus (top-spined lizard)", 12.2});
+          dt.Rows.Add( new object[] {"Albertosaurus (Alberta lizard)", 9.1});
+          dt.Rows.Add( new object[] {"Allosaurus (other lizard)", 12.2});
+          dt.Rows.Add( new object[] {"Apatosaurus (deceptive lizard)", 22.9});
+          dt.Rows.Add( new object[] {"Archaeopteryx (ancient wing)", 0.9});
+          dt.Rows.Add( new object[] {"Argentinosaurus (Argentina lizard)", 36.6});
+          dt.Rows.Add( new object[] {"Baryonyx (heavy claws)", 9.1});
+          dt.Rows.Add( new object[] {"Brachiosaurus (arm lizard)", 30.5});
+          dt.Rows.Add( new object[] {"Ceratosaurus (horned lizard)", 6.1});
+          dt.Rows.Add( new object[] {"Coelophysis (hollow form)", 2.7});
+          dt.Rows.Add( new object[] {"Compsognathus (elegant jaw)", 0.9});
+          dt.Rows.Add( new object[] {"Deinonychus (terrible claw)", 2.7});
+          dt.Rows.Add( new object[] {"Diplodocus (double beam)", 27.1});
+          dt.Rows.Add( new object[] {"Dromicelomimus (emu mimic)", 3.4});
+          dt.Rows.Add( new object[] {"Gallimimus (fowl mimic)", 5.5});
+          dt.Rows.Add( new object[] {"Mamenchisaurus (Mamenchi lizard)", 21.0});
+          dt.Rows.Add( new object[] {"Megalosaurus (big lizard)", 7.9});
+          dt.Rows.Add( new object[] {"Microvenator (small hunter)", 1.2});
+          dt.Rows.Add( new object[] {"Ornithomimus (bird mimic)", 4.6});
+          dt.Rows.Add( new object[] {"Oviraptor (egg robber)", 1.5});
+          dt.Rows.Add( new object[] {"Plateosaurus (flat lizard)", 7.9});
+          dt.Rows.Add( new object[] {"Sauronithoides (narrow-clawed lizard)", 2.0});
+          dt.Rows.Add( new object[] {"Seismosaurus (tremor lizard)", 45.7});
+          dt.Rows.Add( new object[] {"Spinosaurus (spiny lizard)", 12.2});
+          dt.Rows.Add( new object[] {"Supersaurus (super lizard)", 30.5});
+          dt.Rows.Add( new object[] {"Tyrannosaurus (tyrant lizard)", 15.2});
+          dt.Rows.Add( new object[] {"Ultrasaurus (ultra lizard)", 30.5});
+          dt.Rows.Add(new object[] { "Velociraptor (swift robber)", 1.8 });
 
+            this.GVHistogram1.DataSource = dt;
+            this.GVHistogram1.DataBind();
+
+        }
 
 
 

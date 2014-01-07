@@ -12,45 +12,18 @@ using System.Runtime.Serialization;
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVBarChart runat=server></{0}:GVBarChart>")]
-    [ToolboxBitmap(typeof(GVBarChart))]
+    [ToolboxData("<{0}:GVTimeline runat=server></{0}:GVTimeline>")]
+    [ToolboxBitmap(typeof(GVTimeline))]
     [DataContract]
-    public class GVBarChart : BaseWebControl, IsStackable
+    public class GVTimeline : BaseWebControl
     {
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"If set to true, bar values are stacked (accumulated).")]
-        [DefaultValue(false)]
-        [DataMember(Name="isStacked", EmitDefaultValue=true, IsRequired = false)]
-        public bool? GviIsStacked
-        {
-            get
-            {
-                bool? s = (bool?)ViewState["GviIsStacked"];
-                return s;
-            }
-
-            set
-            {
-                bool? s = value as bool?;
-                ViewState["GviIsStacked"] = s;
-            }
-        }
-
-      
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.BARCHART);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.TIMELINE);
             output.Write(Text);
         }
-        // Support for IPostBackEventHandler
-        //protected override void Render(HtmlTextWriter output)
-        //{
-        //    RenderContents(output);
-        //}
+
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();

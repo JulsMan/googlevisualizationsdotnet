@@ -19,11 +19,11 @@ namespace GoogleChartsNGraphsControls
         
         public enum GOOGLECHART
         {
-            AREACHART, TIMELINE, GEOMAP, BARCHART,
+            AREACHART, ANNOTATEDTIMELINE, GEOMAP, BARCHART,
             COLUMNCHART, GAUGE, LINECHART, MAP,
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
             SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
-            CANDLESTICK, COMBO
+            CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP, TIMELINE
         }
 
         #region Formatter - for use with the IGoogleFormatter only
@@ -173,7 +173,7 @@ namespace GoogleChartsNGraphsControls
             if (dic.Count == 0)
             {
                 dic.Add(GOOGLECHART.AREACHART, new string[] { "corechart", "AreaChart" });
-                dic.Add(GOOGLECHART.TIMELINE, new string[] { "annotatedtimeline", "AnnotatedTimeLine" });
+                dic.Add(GOOGLECHART.ANNOTATEDTIMELINE, new string[] { "annotatedtimeline", "AnnotatedTimeLine" });
                 dic.Add(GOOGLECHART.GEOMAP, new string[] { "geomap", "GeoMap" });
                 dic.Add(GOOGLECHART.BARCHART, new string[] { "corechart", "BarChart" });
                 dic.Add(GOOGLECHART.COLUMNCHART, new string[] { "corechart", "ColumnChart" });
@@ -189,6 +189,10 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.TABLEBAR, new string[] { "table", "Table" });
                 dic.Add(GOOGLECHART.CANDLESTICK, new string[] { "candlestickchart", "CandlestickChart" });
                 dic.Add(GOOGLECHART.COMBO, new string[] { "combochart", "ComboChart" });
+                dic.Add(GOOGLECHART.HISTOGRAM, new string[] { "corechart", "Histogram" });
+                dic.Add(GOOGLECHART.TIMELINE, new string[] { "timeline", "Timeline" });
+                dic.Add(GOOGLECHART.DONUT, new string[] { "corechart", "PieChart" });
+                dic.Add(GOOGLECHART.TREEMAP, new string[] { "treemap", "TreeMap" });
             }
         }
 

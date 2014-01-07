@@ -166,6 +166,26 @@
 
             this.GVPieChart1.ChartData(dt);
         </pre>
+
+
+        <h3>Donut Example</h3>
+        <cc1:GVDonutChart ID="GVDonutChart1" runat="server" Width="600" Height="400" />
+        
+       
+        
+        <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable dt = new System.Data.DataTable("Work Day");
+            dt.Columns.Add("Activity");
+            dt.Columns.Add("Daily Percentage", typeof(int));
+            dt.Rows.Add(new object[] {"Engineering",5});
+            dt.Rows.Add(new object[] { "Programming", 3 });
+            dt.Rows.Add(new object[] { "Sleeping", 1 });
+            dt.Rows.Add(new object[] { "Lunch", 1 });
+            dt.Rows.Add(new object[] { "Meetings", 1 });
+
+            this.GVDonutChart1.ChartData(dt);
+        </pre>
         
         
         
@@ -256,6 +276,31 @@
         </pre>
         
         
+        <p />
+        <h3>LineChart Stackable Example</h3>
+        <cc1:GVLineChart ID="GVLineChart22" runat="server" Width="600" Height="400"
+            GviColorsByName="Red Green Blue Orange">
+        </cc1:GVLineChart>
+        
+        
+         <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");
+            dt2.Columns.Add("Year");
+            dt2.Columns.Add("Expenses", typeof(int));
+            dt2.Columns.Add("Sales", typeof(int));
+            dt2.Rows.Add(new object[] { "2004", 215000, 225000});
+            dt2.Rows.Add(new object[] { "2005", 300000, 320000});
+            dt2.Rows.Add(new object[] { "2006", 326000, 356000});
+            dt2.Rows.Add(new object[] { "2007", 485000, 490000});
+            dt2.Rows.Add(new object[] { "2008", 410000, 442000 });
+            dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
+            dt2.Rows.Add(new object[] { "2010", 480000, 435000});
+
+            this.GVLineChart22.ChartData(dt2);
+        </pre>
+
+
         
         <p />
         <h3>BarChart Example</h3>
@@ -383,43 +428,7 @@
         
        
         
-        
-        
-       <%-- <p />
-        <b style="color:#FFA500">New</b> <h3>Gantt Chart Example</h3>
-        <cc1:GVGanttChart ID="GVGanttChart1" runat="server" Width="600" Height="400" />
-         <pre class="sloppyCode">
-            Sample Code:
-             System.Data.DataTable chart = new System.Data.DataTable("Something Performance");
-            barchart.Columns.Add("Year", typeof(string));
-            barchart.Columns.Add("Something", typeof(int));
-            barchart.Rows.Add(new object[] { "2004",  400 });
-            barchart.Rows.Add(new object[] { "2005",  460 });
-            barchart.Rows.Add(new object[] { "2006",  1120 });
-            barchart.Rows.Add(new object[] { "2007", 540 });
-            this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
-            this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan, Color.CadetBlue, Color.DeepPink };
-            this.GVGanttChart1.DataSource = barchart;
-        </pre>--%>
-        
-        
-        
-      <%-- <p />
-        <b style="color:#FFA500">New</b> <h3>Gantt Chart Example</h3>
-        <cc1:GVGanttChart ID="GVGanttChart2" runat="server" Width="600" Height="400" />
-         <pre class="sloppyCode">
-            Sample Code:
-             System.Data.DataTable chart = new System.Data.DataTable("Something Performance");
-            barchart.Columns.Add("Year", typeof(string));
-            barchart.Columns.Add("Something", typeof(int));
-            barchart.Rows.Add(new object[] { "2004",  400 });
-            barchart.Rows.Add(new object[] { "2005",  460 });
-            barchart.Rows.Add(new object[] { "2006",  1120 });
-            barchart.Rows.Add(new object[] { "2007", 540 });
-            this.GVGanttChart1.GviVAxis = "{title: 'Year', titleTextStyle: {color: 'blue'} }";
-            this.GVGanttChart1.GviColors = new System.Drawing.Color?[] { Color.MediumAquamarine, Color.LightCyan, Color.CadetBlue, Color.DeepPink };
-            this.GVGanttChart1.DataSource = barchart;
-        </pre>--%>
+
         
         
         
@@ -599,7 +608,7 @@
         
         
         
-         <p />
+        <p />
         <h3>Data Table: Bar Format Example</h3>
         <cc1:GVTable ID="GVTableBarFormat1" runat="server"  Height="300" Width="500" GviFormatType="BarFormat" GviFormatColumn="2" />
          <pre class="sloppyCode">
@@ -620,7 +629,72 @@
             this.GVTableBarFormat1.GviOptionsOverride = "{allowHtml: true, showRowNumber: true}";
             this.GVTableBarFormat1.DataSource = tblBar;
         </pre>
+
+        <p />
+        <h3><label style="color:salmon;">New</label> &nbsp; Timeline</h3>
+        <cc1:GVTimeline ID="GVTimeline1" runat="server"  Height="300" Width="500" />
+         <pre class="sloppyCode">
+            Sample Code:
+            DataTable dt = new DataTable("Presidents");
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("President", typeof(string)), 
+                new DataColumn("Start", typeof(DateTime)), 
+                new DataColumn("End", typeof(DateTime))
+            });
+            dt.Rows.Add(new object[] {"Washington", new DateTime(1789,3,29), new DateTime(1797,2,3) });
+            dt.Rows.Add(new object[] { "Adams", new DateTime(1797, 2, 3), new DateTime(1801, 2, 3) });
+            dt.Rows.Add(new object[] { "Jefferson", new DateTime(1801, 2, 3), new DateTime(1809, 2, 3) });
+
+            this.GVTimeline1.DataSource = dt;
+            this.GVTimeline1.DataBind();
+        </pre>
         
+
+         <p />
+        <h3><label style="color:salmon;">New</label> &nbsp; Histogram</h3>
+        <cc1:GVHistogram ID="GVHistogram1" runat="server"  Height="300" Width="500" />
+         <pre class="sloppyCode">
+            Sample Code:
+             DataTable dt = new DataTable("Length of Dinosaurs (in meters)");
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("Dinosaur", typeof(string)), 
+                new DataColumn("Length", typeof(decimal))
+            });
+
+          dt.Rows.Add( new object[] {"Acrocanthosaurus (top-spined lizard)", 12.2});
+          dt.Rows.Add( new object[] {"Albertosaurus (Alberta lizard)", 9.1});
+          dt.Rows.Add( new object[] {"Allosaurus (other lizard)", 12.2});
+          dt.Rows.Add( new object[] {"Apatosaurus (deceptive lizard)", 22.9});
+          dt.Rows.Add( new object[] {"Archaeopteryx (ancient wing)", 0.9});
+          dt.Rows.Add( new object[] {"Argentinosaurus (Argentina lizard)", 36.6});
+          dt.Rows.Add( new object[] {"Baryonyx (heavy claws)", 9.1});
+          dt.Rows.Add( new object[] {"Brachiosaurus (arm lizard)", 30.5});
+          dt.Rows.Add( new object[] {"Ceratosaurus (horned lizard)", 6.1});
+          dt.Rows.Add( new object[] {"Coelophysis (hollow form)", 2.7});
+          dt.Rows.Add( new object[] {"Compsognathus (elegant jaw)", 0.9});
+          dt.Rows.Add( new object[] {"Deinonychus (terrible claw)", 2.7});
+          dt.Rows.Add( new object[] {"Diplodocus (double beam)", 27.1});
+          dt.Rows.Add( new object[] {"Dromicelomimus (emu mimic)", 3.4});
+          dt.Rows.Add( new object[] {"Gallimimus (fowl mimic)", 5.5});
+          dt.Rows.Add( new object[] {"Mamenchisaurus (Mamenchi lizard)", 21.0});
+          dt.Rows.Add( new object[] {"Megalosaurus (big lizard)", 7.9});
+          dt.Rows.Add( new object[] {"Microvenator (small hunter)", 1.2});
+          dt.Rows.Add( new object[] {"Ornithomimus (bird mimic)", 4.6});
+          dt.Rows.Add( new object[] {"Oviraptor (egg robber)", 1.5});
+          dt.Rows.Add( new object[] {"Plateosaurus (flat lizard)", 7.9});
+          dt.Rows.Add( new object[] {"Sauronithoides (narrow-clawed lizard)", 2.0});
+          dt.Rows.Add( new object[] {"Seismosaurus (tremor lizard)", 45.7});
+          dt.Rows.Add( new object[] {"Spinosaurus (spiny lizard)", 12.2});
+          dt.Rows.Add( new object[] {"Supersaurus (super lizard)", 30.5});
+          dt.Rows.Add( new object[] {"Tyrannosaurus (tyrant lizard)", 15.2});
+          dt.Rows.Add( new object[] {"Ultrasaurus (ultra lizard)", 30.5});
+          dt.Rows.Add(new object[] { "Velociraptor (swift robber)", 1.8 });
+
+            this.GVHistogram1.DataSource = dt;
+            this.GVHistogram1.DataBind();
+        </pre>
+
+
         <p />
         <h3>Org Chart Example</h3>
         <cc1:GVOrgChart ID="GVOrgChart1" runat="server" GviAllowCollapse="true" />

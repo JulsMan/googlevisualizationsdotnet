@@ -5,44 +5,45 @@ using System.Text;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Drawing;
-using System.Runtime.Serialization;
+using System.Web.UI.WebControls;
 using System.Data;
+using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVLineChart runat=server></{0}:GVLineChart>")]
-    [ToolboxBitmap(typeof(GVLineChart))]
+    [ToolboxData("<{0}:GVHistogram runat=server></{0}:GVHistogram>")]
+    [ToolboxBitmap(typeof(GVBarChart))]
     [DataContract]
-    public class GVLineChart : BaseWebControl, IsStackable
+    public class GVHistogram: BaseWebControl
     {
+
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"Controls the curve of the lines when the line width is not zero. Can be one of the following:
-                        'none' - Straight lines without curve.
-                        'function' - The angles of the line will be smoothed.")]
-        [DefaultValue(CurveType.None)]
-        [DataMember(Name = "curveType", EmitDefaultValue = true, IsRequired = false)]
-        public CurveType GviCurveType
+        [Description(@"If set to true, bar values are stacked (accumulated).")]
+        [DefaultValue(false)]
+        [DataMember(Name="isStacked", EmitDefaultValue=true, IsRequired = false)]
+        public bool? GviIsStacked
         {
             get
             {
-                object s = ViewState["GviCurveType"];
-                if (s == null) return CurveType.None;
-                CurveType ss = (CurveType)ViewState["GviCurveType"];
-                return ss;
+                bool? s = (bool?)ViewState["GviIsStacked"];
+                return s;
             }
+
             set
             {
-                ViewState["GviCurveType"] = value;
+                bool? s = value as bool?;
+                ViewState["GviIsStacked"] = s;
             }
         }
 
+      
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.LINECHART);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.HISTOGRAM);
             output.Write(Text);
         }
         // Support for IPostBackEventHandler
@@ -67,27 +68,6 @@ namespace GoogleChartsNGraphsControls
             string s = string.Empty;
             s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
             return s;
-        }
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"If set to true, bar values are stacked (accumulated).")]
-        [DefaultValue(false)]
-        [DataMember(Name = "isStacked", EmitDefaultValue = true, IsRequired = false)]
-        public bool? GviIsStacked
-        {
-            get
-            {
-                bool? s = (bool?)ViewState["GviIsStacked"];
-                return s;
-            }
-
-            set
-            {
-                bool? s = value as bool?;
-                ViewState["GviIsStacked"] = s;
-            }
         }
     }
 }

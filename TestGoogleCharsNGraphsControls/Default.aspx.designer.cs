@@ -85,6 +85,15 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
+        /// GVDonutChart1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVDonutChart GVDonutChart1;
+        
+        /// <summary>
         /// GVPieChart2 control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GoogleChartsNGraphsControls.GVLineChart GVLineChart1;
+        
+        /// <summary>
+        /// GVLineChart22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVLineChart GVLineChart22;
         
         /// <summary>
         /// GVBarChart1 control.
@@ -245,6 +263,24 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GoogleChartsNGraphsControls.GVTable GVTableBarFormat1;
+        
+        /// <summary>
+        /// GVTimeline1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVTimeline GVTimeline1;
+        
+        /// <summary>
+        /// GVHistogram1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVHistogram GVHistogram1;
         
         /// <summary>
         /// GVOrgChart1 control.
