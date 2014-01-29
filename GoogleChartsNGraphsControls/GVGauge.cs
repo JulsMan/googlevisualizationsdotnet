@@ -221,7 +221,7 @@ namespace GoogleChartsNGraphsControls
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.GAUGE);
-            output.Write(String.Empty);
+            output.Write(string.Empty);
         }
         // Support for IPostBackEventHandler
         //protected override void Render(HtmlTextWriter output)
@@ -248,5 +248,16 @@ namespace GoogleChartsNGraphsControls
             return s;
         }
 
+
+        //protected override void Render(HtmlTextWriter writer)
+        //{
+        //    //AddAttributesToRender(writer);
+        //    base.Render(writer);
+        //    writer.RenderBeginTag(HtmlTextWriterTag.Div);
+        //    writer.AddAttribute(HtmlTextWriterAttribute.Id, this.ID);
+        //    //writer.AddStyleAttribute(HtmlTextWriterStyle.Height, this.Height.Value.ToString());
+        //    //writer.AddStyleAttribute(HtmlTextWriterStyle.Width, this.Width.Value.ToString());
+        //    writer.RenderEndTag();
+        //}
     }
 }

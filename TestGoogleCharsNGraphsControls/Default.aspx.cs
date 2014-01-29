@@ -478,7 +478,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-
+     
 
         private void chart_timeline()
         {

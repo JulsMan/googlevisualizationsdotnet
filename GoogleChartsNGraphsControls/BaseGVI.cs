@@ -339,7 +339,11 @@ namespace GoogleChartsNGraphsControls
         internal static string UglyJSONAxisFix(string JSON)
         {
             //return JSON;
-            return JSON.Replace("}null}", "}}");
+            string s =  JSON.Replace("}null}", "}}");
+            string pattern = "\"(\\w+)\"\\s*:";
+            string replacement = "$1:";
+            s = System.Text.RegularExpressions.Regex.Replace(s, pattern, replacement); 
+            return s;
         }
         internal static string FixJSON(string JSON)
         {

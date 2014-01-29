@@ -561,7 +561,10 @@
         </pre>
         
        
-        
+        <p />
+        <h3>Codebehind Examples</h3>
+        <asp:PlaceHolder ID="PlaceHolderChart" runat="server" />
+
         
         
         <p />

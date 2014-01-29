@@ -989,222 +989,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("The orientation of the chart. When set to 'vertical', rotates the axes of the chart so that (for instance) a column chart becomes a bar chart, and an area chart grows rightward instead of up:")]
-        //[DataMember(Name = "orientation", EmitDefaultValue = true, IsRequired = false)]
-        //[DefaultValue(Orientation.Horizonal)]
-        //public Orientation GviOrientation
-        //{
-        //    get
-        //    {
-        //        Orientation? s = (Orientation?)ViewState["GviOrientation"];
-        //        return s == null ? Orientation.Default : (Orientation)s;
-        //    }
-        //    set
-        //    {
-        //        ViewState["GviOrientation"] = value;
-        //    }
-        //}
-
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("Causes charts to throw user-triggered events such as click or mouse over. Supported only for specific chart types. See Events below.")]
-        //[DefaultValue(TrippleStateBool.Default)]
-        //[DataMember(Name = "enableEvents", EmitDefaultValue = true, IsRequired = false)]
-        //public TrippleStateBool GviEnableEvents
-        //{
-        //    get
-        //    {
-        //        if (ViewState["GviEnableEvents"] == null) return TrippleStateBool.Default;
-        //        TrippleStateBool s = (TrippleStateBool)ViewState["GviEnableEvents"];
-        //        return s;
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GviEnableEvents"] = value;
-        //    }
-        //}
-
-
-
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("If set to false, removes the labels of the categories (the X axis labels).")]
-        //[DefaultValue(TrippleStateBool.Default)]
-        //[DataMember(Name = "showCategoryLabels", IsRequired = false, EmitDefaultValue = true)]
-        //public TrippleStateBool GviShowCategoryLabels
-        //{
-        //    get
-        //    {
-        //        if (ViewState["GviShowCategoryLabels"] == null) return TrippleStateBool.Default;
-        //        TrippleStateBool s = (TrippleStateBool)ViewState["GviShowCategoryLabels"];
-        //        return s;
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GviShowCategoryLabels"] = value;
-        //    }
-        //}
-
-
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("If set to false, removes the labels of the values (the Y axis labels).")]
-        //[DefaultValue(TrippleStateBool.Default)]
-        //[DataMember(Name = "showValueLabels", IsRequired = false, EmitDefaultValue = true)]
-        //public TrippleStateBool GviShowValueLabels
-        //{
-        //    get
-        //    {
-        //        if (ViewState["GviShowValueLabels"] == null) return TrippleStateBool.Default;
-        //        TrippleStateBool s = (TrippleStateBool)ViewState["GviShowValueLabels"];
-        //        return s;
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GviShowValueLabels"] = value;
-        //    }
-        //}
-
-
-        //[GviConfigOption]
-        //[Bindable(true)]
-        //[Category("GoogleOptions")]
-        //[Description("The interval at which to show value axis labels. For example, if min is 0, max is 100, and valueLabelsInterval is 20, the chart will show axis labels at (0, 20, 40, 60, 80 100).")]
-        //[DefaultValue(null)]
-        //[DataMember(Name = "valueLabelsInterval", IsRequired = false, EmitDefaultValue = true)]
-        //public int? GviValueLabelsInterval
-        //{
-        //    get
-        //    {
-        //        int? s = (int?)ViewState["GviValueLabelsInterval"];
-        //        return s;
-        //    }
-
-        //    set
-        //    {
-        //        ViewState["GviValueLabelsInterval"] = value;
-        //    }
-        //}
-
-
-
-//        [GviEventOption(EventName = "animationfinish")]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"Fired when transition animation is complete.")]
-//        public string OnEvent_GviAnimationFinish
-//        {
-//            get
-//            {
-//                string s = (string)ViewState["OnEvent_GviAnimationFinish"];
-//                return s;
-//            }
-//            set
-//            {
-//                ViewState["OnEvent_GviAnimationFinish"] = value;
-//            }
-//        }
-
-//        [GviEventOption(EventName = "error")]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"Fired when an error occurs when attempting to render the chart: 
-//            Properties: id, message")]
-//        public string OnEvent_GviError
-//        {
-//            get
-//            {
-//                string s = (string)ViewState["OnEvent_GviError"];
-//                return s;
-//            }
-//            set
-//            {
-//                ViewState["OnEvent_GviError"] = value;
-//            }
-//        }
-
-
-//        [GviEventOption(EventName = "onmouseover")]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"Fired when the user mouses over a visual entity. Passes back the row and column indices of the corresponding data table element. A point or annotation correlates to a cell in the data table, a legend entry to a column (row index is null), and a category to a row (column index is null).
-//            Properties: row, column")]
-//        public string OnEvent_GviOnMouseOver
-//        {
-//            get
-//            {
-//                string s = (string)ViewState["OnEvent_GviOnMouseOver"];
-//                return s;
-//            }
-//            set
-//            {
-//                ViewState["OnEvent_GviOnMouseOver"] = value;
-//            }
-//        }
-
-//        [GviEventOption(EventName = "onmouseout")]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"Fired when the user mouses away from a visual entity. Passes back the row and column indices of the corresponding data table element. A point or annotation correlates to a cell in the data table, a legend entry to a column (row index is null), and a category to a row (column index is null).
-//            Properties: row, column")]
-//        public string OnEvent_GviOnMouseOut
-//        {
-//            get
-//            {
-//                string s = (string)ViewState["OnEvent_GviOnMouseOut"];
-//                return s;
-//            }
-//            set
-//            {
-//                ViewState["OnEvent_GviOnMouseOut"] = value;
-//            }
-//        }
-
-
-
-//        [GviEventOption(EventName = "ready")]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"The chart is ready for external method calls. If you want to interact with the chart, and call methods after you draw it, you should set up a listener for this event before you call the draw method, and call them only after the event was fired.")]
-//        public string OnEvent_GviReady
-//        {
-//            get
-//            {
-//                string s = (string)ViewState["OnEvent_GviReady"];
-//                return s;
-//            }
-//            set
-//            {
-//                ViewState["OnEvent_GviReady"] = value;
-//            }
-//        }
-
-//        [GviEventOption(EventName = "select")]
-//        [Bindable(true)]
-//        [Category("GoogleOptions")]
-//        [Description(@"Fired when the user clicks a visual entity. To learn what has been selected, call getSelection().")]
-//        public string OnEvent_GviSelect
-//        {
-//            get
-//            {
-//                string s = (string)ViewState["OnEvent_GviSelect"];
-//                return s;
-//            }
-//            set
-//            {
-//                ViewState["OnEvent_GviSelect"] = value;
-//            }
-//        }
+       
 
         protected DataTable dt
         {
@@ -1241,7 +1026,9 @@ namespace GoogleChartsNGraphsControls
         }
         protected override void AddAttributesToRender(HtmlTextWriter writer)
         {
+            base.Attributes.Add("id", base.ClientID);       // doing this to support codebehind, results in two id attributes, html seems to handle it okay
             base.AddAttributesToRender(writer);
+            
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -1264,24 +1051,7 @@ namespace GoogleChartsNGraphsControls
         }
 
         
-        //public override string ToString()
-        //{
-        //    List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
-        //    myconverters.Add(new CustomConvertersColorToRGB());
-        //    myconverters.Add(new CustomConvertersAxis());
-        //    myconverters.Add(new CustomConvertersLegend());
-        //    myconverters.Add(new CustomConverterEnum());
-
-        //    Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
-        //    {
-        //         NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-        //         Converters = myconverters
-        //    };
-
-        //    string s = string.Empty;
-        //    s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
-        //    return s;
-        //}
+      
 
 
 
