@@ -76,6 +76,7 @@
     <Content Include="App_Themes\unknown_user.png" />
     <Content Include="Codebehind.aspx" />
     <Content Include="GeoMaps.aspx" />
+    <Content Include="Postbacks.aspx" />
     <Content Include="sandbox.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="GeoMaps.aspx.designer.cs">
       <DependentUpon>GeoMaps.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Postbacks.aspx.cs">
+      <DependentUpon>Postbacks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Postbacks.aspx.designer.cs">
+      <DependentUpon>Postbacks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">

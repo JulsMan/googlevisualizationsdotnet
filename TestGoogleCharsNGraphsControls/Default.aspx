@@ -29,7 +29,8 @@
             <asp:PlaceHolder ID="PlaceHolder1" runat="server" />
         </pre>
     
-        
+         <span style="color:Orange">New!!</span> <a href="Codebehind.aspx">Goto Codebehind Examples</a>
+
         <a href="GeoMaps.aspx">More Maps</a><cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
             Width="600px" GVILineColor="Goldenrod" GVILineWidth="4" GviShowLine="true"/>
 
