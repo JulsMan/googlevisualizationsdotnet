@@ -12,9 +12,17 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server" GviDisplayZoomButtons="" Width="900" Height="500" />
+       <%-- <cc1:GVAnnotatedTimeline ID="GVAnnotatedTimeline1" runat="server" GviDisplayZoomButtons="" Width="900" Height="500" />--%>
 
-        <cc1:GVAreaChart ID="GVAreaChart1" runat="server" Width="500" Height="400" />
+     <%--   <cc1:GVAreaChart ID="GVAreaChart1" runat="server" Width="500" Height="400" />--%>
+
+     <h3>Column Chart</h3>
+      <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="500" Height="400"/>
+
+
+      <h3>Scatter Chart</h3>
+        <cc1:GVScatterChart ID="GVScatterChart1" runat="server"  Width="500" Height="400"/>
+
     </div>
     </form>
 </body>

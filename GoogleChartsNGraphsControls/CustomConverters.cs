@@ -245,7 +245,7 @@ namespace GoogleChartsNGraphsControls
 
         public override bool CanConvert(Type objectType)
         {
-            if (objectType.BaseType == typeof(TrendLine[])  || objectType.BaseType == typeof(TrendLine))
+            if (objectType == typeof(TrendLine[]) )
                 return true;
 
             return false;
@@ -258,20 +258,37 @@ namespace GoogleChartsNGraphsControls
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
+            myconverters.Add(new CustomConvertersColorToRGB());
+            myconverters.Add(new CustomConvertersAxis());
+            myconverters.Add(new CustomConvertersLegend());
+            myconverters.Add(new CustomConverterEnum());
+
+            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                Converters = myconverters
+            };
+
+          
+       
             TrendLine[] lines = value as TrendLine[];
 
             if (lines.Count() == 0) return;
 
-            writer.WriteStartArray();
+            writer.WriteStartObject();
 
             for (int i = 0; i < lines.Count(); i++ )
             {
-                writer.WriteRawValue(i.ToString() + ":");
-                writer.WriteValue( lines[i] );
+                writer.WritePropertyName(i.ToString());
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(lines[i], Formatting.None, settings);
+                json = BaseGVI.FixJSON(json);
+                json = json.Trim('"');
+                writer.WriteRawValue( json );
             }
 
 
-            writer.WriteEndArray();
+            writer.WriteEndObject();
         }
     }
   

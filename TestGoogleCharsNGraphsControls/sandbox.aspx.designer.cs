@@ -22,21 +22,21 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// GVAnnotatedTimeline1 control.
+        /// GVColumnChart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVAnnotatedTimeline GVAnnotatedTimeline1;
+        protected global::GoogleChartsNGraphsControls.GVColumnChart GVColumnChart1;
         
         /// <summary>
-        /// GVAreaChart1 control.
+        /// GVScatterChart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVAreaChart GVAreaChart1;
+        protected global::GoogleChartsNGraphsControls.GVScatterChart GVScatterChart1;
     }
 }
