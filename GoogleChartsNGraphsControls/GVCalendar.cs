@@ -5,52 +5,26 @@ using System.Text;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Drawing;
+using System.Web.UI.WebControls;
+using System.Data;
 using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVCandlestickChart runat=server></{0}:GVCandlestickChart>")]
-    [ToolboxBitmap(typeof(GVCandlestickChart))]
+    [ToolboxData("<{0}:GVCalendar runat=server></{0}:GVCalendar>")]
+    [ToolboxBitmap(typeof(GVCalendar))]
     [DataContract]
-    public class GVCandlestickChart: BaseWebControl
+    public class GVCalendar : BaseWebControl
     {
+
        
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Where to place the chart title, compared to the chart area. Supported values:
-            in - Draw the title inside the chart area.
-            out - Draw the title outside the chart area.
-            none - Omit the title.")]
-        [DefaultValue(CandlestickTheme.Default)]
-        public CandlestickTheme GVITheme
-        {
-            get
-            {
-                object s = ViewState["GVITheme"];
-                if (s == null) return CandlestickTheme.Default;
-                CandlestickTheme ss = (CandlestickTheme)ViewState["GVITheme"];
-                return ss;
-            }
-            set
-            {
-                ViewState["GVITheme"] = value;
-            }
-        }
-
-
-
-
-
-    
-
+      
         protected override void RenderContents(HtmlTextWriter output)
         {
-
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.CANDLESTICK);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.CALENDAR);
             output.Write(Text);
         }
         // Support for IPostBackEventHandler

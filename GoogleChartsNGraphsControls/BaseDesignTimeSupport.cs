@@ -70,6 +70,8 @@ namespace GoogleChartsNGraphsControls
     public enum SeriesType { Line, Area, Bars, Candlesticks, SteppedArea }
     [Serializable()]
     public enum Orientation { Default, Horizonal, Vertical }
+    [Serializable()]
+    public enum TrendLineType { Default, Linear, Exponential }
 
     /// <summary>
     /// TODO: Need to implement this, still need to create valid series JSON and to auto-apply this to the 
@@ -451,6 +453,29 @@ namespace GoogleChartsNGraphsControls
             string s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None);
             return s;
         }
+    }
+
+    [Serializable()]
+    [DataContract(Name = "textStyle")]
+    public class TrendLine
+    {
+        [DataMember(Name = "color")]
+        public Color? Color { get; set; }
+
+        [DataMember(Name="visibleInLegend")]
+        public bool? VisibleInLegend { get; set; }
+
+        [DataMember(Name = "labelInLegend")]
+        public string LabelInLegend { get; set; }
+
+        [DataMember(Name = "type")]
+        public TrendLineType Type { get; set; }
+
+        [DataMember(Name = "lineWidth")]
+        public int? LineWidth { get; set; }
+
+        [DataMember(Name = "opacity")]
+        public float? Opacity { get; set; } // 0 - 1
     }
 
     [Serializable()]

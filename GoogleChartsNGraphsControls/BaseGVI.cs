@@ -23,7 +23,9 @@ namespace GoogleChartsNGraphsControls
             COLUMNCHART, GAUGE, LINECHART, MAP,
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
             SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
-            CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP, TIMELINE
+            CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP, TIMELINE,
+
+            CALENDAR, ANNOTATION, SANKEY
         }
 
         #region Formatter - for use with the IGoogleFormatter only
@@ -193,6 +195,9 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.TIMELINE, new string[] { "timeline", "Timeline" });
                 dic.Add(GOOGLECHART.DONUT, new string[] { "corechart", "PieChart" });
                 dic.Add(GOOGLECHART.TREEMAP, new string[] { "treemap", "TreeMap" });
+                dic.Add(GOOGLECHART.CALENDAR, new string[] { "calendar", "Calendar" });
+                dic.Add(GOOGLECHART.ANNOTATION, new string[] { "annotationchart", "AnnotationChart" });
+                dic.Add(GOOGLECHART.SANKEY, new string[] { "sankey", "Sankey" });
             }
         }
 

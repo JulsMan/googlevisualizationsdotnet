@@ -17,4 +17,9 @@ namespace GoogleChartsNGraphsControls
         [DataMember(Name = "isStacked", EmitDefaultValue = true, IsRequired = false)]
         bool? GviIsStacked { get; set; }
     }
+
+    interface HasTrendLines
+    {
+        TrendLine[] GviTrendLine { get; set; }
+    }
 }

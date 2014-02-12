@@ -14,7 +14,7 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVLineChart runat=server></{0}:GVLineChart>")]
     [ToolboxBitmap(typeof(GVLineChart))]
     [DataContract]
-    public class GVLineChart : BaseWebControl, IsStackable
+    public class GVLineChart : BaseWebControl, IsStackable, HasTrendLines
     {
         [GviConfigOption]
         [Bindable(true)]
@@ -39,6 +39,28 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"A trendline is a line superimposed on a chart revealing the overall direction of the data. Google Charts can automatically generate trendlines for Scatter Charts, Bar Charts, Column Charts, and Line Charts.")]
+        [DataMember(Name = "trendlines", EmitDefaultValue = true, IsRequired = false)]
+        public TrendLine[] GviTrendLine
+        {
+            get
+            {
+                TrendLine[] s = (TrendLine[])ViewState["GviTrendLine"];
+                return s;
+            }
+
+            set
+            {
+                TrendLine[] s = value as TrendLine[];
+                ViewState["GviTrendLine"] = s;
+            }
+        }
+
+
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
@@ -57,6 +79,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterTrendLine());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {

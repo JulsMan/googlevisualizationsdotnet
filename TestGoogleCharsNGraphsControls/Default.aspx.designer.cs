@@ -58,6 +58,24 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVAnnotatedTimeline GVAnnotatedTimeline2;
         
         /// <summary>
+        /// GVAnnotationChart1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVAnnotationChart GVAnnotationChart1;
+        
+        /// <summary>
+        /// GVCalendar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVCalendar GVCalendar1;
+        
+        /// <summary>
         /// GVCandlestickChart1 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GoogleChartsNGraphsControls.GVCandlestickChart GVCandlestickChart1;
+        
+        /// <summary>
+        /// GVSparkLine2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVSparkLine GVSparkLine2;
         
         /// <summary>
         /// GVPieChart1 control.

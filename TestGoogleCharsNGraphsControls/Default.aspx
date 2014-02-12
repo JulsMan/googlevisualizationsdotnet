@@ -30,6 +30,8 @@
         </pre>
     
          <span style="color:Orange">New!!</span> <a href="Codebehind.aspx">Goto Codebehind Examples</a>
+          
+         <span style="color:Orange">New!!</span> <a href="Postbacks.aspx">Goto Codebehind with Postbacks</a>
 
         <a href="GeoMaps.aspx">More Maps</a><cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
             Width="600px" GVILineColor="Goldenrod" GVILineWidth="4" GviShowLine="true"/>
@@ -111,8 +113,20 @@
                 this.GVAnnotatedTimeline2.ChartData(evts.Where(d => d.EventCategory == "Sold Erasers").ToArray());
             </pre>
             
+
+
         <p />
+         <h3>Annotation Example</h3>
+            <cc1:GVAnnotationChart ID="GVAnnotationChart1" runat="server" Width="800" Height="400"/>
         
+
+
+          <p />
+         <h3>Calendar Example</h3>
+            <cc1:GVCalendar ID="GVCalendar1" runat="server"  Width="600" Height="400"/>
+
+
+        <p />
         <span style="color:#FFA500">New</span>!!!  &nbsp; <h3>CandleStick Example</h3>
         A candlestick chart is used to show an opening and closing value overlaid on top of a total variance.,<br/> 
         Candlestick charts are often used to show stock value behavior. <br/> 
@@ -140,7 +154,34 @@
             this.GVCandlestickChart1.DataSource = candlestick;
             this.GVCandlestickChart1.DataBind();
         </pre>
-        
+
+
+
+
+        <p />
+         <label style="color:orange">New</label> <h3>Calendar Example</h3>
+        <cc1:GVSparkLine ID="GVSparkLine2" runat="server" Width="600" Height="400"/>
+         <pre class="sloppyCode">
+            Sample Code:
+            System.Data.DataTable rv = new System.Data.DataTable("Revenue/Licenses");
+            rv.Columns.Add("Revenue", typeof(int));
+            rv.Columns.Add("Licenses", typeof(int));
+            rv.Rows.Add(new object[] { 435, 132 });
+            rv.Rows.Add(new object[] { 438, 131 });
+            rv.Rows.Add(new object[] { 512, 137 });
+            rv.Rows.Add(new object[] { 460, 142 });
+            rv.Rows.Add(new object[] { 491, 140 });
+            rv.Rows.Add(new object[] { 487, 139 });
+            rv.Rows.Add(new object[] { 552, 147 });
+            rv.Rows.Add(new object[] { 511, 146 });
+            rv.Rows.Add(new object[] { 505, 151 });
+            rv.Rows.Add(new object[] { 509, 149 });
+            this.GVSparkLine1.GviLabelPosition = "left";
+            this.GVSparkLine1.ChartData(rv);
+        </pre>
+
+
+        <p />
         <h3>PieChart Example</h3>
         <cc1:GVPieChart ID="GVPieChart1" runat="server" Width="600" Height="400" />
         
@@ -434,7 +475,7 @@
         
         
         <p />
-        <h3>ColumnChart Example with AJAX and Animation</h3>
+        <h3>ColumnChart Example with AJAX and Animation and Trendlines</h3>
         <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"
         QueryString="~/AjaxUpdateHandler.ashx?type=column" GviFormatterHook="MyColumnChartDataFormatter" />
         
@@ -536,7 +577,7 @@
         
         
         <p />
-        <h3>ScatterChart Example</h3>
+        <h3>ScatterChart Example ( <label style="color:Orange">New</label> with Trendline)</h3>
         <cc1:GVScatterChart ID="GVScatterChart1" runat="server" Width="600" Height="400" QueryString="~/AjaxUpdateHandler.ashx?type=GVScatterChart1"/>
          <p />
          <asp:Button ID="Button3" runat="server"  OnClientClick="chart_GVScatterChart1.reload(); return false;" Text="Ajax Reload" />
@@ -766,6 +807,12 @@
             return Gender ? "female_user.png" : "male_user.png";
         }
         </pre>
+
+
+
+
+
+         
         
     </div>
     </form>

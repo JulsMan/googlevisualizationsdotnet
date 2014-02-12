@@ -39,10 +39,6 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
-
-
-
-
     internal class CustomConvertersColorToRGB: JsonConverter
     {
         public override bool CanConvert(Type objectType)
@@ -244,7 +240,40 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
+    internal class CustomConverterTrendLine : JsonConverter
+    {
 
+        public override bool CanConvert(Type objectType)
+        {
+            if (objectType.BaseType == typeof(TrendLine[])  || objectType.BaseType == typeof(TrendLine))
+                return true;
+
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            TrendLine[] lines = value as TrendLine[];
+
+            if (lines.Count() == 0) return;
+
+            writer.WriteStartArray();
+
+            for (int i = 0; i < lines.Count(); i++ )
+            {
+                writer.WriteRawValue(i.ToString() + ":");
+                writer.WriteValue( lines[i] );
+            }
+
+
+            writer.WriteEndArray();
+        }
+    }
   
 
 }

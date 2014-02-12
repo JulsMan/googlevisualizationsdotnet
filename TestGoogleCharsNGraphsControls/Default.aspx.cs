@@ -54,7 +54,8 @@ namespace TestGoogleCharsNGraphsControls
 
             chart_timeline();
             chart_histogram();
-
+            chart_calendar();
+            chart_annotation();
 
             // Map Test
             this.GVMap2.ChartData("Duvall, WA", "Home Sweet Home");
@@ -197,6 +198,22 @@ namespace TestGoogleCharsNGraphsControls
             vx.BaselineColor = Color.Green;
             vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
             vx.Title = "By Year";
+
+            GoogleChartsNGraphsControls.TrendLine tl1 = new GoogleChartsNGraphsControls.TrendLine() 
+            {
+                 Color = Color.MediumPurple, Type = GoogleChartsNGraphsControls.TrendLineType.Exponential, 
+                 LabelInLegend = "Year Trend", Opacity = 0.3f, LineWidth = 10, VisibleInLegend = true
+            };
+            GoogleChartsNGraphsControls.TrendLine tl2 = new GoogleChartsNGraphsControls.TrendLine()
+            {
+                Color = Color.Maroon,
+                Type = GoogleChartsNGraphsControls.TrendLineType.Linear,
+                LabelInLegend = "Sales Trend",
+                Opacity = 0.3f,
+                LineWidth = 5,
+                VisibleInLegend = true
+            };
+            this.GVColumnChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { tl1, tl2 };
             this.GVColumnChart1.GviVAxisClass = vx;
             this.GVColumnChart1.DataSource = barchart;
 
@@ -329,6 +346,14 @@ namespace TestGoogleCharsNGraphsControls
             scatter.Rows.Add(new object[] { 12, 92 });
             scatter.Rows.Add(new object[] { 5, 50 });
             this.GVScatterChart1.GviTitle = "Age vs Weight Comparison";
+
+            GoogleChartsNGraphsControls.TrendLine trend = new GoogleChartsNGraphsControls.TrendLine()
+            {
+                 Color = Color.MediumPurple, Opacity = 0.4f, LineWidth = 10, VisibleInLegend = true, 
+                 LabelInLegend = "Trend Line", Type = GoogleChartsNGraphsControls.TrendLineType.Exponential
+            };
+
+            this.GVScatterChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { trend };
             //this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
             hx = new GoogleChartsNGraphsControls.hAxis();
             hx.Title = "Child Age";
@@ -477,8 +502,79 @@ namespace TestGoogleCharsNGraphsControls
         }
 
 
+        private void chart_annotation()
+        {
+            DataTable dt = new DataTable("War");
+            dt.Columns.AddRange( new DataColumn[] 
+            {
+                new DataColumn("Date",typeof(DateTime)),
+                new DataColumn("Kepler-22b mission", typeof(int)),
+                new DataColumn("Kepler title", typeof(string)),
+                new DataColumn("Kepler text", typeof(string)),
+                new DataColumn("Gliese 163 mission", typeof(int)),
+                new DataColumn("Gliese title", typeof(string)),
+                new DataColumn("Gliese text", typeof(string))
 
-     
+            });
+
+
+            dt.Rows.Add(new object[] { new DateTime(2314,2,15), 12400,"", "", 10645,"", "" });
+            dt.Rows.Add(new object[] { new DateTime(2314, 2, 15), 24045, "Lalibertines", "First encounter", 12374, "", "" });
+            dt.Rows.Add(new object[] { new DateTime(2314, 2, 15), 35022, "Lalibertines", "They are very tall", 15766, "Gallantors", "First Encounter" });
+            dt.Rows.Add(new object[] { new DateTime(2314, 2, 15), 12284, "Lalibertines", "Attack on our crew!", 34334, "Gallantors", "Statement of shared principles" });
+            dt.Rows.Add(new object[] { new DateTime(2314, 2, 15), 8476, "Lalibertines", "Heavy casualties", 66467, "Gallantors", "Mysteries revealed" });
+            dt.Rows.Add(new object[] { new DateTime(2314, 2, 15), 0, "Lalibertines", "All crew lost", 79463, "Gallantors", "Omniscience achieved" });
+
+            this.GVAnnotationChart1.GviOptionsOverride = "{ displayAnnotations: true }";
+            this.GVAnnotationChart1.DataSource = dt;
+            this.GVAnnotationChart1.DataBind();
+
+        }
+
+        private void chart_calendar()
+        {
+            Random rand = new Random(Environment.TickCount);
+
+            DataTable dt = new DataTable("Attendance");
+            dt.Columns.AddRange(new DataColumn[]{
+                new DataColumn("date", typeof(DateTime)), new DataColumn("attend", typeof(int))
+            });
+            DateTime springStart = new DateTime(2013, 4, 1);
+            for (int i = 0; i < 15; i++)
+            {
+                DateTime nextDay = springStart.AddDays(i);
+
+                int iAttend = 0;
+                if (nextDay.DayOfWeek == DayOfWeek.Saturday || nextDay.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    // busy days
+                    iAttend = rand.Next(10000, 30000);
+                }
+                else if (nextDay.DayOfWeek == DayOfWeek.Tuesday)
+                {
+                    // no games on this day
+                    iAttend = 0;
+                }
+                else if (nextDay.DayOfWeek == DayOfWeek.Monday || nextDay.DayOfWeek == DayOfWeek.Thursday)
+                {
+                    // mondays and thursdays are light
+                    iAttend = rand.Next(2500, 20000);
+                }
+                else
+                {
+                    // friday's are hit and miss
+                    iAttend = rand.Next(5000, 30000);
+                }
+                dt.Rows.Add(new object[] {nextDay, iAttend });
+            }
+
+
+            this.GVCalendar1.GviTitle = "Red Sox Attendance";
+            this.GVCalendar1.DataSource = dt;
+            this.GVCalendar1.DataBind();
+
+        }
+
 
         private void chart_timeline()
         {

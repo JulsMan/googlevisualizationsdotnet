@@ -15,7 +15,7 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVColumnChart runat=server></{0}:GVColumnChart>")]
     [ToolboxBitmap(typeof(GVColumnChart))]
     [DataContract]
-    public class GVColumnChart : BaseWebControl
+    public class GVColumnChart : BaseWebControl, IsStackable, HasTrendLines
     {
 
         [GviConfigOption]
@@ -39,29 +39,25 @@ namespace GoogleChartsNGraphsControls
         }
 
 
-        //public void ChartData(string Name, int Value)
-        //{
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"A trendline is a line superimposed on a chart revealing the overall direction of the data. Google Charts can automatically generate trendlines for Scatter Charts, Bar Charts, Column Charts, and Line Charts.")]
+        [DataMember(Name = "trendlines", EmitDefaultValue = true, IsRequired = false)]
+        public TrendLine[] GviTrendLine
+        {
+            get
+            {
+                TrendLine[] s = (TrendLine[])ViewState["GviTrendLine"];
+                return s;
+            }
 
-        //    if ((this.dt == null) || (this.dt.Columns.Count == 0))
-        //    {
-        //        this.dt = new DataTable();
-        //        this.dt.Columns.Add("Name", typeof(String));
-        //        this.dt.Columns.Add("Value", typeof(decimal));
-        //    }
-
-        //    this.dt.Rows.Add(new object[] { Name, (decimal)Value });
-        //}
-        //public void ChartData(string Name, decimal Value)
-        //{
-        //    if ((this.dt == null) || (this.dt.Columns.Count == 0))
-        //    {
-        //        this.dt = new DataTable();
-        //        this.dt.Columns.Add("Name", typeof(String));
-        //        this.dt.Columns.Add("Value", typeof(decimal));
-        //    }
-
-        //    this.dt.Rows.Add(new object[] { Name, Value });
-        //}
+            set
+            {
+                TrendLine[] s = value as TrendLine[];
+                ViewState["GviTrendLine"] = s;
+            }
+        }
 
         protected override void RenderContents(HtmlTextWriter output)
         {
@@ -81,6 +77,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterTrendLine());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {

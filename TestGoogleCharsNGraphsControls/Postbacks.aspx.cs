@@ -73,7 +73,5 @@ namespace TestGoogleCharsNGraphsControls
             return dt;
         }
 
-
-
     }
 }

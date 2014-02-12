@@ -15,7 +15,7 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVBarChart runat=server></{0}:GVBarChart>")]
     [ToolboxBitmap(typeof(GVBarChart))]
     [DataContract]
-    public class GVBarChart : BaseWebControl, IsStackable
+    public class GVBarChart : BaseWebControl, IsStackable, HasTrendLines
     {
 
         [GviConfigOption]
@@ -58,6 +58,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterTrendLine());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {
@@ -68,6 +69,27 @@ namespace GoogleChartsNGraphsControls
             string s = string.Empty;
             s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
             return s;
+        }
+
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"A trendline is a line superimposed on a chart revealing the overall direction of the data. Google Charts can automatically generate trendlines for Scatter Charts, Bar Charts, Column Charts, and Line Charts.")]
+        [DataMember(Name = "trendlines", EmitDefaultValue = true, IsRequired = false)]
+        public TrendLine[] GviTrendLine
+        {
+            get
+            {
+                TrendLine[] s = (TrendLine[])ViewState["GviTrendLine"];
+                return s;
+            }
+
+            set
+            {
+                TrendLine[] s = value as TrendLine[];
+                ViewState["GviTrendLine"] = s;
+            }
         }
     }
 }

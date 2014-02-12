@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
+using System.Data;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Drawing;
@@ -10,54 +12,19 @@ using System.Runtime.Serialization;
 namespace GoogleChartsNGraphsControls
 {
     [DefaultProperty("GviShowTip")]
-    [ToolboxData("<{0}:GVCandlestickChart runat=server></{0}:GVCandlestickChart>")]
-    [ToolboxBitmap(typeof(GVCandlestickChart))]
+    [ToolboxData("<{0}:GVAnnotationChart runat=server></{0}:GVAnnotationChart>")]
+    [ToolboxBitmap(typeof(GVAnnotationChart))]
     [DataContract]
-    public class GVCandlestickChart: BaseWebControl
+    public class GVAnnotationChart : BaseWebControl
     {
-       
-
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"Where to place the chart title, compared to the chart area. Supported values:
-            in - Draw the title inside the chart area.
-            out - Draw the title outside the chart area.
-            none - Omit the title.")]
-        [DefaultValue(CandlestickTheme.Default)]
-        public CandlestickTheme GVITheme
-        {
-            get
-            {
-                object s = ViewState["GVITheme"];
-                if (s == null) return CandlestickTheme.Default;
-                CandlestickTheme ss = (CandlestickTheme)ViewState["GVITheme"];
-                return ss;
-            }
-            set
-            {
-                ViewState["GVITheme"] = value;
-            }
-        }
-
-
-
-
-
-    
 
         protected override void RenderContents(HtmlTextWriter output)
         {
-
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.CANDLESTICK);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.ANNOTATION);
             output.Write(Text);
         }
-        // Support for IPostBackEventHandler
-        //protected override void Render(HtmlTextWriter output)
-        //{
-        //    RenderContents(output);
-        //}
+
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
@@ -65,6 +32,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterTrippleStateBool());
             myconverters.Add(new CustomConverterTrendLine());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
