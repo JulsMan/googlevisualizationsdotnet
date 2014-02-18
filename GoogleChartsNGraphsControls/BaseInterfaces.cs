@@ -22,4 +22,9 @@ namespace GoogleChartsNGraphsControls
     {
         TrendLine[] GviTrendLine { get; set; }
     }
+
+    interface HasIntervals
+    {
+        Interval[] GviIntervals { get; set; }
+    }
 }

@@ -14,7 +14,7 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVLineChart runat=server></{0}:GVLineChart>")]
     [ToolboxBitmap(typeof(GVLineChart))]
     [DataContract]
-    public class GVLineChart : BaseWebControl, IsStackable, HasTrendLines
+    public class GVLineChart : BaseWebControl, IsStackable, HasTrendLines, HasIntervals
     {
         [GviConfigOption]
         [Bindable(true)]
@@ -22,7 +22,7 @@ namespace GoogleChartsNGraphsControls
         [Description(@"Controls the curve of the lines when the line width is not zero. Can be one of the following:
                         'none' - Straight lines without curve.
                         'function' - The angles of the line will be smoothed.")]
-        [DefaultValue(CurveType.None)]
+        [DefaultValue(CurveType.Function)]
         [DataMember(Name = "curveType", EmitDefaultValue = true, IsRequired = false)]
         public CurveType GviCurveType
         {
@@ -61,6 +61,26 @@ namespace GoogleChartsNGraphsControls
         }
 
 
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"A trendline is a line superimposed on a chart revealing the overall direction of the data. Google Charts can automatically generate trendlines for Scatter Charts, Bar Charts, Column Charts, and Line Charts.")]
+        [DataMember(Name = "intervals", EmitDefaultValue = true, IsRequired = false)]
+        public  Interval[] GviIntervals
+        {
+            get
+            {
+                Interval[] s = (Interval[])ViewState["GviIntervals"];
+                return s;
+            }
+
+            set
+            {
+                Interval[] s = value as Interval[];
+                ViewState["GviIntervals"] = s;
+            }
+        }
+
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
@@ -80,6 +100,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
             myconverters.Add(new CustomConverterTrendLine());
+            myconverters.Add(new CustomConverterInterval());
 
             Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
             {
@@ -112,5 +133,7 @@ namespace GoogleChartsNGraphsControls
                 ViewState["GviIsStacked"] = s;
             }
         }
+
+
     }
 }

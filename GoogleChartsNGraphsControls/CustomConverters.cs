@@ -291,6 +291,66 @@ namespace GoogleChartsNGraphsControls
             writer.WriteEndObject();
         }
     }
+
+
+
+    internal class CustomConverterInterval : JsonConverter
+    {
+
+        public override bool CanConvert(Type objectType)
+        {
+            if (objectType == typeof(Interval[]))
+                return true;
+
+            return false;
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
+            myconverters.Add(new CustomConvertersColorToRGB());
+            myconverters.Add(new CustomConvertersAxis());
+            myconverters.Add(new CustomConvertersLegend());
+            myconverters.Add(new CustomConverterEnum());
+
+            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                Converters = myconverters
+            };
+
+
+
+            Interval[] lines = value as Interval[];
+
+          
+
+            //writer.WritePropertyName("intervals");
+            writer.WriteRawValue("{style:'bars', color:'series-color'}");
+
+
+            if (lines.Count() == 0) return;
+
+            //writer.WriteStartObject();
+
+            //for (int i = 0; i < lines.Count(); i++)
+            //{
+            //    writer.WritePropertyName(i.ToString());
+            //    string json = Newtonsoft.Json.JsonConvert.SerializeObject(lines[i], Formatting.None, settings);
+            //    json = BaseGVI.FixJSON(json);
+            //    json = json.Trim('"');
+            //    writer.WriteRawValue(json);
+            //}
+
+
+            //writer.WriteEndObject();
+        }
+    }
   
 
 }

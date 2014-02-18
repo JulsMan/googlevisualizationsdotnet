@@ -16,7 +16,7 @@ namespace TestGoogleCharsNGraphsControls
             {
                 columnChart();
                 scatterChart();
-
+                lineChartWithIntervals();
 
 
 
@@ -91,7 +91,44 @@ namespace TestGoogleCharsNGraphsControls
         //    this.GVAreaChart1.GviVAxisClass = vx;
         //}
 
+        private void lineChartWithIntervals()
+        {
+            System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");
+            dt2.Columns.Add("Year");
+            dt2.Columns.Add("Expenses", typeof(int));
+            dt2.Columns.Add("Sales", typeof(int));
+            dt2.Rows.Add(new object[] { "2004", 215000, 225000 });
+            dt2.Rows.Add(new object[] { "2005", 300000, 320000 });
+            dt2.Rows.Add(new object[] { "2006", 326000, 356000 });
+            dt2.Rows.Add(new object[] { "2007", 485000, 490000 });
+            dt2.Rows.Add(new object[] { "2008", 410000, 442000 });
+            dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
+            dt2.Rows.Add(new object[] { "2010", 480000, 435000 });
 
+            GoogleChartsNGraphsControls.TrendLine trend = new GoogleChartsNGraphsControls.TrendLine()
+            {
+                Color = Color.MediumPurple,
+                Opacity = 0.4f,
+                LineWidth = 10,
+                VisibleInLegend = true,
+                LabelInLegend = "Sales",
+                Type = GoogleChartsNGraphsControls.TrendLineType.Exponential
+            };
+
+            this.GVLineChart1.GviIntervals = new GoogleChartsNGraphsControls.Interval[] { };
+
+            this.GVLineChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { trend };
+            //this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
+            GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
+            hx.Title = "Child Age";
+            hx.ShowTextEvery = 1;
+            hx.SlantedText = true;
+            //this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";
+            this.GVLineChart1.GviHAxisClass = hx;
+            GoogleChartsNGraphsControls.Animation an = new GoogleChartsNGraphsControls.Animation(GoogleChartsNGraphsControls.AnimationEasing.InAndOut, 1000);
+            this.GVLineChart1.GviAnimationClass = an;
+            this.GVLineChart1.DataSource = dt2;
+        }
 
         private void scatterChart()
         {
@@ -99,14 +136,23 @@ namespace TestGoogleCharsNGraphsControls
             scatter.Columns.AddRange(
             new System.Data.DataColumn[]{
                 new System.Data.DataColumn("Age",typeof(int)), 
-                new System.Data.DataColumn("Weight",typeof(int))
+                new System.Data.DataColumn("Male-Weight",typeof(int)),
+                 new System.Data.DataColumn("Female-Weight",typeof(int))
             });
-            scatter.Rows.Add(new object[] { 8, 72 });
-            scatter.Rows.Add(new object[] { 4, 46 });
-            scatter.Rows.Add(new object[] { 6, 55 });
-            scatter.Rows.Add(new object[] { 9, 78 });
-            scatter.Rows.Add(new object[] { 12, 92 });
-            scatter.Rows.Add(new object[] { 5, 50 });
+            scatter.Rows.Add(new object[] { 8, 72 ,null});
+            scatter.Rows.Add(new object[] { 4, 46, null });
+            scatter.Rows.Add(new object[] { 6, 55, null });
+            scatter.Rows.Add(new object[] { 9, 78, null });
+            scatter.Rows.Add(new object[] { 12, 92, null });
+            scatter.Rows.Add(new object[] { 5, 50, null });
+
+            scatter.Rows.Add(new object[] { 8, null,72 });
+            scatter.Rows.Add(new object[] { 4, null, 48 });
+            scatter.Rows.Add(new object[] { 6, null, 56 });
+            scatter.Rows.Add(new object[] { 9, null, 76 });
+            scatter.Rows.Add(new object[] { 12, null, 98 });
+            scatter.Rows.Add(new object[] { 5, null, 53 });
+
             this.GVScatterChart1.GviTitle = "Age vs Weight Comparison";
 
             GoogleChartsNGraphsControls.TrendLine trend = new GoogleChartsNGraphsControls.TrendLine()
@@ -155,21 +201,21 @@ namespace TestGoogleCharsNGraphsControls
 
             GoogleChartsNGraphsControls.TrendLine tl1 = new GoogleChartsNGraphsControls.TrendLine()
             {
-                Color = Color.MediumPurple,
-                Type = GoogleChartsNGraphsControls.TrendLineType.Exponential,
-                LabelInLegend = "Year Trend",
-                Opacity = 0.3f,
-                LineWidth = 10,
-                VisibleInLegend = true
+                //Color = Color.MediumPurple,
+                Type = GoogleChartsNGraphsControls.TrendLineType.Linear,
+                //LabelInLegend = "Sales Trend",
+                //Opacity = 0.3f,
+                //LineWidth = 10,
+               //VisibleInLegend = true
             };
             GoogleChartsNGraphsControls.TrendLine tl2 = new GoogleChartsNGraphsControls.TrendLine()
             {
-                Color = Color.Maroon,
+                //Color = Color.Maroon,
                 Type = GoogleChartsNGraphsControls.TrendLineType.Linear,
-                LabelInLegend = "Sales Trend",
-                Opacity = 0.3f,
-                LineWidth = 5,
-                VisibleInLegend = true
+                //LabelInLegend = "Expenses Trend",
+                //Opacity = 0.3f,
+                //LineWidth = 10,
+                //VisibleInLegend = true
             };
             this.GVColumnChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { tl1, tl2 };
             this.GVColumnChart1.GviVAxisClass = vx;

@@ -72,6 +72,8 @@ namespace GoogleChartsNGraphsControls
     public enum Orientation { Default, Horizonal, Vertical }
     [Serializable()]
     public enum TrendLineType { Default, Linear, Exponential }
+    [Serializable()]
+    public enum IntervalStyle { Line, Bar, Box, Stick, Point, Area }
 
     /// <summary>
     /// TODO: Need to implement this, still need to create valid series JSON and to auto-apply this to the 
@@ -456,7 +458,7 @@ namespace GoogleChartsNGraphsControls
     }
 
     [Serializable()]
-    [DataContract(Name = "textStyle")]
+    [DataContract(Name = "trendLine")]
     public class TrendLine
     {
         [DataMember(Name = "color")]
@@ -477,6 +479,57 @@ namespace GoogleChartsNGraphsControls
         [DataMember(Name = "opacity")]
         public float? Opacity { get; set; } // 0 - 1
     }
+
+
+    [Serializable()]
+    [DataContract(Name = "interval")]
+    public class Interval
+    {
+        [DataMember(Name = "color")]
+        public Color? Color { get; set; }
+
+        [DataMember(Name = "style")]
+        public bool? Style { get; set; }
+
+        [DataMember(Name = "barWidth")]
+        public int? BarWidth { get; set; }
+
+        [DataMember(Name = "boxWidth")]
+        public int? BoxWidth { get; set; }
+
+        [DataMember(Name = "lineWidth")]
+        public int? LineWidth { get; set; }
+
+        [DataMember(Name = "pointSize")]
+        public int? PointSize { get; set; }
+
+        [DataMember(Name = "fillOpacity")]
+        public float? Opacity { get; set; }
+    }
+
+
+    //[Serializable()]
+    //[DataContract(Name = "interval")]
+    //public class Interval
+    //{
+    //    [DataMember(Name = "color")]
+    //    public Color? Color { get; set; }
+
+    //    [DataMember(Name = "visibleInLegend")]
+    //    public bool? VisibleInLegend { get; set; }
+
+    //    [DataMember(Name = "labelInLegend")]
+    //    public string LabelInLegend { get; set; }
+
+    //    [DataMember(Name = "type")]
+    //    public TrendLineType Type { get; set; }
+
+    //    [DataMember(Name = "lineWidth")]
+    //    public int? LineWidth { get; set; }
+
+    //    [DataMember(Name = "opacity")]
+    //    public float? Opacity { get; set; } // 0 - 1
+    //}
 
     [Serializable()]
     [DataContract(Name = "series")]

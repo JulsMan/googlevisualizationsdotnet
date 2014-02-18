@@ -24,6 +24,15 @@
         <cc1:GVScatterChart ID="GVScatterChart1" runat="server"  Width="500" Height="400"/>
 
     </div>
+
+
+
+
+     <h3>Line Chart with Intervals</h3>
+        <cc1:GVLineChart ID="GVLineChart1" runat="server" Width="500" Height="400" GviCurveType="Function" />
+
+    </div>
+
     </form>
 </body>
 </html>
