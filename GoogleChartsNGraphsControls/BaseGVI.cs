@@ -262,8 +262,11 @@ namespace GoogleChartsNGraphsControls
             // load the datatable...
             if (dt == null)
                 throw new Exception(string.Format("Unable to create visualization '{0}' with an empty DataTable ", this.GetType().FullName));
+
             Bortosky.Google.Visualization.GoogleDataTable gdt = new Bortosky.Google.Visualization.GoogleDataTable(dt);
-            optionsJscode = optionsJscode.Replace("__DATATABLE__", gdt.GetJson());
+            optionsJscode = optionsJscode.Replace("__DATATABLE__", PageControl.PostProcessData( gdt.GetJson()));
+
+           
 
             /*
              * This allows you to manipulate the data 

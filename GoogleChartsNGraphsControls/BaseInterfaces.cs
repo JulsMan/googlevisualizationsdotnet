@@ -7,6 +7,12 @@ using System.Runtime.Serialization;
 
 namespace GoogleChartsNGraphsControls
 {
+    interface IGviChart
+    {
+        //GoogleChartsNGraphsControls.BaseGVI.GOOGLECHART ChartType { get; }
+        string PostProcessData(string DATATABLE);
+    }
+
     interface IsStackable
     {
         [GviConfigOption]

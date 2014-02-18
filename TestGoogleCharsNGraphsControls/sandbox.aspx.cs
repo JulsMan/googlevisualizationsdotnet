@@ -94,16 +94,20 @@ namespace TestGoogleCharsNGraphsControls
         private void lineChartWithIntervals()
         {
             System.Data.DataTable dt2 = new System.Data.DataTable("Company Sales/Expenses");
-            dt2.Columns.Add("Year");
+            dt2.Columns.Add("Year", typeof(string));
             dt2.Columns.Add("Expenses", typeof(int));
             dt2.Columns.Add("Sales", typeof(int));
-            dt2.Rows.Add(new object[] { "2004", 215000, 225000 });
-            dt2.Rows.Add(new object[] { "2005", 300000, 320000 });
-            dt2.Rows.Add(new object[] { "2006", 326000, 356000 });
-            dt2.Rows.Add(new object[] { "2007", 485000, 490000 });
-            dt2.Rows.Add(new object[] { "2008", 410000, 442000 });
-            dt2.Rows.Add(new object[] { "2009", 466000, 422000 });
-            dt2.Rows.Add(new object[] { "2010", 480000, 435000 });
+            dt2.Columns.Add("Interval-Expenses1", typeof(int));
+            dt2.Columns.Add("Interval-Sales1", typeof(int));
+            dt2.Columns.Add("Interval-Expenses2", typeof(int));
+            dt2.Columns.Add("Interval-Sales2", typeof(int));
+            dt2.Rows.Add(new object[] { "2004", 215000, 225000, 205000, 210000, 235000, 213000 });
+            dt2.Rows.Add(new object[] { "2005", 300000, 320000, 295000, 315000, 300000, 315000 });
+            dt2.Rows.Add(new object[] { "2006", 326000, 356000, 315000, 345000, 335000, 365000 });
+            dt2.Rows.Add(new object[] { "2007", 485000, 490000, 475000, 475000, 495000, 515000 });
+            dt2.Rows.Add(new object[] { "2008", 410000, 442000, 395000, 425000, 425000, 465000 });
+            dt2.Rows.Add(new object[] { "2009", 466000, 422000, 445000, 405000, 475000, 435000 });
+            dt2.Rows.Add(new object[] { "2010", 480000, 435000, 475000, 405000, 525000, 445000 });
 
             GoogleChartsNGraphsControls.TrendLine trend = new GoogleChartsNGraphsControls.TrendLine()
             {
@@ -115,12 +119,22 @@ namespace TestGoogleCharsNGraphsControls
                 Type = GoogleChartsNGraphsControls.TrendLineType.Exponential
             };
 
-            this.GVLineChart1.GviIntervals = new GoogleChartsNGraphsControls.Interval[] { };
+            this.GVLineChart1.GviIntervals = new GoogleChartsNGraphsControls.Interval[] 
+            {
+                    new GoogleChartsNGraphsControls.Interval() { BarWidth = 3, Color = System.Drawing.Color.MediumPurple, Opacity = 0.2f, 
+                   Style = GoogleChartsNGraphsControls.IntervalStyle.Area   },
+                    new GoogleChartsNGraphsControls.Interval() { BarWidth = 1, Color = System.Drawing.Color.IndianRed, Opacity = 0.2f, 
+                   Style = GoogleChartsNGraphsControls.IntervalStyle.Box   },
+                   new GoogleChartsNGraphsControls.Interval() { BarWidth = 3, Color = System.Drawing.Color.IndianRed, Opacity = 0.2f, 
+                   Style = GoogleChartsNGraphsControls.IntervalStyle.Area   },
+                    new GoogleChartsNGraphsControls.Interval() { BarWidth = 1, Color = System.Drawing.Color.LightBlue, Opacity = 0.2f, 
+                   Style = GoogleChartsNGraphsControls.IntervalStyle.Box   },
+            };
 
             this.GVLineChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { trend };
             //this.GVScatterChart1.GviHAxis = "{title: 'Age', minValue: 0, maxValue: 15}";
             GoogleChartsNGraphsControls.hAxis hx = new GoogleChartsNGraphsControls.hAxis();
-            hx.Title = "Child Age";
+            hx.Title = "Date";
             hx.ShowTextEvery = 1;
             hx.SlantedText = true;
             //this.GVScatterChart1.GviVAxis = "{title: 'Weight', minValue: 0, maxValue: 100}";

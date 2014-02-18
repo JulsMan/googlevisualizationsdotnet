@@ -14,7 +14,8 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVLineChart runat=server></{0}:GVLineChart>")]
     [ToolboxBitmap(typeof(GVLineChart))]
     [DataContract]
-    public class GVLineChart : BaseWebControl, IsStackable, HasTrendLines, HasIntervals
+    public class GVLineChart : BaseWebControl, IsStackable, HasTrendLines, HasIntervals, IGviChart
+
     {
         [GviConfigOption]
         [Bindable(true)]
@@ -65,7 +66,7 @@ namespace GoogleChartsNGraphsControls
         [Bindable(true)]
         [Category("GoogleOptions")]
         [Description(@"A trendline is a line superimposed on a chart revealing the overall direction of the data. Google Charts can automatically generate trendlines for Scatter Charts, Bar Charts, Column Charts, and Line Charts.")]
-        [DataMember(Name = "intervals", EmitDefaultValue = true, IsRequired = false)]
+        [DataMember(Name = "interval", EmitDefaultValue = true, IsRequired = false)]
         public  Interval[] GviIntervals
         {
             get
@@ -113,6 +114,7 @@ namespace GoogleChartsNGraphsControls
             return s;
         }
 
+        
         [GviConfigOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
@@ -135,5 +137,31 @@ namespace GoogleChartsNGraphsControls
         }
 
 
+
+        public override string PostProcessData(string DATATABLE)
+        {
+            if (this is HasIntervals)
+            {
+                System.Text.RegularExpressions.Regex intervalRx = new System.Text.RegularExpressions.Regex(@"{id:\s'(i|interval).+?'"
+                    , System.Text.RegularExpressions.RegexOptions.Compiled | System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                System.Text.RegularExpressions.MatchCollection mc = intervalRx.Matches(DATATABLE);
+
+                int i = 0;
+                foreach (System.Text.RegularExpressions.Match mm in mc)
+                {
+
+                    if (mm.Success)
+                        DATATABLE = DATATABLE.Replace(mm.Value, string.Format("{{id: 'i{0}', role: 'interval'", i));
+                    i++;
+                }
+                // for intervalues we need to hack the JSON code to include role:'interval' after the naming
+                return DATATABLE;
+            }
+            else
+            {
+                return DATATABLE;
+            }
+        }
     }
 }

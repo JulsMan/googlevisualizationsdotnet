@@ -331,24 +331,24 @@ namespace GoogleChartsNGraphsControls
           
 
             //writer.WritePropertyName("intervals");
-            writer.WriteRawValue("{style:'bars', color:'series-color'}");
+            //writer.WriteRawValue("{style:'bars', color:'series-color'}");
 
 
             if (lines.Count() == 0) return;
 
-            //writer.WriteStartObject();
+            writer.WriteStartObject();
 
-            //for (int i = 0; i < lines.Count(); i++)
-            //{
-            //    writer.WritePropertyName(i.ToString());
-            //    string json = Newtonsoft.Json.JsonConvert.SerializeObject(lines[i], Formatting.None, settings);
-            //    json = BaseGVI.FixJSON(json);
-            //    json = json.Trim('"');
-            //    writer.WriteRawValue(json);
-            //}
+            for (int i = 0; i < lines.Count(); i++)
+            {
+                writer.WritePropertyName("i" + i.ToString());
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(lines[i], Formatting.None, settings);
+                json = BaseGVI.FixJSON(json);
+                json = json.Trim('"');
+                writer.WriteRawValue(json);
+            }
 
 
-            //writer.WriteEndObject();
+            writer.WriteEndObject();
         }
     }
   

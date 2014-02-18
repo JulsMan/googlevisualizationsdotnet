@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 namespace GoogleChartsNGraphsControls
 {
     [DataContract]
-    public abstract class BaseWebControl: WebControl, IPostBackEventHandler
+    public abstract class BaseWebControl : WebControl, IPostBackEventHandler, IGviChart
     {
         public BaseWebControl()
         {
@@ -1125,6 +1125,9 @@ namespace GoogleChartsNGraphsControls
         //}
 
 
-        
+        public virtual string PostProcessData(string DATATABLE)
+        {
+            return DATATABLE;
+        }
     }
 }

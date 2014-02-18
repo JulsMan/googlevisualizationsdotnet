@@ -485,11 +485,13 @@ namespace GoogleChartsNGraphsControls
     [DataContract(Name = "interval")]
     public class Interval
     {
+        public Interval() { }
+
         [DataMember(Name = "color")]
         public Color? Color { get; set; }
 
         [DataMember(Name = "style")]
-        public bool? Style { get; set; }
+        public IntervalStyle Style { get; set; }
 
         [DataMember(Name = "barWidth")]
         public int? BarWidth { get; set; }
