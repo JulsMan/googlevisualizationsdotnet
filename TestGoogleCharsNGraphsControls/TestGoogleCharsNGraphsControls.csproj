@@ -77,7 +77,7 @@
     <Content Include="Codebehind.aspx" />
     <Content Include="GeoMaps.aspx" />
     <Content Include="Postbacks.aspx" />
-    <Content Include="sandbox.aspx" />
+    <Content Include="IntervalNTrend.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -114,12 +114,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="sandbox.aspx.cs">
-      <DependentUpon>sandbox.aspx</DependentUpon>
+    <Compile Include="IntervalNTrend.aspx.cs">
+      <DependentUpon>IntervalNTrend.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sandbox.aspx.designer.cs">
-      <DependentUpon>sandbox.aspx</DependentUpon>
+    <Compile Include="IntervalNTrend.aspx.designer.cs">
+      <DependentUpon>IntervalNTrend.aspx</DependentUpon>
     </Compile>
     <Compile Include="WCFTestService.svc.cs">
       <DependentUpon>WCFTestService.svc</DependentUpon>
