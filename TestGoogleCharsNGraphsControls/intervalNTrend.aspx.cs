@@ -231,9 +231,9 @@ namespace TestGoogleCharsNGraphsControls
                 //LineWidth = 10,
                 //VisibleInLegend = true
             };
-            this.GVColumnChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { tl1, tl2 };
-            this.GVColumnChart1.GviVAxisClass = vx;
-            this.GVColumnChart1.DataSource = barchart;
+            //this.GVColumnChart1.GviTrendLine = new GoogleChartsNGraphsControls.TrendLine[] { tl1, tl2 };
+            //this.GVColumnChart1.GviVAxisClass = vx;
+            //this.GVColumnChart1.DataSource = barchart;
         }
     }
 }

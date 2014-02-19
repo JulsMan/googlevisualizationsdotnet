@@ -28,14 +28,15 @@
         <pre>
             <asp:PlaceHolder ID="PlaceHolder1" runat="server" />
         </pre>
-    
+        <span style="color:Orange">Very New!!</span> <a href="intervalNTrend.aspx">Interval & Trendlines</a>
+          <br />
          <span style="color:Orange">New!!</span> <a href="Codebehind.aspx">Goto Codebehind Examples</a>
-          
+          <br />
          <span style="color:Orange">New!!</span> <a href="Postbacks.aspx">Goto Codebehind with Postbacks</a>
-
+           <br />
         <a href="GeoMaps.aspx">More Maps</a><cc1:GVMap ID="GVMap2" runat="server" GVIShowTip="True" Height="300px" 
             Width="600px" GVILineColor="Goldenrod" GVILineWidth="4" GviShowLine="true"/>
-
+        <br />
 
         <h3>Map ExamplMap Example</h3>
         
