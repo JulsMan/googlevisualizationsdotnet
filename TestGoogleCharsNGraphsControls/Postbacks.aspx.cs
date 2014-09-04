@@ -30,6 +30,8 @@ namespace TestGoogleCharsNGraphsControls
             GoogleChartsNGraphsControls.GVAreaChart chart = new GoogleChartsNGraphsControls.GVAreaChart();
             chart.Width = WD;
             chart.Height = HT;
+            chart.GviPointShape = GoogleChartsNGraphsControls.PointShape.Triangle;
+            chart.GviPointSize = 33;
 
             chart.DataSource = getDT();
             chart.DataBind();

@@ -74,6 +74,9 @@ namespace GoogleChartsNGraphsControls
     public enum TrendLineType { Default, Linear, Exponential }
     [Serializable()]
     public enum IntervalStyle { Line, Bar, Box, Stick, Point, Area }
+    [Serializable()]
+    public enum PointShape { Circle, Triangle, Square, Diamond, Star, Polygon}
+
 
     /// <summary>
     /// TODO: Need to implement this, still need to create valid series JSON and to auto-apply this to the 

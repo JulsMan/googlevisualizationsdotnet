@@ -123,6 +123,24 @@ namespace GoogleChartsNGraphsControls
 
         [GviConfigOption]
         [Bindable(true)]
+        [Description(@"Hides the entire control while also printing it onto the page.  Useful in combination with SetImageFor")]
+        [DefaultValue(typeof(string), "")]
+        public string GviHidden
+        {
+            get
+            {
+                string s = (string)ViewState["GviHidden"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviHidden"] = value;
+            }
+        }
+
+        [GviConfigOption]
+        [Bindable(true)]
         [Category("GoogleOptions")]
         [Description("The background color for the chart.")]
         [DefaultValue(null)]
@@ -476,6 +494,47 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+
+        [GviConfigOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"You can change it from 'circle' to another shape by setting pointShape to 'triangle', 'square', 'diamond', 'star', or 'polygon'")]
+        [DefaultValue(PointShape.Circle)]
+        [DataMember(Name = "pointShape", EmitDefaultValue = true, IsRequired = false)]
+        public PointShape GviPointShape
+        {
+            get
+            {
+                object s = ViewState["GviPointShape"];
+                if (s == null) return PointShape.Circle;
+                PointShape ss = (PointShape)ViewState["GviPointShape"];
+                return ss;
+            }
+            set
+            {
+                ViewState["GviPointShape"] = value;
+            }
+        }
+
+        [GviAnimationOption]
+        [Bindable(true)]
+        [Category("GoogleOptions")]
+        [Description(@"You can control their size with the pointSize option")]
+        [DataMember(Name = "pointSize", EmitDefaultValue = true, IsRequired = false)]
+        public int? GviPointSize
+        {
+            get
+            {
+                int? s = (int?)ViewState["GviPointSize"];
+                return s;
+            }
+
+            set
+            {
+                ViewState["GviPointSize"] = value;
+            }
+        }
+
         //[Bindable(true)]
         //[Category("GoogleOptions")]
         //[Description(@"Write a javascript function that inherits 'chart' and registers the events you want...")]
@@ -558,6 +617,8 @@ namespace GoogleChartsNGraphsControls
             get;
             set;
         }
+
+        
 
         [GviAnimationOption]
         [Bindable(true)]
@@ -989,6 +1050,22 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
+        [Bindable(false)]
+        public List<string> SetImageFor
+        {
+            get
+            {
+                if (ViewState["SetImageFor"] == null)
+                    ViewState["SetImageFor"] = new List<string>();
+
+                return ViewState["SetImageFor"] as List<string>;
+            }
+
+            set
+            {
+                ViewState["SetImageFor"] = value;
+            }
+        }
        
 
         protected DataTable dt
@@ -1048,6 +1125,7 @@ namespace GoogleChartsNGraphsControls
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_LOCAL_SCRIPTS",
                     Resource1.ResourceManager.GetString("SendAndDraw", System.Globalization.CultureInfo.CurrentCulture), true);
             }
+
         }
 
         

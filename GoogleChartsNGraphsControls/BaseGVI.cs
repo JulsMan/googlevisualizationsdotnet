@@ -91,11 +91,23 @@ namespace GoogleChartsNGraphsControls
                 chart.opts = {1};
                 chart.container = container;
                 
-       /********* Save Chart Into DOM **********************/
-                chart_{0} = chart;
+      
 
        /********* Init Chart Load     **********************/
                 chart.load(data);
+
+
+      /********* Update These Image Src     **********************/
+                    {SETIMAGEFOR}
+
+
+
+
+
+ /********* Save Chart Into DOM / Always Last **********************/
+                chart_{0} = chart;
+
+                
 
 }}
 ";
@@ -211,7 +223,8 @@ namespace GoogleChartsNGraphsControls
         internal void RegisterGVIScriptsEx(BaseWebControl PageControl, DataTable dt, GOOGLECHART CHARTTYPE)
         {
             string JAVASCRIPT = jscode3;
-            string options,formatter= string.Empty;
+            string options,formatter = string.Empty;
+            string imagereplace = string.Empty;
             List<string> events = RenderGVIEvents(PageControl);
            
 
@@ -232,6 +245,10 @@ namespace GoogleChartsNGraphsControls
             {
                 JAVASCRIPT = JAVASCRIPT.Replace("{QueryString}", PageControl.QueryString);
             }
+
+
+            imagereplace = RenderSetImage(PageControl);
+            JAVASCRIPT = JAVASCRIPT.Replace("{SETIMAGEFOR}", imagereplace);
 
 
             
@@ -278,10 +295,25 @@ namespace GoogleChartsNGraphsControls
 
             PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "function_" + ctlid, optionsJscode, true);
 
-            
+            //RenderSetImage(PageControl);
             //string datatableoutput = TransformDataTable.ToGoogleDataTable(dt);
             //PageControl.Page.ClientScript.RegisterStartupScript(this.GetType(), "vis_" + ctlid, string.Format("var data_{0} = function() {{ {1} }}", ctlid, datatableoutput), true);
 
+        }
+
+
+        internal string RenderSetImage(BaseWebControl PageControl)
+        {
+
+            string REGISTERSCRIPT = string.Empty;
+            if (PageControl.SetImageFor.Count() > 0)
+            {
+                string JSIMGFOR = "document.getElementById('{0}').setAttribute('src',chart.getImageURI());" + Environment.NewLine;
+                foreach (string s in PageControl.SetImageFor)
+                    REGISTERSCRIPT += string.Format(JSIMGFOR, s, PageControl.ClientID);
+            }
+
+            return REGISTERSCRIPT;
         }
 
 
