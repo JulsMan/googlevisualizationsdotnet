@@ -651,6 +651,40 @@
             this.GVTableArrowFormat1.GviOptionsOverride = "{allowHtml: true, showRowNumber: true}";
             this.GVTableArrowFormat1.DataSource = tblArrow;
         </pre>
+
+
+
+
+
+         <p />
+        <h3>Roles</h3>
+        <cc1:GVLineChart ID="GVLineChartForRoles" runat="server" Width="600" Height="400">
+        </cc1:GVLineChart>
+         <pre class="sloppyCode">
+            Chart Role Types: 
+             "annotation", "annotationText", "interval", "tooltip", "certainty", "emphasis", "scope"
+
+            Sample Code:
+            System.Data.DataTable dt = new System.Data.DataTable("Fashionista Biz");
+            dt.Columns.Add("Month");
+            dt.Columns.Add("Sales", typeof(int));
+            dt.Columns.Add(new DataColumn("sc", typeof(bool)) { Caption = "certainty" });
+            dt.Columns.Add(new DataColumn("em", typeof(bool)) { Caption = "emphasis" });
+            dt.Columns.Add(new DataColumn("i1", typeof(int)) { Caption = "interval" });
+            dt.Columns.Add(new DataColumn("i2", typeof(int)) { Caption = "interval" });
+            dt.Columns.Add(new DataColumn("t1") { Caption = "tooltip" });
+            dt.Columns.Add("Expenses", typeof(int));
+            dt.Columns.Add(new DataColumn("ec", typeof(bool)) { Caption = "certainty" });
+            dt.Columns.Add(new DataColumn("t2") { Caption = "tooltip" });
+
+            dt.Rows.Add(new object[] { "April", 1000, true, true, 980, 1010, "Spring Fashion Show Sparks new Interest", 740, true, "" });
+            dt.Rows.Add(new object[] { "May", 800, true, false, 780, 822, "", 700, true, "" });
+            dt.Rows.Add(new object[] { "June", 750, true, false, 700, 755, "", 980, true, "Stocking up for back to school sale" });
+            dt.Rows.Add(new object[] { "July", 820, true, false, 810, 835, "", 900, true, "" });
+            dt.Rows.Add(new object[] { "Aug", 1260, false, false, 1100, 1300, "Anticipated back to school shopping to boost sales", 860, false, "" });
+
+            this.GVLineChartForRoles.DataSource = dt;
+        </pre>
         
         
         

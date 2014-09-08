@@ -292,6 +292,15 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVTable GVTableArrowFormat1;
         
         /// <summary>
+        /// GVLineChartForRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleChartsNGraphsControls.GVLineChart GVLineChartForRoles;
+        
+        /// <summary>
         /// GVTableBarFormat1 control.
         /// </summary>
         /// <remarks>
