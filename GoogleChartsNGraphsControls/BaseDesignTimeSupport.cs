@@ -76,7 +76,10 @@ namespace GoogleChartsNGraphsControls
     public enum IntervalStyle { Line, Bar, Box, Stick, Point, Area }
     [Serializable()]
     public enum PointShape { Circle, Triangle, Square, Diamond, Star, Polygon}
-
+    [Serializable()]
+    public enum WordTreeFormat { Implicit, Explicit }
+    [Serializable()]
+    public enum WordTreeType { Suffix, Double }
 
     /// <summary>
     /// TODO: Need to implement this, still need to create valid series JSON and to auto-apply this to the 
@@ -92,6 +95,26 @@ namespace GoogleChartsNGraphsControls
     //    [DataMember(Name = "REPLACE_WITH_SERIES")]
     //    public string DataRowNumber { get; set; }
     //}
+
+
+    [Serializable()]
+    [DataContract(Name = "wordtree")]
+    public class WordTree
+    {
+        public WordTree() { }
+
+        [DataMember(Name = "format")]
+        public WordTreeFormat Format { get; set; }
+        [DataMember(Name = "sentenceRegex")]
+        public string SentenceRegex { get; set; }
+        [DataMember(Name = "type")]
+        public WordTreeType Type { get; set; }
+        [DataMember(Name = "word")]
+        public string Word { get; set; }
+        [DataMember(Name = "wordRegex")]
+        public string WordRegex { get; set; }
+    }
+
 
     [Serializable()]
     [DataContract(Name = "animation")]
@@ -406,7 +429,7 @@ namespace GoogleChartsNGraphsControls
             this.TextStyle = TextStyle;
         }
 
-        [DataMember(Name = "postition", IsRequired = false, EmitDefaultValue = true)]
+        [DataMember(Name = "position", IsRequired = false, EmitDefaultValue = true)]
         public LegendPostion LegendPosition
         {
             get;

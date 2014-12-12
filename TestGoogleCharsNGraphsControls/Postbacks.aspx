@@ -5,14 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="http://code.jquery.com/jquery-latest.min.js "></script>
+
+    <style>
+        div#pt
+        {
+            width:190px;  
+            height:50px;  
+            position: absolute;
+            background-color:rgba(255, 0, 0, 0.1);
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
         <h3>Charts with Postback Annimation</h3>
 
+        
+        
+        <p />
+
         <asp:PlaceHolder ID="PlaceHolderChart" runat="server" />
 
+        
         <p />
 
         <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button1_Click" PostBackUrl="~/Postbacks.aspx" />
@@ -22,6 +39,7 @@
 
     <hr />
 
+        <div id="pt" />
 
 
 
@@ -35,7 +53,8 @@
 
 
 
-    <pre>
+        <!--
+        <pre>
 public partial class Postbacks : System.Web.UI.Page
 {
     const int WD = 300;
@@ -102,7 +121,8 @@ public partial class Postbacks : System.Web.UI.Page
     }
 
 }
-    </pre>
+    </pre>  
+        -->  
     </form>
 </body>
 </html>

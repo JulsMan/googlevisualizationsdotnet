@@ -90,6 +90,7 @@
     <Compile Include="BaseInterfaces.cs" />
     <Compile Include="GVAnnotationChart.cs" />
     <Compile Include="GVCalendar.cs" />
+    <Compile Include="GVWordTree.cs" />
     <Compile Include="GVTimeline.cs" />
     <Compile Include="GVDonutChart.cs" />
     <Compile Include="GVHistogram.cs" />

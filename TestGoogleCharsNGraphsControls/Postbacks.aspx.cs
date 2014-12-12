@@ -15,7 +15,7 @@ namespace TestGoogleCharsNGraphsControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            codebehindGauge();
+            codebehindAreaChart();
         }
         
         protected void Button1_Click(object sender, EventArgs e)

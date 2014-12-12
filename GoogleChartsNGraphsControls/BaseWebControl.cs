@@ -862,7 +862,7 @@ namespace GoogleChartsNGraphsControls
         [GviLegendOption]
         [Bindable(true)]
         [Category("GoogleOptions")]
-        [Description(@"Legend Postion")]
+        [Description(@"Legend Position")]
         public LegendPostion GviLegendPosition
         {
             get

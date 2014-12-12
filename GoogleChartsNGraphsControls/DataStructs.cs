@@ -51,6 +51,9 @@ namespace GoogleChartsNGraphsControls
         public string OptionalAnnotationTitle { get; set; }
         public string OptionalAnnotationText { get; set; }
     }
+
+    
+
     public class GviConfigOption : Attribute
     {
         public GviConfigOption() { }
@@ -77,6 +80,7 @@ namespace GoogleChartsNGraphsControls
             return EventName;
         }
     }
+    
     
     /// <summary>
     ///  Signifies that this class will be run and will fill in another, usually string, value with JSON

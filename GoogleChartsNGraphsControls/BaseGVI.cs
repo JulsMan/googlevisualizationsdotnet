@@ -24,7 +24,7 @@ namespace GoogleChartsNGraphsControls
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
             SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
             CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP, TIMELINE,
-
+            WORDTREE,
             CALENDAR, ANNOTATION, SANKEY
         }
 
@@ -210,6 +210,7 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.CALENDAR, new string[] { "calendar", "Calendar" });
                 dic.Add(GOOGLECHART.ANNOTATION, new string[] { "annotationchart", "AnnotationChart" });
                 dic.Add(GOOGLECHART.SANKEY, new string[] { "sankey", "Sankey" });
+                dic.Add(GOOGLECHART.WORDTREE, new string[] { "wordtree", "WordTree" });
             }
         }
 
