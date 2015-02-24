@@ -189,7 +189,7 @@ namespace TestGoogleCharsNGraphsControls
             an.Easing = GoogleChartsNGraphsControls.AnimationEasing.Out;
             an.Duration = 1000;
             this.GVAreaChart2.GviAnimationClass = an;
-
+            
 
 
             System.Data.DataTable barchart = new System.Data.DataTable("Company Performance");

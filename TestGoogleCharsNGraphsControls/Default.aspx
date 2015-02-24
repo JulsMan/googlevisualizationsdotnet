@@ -1,5 +1,4 @@
 ﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" EnableViewState="false" Inherits="TestGoogleCharsNGraphsControls.WebForm1" MaintainScrollPositionOnPostback="true" %>
-
 <%@ Register assembly="GoogleChartsNGraphsControls" namespace="GoogleChartsNGraphsControls" tagprefix="cc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -17,7 +16,17 @@
             padding: 16px 0px 0px 16px;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script>
     <script src="Events.Examples.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var reloadCharts = function(){
+            for (var key in this) {
+                if (key.indexOf('chart_GV') > -1) {
+                    eval(key + ".reload();");
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -477,7 +486,7 @@
         
         <p />
         <h3>ColumnChart Example with AJAX and Animation and Trendlines</h3>
-        <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"
+        <cc1:GVColumnChart ID="GVColumnChart1" runat="server" Width="600" Height="400" GviAnimation_Duration="2000" GviAnimation_Easing="Out"
         QueryString="~/AjaxUpdateHandler.ashx?type=column" GviFormatterHook="MyColumnChartDataFormatter" />
         
         <asp:Button ID="Button1" runat="server" OnClientClick="chart_GVColumnChart1.reload(); return false;" Text="Ajax Reload" />

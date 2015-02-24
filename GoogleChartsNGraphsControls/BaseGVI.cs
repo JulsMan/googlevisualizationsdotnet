@@ -202,7 +202,7 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.TABLEARROW, new string[] { "table", "Table" });
                 dic.Add(GOOGLECHART.TABLEBAR, new string[] { "table", "Table" });
                 dic.Add(GOOGLECHART.CANDLESTICK, new string[] { "candlestickchart", "CandlestickChart" });
-                dic.Add(GOOGLECHART.COMBO, new string[] { "combochart", "ComboChart" });
+                dic.Add(GOOGLECHART.COMBO, new string[] { "corechart", "ComboChart" });
                 dic.Add(GOOGLECHART.HISTOGRAM, new string[] { "corechart", "Histogram" });
                 dic.Add(GOOGLECHART.TIMELINE, new string[] { "timeline", "Timeline" });
                 dic.Add(GOOGLECHART.DONUT, new string[] { "corechart", "PieChart" });

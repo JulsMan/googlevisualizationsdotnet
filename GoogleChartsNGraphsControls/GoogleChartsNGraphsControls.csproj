@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDesignTimeSupport.cs" />
+    <Compile Include="BaseEvents.cs" />
     <Compile Include="BaseGVI.cs" />
     <Compile Include="BaseWebControl.cs" />
     <Compile Include="BaseInterfaces.cs" />

@@ -53,6 +53,14 @@ function AjaxCallback(container, chart)
     };
 }
 
+var reloadGVCharts = function () {
+    for (var key in this) {
+        if (key.indexOf('chart_GV') > -1) {
+            eval(key + ".reload();");
+        }
+    }
+}
+
  
 
 
