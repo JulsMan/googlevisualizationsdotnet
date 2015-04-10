@@ -50,10 +50,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GoogleChartsNGraphsControls, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GoogleChartsNGraphsControls\bin\Debug\GoogleChartsNGraphsControls.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -145,6 +141,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Themes\Theme1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleChartsNGraphsControls\GoogleChartsNGraphsControls.csproj">
+      <Project>{30d276b0-b6b3-410f-b723-c128ac58fda1}</Project>
+      <Name>GoogleChartsNGraphsControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

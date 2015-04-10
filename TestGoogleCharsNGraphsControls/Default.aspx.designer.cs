@@ -85,15 +85,6 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::GoogleChartsNGraphsControls.GVCandlestickChart GVCandlestickChart1;
         
         /// <summary>
-        /// GVSparkLine2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVSparkLine GVSparkLine2;
-        
-        /// <summary>
         /// GVPieChart1 control.
         /// </summary>
         /// <remarks>
@@ -209,15 +200,6 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GoogleChartsNGraphsControls.GVComboChart GVComboChart1;
-        
-        /// <summary>
-        /// GVSparkLine1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVSparkLine GVSparkLine1;
         
         /// <summary>
         /// GVMotionChart1 control.

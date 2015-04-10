@@ -169,29 +169,6 @@
 
 
         <p />
-         <label style="color:orange">New</label> <h3>Calendar Example</h3>
-        <cc1:GVSparkLine ID="GVSparkLine2" runat="server" Width="600" Height="400"/>
-         <pre class="sloppyCode">
-            Sample Code:
-            System.Data.DataTable rv = new System.Data.DataTable("Revenue/Licenses");
-            rv.Columns.Add("Revenue", typeof(int));
-            rv.Columns.Add("Licenses", typeof(int));
-            rv.Rows.Add(new object[] { 435, 132 });
-            rv.Rows.Add(new object[] { 438, 131 });
-            rv.Rows.Add(new object[] { 512, 137 });
-            rv.Rows.Add(new object[] { 460, 142 });
-            rv.Rows.Add(new object[] { 491, 140 });
-            rv.Rows.Add(new object[] { 487, 139 });
-            rv.Rows.Add(new object[] { 552, 147 });
-            rv.Rows.Add(new object[] { 511, 146 });
-            rv.Rows.Add(new object[] { 505, 151 });
-            rv.Rows.Add(new object[] { 509, 149 });
-            this.GVSparkLine1.GviLabelPosition = "left";
-            this.GVSparkLine1.ChartData(rv);
-        </pre>
-
-
-        <p />
         <h3>PieChart Example</h3>
         <cc1:GVPieChart ID="GVPieChart1" runat="server" Width="600" Height="400" />
         
@@ -536,29 +513,6 @@
             this.GVComboChart1.DataBind();
         </pre>
 
-
-
-         <p />
-         <h3>SparkLine Example</h3>
-        <cc1:GVSparkLine ID="GVSparkLine1" runat="server" Width="600" Height="400"/>
-         <pre class="sloppyCode">
-            Sample Code:
-            System.Data.DataTable rv = new System.Data.DataTable("Revenue/Licenses");
-            rv.Columns.Add("Revenue", typeof(int));
-            rv.Columns.Add("Licenses", typeof(int));
-            rv.Rows.Add(new object[] { 435, 132 });
-            rv.Rows.Add(new object[] { 438, 131 });
-            rv.Rows.Add(new object[] { 512, 137 });
-            rv.Rows.Add(new object[] { 460, 142 });
-            rv.Rows.Add(new object[] { 491, 140 });
-            rv.Rows.Add(new object[] { 487, 139 });
-            rv.Rows.Add(new object[] { 552, 147 });
-            rv.Rows.Add(new object[] { 511, 146 });
-            rv.Rows.Add(new object[] { 505, 151 });
-            rv.Rows.Add(new object[] { 509, 149 });
-            this.GVSparkLine1.GviLabelPosition = "left";
-            this.GVSparkLine1.ChartData(rv);
-        </pre>
         
         
         <p />

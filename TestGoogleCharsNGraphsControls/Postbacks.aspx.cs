@@ -16,6 +16,8 @@ namespace TestGoogleCharsNGraphsControls
         protected void Page_Load(object sender, EventArgs e)
         {
             codebehindAreaChart();
+
+            codebehindTable();
         }
         
         protected void Button1_Click(object sender, EventArgs e)
@@ -23,6 +25,26 @@ namespace TestGoogleCharsNGraphsControls
             this.PlaceHolderChart.Controls.Clear();
             codebehindGauge();
             codebehindAreaChart();
+        }
+
+
+        private void codebehindTable()
+        {
+            GoogleChartsNGraphsControls.GVTable chart = new GoogleChartsNGraphsControls.GVTable();
+            chart.Width = WD;
+            chart.Height = HT;
+
+            DataTable dt = getData2();
+            dt = GoogleChartsNGraphsControls.Utils.PivotData(dt, "Employee", "Length",
+                GoogleChartsNGraphsControls.Utils.AggregateFunction.Sum, new string[] { "Type" });
+
+            dt = GoogleChartsNGraphsControls.Utils.AddSummary(dt, "Total", GoogleChartsNGraphsControls.Utils.SUMMARYOPTIONS.BOTH);
+            //dt.DefaultView.Sort = "Employee ASC";
+            chart.DataSource = dt.DefaultView.ToTable();
+            chart.DataBind();
+
+            this.PlaceHolderChart.Controls.Add(chart);
+
         }
 
         private void codebehindAreaChart()
@@ -71,6 +93,37 @@ namespace TestGoogleCharsNGraphsControls
             dt.Rows.Add(new object[] { "Memory", rnd.Next(100) });
             dt.Rows.Add(new object[] { "CPU", rnd.Next(100) });
             dt.Rows.Add(new object[] { "Network", rnd.Next(100) });
+
+            return dt;
+        }
+
+
+        private DataTable getData2()
+        {
+            Random rnd = new Random(System.Environment.TickCount);
+
+            System.Data.DataTable dt = new System.Data.DataTable("Meetings");
+            dt.Columns.AddRange(new System.Data.DataColumn[] {
+                new System.Data.DataColumn("Date",typeof(DateTime)), 
+                new System.Data.DataColumn("Employee",typeof(string)),
+                new System.Data.DataColumn("Type",typeof(string)),
+                new System.Data.DataColumn("Length",typeof(int)),
+            });
+            dt.Rows.Add(new object[] { new DateTime(2015,1,5), "Julian", "Meeting", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 6), "Julian", "Meeting", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 7), "Naomi", "Meeting", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 8), "Ellie", "Appointment", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 9), "Julian", "All Hands", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 10), "Naomi", "Meeting", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 5), "Julian", "Appointment", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 8), "Naomi", "Appointment", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 14), "Julian", "Appointment", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 22), "Ellie", "Meeting", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 25), "Naomi", "All Hands", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 25), "Zoe", "Appointment", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 13), "Julian", "Appointment", rnd.Next(100) });
+            dt.Rows.Add(new object[] { new DateTime(2015, 1, 10), "Naomi", "Meeting", rnd.Next(100) });
+
 
             return dt;
         }

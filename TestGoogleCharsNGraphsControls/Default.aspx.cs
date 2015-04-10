@@ -321,20 +321,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-            System.Data.DataTable rv = new System.Data.DataTable("Revenue/Licenses");
-            rv.Columns.Add("Revenue", typeof(int));
-            rv.Columns.Add("Licenses", typeof(int));
-            rv.Rows.Add(new object[] { 435, 132 });
-            rv.Rows.Add(new object[] { 438, 131 });
-            rv.Rows.Add(new object[] { 512, 137 });
-            rv.Rows.Add(new object[] { 460, 142 });
-            rv.Rows.Add(new object[] { 491, 140 });
-            rv.Rows.Add(new object[] { 487, 139 });
-            rv.Rows.Add(new object[] { 552, 147 });
-            rv.Rows.Add(new object[] { 511, 146 });
-            rv.Rows.Add(new object[] { 505, 151 });
-            rv.Rows.Add(new object[] { 509, 149 });
-            this.GVSparkLine1.DataSource = rv;
+          
 
 
 
@@ -488,7 +475,7 @@ namespace TestGoogleCharsNGraphsControls
 
 
             // this.GVOrgChart2.GviAllowHtml = true;   ' this is turned on automatically by the templating ChartData call
-            this.GVOrgChart2.ChartData(quickTemplate("Mike R", "Mike R", "President/CEO", false));
+            this.GVOrgChart2.ChartData(quickTemplate("Mike R", "", "President/CEO", false));
             this.GVOrgChart2.ChartData(quickTemplate("Helen B", "Mike R", "CFO", true));
             this.GVOrgChart2.ChartData(quickTemplate("Tom N", "Mike R", "VP Construction", false));
             this.GVOrgChart2.ChartData(quickTemplate("Patrick S", "Mike R", "VP Project Management", false));
@@ -511,13 +498,8 @@ namespace TestGoogleCharsNGraphsControls
         {
             string tpl = string.Format("<div><img style=\"width:33px;height:33px;\" src=\"./App_Themes/{2}\" alt=\"Missing Photo\"></img></div>{0}<div style=\"color:red; font-style:italic\">{1}</div>",
                 PersonsName, Title, selectImage(GenderFemale));
-            return new string[] 
-            { 
-                string.Format("__keynotshown:{0}",PersonsName.Replace(" ","")),
-                tpl,
-                string.Format("__keynotshown:{0}",ReportsTo.Replace(" ","")), 
-                Title 
-            };
+
+           return new string[]{ PersonsName, tpl, ReportsTo, Title };
         }
         private static string selectImage(bool Gender)
         {

@@ -22,7 +22,7 @@ namespace GoogleChartsNGraphsControls
             AREACHART, ANNOTATEDTIMELINE, GEOMAP, BARCHART,
             COLUMNCHART, GAUGE, LINECHART, MAP,
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
-            SPARKLINE, WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
+            WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
             CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP, TIMELINE,
             WORDTREE,
             CALENDAR, ANNOTATION, SANKEY
@@ -197,7 +197,7 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.MOTIONCHART, new string[] { "motionchart", "MotionChart" });
                 dic.Add(GOOGLECHART.ORGANIZATIONCHART, new string[] { "orgchart", "OrgChart" });
                 dic.Add(GOOGLECHART.PIECHART, new string[] { "corechart", "PieChart" });
-                dic.Add(GOOGLECHART.SPARKLINE, new string[] { "imagesparkline", "ImageSparkLine" });
+                //dic.Add(GOOGLECHART.SPARKLINE, new string[] { "imagesparkline", "ImageSparkLine" });
                 dic.Add(GOOGLECHART.SCATTERCHART, new string[] { "corechart", "ScatterChart" });
                 dic.Add(GOOGLECHART.TABLEARROW, new string[] { "table", "Table" });
                 dic.Add(GOOGLECHART.TABLEBAR, new string[] { "table", "Table" });

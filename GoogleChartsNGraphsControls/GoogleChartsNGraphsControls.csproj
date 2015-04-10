@@ -105,7 +105,6 @@
     <Compile Include="GVGeoMap.cs" />
     <Compile Include="GVScatterChart.cs" />
     <Compile Include="GVMotionChart.cs" />
-    <Compile Include="GVSparkLine.cs" />
     <Compile Include="GVColumnChart.cs" />
     <Compile Include="DataStructs.cs" />
     <Compile Include="GVAnnotatedTimeline.cs" />
@@ -121,6 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GVAnnotatedTimeline.bmp" />
@@ -128,7 +128,6 @@
     <EmbeddedResource Include="GVPieChart.bmp" />
     <EmbeddedResource Include="GVBarChart.bmp" />
     <EmbeddedResource Include="GVColumnChart.bmp" />
-    <EmbeddedResource Include="GVSparkLine.bmp" />
     <EmbeddedResource Include="GVMotionChart.bmp" />
     <EmbeddedResource Include="GVScatterChart.bmp" />
     <EmbeddedResource Include="GVGeoMap.bmp" />
