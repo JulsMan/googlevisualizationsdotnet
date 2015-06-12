@@ -12,7 +12,7 @@ namespace GoogleChartsNGraphsControls
     
     public class BaseGVI
     {
-        
+        public event EventHandler BindingDataTable;
         public static bool REGISTER_GOOGLE_API_JS = false;
         public static bool USING_EXT_DATASTORE = false;
 
@@ -233,7 +233,10 @@ namespace GoogleChartsNGraphsControls
                 formatter = RenderFormatter((IGoogleTableFormatterControl)PageControl);
 
 
-            //JAVASCRIPT = JAVASCRIPT.Replace("__UDF__", string.Join("\n", events.ToArray()));
+            if (this.BindingDataTable != null)
+            {
+                ((EventHandler)this.BindingDataTable)(this, EventArgs.Empty);
+            }
             
 
             JAVASCRIPT = JAVASCRIPT.Replace("{formatter}", formatter);
@@ -280,7 +283,8 @@ namespace GoogleChartsNGraphsControls
             // load the datatable...
             if (dt == null)
                 throw new Exception(string.Format("Unable to create visualization '{0}' with an empty DataTable ", this.GetType().FullName));
-
+            
+            
             Bortosky.Google.Visualization.GoogleDataTable gdt = new Bortosky.Google.Visualization.GoogleDataTable(dt);
             optionsJscode = optionsJscode.Replace("__DATATABLE__", PageControl.PostProcessData( gdt.GetJson()));
 

@@ -19,6 +19,7 @@ namespace GoogleChartsNGraphsControls
         
         public enum AggregateFunction { Average, Count, Exists, First, Last, Max, Min, Sum };
         public enum SUMMARYOPTIONS { COLUMN, ROW, BOTH}
+        
         private static object GetData(DataTable _SourceTable, string Filter, string DataField, AggregateFunction Aggregate)
         {
             try

@@ -17,14 +17,202 @@ namespace GoogleChartsNGraphsControls
     [DataContract]
     public class GVComboChart : BaseWebControl, IsStackable
     {
-
+       
+        
         public GVComboChart()
             : base()
         {
             this.GviSeriesType = SeriesType.Bars;
-            this.GviComboChartLine = new ComboChartLineSeries() { LineType = SeriesType.Line, Column = 0 };
+            this.GviComboChartLine = new ComboChartLineSeriesList();
+            this.WaterMarkLines = new List<WaterMarkLine>();
         }
+        public void DataBindingEvent(object sender, EventArgs e)
+        {
+            // depending on the type of WaterMarkLines ... we need to perform some operations...
+            
 
+            for (int i = 0; i < this.dt.Columns.Count; i++ )
+                this.dt.Columns[i].SetOrdinal(i);
+            this.dt.AcceptChanges();
+
+                foreach (WaterMarkLine ln in this.WaterMarkLines)
+                {
+                    if (this.dt.Columns.Contains(ln.LineName))
+                        continue;
+
+                    switch (ln.LINETYPE)
+                    {
+
+                        case WaterMarkLine.LineType.FIXED:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    dt.Rows[i].SetField<decimal>(dc, ln.LineValue);
+                                }
+                                this.dt.AcceptChanges();
+
+                                this.GviComboChartLine.Add(new ComboChartLineSeries()
+                                {
+                                    Column = this.dt.Columns.Count - 2,
+                                    LineType = SeriesType.Line
+                                });
+                                break;
+                            }
+                        case WaterMarkLine.LineType.SUM:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    DataRow dr = dt.Rows[i];
+                                    decimal val = dt.Columns.Cast<DataColumn>().Sum(oo => (decimal) dr[dc]);
+                                    dt.Rows[i].SetField<decimal>(dc, val);
+                                }
+                                this.dt.AcceptChanges();
+
+                                this.GviComboChartLine.Add( new ComboChartLineSeries()
+                                {
+                                    Column = this.dt.Columns.Count - 2,
+                                    LineType = SeriesType.Line
+                                });
+                                break;
+                            }
+                        case WaterMarkLine.LineType.AVG:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    DataRow dr = dt.Rows[i];
+                                    decimal val = dt.Columns.Cast<DataColumn>().Average(oo => (decimal)dr[dc]) ;
+                                    dt.Rows[i].SetField<decimal>(dc, val);
+                                }
+                                this.dt.AcceptChanges();
+
+                                this.GviComboChartLine.Add(new ComboChartLineSeries()
+                                {
+                                    Column = this.dt.Columns.Count - 2,
+                                    LineType = SeriesType.Line
+                                });
+                                break;
+                            }
+                        case WaterMarkLine.LineType.COUNT:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    DataRow dr = dt.Rows[i];
+                                    decimal val = dt.Columns.Cast<DataColumn>().Count(oo => oo.DataType.IsNumeric());
+                                    dt.Rows[i].SetField<decimal>(dc, val);
+                                }
+                                this.dt.AcceptChanges();
+
+                                this.GviComboChartLine.Add(new ComboChartLineSeries()
+                                {
+                                    Column = this.dt.Columns.Count - 2,
+                                    LineType = SeriesType.Line
+                                });
+                                break;
+                            }
+                        case WaterMarkLine.LineType.STD_DEV:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    DataRow dr = dt.Rows[i];
+                                    decimal count = dt.Columns.Cast<DataColumn>().Count(oo => oo.DataType.IsNumeric());
+                                    decimal val = dt.Columns.Cast<DataColumn>().Average(oo => (decimal)dr[dc]);
+                                    decimal std_dev = dt.Columns.Cast<DataColumn>().Sum(oo => ((decimal)dr[dc] - val) * ((decimal)dr[dc] - val));
+
+                                    dt.Rows[i].SetField<decimal>(dc, decimal.Parse( Math.Sqrt( (double)std_dev / (double)count).ToString()));
+                                }
+                                this.dt.AcceptChanges();
+
+                                this.GviComboChartLine.Add( new ComboChartLineSeries()
+                                {
+                                    Column = this.dt.Columns.Count - 2,
+                                    LineType = SeriesType.Line
+                                });
+                                break;
+                            }
+                        case WaterMarkLine.LineType.VARIANCE:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    DataRow dr = dt.Rows[i];
+                                    decimal dd = dt.Columns.Cast<DataColumn>().Where(o => o.DataType.IsNumeric()).Select(o => (decimal)dr[dc]).Variance();
+                                    dt.Rows[i].SetField<decimal>(dc, dd);
+                                }
+                                this.dt.AcceptChanges();
+
+                                this.GviComboChartLine.Add( new ComboChartLineSeries()
+                                {
+                                    Column = this.dt.Columns.Count - 2,
+                                    LineType = SeriesType.Line
+                                });
+                                break;
+                            }
+                        default:
+                            {
+                                break;
+                            }
+                      
+
+                            
+
+                    }
+                }
+
+
+          
+        }
+        protected List<WaterMarkLine> WaterMarkLines { get; set; }
+        public void AddWaterMark(WaterMarkLine waterLine)
+        {
+            this.WaterMarkLines.Add(waterLine);
+            this.gvi.BindingDataTable += DataBindingEvent;
+        }
+        public void ClearWaterMarks()
+        {
+            this.WaterMarkLines.Clear();
+            this.gvi.BindingDataTable -= DataBindingEvent;
+        }
 
         [GviConfigOption]
         [Bindable(true)]
@@ -70,11 +258,11 @@ namespace GoogleChartsNGraphsControls
         }
 
         [DataMember(Name="series")]
-        public ComboChartLineSeries GviComboChartLine
+        public ComboChartLineSeriesList GviComboChartLine
         {
             get
             {
-                return (ComboChartLineSeries)ViewState["GviComboChartLine"];
+                return (ComboChartLineSeriesList)ViewState["GviComboChartLine"];
             }
             set
             {

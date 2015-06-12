@@ -83,6 +83,7 @@
     <Content Include="App_Themes\male_user.png" />
     <Content Include="App_Themes\unknown_user.png" />
     <Content Include="Codebehind.aspx" />
+    <Content Include="ComboWatermarks.aspx" />
     <Content Include="GeoMaps.aspx" />
     <Content Include="Postbacks.aspx" />
     <Content Include="IntervalNTrend.aspx" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="Codebehind.aspx.designer.cs">
       <DependentUpon>Codebehind.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ComboWatermarks.aspx.cs">
+      <DependentUpon>ComboWatermarks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComboWatermarks.aspx.designer.cs">
+      <DependentUpon>ComboWatermarks.aspx</DependentUpon>
     </Compile>
     <Compile Include="GeoMaps.aspx.cs">
       <DependentUpon>GeoMaps.aspx</DependentUpon>

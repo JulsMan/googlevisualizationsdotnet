@@ -192,7 +192,7 @@ namespace GoogleChartsNGraphsControls
     {
         public override bool CanConvert(Type objectType)
         {
-            if (objectType == typeof(ComboChartLineSeries))
+            if (objectType == typeof(ComboChartLineSeriesList))
                 return true;
             return false;
         }
@@ -208,9 +208,9 @@ namespace GoogleChartsNGraphsControls
             if (value == null)
                 writer.WriteValue("");
 
-            if (value.GetType() == typeof(ComboChartLineSeries))
+            if (value.GetType() == typeof(ComboChartLineSeriesList))
             {
-                ComboChartLineSeries v = (ComboChartLineSeries)value;
+                ComboChartLineSeriesList v = (ComboChartLineSeriesList)value;
                 writer.WriteRawValue(v.ToString());
             }
            

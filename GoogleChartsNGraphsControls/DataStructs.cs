@@ -52,7 +52,22 @@ namespace GoogleChartsNGraphsControls
         public string OptionalAnnotationText { get; set; }
     }
 
-    
+
+    public class WaterMarkLine
+    {
+        public WaterMarkLine()
+        {
+            this.LINETYPE = LineType.AVG;
+            this.LineColor = System.Drawing.Color.AliceBlue;
+            this.LineName = "Watermark";
+        }
+        public enum LineType { FIXED, AVG, COUNT, SUM, MAX, MIN, STD_DEV, VARIANCE };
+
+        public LineType LINETYPE { get; set; }
+        public System.Drawing.Color LineColor { get; set; }
+        public string LineName { get; set; }
+        public decimal LineValue { get; set; }
+    }
 
     public class GviConfigOption : Attribute
     {
@@ -97,8 +112,65 @@ namespace GoogleChartsNGraphsControls
     //        return this.JSONClassName;
     //    }
     //}
+    
     public static class GviExtensions
     {
+        public static decimal Variance(this IEnumerable<decimal> source)
+        {
+            int n = 0;
+            decimal mean = 0;
+            decimal M2 = 0;
+
+            foreach (decimal x in source)
+            {
+                n = n + 1;
+                decimal delta = x - mean;
+                mean = mean + delta / n;
+                M2 += delta * (x - mean);
+            }
+            return M2 / (n - 1);
+        }
+        public static bool IsNumeric(this Type t)
+        {
+            if (t == typeof(int))
+                return true;
+            if (t == typeof(Int16))
+                return true;
+            if (t == typeof(Int32))
+                return true;
+            if (t == typeof(Int64))
+                return true;
+            if (t == typeof(decimal))
+                return true;
+            if (t == typeof(Decimal))
+                return true;
+            if (t == typeof(long))
+                return true;
+            if (t == typeof(float))
+                return true;
+            if (t == typeof(double))
+                return true;
+            if (t == typeof(Double))
+                return true;
+            if (t == typeof(short))
+                return true;
+            if (t == typeof(Single))
+                return true;
+            if (t == typeof(uint))
+                return true;
+            if (t == typeof(UInt16))
+                return true;
+            if (t == typeof(UInt32))
+                return true;
+            if (t == typeof(UInt64))
+                return true;
+            if (t == typeof(UIntPtr))
+                return true;
+            if (t == typeof(ulong))
+                return true;
+
+            return false;
+        }
         public static string LowerCaseFirst(this string str)
         {
             return char.ToLower(str[0]) + str.Substring(1);

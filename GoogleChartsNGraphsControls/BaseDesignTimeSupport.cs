@@ -559,16 +559,29 @@ namespace GoogleChartsNGraphsControls
     //    public float? Opacity { get; set; } // 0 - 1
     //}
 
-    [Serializable()]
-    [DataContract(Name = "series")]
+   
     public class ComboChartLineSeries
     {
         public int Column { get; set; }
         public SeriesType LineType { get; set; }
+        public Color? Color { get; set; }
 
         public override string ToString() 
         {
-            return string.Format("{{ {0}: {{ type:'{1}' }} }}", Column, LineType.ToString().ToLower());
+            return string.Format("{0}: {{ type:'{1}', color:'gray', lineWidth:'2', lineDashStyle:[5,1,3] }}", Column, LineType.ToString().ToLower());
+        }
+    }
+    [Serializable()]
+    [DataContract(Name = "series")]
+    public class ComboChartLineSeriesList : List<ComboChartLineSeries>
+    {
+        public override string ToString()
+        {
+            string foo = string.Empty;
+            foreach(var s in this)
+                foo += s.ToString() + " ,";
+            
+            return string.Format("{{ {0} }}", string.Join(",", foo.Substring(0, foo.Length-2)));
         }
     }
 
@@ -637,7 +650,7 @@ namespace GoogleChartsNGraphsControls
         }
     }
 
-
+   
     public class RenderAttributeLiteral : Attribute
     {
     }
