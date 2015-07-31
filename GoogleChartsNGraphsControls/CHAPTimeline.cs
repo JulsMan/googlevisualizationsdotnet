@@ -47,12 +47,14 @@ namespace GoogleChartsNGraphsControls
                 ViewState["visibleChartRangeEnd"] = value;
             }
         }
-
         public void SetVisibleChartRange(DateTime start, DateTime end)
         {
             this.visibleChartRangeStart = start;
             this.visibleChartRangeEnd = end;
         }
+
+        public CHAPTimelineOptions TimelineOptions { get; set; }
+
         public void ChartData(CHAPTimelineEvent[] ListOfEvents)
         {
 
@@ -63,6 +65,8 @@ namespace GoogleChartsNGraphsControls
                 dt.Columns.Add("start", typeof(DateTime));
                 dt.Columns.Add("end", typeof(DateTime));
                 dt.Columns.Add("content");
+                dt.Columns.Add("editable", typeof(bool));
+                dt.Columns.Add("group");
             }
 
 
@@ -109,21 +113,21 @@ namespace GoogleChartsNGraphsControls
 
         public override string ToString()
         {
-            List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
-            myconverters.Add(new CustomConvertersColorToRGB());
-            myconverters.Add(new CustomConvertersAxis());
-            myconverters.Add(new CustomConvertersLegend());
-            myconverters.Add(new CustomConverterEnum());
-            myconverters.Add(new CustomConverterTrendLine());
+            //List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();
+            //myconverters.Add(new CustomConvertersColorToRGB());
+            //myconverters.Add(new CustomConvertersAxis());
+            //myconverters.Add(new CustomConvertersLegend());
+            //myconverters.Add(new CustomConverterEnum());
+            //myconverters.Add(new CustomConverterTrendLine());
 
-            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
-            {
-                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                Converters = myconverters
-            };
+            //Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            //{
+            //    NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            //    Converters = myconverters
+            //};
 
             string s = string.Empty;
-            s = Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None, settings);
+            s = Newtonsoft.Json.JsonConvert.SerializeObject(this.TimelineOptions, Newtonsoft.Json.Formatting.None);
             return s;
         }
     }

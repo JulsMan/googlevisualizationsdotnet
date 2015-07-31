@@ -31,7 +31,6 @@ namespace TestGoogleCharsNGraphsControls
             lst.Add(new GoogleChartsNGraphsControls.CHAPTimelineEvent(new DateTime(2015, 7, 27), "Bed Time!"));
 
             this.CHAPTimeline1.ChartData(lst.ToArray());
-            this.CHAPTimeline1.GviOptionsOverride = "{}";
         }
     }
 }

@@ -73,7 +73,8 @@ namespace GoogleChartsNGraphsControls
             this.start = DateTime.MinValue;
             this.end = DateTime.MinValue;
             this.content = string.Empty;
-            this.Editable = false;
+            this.editable = false;
+            this.group = string.Empty;
         }
         public CHAPTimelineEvent(DateTime start, string content): this()
         {
