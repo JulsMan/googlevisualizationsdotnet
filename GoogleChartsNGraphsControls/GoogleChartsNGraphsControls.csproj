@@ -91,6 +91,7 @@
     <Compile Include="BaseInterfaces.cs" />
     <Compile Include="GVAnnotationChart.cs" />
     <Compile Include="GVCalendar.cs" />
+    <Compile Include="CHAPTimeline.cs" />
     <Compile Include="GVWordTree.cs" />
     <Compile Include="GVTimeline.cs" />
     <Compile Include="GVDonutChart.cs" />
@@ -140,11 +141,16 @@
     <EmbeddedResource Include="GVDonutChart.bmp" />
     <EmbeddedResource Include="GVAnnotationChart.bmp" />
     <EmbeddedResource Include="GVCalendar.bmp" />
+    <Content Include="GVI\CHAP\timeline-locales.js" />
+    <Content Include="GVI\CHAP\timeline-min.js" />
+    <Content Include="GVI\CHAP\timeline-theme.css" />
+    <Content Include="GVI\CHAP\timeline.css" />
     <Content Include="GVI\GVisualizationPanel.js" />
     <Content Include="GVI\jx.js" />
     <Content Include="GVI\SendAndDraw.js" />
     <None Include="GVI\Visualization.dll" />
     <EmbeddedResource Include="GVLineChart.bmp" />
+    <Content Include="CHAPTimeline.bmp" />
     <Content Include="GVTimeline.bmp" />
     <Content Include="icons\chart_bar.png" />
     <Content Include="icons\chart_curve.png" />

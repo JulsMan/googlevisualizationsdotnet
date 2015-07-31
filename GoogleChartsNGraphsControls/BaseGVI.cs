@@ -23,9 +23,10 @@ namespace GoogleChartsNGraphsControls
             COLUMNCHART, GAUGE, LINECHART, MAP,
             MOTIONCHART, ORGANIZATIONCHART, PIECHART,
             WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
-            CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP, TIMELINE,
-            WORDTREE,
-            CALENDAR, ANNOTATION, SANKEY
+            CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP,
+            TIMELINE, WORDTREE, CALENDAR, ANNOTATION, SANKEY,
+
+            CHAP_TIMELINE, CHAP_GRAPH, CHAP_GRAPH3D, CHAP_NETWORK
         }
 
         #region Formatter - for use with the IGoogleFormatter only
@@ -37,6 +38,79 @@ namespace GoogleChartsNGraphsControls
         /// Old ... trying to retire this method ... the data is outputted as JSON and is not 
         /// easily debugged or matching that on the Google Vis site
         /// </summary>
+
+        private static string jschap =
+  @"
+
+        /********************************************************************************
+        *      GoogleVisualizationControls.NET {{ver}}
+        *      http://code.google.com/p/googlevisualizationsdotnet/ 
+        *      Visualization: {3} 
+        *      Div Element: {0}
+        *********************************************************************************/
+        google.load('visualization', '1');
+        google.setOnLoadCallback( draw_{0} );
+        var chart_{0} = undefined;
+        function draw_{0}() {{
+                var container = document.getElementById('{0}');
+                var chart = new links.{3}(container);
+                var arrayD = __DATATABLE__;
+                var data = new google.visualization.DataTable( arrayD );
+       
+         
+       /********* Formatter Hooks: your function will be called before render  ********/
+                chart.formatters = function(chart,data){{
+                    /*FORMATTERS*/
+                }}
+       /********* View Hooks: DataTables are placed in a View and invoke your functions before going to render ********/
+                chart.formatView = function(chart,view){{
+                    /*VIEW_FUNCTIONS*/
+                }}
+ 
+       /********* Extended Functions **********************/
+                chart.reload = function(args, url)
+                {{
+                    if (url == undefined || url == null){{
+                        url = '{QueryString}';
+                    }}
+                    m_SendAndDraw(container, chart, url, args)
+                }};
+                chart.load = function(data)
+                {{
+                    m_JustDraw(container, chart, data);
+                }};                
+                chart.format = function(data)
+                {{
+                    {formatter}
+                }};
+
+        /********* User Defined Functions **********************/
+                {4}
+
+        /********* Extended Params    **********************/
+                chart.opts = {1};
+                chart.container = container;
+                
+      
+
+       /********* Init Chart Load     **********************/
+                chart.draw(data, chart.opts);
+
+
+      /********* Update These Image Src     **********************/
+                    {SETIMAGEFOR}
+
+
+
+
+
+ /********* Save Chart Into DOM / Always Last **********************/
+                chart_{0} = chart;
+
+                
+
+}}
+";
 
         private static string jscode3 =
        @"
@@ -211,6 +285,12 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.ANNOTATION, new string[] { "annotationchart", "AnnotationChart" });
                 dic.Add(GOOGLECHART.SANKEY, new string[] { "sankey", "Sankey" });
                 dic.Add(GOOGLECHART.WORDTREE, new string[] { "wordtree", "WordTree" });
+
+
+                dic.Add(GOOGLECHART.CHAP_TIMELINE, new string[] { "chap_timeline", "Timeline" });
+                dic.Add(GOOGLECHART.CHAP_GRAPH, new string[] { "chap_graph", "Graph" });
+                dic.Add(GOOGLECHART.CHAP_GRAPH3D, new string[] { "chap_graph3d", "Graph3D" });
+                dic.Add(GOOGLECHART.CHAP_NETWORK, new string[] { "chap_network", "Network" });
             }
         }
 
@@ -224,6 +304,10 @@ namespace GoogleChartsNGraphsControls
         internal void RegisterGVIScriptsEx(BaseWebControl PageControl, DataTable dt, GOOGLECHART CHARTTYPE)
         {
             string JAVASCRIPT = jscode3;
+
+            if (CHARTTYPE == GOOGLECHART.CHAP_TIMELINE)
+                JAVASCRIPT = jschap;
+
             string options,formatter = string.Empty;
             string imagereplace = string.Empty;
             List<string> events = RenderGVIEvents(PageControl);

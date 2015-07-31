@@ -18,13 +18,54 @@ namespace GoogleChartsNGraphsControls
     public class GVComboChart : BaseWebControl, IsStackable
     {
        
-        
+        #region Math Calcs
+        //
+        // MAth Calcs from 
+        // http://www.codeproject.com/Articles/42492/Using-LINQ-to-Calculate-Basic-Statistics
+        //
+
+        private decimal Median(IEnumerable<decimal> source)
+        {
+            var sortedList = from number in source
+                             orderby number
+                             select number;
+
+            int count = sortedList.Count();
+            int itemIndex = count / 2;
+            if (count % 2 == 0) // Even number of items. 
+                return (sortedList.ElementAt(itemIndex) +
+                        sortedList.ElementAt(itemIndex - 1)) / 2;
+
+            // Odd number of items. 
+            return sortedList.ElementAt(itemIndex);
+        }
+        private decimal StandardDeviation(IEnumerable<decimal> source)
+        {
+            return decimal.Parse( Math.Sqrt( (double) source.Variance()).ToString());
+        }
+        public decimal Variance(IEnumerable<decimal> source)
+        {
+            int n = 0;
+            decimal mean = 0;
+            decimal M2 = 0;
+
+            foreach (decimal x in source)
+            {
+                n = n + 1;
+                decimal delta = x - mean;
+                mean = mean + delta / n;
+                M2 += delta * (x - mean);
+            }
+            return M2 / (n - 1);
+        }
+        #endregion
+
         public GVComboChart()
             : base()
         {
             this.GviSeriesType = SeriesType.Bars;
             this.GviComboChartLine = new ComboChartLineSeriesList();
-            this.WaterMarkLines = new List<WaterMarkLine>();
+            this.LineSeries = new List<ComboChartLineSeries>();
         }
         public void DataBindingEvent(object sender, EventArgs e)
         {
@@ -35,15 +76,22 @@ namespace GoogleChartsNGraphsControls
                 this.dt.Columns[i].SetOrdinal(i);
             this.dt.AcceptChanges();
 
-                foreach (WaterMarkLine ln in this.WaterMarkLines)
+            // keep a list of original columns...
+            List<DataColumn> originalColumns = new List<DataColumn>();
+            foreach (DataColumn zz in this.dt.Columns)
+                originalColumns.Add(zz);
+
+
+            foreach (ComboChartLineSeries ln in this.LineSeries)
                 {
+
                     if (this.dt.Columns.Contains(ln.LineName))
                         continue;
 
-                    switch (ln.LINETYPE)
+                    switch (ln.FunctType)
                     {
 
-                        case WaterMarkLine.LineType.FIXED:
+                        case ComboChartLineSeries.FUNCTION_TYPE.FIXED:
                             {
                                 DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
                                 dc.Caption = ln.LineName;
@@ -54,18 +102,15 @@ namespace GoogleChartsNGraphsControls
 
                                 for (int i = 0; i < this.dt.Rows.Count; i++)
                                 {
-                                    dt.Rows[i].SetField<decimal>(dc, ln.LineValue);
+                                    dt.Rows[i].SetField<decimal>(dc, ln.FixedValue);
                                 }
                                 this.dt.AcceptChanges();
 
-                                this.GviComboChartLine.Add(new ComboChartLineSeries()
-                                {
-                                    Column = this.dt.Columns.Count - 2,
-                                    LineType = SeriesType.Line
-                                });
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
                                 break;
                             }
-                        case WaterMarkLine.LineType.SUM:
+                        case ComboChartLineSeries.FUNCTION_TYPE.SUM:
                             {
                                 DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
                                 dc.Caption = ln.LineName;
@@ -77,19 +122,20 @@ namespace GoogleChartsNGraphsControls
                                 for (int i = 0; i < this.dt.Rows.Count; i++)
                                 {
                                     DataRow dr = dt.Rows[i];
-                                    decimal val = dt.Columns.Cast<DataColumn>().Sum(oo => (decimal) dr[dc]);
+                                    decimal val = 0;
+                                    foreach (DataColumn cc in originalColumns.Where(c => c.DataType.IsNumeric()))
+                                    {
+                                        val += decimal.Parse(dr[cc].ToString());
+                                    }
                                     dt.Rows[i].SetField<decimal>(dc, val);
                                 }
                                 this.dt.AcceptChanges();
 
-                                this.GviComboChartLine.Add( new ComboChartLineSeries()
-                                {
-                                    Column = this.dt.Columns.Count - 2,
-                                    LineType = SeriesType.Line
-                                });
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
                                 break;
                             }
-                        case WaterMarkLine.LineType.AVG:
+                        case ComboChartLineSeries.FUNCTION_TYPE.AVG:
                             {
                                 DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
                                 dc.Caption = ln.LineName;
@@ -101,19 +147,45 @@ namespace GoogleChartsNGraphsControls
                                 for (int i = 0; i < this.dt.Rows.Count; i++)
                                 {
                                     DataRow dr = dt.Rows[i];
-                                    decimal val = dt.Columns.Cast<DataColumn>().Average(oo => (decimal)dr[dc]) ;
+                                    decimal val = 0;
+                                    foreach (DataColumn cc in originalColumns.Where(c => c.DataType.IsNumeric()))
+                                    {
+                                        val += decimal.Parse(dr[cc].ToString());
+                                    }
+                                    dt.Rows[i].SetField<decimal>(dc, val / originalColumns.Where(c => c.DataType.IsNumeric()).Count());
+                                }
+                                this.dt.AcceptChanges();
+
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
+                                break;
+                            }
+                        case ComboChartLineSeries.FUNCTION_TYPE.COUNT:
+                            {
+                                DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
+                                dc.Caption = ln.LineName;
+                                this.dt.Columns.Add(dc);
+                                dc.SetOrdinal(this.dt.Columns.Count - 1);
+
+                                this.dt.AcceptChanges();
+
+                                for (int i = 0; i < this.dt.Rows.Count; i++)
+                                {
+                                    DataRow dr = dt.Rows[i];
+                                    int val = 0;
+                                    foreach (DataColumn cc in originalColumns.Where(c => c.DataType.IsNumeric()))
+                                    {
+                                        decimal dd = 0;
+                                        val += decimal.TryParse(dr[cc].ToString(), out dd) ? 1 : 0;
+                                    }
                                     dt.Rows[i].SetField<decimal>(dc, val);
                                 }
                                 this.dt.AcceptChanges();
-
-                                this.GviComboChartLine.Add(new ComboChartLineSeries()
-                                {
-                                    Column = this.dt.Columns.Count - 2,
-                                    LineType = SeriesType.Line
-                                });
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
                                 break;
                             }
-                        case WaterMarkLine.LineType.COUNT:
+                        case ComboChartLineSeries.FUNCTION_TYPE.STD_DEV:
                             {
                                 DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
                                 dc.Caption = ln.LineName;
@@ -125,19 +197,21 @@ namespace GoogleChartsNGraphsControls
                                 for (int i = 0; i < this.dt.Rows.Count; i++)
                                 {
                                     DataRow dr = dt.Rows[i];
-                                    decimal val = dt.Columns.Cast<DataColumn>().Count(oo => oo.DataType.IsNumeric());
-                                    dt.Rows[i].SetField<decimal>(dc, val);
+                                    List<decimal> median = new List<decimal>();
+                                    foreach (DataColumn cc in originalColumns.Where(c => c.DataType.IsNumeric()))
+                                    {
+                                        median.Add(decimal.Parse(dr[cc].ToString()));
+                                    }
+                                    dt.Rows[i].SetField<decimal>(dc, StandardDeviation(median));
                                 }
+
                                 this.dt.AcceptChanges();
 
-                                this.GviComboChartLine.Add(new ComboChartLineSeries()
-                                {
-                                    Column = this.dt.Columns.Count - 2,
-                                    LineType = SeriesType.Line
-                                });
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
                                 break;
                             }
-                        case WaterMarkLine.LineType.STD_DEV:
+                        case ComboChartLineSeries.FUNCTION_TYPE.VARIANCE:
                             {
                                 DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
                                 dc.Caption = ln.LineName;
@@ -149,22 +223,20 @@ namespace GoogleChartsNGraphsControls
                                 for (int i = 0; i < this.dt.Rows.Count; i++)
                                 {
                                     DataRow dr = dt.Rows[i];
-                                    decimal count = dt.Columns.Cast<DataColumn>().Count(oo => oo.DataType.IsNumeric());
-                                    decimal val = dt.Columns.Cast<DataColumn>().Average(oo => (decimal)dr[dc]);
-                                    decimal std_dev = dt.Columns.Cast<DataColumn>().Sum(oo => ((decimal)dr[dc] - val) * ((decimal)dr[dc] - val));
-
-                                    dt.Rows[i].SetField<decimal>(dc, decimal.Parse( Math.Sqrt( (double)std_dev / (double)count).ToString()));
+                                    List<decimal> median = new List<decimal>();
+                                    foreach (DataColumn cc in originalColumns.Where(c => c.DataType.IsNumeric()))
+                                    {
+                                        median.Add(decimal.Parse(dr[cc].ToString()));
+                                    }
+                                    dt.Rows[i].SetField<decimal>(dc, Variance(median));
                                 }
                                 this.dt.AcceptChanges();
 
-                                this.GviComboChartLine.Add( new ComboChartLineSeries()
-                                {
-                                    Column = this.dt.Columns.Count - 2,
-                                    LineType = SeriesType.Line
-                                });
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
                                 break;
                             }
-                        case WaterMarkLine.LineType.VARIANCE:
+                        case ComboChartLineSeries.FUNCTION_TYPE.MEDIAN:
                             {
                                 DataColumn dc = new DataColumn(ln.LineName, typeof(decimal));
                                 dc.Caption = ln.LineName;
@@ -172,20 +244,20 @@ namespace GoogleChartsNGraphsControls
                                 dc.SetOrdinal(this.dt.Columns.Count - 1);
 
                                 this.dt.AcceptChanges();
-
                                 for (int i = 0; i < this.dt.Rows.Count; i++)
                                 {
                                     DataRow dr = dt.Rows[i];
-                                    decimal dd = dt.Columns.Cast<DataColumn>().Where(o => o.DataType.IsNumeric()).Select(o => (decimal)dr[dc]).Variance();
-                                    dt.Rows[i].SetField<decimal>(dc, dd);
+                                    List<decimal> median = new List<decimal>();
+                                    foreach (DataColumn cc in originalColumns.Where(c => c.DataType.IsNumeric()))
+                                    {
+                                        median.Add( decimal.Parse(dr[cc].ToString()));
+                                    }
+                                    dt.Rows[i].SetField<decimal>(dc, Median(median));
                                 }
                                 this.dt.AcceptChanges();
 
-                                this.GviComboChartLine.Add( new ComboChartLineSeries()
-                                {
-                                    Column = this.dt.Columns.Count - 2,
-                                    LineType = SeriesType.Line
-                                });
+                                ln.Column = this.dt.Columns.Count - 2;
+                                this.GviComboChartLine.Add(ln);
                                 break;
                             }
                         default:
@@ -202,15 +274,26 @@ namespace GoogleChartsNGraphsControls
 
           
         }
-        protected List<WaterMarkLine> WaterMarkLines { get; set; }
-        public void AddWaterMark(WaterMarkLine waterLine)
+        //protected List<WaterMarkLine> WaterMarkLines { get; set; }
+        //public void AddWaterMark(WaterMarkLine waterLine)
+        //{
+        //    this.WaterMarkLines.Add(waterLine);
+        //    this.gvi.BindingDataTable += DataBindingEvent;
+        //}
+        //public void ClearWaterMarks()
+        //{
+        //    this.WaterMarkLines.Clear();
+        //    this.gvi.BindingDataTable -= DataBindingEvent;
+        //}
+        protected List<ComboChartLineSeries> LineSeries { get; set; }
+        public void AddNewSeries(ComboChartLineSeries line)
         {
-            this.WaterMarkLines.Add(waterLine);
+            this.LineSeries.Add(line);
             this.gvi.BindingDataTable += DataBindingEvent;
         }
-        public void ClearWaterMarks()
+        public void ClearSeries()
         {
-            this.WaterMarkLines.Clear();
+            this.LineSeries.Clear();
             this.gvi.BindingDataTable -= DataBindingEvent;
         }
 

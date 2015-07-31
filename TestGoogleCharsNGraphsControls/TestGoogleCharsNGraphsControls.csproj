@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestGoogleCharsNGraphsControls</RootNamespace>
     <AssemblyName>TestGoogleCharsNGraphsControls</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -29,6 +29,7 @@
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,17 +83,76 @@
     <Content Include="App_Themes\female_user.png" />
     <Content Include="App_Themes\male_user.png" />
     <Content Include="App_Themes\unknown_user.png" />
+    <Content Include="CHAP.aspx" />
     <Content Include="Codebehind.aspx" />
     <Content Include="ComboWatermarks.aspx" />
     <Content Include="GeoMaps.aspx" />
+    <Content Include="img\16\delete.png" />
+    <Content Include="img\16\moveleft.png" />
+    <Content Include="img\16\moveright.png" />
+    <Content Include="img\16\new.png" />
+    <Content Include="img\16\zoomin.png" />
+    <Content Include="img\16\zoomout.png" />
+    <Content Include="img\24\delete.png" />
+    <Content Include="img\24\moveleft.png" />
+    <Content Include="img\24\moveright.png" />
+    <Content Include="img\24\new.png" />
+    <Content Include="img\24\zoomin.png" />
+    <Content Include="img\24\zoomout.png" />
+    <Content Include="img\32\delete.png" />
+    <Content Include="img\32\moveleft.png" />
+    <Content Include="img\32\moveright.png" />
+    <Content Include="img\32\new.png" />
+    <Content Include="img\32\zoomin.png" />
+    <Content Include="img\32\zoomout.png" />
+    <Content Include="img\cluster_bg.png" />
+    <Content Include="img\deleteEvent.png" />
+    <Content Include="img\themeswitcher\buttonbg.png" />
+    <Content Include="img\themeswitcher\icon_color_arrow.gif" />
+    <Content Include="img\themeswitcher\menuhoverbg.png" />
+    <Content Include="img\themeswitcher\theme_90_black_matte.png" />
+    <Content Include="img\themeswitcher\theme_90_black_tie.png" />
+    <Content Include="img\themeswitcher\theme_90_blitzer.png" />
+    <Content Include="img\themeswitcher\theme_90_cupertino.png" />
+    <Content Include="img\themeswitcher\theme_90_dark_hive.png" />
+    <Content Include="img\themeswitcher\theme_90_dot_luv.png" />
+    <Content Include="img\themeswitcher\theme_90_eggplant.png" />
+    <Content Include="img\themeswitcher\theme_90_excite_bike.png" />
+    <Content Include="img\themeswitcher\theme_90_flick.png" />
+    <Content Include="img\themeswitcher\theme_90_hot_sneaks.png" />
+    <Content Include="img\themeswitcher\theme_90_humanity.png" />
+    <Content Include="img\themeswitcher\theme_90_le_frog.png" />
+    <Content Include="img\themeswitcher\theme_90_mint_choco.png" />
+    <Content Include="img\themeswitcher\theme_90_overcast.png" />
+    <Content Include="img\themeswitcher\theme_90_pepper_grinder.png" />
+    <Content Include="img\themeswitcher\theme_90_smoothness.png" />
+    <Content Include="img\themeswitcher\theme_90_south_street.png" />
+    <Content Include="img\themeswitcher\theme_90_start_menu.png" />
+    <Content Include="img\themeswitcher\theme_90_sunny.png" />
+    <Content Include="img\themeswitcher\theme_90_swanky_purse.png" />
+    <Content Include="img\themeswitcher\theme_90_trontastic.png" />
+    <Content Include="img\themeswitcher\theme_90_ui_dark.png" />
+    <Content Include="img\themeswitcher\theme_90_ui_light.png" />
+    <Content Include="img\themeswitcher\theme_90_windoze.png" />
     <Content Include="Postbacks.aspx" />
     <Content Include="IntervalNTrend.aspx" />
+    <Content Include="testingchap.html" />
+    <Content Include="timeline-min.js" />
+    <Content Include="timeline.css" />
+    <Content Include="timeline.js" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxUpdateHandler.ashx.cs">
       <DependentUpon>AjaxUpdateHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CHAP.aspx.cs">
+      <DependentUpon>CHAP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CHAP.aspx.designer.cs">
+      <DependentUpon>CHAP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Codebehind.aspx.cs">
       <DependentUpon>Codebehind.aspx</DependentUpon>
@@ -155,6 +215,9 @@
       <Project>{30d276b0-b6b3-410f-b723-c128ac58fda1}</Project>
       <Name>GoogleChartsNGraphsControls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\IISFOLDER.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

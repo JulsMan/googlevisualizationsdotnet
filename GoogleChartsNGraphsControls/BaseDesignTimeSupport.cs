@@ -536,6 +536,101 @@ namespace GoogleChartsNGraphsControls
     }
 
 
+    [Serializable()]
+    public class CHAPTimelineOptions
+    {
+        public enum ZOOMINTERVALS { MINUTE, HOUR, DAY, WEEK, MONTH, QUARTERLY, TRIMESTER, SIXMONTHS, YEAR }
+        public enum TIMELINENODESTYLE { BOX, DOT, };
+
+        private double getMilliseconds(ZOOMINTERVALS zi)
+        {
+            switch(zi)
+            {
+                case ZOOMINTERVALS.DAY:
+                    return 1000 * 60 * 60 * 24;
+                case ZOOMINTERVALS.HOUR:
+                    return 1000 * 60 * 60;
+                case ZOOMINTERVALS.MINUTE:
+                    return 1000 * 60;
+                case ZOOMINTERVALS.MONTH:
+                    return (1000 * 60 * 60 * 24) * 31d;
+                case ZOOMINTERVALS.QUARTERLY:
+                    return (1000 * 60 * 60 * 24) * 31d * 3;
+                case ZOOMINTERVALS.SIXMONTHS:
+                    return (1000 * 60 * 60 * 24) * 31d * 6;
+                case ZOOMINTERVALS.TRIMESTER:
+                    return (1000 * 60 * 60 * 24) * 31d * 4;
+                case ZOOMINTERVALS.WEEK:
+                    return 1000 * 60 * 60 * 24 * 7;
+                case ZOOMINTERVALS.YEAR:
+                    return (1000 * 60 * 60 * 24) * 31d * 12;
+                default:
+                    return (1000 * 60 * 60 * 24) * 31d;    
+            }
+        }
+
+        public CHAPTimelineOptions() { }
+
+        [DataMember(Name = "width")]
+        public string Width { get; set; }
+
+        [DataMember(Name = "height")]
+        public string Height { get; set; }
+
+        [DataMember(Name = "min")]
+        public DateTime? MinDateRange { get; set; }
+
+        [DataMember(Name = "max")]
+        public DateTime? MaxDateRange { get; set; }
+
+        [DataMember(Name = "zoomMin")]
+        public ZOOMINTERVALS? ZoomMin { get; set; }
+
+        [DataMember(Name = "zoomMax")]
+        public ZOOMINTERVALS? ZoomMax { get; set; }
+
+        [DataMember(Name = "editable")]
+        public bool? Editable { get; set; }
+
+        [DataMember(Name = "animate")]
+        public bool? AnimateTransitions { get; set; }
+
+        [DataMember(Name = "eventMargin")]
+        public int? Margin { get; set; }
+
+        [DataMember(Name = "showButtonNew")]
+        public bool? CreateNewButton { get; set; }
+
+        [DataMember(Name = "showNavigation")]
+        public bool? ShowNavigation { get; set; }
+
+        // minimal margin beteen events and the axis
+        [DataMember(Name = "eventMarginAxis")]
+        public int? AxisMargin { get; set; }
+
+        // in combination with grouping
+        [DataMember(Name = "showMajorLabels")]
+        public bool? MajorLabels { get; set; }
+
+        [DataMember(Name = "axisOnTop")]
+        public bool? AxisOnTop { get; set; }
+
+        [DataMember(Name = "groupsChangeable ")]
+        public bool? GroupsChangeable { get; set; }
+
+        [DataMember(Name = "groupsOnRight")]
+        public bool? GroupsOnRight { get; set; }
+
+        [DataMember(Name = "stackEvents")]
+        public bool? StackEvents { get; set; }
+
+        [DataMember(Name = "cluster")]
+        public bool? ClusterEvents { get; set; }
+
+
+    }
+
+
     //[Serializable()]
     //[DataContract(Name = "interval")]
     //public class Interval
@@ -559,16 +654,78 @@ namespace GoogleChartsNGraphsControls
     //    public float? Opacity { get; set; } // 0 - 1
     //}
 
-   
+
     public class ComboChartLineSeries
     {
+        public enum LINETYPE { DASHED, LONG_DASH, SHORT_DASH, DOTTED, LONG_DOTTED, SHORT_DOTTED};
+        public enum FUNCTION_TYPE { FIXED, AVG, COUNT, SUM, MAX, MIN, STD_DEV, VARIANCE, MEDIAN };
+        private List<string> Options = new List<string>();
+        
+        private string getDashDotted(LINETYPE? LT)
+        {
+            switch(LT)
+            {
+                case LINETYPE.DASHED:
+                    return "[14, 2, 7, 2]";
+                case LINETYPE.DOTTED:
+                    return "[4, 4]";
+                case LINETYPE.LONG_DASH:
+                    return "[2, 2, 20, 2, 20, 2]";
+                case LINETYPE.LONG_DOTTED:
+                    return "[10,2]";
+                case LINETYPE.SHORT_DASH:
+                    return "[5, 1, 3]";
+                case LINETYPE.SHORT_DOTTED:
+                    return "[4,1]";
+                default:
+                    return "[14, 2, 7, 2]";
+            }
+        }
+
+        public ComboChartLineSeries()
+        {
+            this.LineType = SeriesType.Line;
+        }
+
         public int Column { get; set; }
+        public FUNCTION_TYPE FunctType { get; set; }
         public SeriesType LineType { get; set; }
-        public Color? Color { get; set; }
+        public LINETYPE? DashedLine { get; set; }
+        public int? LineWidth { get; set; }
+        public string LineName { get; set; }
+        public decimal FixedValue { get; set; }
+        public Color? LineColor { get; set; }
+        
+        public void AddOption(string key, string value)
+        {
+            this.Options.Add(string.Format("{0}:'{1}'", key, value));
+        }
+        public void AddOption(string key, double value)
+        {
+            this.Options.Add(string.Format("{0}:{1}", key, value));
+        }
+        public void ClearOptions()
+        {
+            this.Options.Clear();
+        }
 
         public override string ToString() 
         {
-            return string.Format("{0}: {{ type:'{1}', color:'gray', lineWidth:'2', lineDashStyle:[5,1,3] }}", Column, LineType.ToString().ToLower());
+            List<string> options = new List<string>();
+            if (this.LineColor != null)
+                options.Add(string.Format("color:'{0}'", this.LineColor.HexConverter()));
+            if (this.LineWidth != null)
+                options.Add(string.Format("lineWidth:{0}", this.LineWidth.ToString()));
+            if (this.DashedLine != null)
+                options.Add(string.Format("lineDashStyle:{0}", getDashDotted(this.DashedLine)));
+            if (this.Options.Count() > 0)
+                options.AddRange(Options);
+            
+
+            if (options.Count() > 0)
+                return string.Format("{0}: {{ type:'{1}', {2} }}", Column, LineType.ToString().ToLower(), string.Join(", ", options));
+            else
+                return string.Format("{0}: {{ type:'{1}' }}", Column, LineType.ToString().ToLower());
         }
     }
     [Serializable()]

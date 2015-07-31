@@ -25,12 +25,13 @@ namespace TestGoogleCharsNGraphsControls
             dt.Columns.Add("Expenses", typeof(int));
             dt.Columns.Add(new DataColumn("ec", typeof(bool)) { Caption = "certainty" });
             dt.Columns.Add(new DataColumn("t2") { Caption = "tooltip" });
+            dt.Columns.Add(new DataColumn("l1") { Caption = "annotation" });
 
-            dt.Rows.Add(new object[] { "April", 1000, true, true, 980, 1010, "Spring Fashion Show Sparks new Interest", 740, true, "" });
-            dt.Rows.Add(new object[] { "May", 800, true, false, 780, 822, "", 700, true, "" });
-            dt.Rows.Add(new object[] { "June", 750, true, false, 700, 755, "", 980, true, "Stocking up for back to school sale" });
-            dt.Rows.Add(new object[] { "July", 820, true, false, 810, 835, "", 900, true, "" });
-            dt.Rows.Add(new object[] { "Aug", 1260, false, false, 1100, 1300, "Anticipated back to school shopping to boost sales", 860, false, "" });
+            dt.Rows.Add(new object[] { "April", 1000, true, true, 980, 1010, "Spring Fashion Show Sparks new Interest", 740, true, "", "Spring" });
+            dt.Rows.Add(new object[] { "May", 800, true, false, 780, 822, "", 700, true, "", "Spring" });
+            dt.Rows.Add(new object[] { "June", 750, true, false, 700, 755, "", 980, true, "Stocking up for back to school sale", "Summer" });
+            dt.Rows.Add(new object[] { "July", 820, true, false, 810, 835, "", 900, true, "", "Summer" });
+            dt.Rows.Add(new object[] { "Aug", 1260, false, false, 1100, 1300, "Anticipated back to school shopping to boost sales", 860, false, "", "Fall" });
 
             this.GVLineChartForRoles.DataSource = dt;
         }
@@ -221,6 +222,7 @@ namespace TestGoogleCharsNGraphsControls
             vx.BaselineColor = Color.Green;
             vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
             vx.Title = "By Year";
+          
 
             GoogleChartsNGraphsControls.TrendLine tl1 = new GoogleChartsNGraphsControls.TrendLine() 
             {
@@ -279,6 +281,11 @@ namespace TestGoogleCharsNGraphsControls
                 Column = 5, 
                 LineType = GoogleChartsNGraphsControls.SeriesType.Line 
             });
+
+            GoogleChartsNGraphsControls.vAxis vxx = new GoogleChartsNGraphsControls.vAxis();
+            vxx.MinValue = 0;
+            vxx.MaxValue = 2000;
+            this.GVComboChart1.GviVAxisClass = vxx;
             this.GVComboChart1.DataSource = combo;
             this.GVComboChart1.DataBind();
 

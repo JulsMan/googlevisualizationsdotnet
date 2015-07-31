@@ -30,6 +30,8 @@ namespace Bortosky.Google.Visualization.Columns {
 		/// <param name="row"></param>
 		protected internal override string SerializedValue(DataRow row){
             DateTime d = (DateTime)row[subjectColumn];
+            if (d == DateTime.MinValue)
+                return "null";
             return string.Format("new Date({0}, {1}, {2}, {3}, {4}, {5})", d.Year, d.Month - 1, d.Day, d.Hour, d.Minute, d.Second);
 		}
 

@@ -51,22 +51,84 @@ namespace GoogleChartsNGraphsControls
         public string OptionalAnnotationTitle { get; set; }
         public string OptionalAnnotationText { get; set; }
     }
-
-
-    public class WaterMarkLine
+    public class CHAPTimelineEvent
     {
-        public WaterMarkLine()
+        public class ImgFormatContent
         {
-            this.LINETYPE = LineType.AVG;
-            this.LineColor = System.Drawing.Color.AliceBlue;
-            this.LineName = "Watermark";
+            public ImgFormatContent() { }
+            public ImgFormatContent(string img, string title)
+            {
+                this.IconUrl = img;
+                this.Title = title;
+            }
+            public string IconUrl { get; set; }
+            public string Title { get; set; }
+            public override string ToString()
+            {
+                return string.Format("<label class='chap-timeln-node' />{1}</lable><br/><img src='{0}' class='chap-timeln-node' />",this.IconUrl, this.Title);
+            }
         }
-        public enum LineType { FIXED, AVG, COUNT, SUM, MAX, MIN, STD_DEV, VARIANCE };
+        public CHAPTimelineEvent()
+        {
+            this.start = DateTime.MinValue;
+            this.end = DateTime.MinValue;
+            this.content = string.Empty;
+            this.Editable = false;
+        }
+        public CHAPTimelineEvent(DateTime start, string content): this()
+        {
+            this.start = start;
+            this.content = content;
+        }
+        public CHAPTimelineEvent(DateTime start, DateTime end, string content) : this()
+        {
+            this.start = start;
+            this.end = end;
+            this.content = content;
+        }
+        public CHAPTimelineEvent(DateTime start, ImgFormatContent content) : this()
+        {
+            this.start = start;
+            this.content = content.ToString();
+        }
+        public CHAPTimelineEvent(DateTime start, DateTime end, ImgFormatContent content) : this()
+        {
+            this.start = start;
+            this.end = end;
+            this.content = content.ToString();
+        }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
+        public string content { get; set; }
+        public bool editable { get; set; }
+        public string group { get; set; }
+        public object[] ToRow()
+        {
+            if (start == DateTime.MinValue || string.IsNullOrEmpty(content))
+                throw new Exception("Maleformed CHAP Timeline event - missing start date or content");
 
-        public LineType LINETYPE { get; set; }
-        public System.Drawing.Color LineColor { get; set; }
-        public string LineName { get; set; }
-        public decimal LineValue { get; set; }
+            return new object[] 
+            {
+                start,
+                end,
+                content,
+                editable,
+                group
+            };
+        }
+    }
+
+    public class WaterMarkLine : ComboChartLineSeries
+    {
+        public WaterMarkLine(System.Drawing.Color color, decimal FixedValueAt)
+        {
+            this.FunctType = FUNCTION_TYPE.FIXED;
+            this.LineType = GoogleChartsNGraphsControls.SeriesType.Area;
+            this.LineName = "";
+            this.FixedValue = FixedValueAt;
+            this.LineColor = color;
+            this.AddOption("opacity", 1.0);
+        }
     }
 
     public class GviConfigOption : Attribute
@@ -115,6 +177,15 @@ namespace GoogleChartsNGraphsControls
     
     public static class GviExtensions
     {
+        public static string HexConverter(this System.Drawing.Color c)
+        {
+            return "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
+        }
+        public static string HexConverter(this System.Drawing.Color? c)
+        {
+            if (c == null) return string.Empty;
+            return HexConverter((System.Drawing.Color)c);
+        }
         public static decimal Variance(this IEnumerable<decimal> source)
         {
             int n = 0;
