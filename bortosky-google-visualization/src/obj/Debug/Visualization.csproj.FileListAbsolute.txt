@@ -1,0 +1,9 @@
+C:\Users\kingj5\Documents\Visual Studio 2012\Projects\bortosky-google-visualization\src\bin\Debug\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2012\Projects\bortosky-google-visualization\src\bin\Debug\Visualization.pdb
+C:\Users\kingj5\Documents\Visual Studio 2012\Projects\bortosky-google-visualization\src\obj\Debug\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2012\Projects\bortosky-google-visualization\src\obj\Debug\Visualization.pdb
+C:\Users\kingj5\Documents\Visual Studio 2012\Projects\bortosky-google-visualization\src\obj\Debug\Visualization.csprojResolveAssemblyReference.cache
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\bin\Debug\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\bin\Debug\Visualization.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.pdb

@@ -1,0 +1,11 @@
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\TestGoogleCharsNGraphsControls.dll.config
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\TestGoogleCharsNGraphsControls.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\TestGoogleCharsNGraphsControls.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\GoogleChartsNGraphsControls.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\Newtonsoft.Json.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\GoogleChartsNGraphsControls.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\bin\Visualization.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\obj\Release\TestGoogleCharsNGraphsControls.csprojResolveAssemblyReference.cache
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\obj\Release\TestGoogleCharsNGraphsControls.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\TestGoogleCharsNGraphsControls\obj\Release\TestGoogleCharsNGraphsControls.pdb

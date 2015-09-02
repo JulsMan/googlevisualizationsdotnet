@@ -222,7 +222,7 @@ namespace TestGoogleCharsNGraphsControls
             vx.BaselineColor = Color.Green;
             vx.Formatted = GoogleChartsNGraphsControls.AxisFormat.Euro;
             vx.Title = "By Year";
-          
+            //vx.Format = "#,###";
 
             GoogleChartsNGraphsControls.TrendLine tl1 = new GoogleChartsNGraphsControls.TrendLine() 
             {

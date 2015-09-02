@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\publ</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AjaxUpdateHandler.ashx">
+      <publishTime>09/08/2014 09:51:14</publishTime>
+    </File>
+    <File Include="App_Themes/female_user.png">
+      <publishTime>09/08/2014 09:51:14</publishTime>
+    </File>
+    <File Include="App_Themes/male_user.png">
+      <publishTime>09/08/2014 09:51:14</publishTime>
+    </File>
+    <File Include="App_Themes/unknown_user.png">
+      <publishTime>09/08/2014 09:51:14</publishTime>
+    </File>
+    <File Include="bin/GoogleChartsNGraphsControls.dll">
+      <publishTime>06/30/2015 14:12:43</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/18/2013 08:41:18</publishTime>
+    </File>
+    <File Include="bin/TestGoogleCharsNGraphsControls.dll">
+      <publishTime>06/30/2015 14:12:46</publishTime>
+    </File>
+    <File Include="bin/Visualization.dll">
+      <publishTime>06/30/2015 14:09:53</publishTime>
+    </File>
+    <File Include="Codebehind.aspx">
+      <publishTime>09/08/2014 09:51:15</publishTime>
+    </File>
+    <File Include="ComboWatermarks.aspx">
+      <publishTime>06/12/2015 09:48:52</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>02/24/2015 14:33:59</publishTime>
+    </File>
+    <File Include="Events.Examples.js">
+      <publishTime>09/08/2014 09:51:15</publishTime>
+    </File>
+    <File Include="GeoMaps.aspx">
+      <publishTime>09/08/2014 09:51:15</publishTime>
+    </File>
+    <File Include="IntervalNTrend.aspx">
+      <publishTime>09/08/2014 09:51:15</publishTime>
+    </File>
+    <File Include="Postbacks.aspx">
+      <publishTime>09/15/2014 13:03:33</publishTime>
+    </File>
+    <File Include="WCFTestService.svc">
+      <publishTime>09/08/2014 09:51:14</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/30/2015 14:10:05</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

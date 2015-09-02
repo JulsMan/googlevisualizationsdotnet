@@ -30,7 +30,13 @@ namespace TestGoogleCharsNGraphsControls
             lst.Add(new GoogleChartsNGraphsControls.CHAPTimelineEvent(new DateTime(2015, 7, 22), new DateTime(2015, 7, 23), "Watched TV"));
             lst.Add(new GoogleChartsNGraphsControls.CHAPTimelineEvent(new DateTime(2015, 7, 27), "Bed Time!"));
 
+            //this.CHAPTimeline1.GviOnSelect = "onSelection";
             this.CHAPTimeline1.ChartData(lst.ToArray());
+
+            this.CHAPTimeline1.TimelineOptions = new GoogleChartsNGraphsControls.CHAPTimelineOptions()
+            {
+                Editable = true
+            };
         }
     }
 }

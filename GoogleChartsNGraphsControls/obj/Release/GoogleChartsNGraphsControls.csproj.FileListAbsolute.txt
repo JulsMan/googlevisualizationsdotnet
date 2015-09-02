@@ -1,0 +1,10 @@
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Release\GoogleChartsNGraphsControls.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Release\GoogleChartsNGraphsControls.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Release\Newtonsoft.Json.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Release\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Release\Visualization.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Release\GoogleChartsNGraphsControls.csprojResolveAssemblyReference.cache
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Release\GoogleChartsNGraphsControls.Resource1.resources
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Release\GoogleChartsNGraphsControls.csproj.GenerateResource.Cache
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Release\GoogleChartsNGraphsControls.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Release\GoogleChartsNGraphsControls.pdb

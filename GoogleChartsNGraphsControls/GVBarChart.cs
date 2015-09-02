@@ -23,7 +23,7 @@ namespace GoogleChartsNGraphsControls
         [Category("GoogleOptions")]
         [Description(@"If set to true, bar values are stacked (accumulated).")]
         [DefaultValue(false)]
-        [DataMember(Name="isStacked", EmitDefaultValue=true, IsRequired = false)]
+        [DataMember(Name = "isStacked", EmitDefaultValue = true, IsRequired = false)]
         public bool? GviIsStacked
         {
             get
@@ -39,18 +39,13 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-      
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.BARCHART);
             output.Write(Text);
         }
-        // Support for IPostBackEventHandler
-        //protected override void Render(HtmlTextWriter output)
-        //{
-        //    RenderContents(output);
-        //}
+
         public override string ToString()
         {
             List<Newtonsoft.Json.JsonConverter> myconverters = new List<Newtonsoft.Json.JsonConverter>();

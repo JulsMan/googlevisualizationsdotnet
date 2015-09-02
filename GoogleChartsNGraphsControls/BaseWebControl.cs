@@ -1128,9 +1128,9 @@ namespace GoogleChartsNGraphsControls
 
         }
 
-        
-      
 
+
+        #region Event Work
 
 
         /*************************************************************************
@@ -1202,6 +1202,7 @@ namespace GoogleChartsNGraphsControls
         //       " Value = 'Click Me' />");
         //}
 
+        #endregion
 
         public virtual string PostProcessData(string DATATABLE)
         {

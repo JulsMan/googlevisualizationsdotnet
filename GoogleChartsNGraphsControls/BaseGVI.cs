@@ -51,6 +51,7 @@ namespace GoogleChartsNGraphsControls
         google.load('visualization', '1');
         google.setOnLoadCallback( draw_{0} );
         var chart_{0} = undefined;
+        
         function draw_{0}() {{
                 var container = document.getElementById('{0}');
                 var chart = new links.{3}(container);
@@ -84,10 +85,13 @@ namespace GoogleChartsNGraphsControls
                     {formatter}
                 }};
 
-        /********* User Defined Functions **********************/
-                {4}
 
-        /********* Extended Params    **********************/
+
+             /********* User Defined Functions **********************/
+            {4}
+
+
+                /********* Extended Params    **********************/
                 chart.opts = {1};
                 chart.container = container;
                 
@@ -421,7 +425,7 @@ namespace GoogleChartsNGraphsControls
                 
                 if ((value == null) || (string.IsNullOrEmpty(value.ToString()))) continue;
 
-                string foo = string.Format("google.visualization.events.addListener(chart, '{0}', {1});", option.EventName, value);
+                string foo = string.Format("google.visualization.events.addListener(chart, '{0}', chart.{1} = function(){{  {1}(chart); }});", option.EventName, value);
                 foo = foo.Replace(";;", ";");
                 eventsList.Add(foo);
             }

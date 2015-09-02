@@ -1,0 +1,4 @@
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\bin\Release\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\bin\Release\Visualization.pdb
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Release\Visualization.dll
+C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Release\Visualization.pdb

@@ -684,7 +684,7 @@ namespace GoogleChartsNGraphsControls
 
         public ComboChartLineSeries()
         {
-            this.LineType = SeriesType.Line;
+            this.LineType = SeriesType.SteppedArea;
         }
 
         public int Column { get; set; }
@@ -723,9 +723,9 @@ namespace GoogleChartsNGraphsControls
             
 
             if (options.Count() > 0)
-                return string.Format("{0}: {{ type:'{1}', {2} }}", Column, LineType.ToString().ToLower(), string.Join(", ", options));
+                return string.Format("{0}: {{ type:'{1}', {2} }}", Column, LineType.ToString().LowerCaseFirst(), string.Join(", ", options));
             else
-                return string.Format("{0}: {{ type:'{1}' }}", Column, LineType.ToString().ToLower());
+                return string.Format("{0}: {{ type:'{1}' }}", Column, LineType.ToString().LowerCaseFirst());
         }
     }
     [Serializable()]

@@ -73,7 +73,7 @@ namespace GoogleChartsNGraphsControls
             this.start = DateTime.MinValue;
             this.end = DateTime.MinValue;
             this.content = string.Empty;
-            this.editable = false;
+            this.editable = true;
             this.group = string.Empty;
         }
         public CHAPTimelineEvent(DateTime start, string content): this()
@@ -121,11 +121,11 @@ namespace GoogleChartsNGraphsControls
 
     public class WaterMarkLine : ComboChartLineSeries
     {
-        public WaterMarkLine(System.Drawing.Color color, decimal FixedValueAt)
+        public WaterMarkLine(System.Drawing.Color color, decimal FixedValueAt, string Title)
         {
             this.FunctType = FUNCTION_TYPE.FIXED;
             this.LineType = GoogleChartsNGraphsControls.SeriesType.Area;
-            this.LineName = "";
+            this.LineName = Title;
             this.FixedValue = FixedValueAt;
             this.LineColor = color;
             this.AddOption("opacity", 1.0);
