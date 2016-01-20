@@ -1114,6 +1114,15 @@ namespace GoogleChartsNGraphsControls
             if (!this.Page.ClientScript.IsClientScriptIncludeRegistered("REGISTER_GOOGLE_API_JS"))
                 this.Page.ClientScript.RegisterClientScriptInclude("REGISTER_GOOGLE_API_JS", "https://www.google.com/jsapi");
 
+            if (!this.Page.ClientScript.IsClientScriptIncludeRegistered("REGISTER_GOOGLE_LOADER"))
+                this.Page.ClientScript.RegisterClientScriptInclude("REGISTER_GOOGLE_LOADER", "https://www.gstatic.com/charts/loader.js");
+
+            if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_GOOGLE_PACKAGES"))
+            {
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_GOOGLE_PACKAGES",
+                    "google.charts.load('current', {'packages':['corechart','gantt', 'map','annotatedtimeline','gauge','table','timeline','annotationchart', 'calendar','motionchart','orgchart']});", true);
+            }
+
             if (!this.Page.ClientScript.IsClientScriptBlockRegistered(this.GetType().BaseType, "REGISTER_JX_AJAX"))
             {
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType().BaseType, "REGISTER_JX_AJAX",

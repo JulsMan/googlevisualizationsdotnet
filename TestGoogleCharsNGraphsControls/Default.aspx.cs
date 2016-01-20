@@ -80,6 +80,7 @@ namespace TestGoogleCharsNGraphsControls
             chart_calendar();
             chart_annotation();
             chart_Roles();
+            chart_gantt();
 
             // Map Test
             this.GVMap2.ChartData("Duvall, WA", "Home Sweet Home");
@@ -587,6 +588,37 @@ namespace TestGoogleCharsNGraphsControls
 
         }
 
+        private void chart_gantt()
+        {
+            DataTable dt = new DataTable("Gantt");
+
+            DataColumn startDate = new DataColumn("Start Date", typeof(DateTime));
+            startDate.ExtendedProperties.Add("GoogleDateType", Bortosky.Google.Visualization.GoogleDateType.Date);
+            DataColumn endDate = new DataColumn("End Date", typeof(DateTime));
+            endDate.ExtendedProperties.Add("GoogleDateType", Bortosky.Google.Visualization.GoogleDateType.Date);
+
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("Task ID"),
+                new DataColumn("Task Name"),
+                startDate,
+                endDate,
+                new DataColumn("Duration", typeof(double)) { AllowDBNull = true },
+                new DataColumn("Percent Complete",typeof(int)) { AllowDBNull = true },
+                new DataColumn("Dependencies") { AllowDBNull = true }
+            });
+
+            dt.Rows.Add(new object[] {"Research", "Find Sources", new DateTime(2015, 1,1), new DateTime(2015, 1, 5), null, 100, null });
+            dt.Rows.Add(new object[] { "Write", "Write Paper", null, new DateTime(2015, 1, 9), 3 * 24 * 60 * 60 * 1000, 25, "Research,Outline" });
+            dt.Rows.Add(new object[] { "Cite", "Create bibliography", null, new DateTime(2015, 1, 7), 1 * 24 * 60 * 60 * 1000, 20, "Research" });
+            dt.Rows.Add(new object[] { "Complete", "Hand in Paper", null, new DateTime(2015, 1, 10), 1 * 24 * 60 * 60 * 1000, 0, "Cite,Write" });
+            dt.Rows.Add(new object[] { "Outline", "Outline Paper", null, new DateTime(2015, 1, 6), 1 * 24 * 60 * 60 * 1000, 100, "Research" });
+
+
+
+            this.GVGanttChart1.DataSource = dt;
+            this.GVGanttChart1.DataBind();
+            
+        }
 
         private void chart_timeline()
         {

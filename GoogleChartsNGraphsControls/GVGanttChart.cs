@@ -38,14 +38,8 @@ namespace GoogleChartsNGraphsControls
        
         protected override void RenderContents(HtmlTextWriter output)
         {
-            List<Color?> tmp = new List<Color?>();
-            tmp.Add(this.GVIBackgroundColor == null ? Color.Transparent : this.GVIBackgroundColor);
-            if (this.GviColors != null) tmp.AddRange(this.GviColors);
-
-            this.GviIsStacked = true;
-            this.GviColors = tmp.ToArray();
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-            this.gvi.RegisterGVIScriptsEx(this, TableWithLeadTime(this.dt), BaseGVI.GOOGLECHART.BARCHART);
+            this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.GANTT);
             output.Write(Text);
         }
         // Support for IPostBackEventHandler
@@ -85,27 +79,27 @@ namespace GoogleChartsNGraphsControls
          * So our Gantt chart now starts to give us some more detailed information.  
          * We’ll also add some data labels so a legend is painted.
          */
-        internal static System.Data.DataTable TableWithLeadTime(System.Data.DataTable dt)
-        {
-            if (dt.Columns.Count > 2) throw new Exception("Gantt Charts don't support having more then 2 columns valid ie.['Date',value]");
+        //internal static System.Data.DataTable TableWithLeadTime(System.Data.DataTable dt)
+        //{
+        //    if (dt.Columns.Count > 2) throw new Exception("Gantt Charts don't support having more then 2 columns valid ie.['Date',value]");
 
-            // test for numeric types only
+        //    // test for numeric types only
             
-            System.Data.DataTable dtwithlead = new System.Data.DataTable();
-            dtwithlead.Columns.Add(dt.Columns[0].ColumnName, dt.Columns[0].DataType);
-            dtwithlead.Columns.Add(" ",dt.Columns[1].DataType);
-            dtwithlead.Columns.Add(dt.Columns[1].ColumnName, dt.Columns[1].DataType);
+        //    System.Data.DataTable dtwithlead = new System.Data.DataTable();
+        //    dtwithlead.Columns.Add(dt.Columns[0].ColumnName, dt.Columns[0].DataType);
+        //    dtwithlead.Columns.Add(" ",dt.Columns[1].DataType);
+        //    dtwithlead.Columns.Add(dt.Columns[1].ColumnName, dt.Columns[1].DataType);
 
-            int leading = 0;
-            foreach(System.Data.DataRow dr in dt.Rows)
-            {
-                object[] tmp = new object[]{dr[0],leading,dr[1]};
-                leading += int.Parse(dr[1].ToString());
-                dtwithlead.Rows.Add(tmp);
-            }
+        //    int leading = 0;
+        //    foreach(System.Data.DataRow dr in dt.Rows)
+        //    {
+        //        object[] tmp = new object[]{dr[0],leading,dr[1]};
+        //        leading += int.Parse(dr[1].ToString());
+        //        dtwithlead.Rows.Add(tmp);
+        //    }
 
-            return dtwithlead;
-        }
+        //    return dtwithlead;
+        //}
 
         public override string ToString()
         {

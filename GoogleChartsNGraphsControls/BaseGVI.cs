@@ -25,7 +25,7 @@ namespace GoogleChartsNGraphsControls
             WORDCLOUD, SCATTERCHART, TABLEARROW, TABLEBAR,
             CANDLESTICK, COMBO, HISTOGRAM, DONUT, TREEMAP,
             TIMELINE, WORDTREE, CALENDAR, ANNOTATION, SANKEY,
-
+            GANTT,
             CHAP_TIMELINE, CHAP_GRAPH, CHAP_GRAPH3D, CHAP_NETWORK
         }
 
@@ -39,82 +39,6 @@ namespace GoogleChartsNGraphsControls
         /// easily debugged or matching that on the Google Vis site
         /// </summary>
 
-        private static string jschap =
-  @"
-
-        /********************************************************************************
-        *      GoogleVisualizationControls.NET {{ver}}
-        *      http://code.google.com/p/googlevisualizationsdotnet/ 
-        *      Visualization: {3} 
-        *      Div Element: {0}
-        *********************************************************************************/
-        google.load('visualization', '1');
-        google.setOnLoadCallback( draw_{0} );
-        var chart_{0} = undefined;
-        
-        function draw_{0}() {{
-                var container = document.getElementById('{0}');
-                var chart = new links.{3}(container);
-                var arrayD = __DATATABLE__;
-                var data = new google.visualization.DataTable( arrayD );
-       
-         
-       /********* Formatter Hooks: your function will be called before render  ********/
-                chart.formatters = function(chart,data){{
-                    /*FORMATTERS*/
-                }}
-       /********* View Hooks: DataTables are placed in a View and invoke your functions before going to render ********/
-                chart.formatView = function(chart,view){{
-                    /*VIEW_FUNCTIONS*/
-                }}
- 
-       /********* Extended Functions **********************/
-                chart.reload = function(args, url)
-                {{
-                    if (url == undefined || url == null){{
-                        url = '{QueryString}';
-                    }}
-                    m_SendAndDraw(container, chart, url, args)
-                }};
-                chart.load = function(data)
-                {{
-                    m_JustDraw(container, chart, data);
-                }};                
-                chart.format = function(data)
-                {{
-                    {formatter}
-                }};
-
-
-
-             /********* User Defined Functions **********************/
-            {4}
-
-
-                /********* Extended Params    **********************/
-                chart.opts = {1};
-                chart.container = container;
-                
-      
-
-       /********* Init Chart Load     **********************/
-                chart.draw(data, chart.opts);
-
-
-      /********* Update These Image Src     **********************/
-                    {SETIMAGEFOR}
-
-
-
-
-
- /********* Save Chart Into DOM / Always Last **********************/
-                chart_{0} = chart;
-
-                
-
-}}
-";
 
         private static string jscode3 =
        @"
@@ -125,12 +49,27 @@ namespace GoogleChartsNGraphsControls
         *      Visualization: {3} 
         *      Div Element: {0}
         *********************************************************************************/
+        /*
         google.load('visualization', '1', {{ 'packages': ['{2}'] }});
         google.setOnLoadCallback( draw_{0} );
+        */
+        
+/* google.charts.load('current', {{'packages':['{2}']}} ); */
+        google.charts.setOnLoadCallback( draw_{0} );
+
         var chart_{0} = undefined;
         function draw_{0}() {{
                 var container = document.getElementById('{0}');
-                var chart = new google.visualization.{3}(container);
+                
+                var chart = undefined;
+                if (google.visualization.{3} == undefined)
+                {{
+                    chart = new google.visualization.{5}(container);
+                }}
+                else
+                {{
+                    chart = new google.visualization.{3}(container);
+                }}
 
                 var data = __DATATABLE__;
        
@@ -191,71 +130,6 @@ namespace GoogleChartsNGraphsControls
 ";
 
 
-//        private static string jscode =
-//        @"
-//
-//        /********************************************************************************
-//        *      GoogleVisualizationControls for .NET - by Julian King
-//        *      Visualization: {3} 
-//        *      Div Element: {0}
-//        *********************************************************************************/
-//        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
-//        google.setOnLoadCallback(draw_{0});
-//        function draw_{0}() {{
-//                var data = new google.visualization.DataTable(chart_{0});
-//                var chart = new google.visualization.{3}(document.getElementById('{0}'));
-//                chart.draw(data, {1});
-//            }}
-//";
-
-//    private static string jscode2 =
-//        @"
-//
-//        /********************************************************************************
-//        *      GoogleVisualizationControls.NET {{ver}}
-//        *      http://code.google.com/p/googlevisualizationsdotnet/ 
-//        *      Visualization: {3} 
-//        *      Div Element: {0}
-//        *********************************************************************************/
-//        var chart_{0} = undefined;
-//        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
-//        google.setOnLoadCallback( draw_{0} );
-//        var regEvts_{0} = function(chart) {{
-//            {4}
-//        }};
-//        function draw_{0}() {{
-//                var data = data_{0}();
-//                var chart = new google.visualization.{3}(document.getElementById('{0}'));
-//                regEvts_{0}(chart);
-//                chart.draw(data, {1});
-//                chart_{0} = chart;
-//            }}
-//";
-
-
-
-
-
-//    private static string jscode_orig =
-//    @"
-//
-//        /********************************************************************************
-//        *      GoogleVisualizationControls for .NET - by Julian King
-//        *      Visualization: {3} 
-//        *      Div Element: {0}
-//        *********************************************************************************/
-//        google.load('visualization', '1', {{ 'packages': ['{2}'] }});
-//        google.setOnLoadCallback(draw_{0});
-//        var regEvts_{0} = function(chart) {{
-//            {4}
-//        }};
-//        function draw_{0}() {{
-//                var data = chart_{0}();
-//                var chart = new google.visualization.{3}(document.getElementById('{0}'));
-//                regEvts_{0}(chart);
-//                chart.draw(data, {1});
-//            }}
-//";
         #endregion
 
         private static readonly Dictionary<GOOGLECHART, string[]> dic = new Dictionary<GOOGLECHART, string[]>();
@@ -275,7 +149,7 @@ namespace GoogleChartsNGraphsControls
                 dic.Add(GOOGLECHART.MOTIONCHART, new string[] { "motionchart", "MotionChart" });
                 dic.Add(GOOGLECHART.ORGANIZATIONCHART, new string[] { "orgchart", "OrgChart" });
                 dic.Add(GOOGLECHART.PIECHART, new string[] { "corechart", "PieChart" });
-                //dic.Add(GOOGLECHART.SPARKLINE, new string[] { "imagesparkline", "ImageSparkLine" });
+                dic.Add(GOOGLECHART.GANTT, new string[] { "gantt", "gantt" });
                 dic.Add(GOOGLECHART.SCATTERCHART, new string[] { "corechart", "ScatterChart" });
                 dic.Add(GOOGLECHART.TABLEARROW, new string[] { "table", "Table" });
                 dic.Add(GOOGLECHART.TABLEBAR, new string[] { "table", "Table" });
@@ -309,8 +183,8 @@ namespace GoogleChartsNGraphsControls
         {
             string JAVASCRIPT = jscode3;
 
-            if (CHARTTYPE == GOOGLECHART.CHAP_TIMELINE)
-                JAVASCRIPT = jschap;
+            //if (CHARTTYPE == GOOGLECHART.CHAP_TIMELINE)
+            //    JAVASCRIPT = jschap;
 
             string options,formatter = string.Empty;
             string imagereplace = string.Empty;
@@ -357,7 +231,14 @@ namespace GoogleChartsNGraphsControls
                 ctlid = PageControl.OverrideElementId;
 
             // interpolate the options into the canned Javascript
-            string optionsJscode = string.Format(JAVASCRIPT, ctlid, options, dic[CHARTTYPE].FirstOrDefault(), dic[CHARTTYPE].LastOrDefault(), string.Join("\n",events.ToArray()));
+            string optionsJscode = string.Format(JAVASCRIPT, 
+                ctlid, 
+                options, 
+                dic[CHARTTYPE].FirstOrDefault(), 
+                dic[CHARTTYPE].LastOrDefault(), 
+                string.Join("\n",events.ToArray()), 
+                dic[CHARTTYPE].FirstOrDefault().UpperCaseFirst()
+            );
             
             // add version information onto each ChartJavascript
             string build = string.Format("v{0}.{1}.{2}.{3}",

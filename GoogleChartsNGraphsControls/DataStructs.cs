@@ -247,7 +247,10 @@ namespace GoogleChartsNGraphsControls
         {
             return char.ToLower(str[0]) + str.Substring(1);
         }
-
+        public static string UpperCaseFirst(this string str)
+        {
+            return char.ToUpper(str[0]) + str.Substring(1).ToLower();
+        }
         public static string GVINameParse(this string str)
         {
             if (str.StartsWith("Gvi", true, System.Globalization.CultureInfo.CurrentCulture))

@@ -9,3 +9,14 @@ C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet
 C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.csproj.GenerateResource.Cache
 C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.dll
 C:\Users\kingj5\Documents\Visual Studio 2010\Projects\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.pdb
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Debug\GoogleChartsNGraphsControls.dll
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Debug\GoogleChartsNGraphsControls.pdb
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Debug\GoogleChartsNGraphsControls.tlb
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Debug\Visualization.dll
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\bin\Debug\Visualization.pdb
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.csprojResolveAssemblyReference.cache
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.Resource1.resources
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.csproj.GenerateResource.Cache
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.dll
+C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\GoogleChartsNGraphsControls\obj\Debug\GoogleChartsNGraphsControls.pdb

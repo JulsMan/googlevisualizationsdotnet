@@ -29,10 +29,16 @@ namespace Bortosky.Google.Visualization.Columns {
 		/// 
 		/// <param name="row"></param>
 		protected internal override string SerializedValue(DataRow row){
-            System.DateTime d = (System.DateTime)row[subjectColumn];
-            if (d == DateTime.MinValue)
+            try
+            {
+                System.DateTime d = (System.DateTime)row[subjectColumn];
+                if (d == DateTime.MinValue)
+                    return "undefined";
+                return string.Format("new Date({0}, {1}, {2})", d.Year, d.Month - 1, d.Day);
+            } catch(Exception ex)
+            {
                 return "undefined";
-            return string.Format("new Date({0}, {1}, {2})", d.Year, d.Month - 1, d.Day);
+            }
         }
 
 		protected internal override string GoogleDataType{
