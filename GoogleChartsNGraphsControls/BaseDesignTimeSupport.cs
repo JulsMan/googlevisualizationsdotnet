@@ -57,8 +57,6 @@ namespace GoogleChartsNGraphsControls
     [Serializable()]
     public enum Position { Default, In, Out }
     [Serializable()]
-    public enum FocusTarget { Default, Datrum, Category }
-    [Serializable()]
     public enum CandlestickTheme { Default, Maximized }
     [Serializable()]
     public enum AxisFormat { Default, Percent, Currency, Euro, Number, Date, EuroDate }
@@ -631,36 +629,12 @@ namespace GoogleChartsNGraphsControls
     }
 
 
-    //[Serializable()]
-    //[DataContract(Name = "interval")]
-    //public class Interval
-    //{
-    //    [DataMember(Name = "color")]
-    //    public Color? Color { get; set; }
-
-    //    [DataMember(Name = "visibleInLegend")]
-    //    public bool? VisibleInLegend { get; set; }
-
-    //    [DataMember(Name = "labelInLegend")]
-    //    public string LabelInLegend { get; set; }
-
-    //    [DataMember(Name = "type")]
-    //    public TrendLineType Type { get; set; }
-
-    //    [DataMember(Name = "lineWidth")]
-    //    public int? LineWidth { get; set; }
-
-    //    [DataMember(Name = "opacity")]
-    //    public float? Opacity { get; set; } // 0 - 1
-    //}
-
 
     public class ComboChartLineSeries
     {
         public enum LINETYPE { DASHED, LONG_DASH, SHORT_DASH, DOTTED, LONG_DOTTED, SHORT_DOTTED};
         public enum FUNCTION_TYPE { FIXED, AVG, COUNT, SUM, MAX, MIN, STD_DEV, VARIANCE, MEDIAN };
         private List<string> Options = new List<string>();
-        
         private string getDashDotted(LINETYPE? LT)
         {
             switch(LT)
@@ -681,21 +655,20 @@ namespace GoogleChartsNGraphsControls
                     return "[14, 2, 7, 2]";
             }
         }
-
         public ComboChartLineSeries()
         {
-            this.LineType = SeriesType.SteppedArea;
+            this.SeriesType = SeriesType.SteppedArea;
+            this.VisibleInLegend = false;
         }
-
         public int Column { get; set; }
         public FUNCTION_TYPE FunctType { get; set; }
-        public SeriesType LineType { get; set; }
+        public SeriesType SeriesType { get; set; }
         public LINETYPE? DashedLine { get; set; }
         public int? LineWidth { get; set; }
         public string LineName { get; set; }
         public decimal FixedValue { get; set; }
         public Color? LineColor { get; set; }
-        
+        public bool VisibleInLegend { get; set; }
         public void AddOption(string key, string value)
         {
             this.Options.Add(string.Format("{0}:'{1}'", key, value));
@@ -718,14 +691,18 @@ namespace GoogleChartsNGraphsControls
                 options.Add(string.Format("lineWidth:{0}", this.LineWidth.ToString()));
             if (this.DashedLine != null)
                 options.Add(string.Format("lineDashStyle:{0}", getDashDotted(this.DashedLine)));
+
+            options.Add(string.Format("visibleInLegend:{0}", this.VisibleInLegend.ToString().ToLower()));
+
             if (this.Options.Count() > 0)
                 options.AddRange(Options);
             
+            
 
             if (options.Count() > 0)
-                return string.Format("{0}: {{ type:'{1}', {2} }}", Column, LineType.ToString().LowerCaseFirst(), string.Join(", ", options));
+                return string.Format("{0}: {{ type:'{1}', {2} }}", Column, SeriesType.ToString().LowerCaseFirst(), string.Join(", ", options));
             else
-                return string.Format("{0}: {{ type:'{1}' }}", Column, LineType.ToString().LowerCaseFirst());
+                return string.Format("{0}: {{ type:'{1}' }}", Column, SeriesType.ToString().LowerCaseFirst());
         }
     }
     [Serializable()]
@@ -735,12 +712,110 @@ namespace GoogleChartsNGraphsControls
         public override string ToString()
         {
             string foo = string.Empty;
-            foreach(var s in this)
+            foreach (var s in this)
                 foo += s.ToString() + " ,";
-            
-            return string.Format("{{ {0} }}", string.Join(",", foo.Substring(0, foo.Length-2)));
+
+            return string.Format("{{ {0} }}", string.Join(",", foo.Substring(0, foo.Length - 2)));
         }
     }
+
+    public class LineAnnotation
+    {
+        public class AnnotationTextStyle
+        {
+            public string FontName { get; set; }
+            public int? FontSize { get; set; }
+            public bool? Bold { get; set; }
+            public bool? Italic { get; set; }
+            public Color? Color { get; set; }
+            /// <summary>
+            /// The color of the text outline.
+            /// </summary>
+            /// <value>The color of the aura.</value>
+            public Color? AuraColor { get; set; }
+            /// <summary>
+            /// The transparency of the text.  Valid range is 0 to 1;
+            /// </summary>
+            /// <value>The opacity.</value>
+            public float? Opacity { get; set; }
+
+            public override string ToString()
+            {
+                List<string> options = new List<string>();
+                if (!string.IsNullOrEmpty(this.FontName))
+                    options.Add(string.Format("fontName: '{0}'", this.FontName));
+                if (this.FontSize != null)
+                    options.Add(string.Format("fontSize: {0}", this.FontSize));
+                if (this.Bold != null)
+                    options.Add(string.Format("bold: {0}", this.Bold.ToString().ToLower()));
+                if (this.Italic != null)
+                    options.Add(string.Format("italic: {0}", this.Italic.ToString().ToLower()));
+                if (this.Color != null)
+                    options.Add(string.Format("color: '{0}'", this.Color.HexConverter()));
+                if (this.AuraColor != null)
+                    options.Add(string.Format("auraColor: '{0}'", this.AuraColor.HexConverter()));
+                if (this.Opacity != null)
+                    options.Add(string.Format("opacity: {0}", this.Opacity));
+
+                
+                return string.Format(@"textStyle: {{   {0}   }}", string.Join(",", options));
+            }
+        }
+
+        public LineAnnotation()
+        {
+            AnnotationLineStyle = ANNOTATION_STYLE.LINE;
+        }
+        // annotations.style //
+        public enum ANNOTATION_STYLE { LINE, POINT }
+        public ANNOTATION_STYLE AnnotationLineStyle { get; set; }
+        public AnnotationTextStyle AnnotationStyle { get; set; }
+
+        /// <summary>
+        /// The name of the item in the legend that will be annotated
+        /// </summary>
+        /// <value>The name of the annotation line.</value>
+        public string AnnotationLineName { get; set; }
+        /// <summary>
+        /// This name will show up in the chart along side the line
+        /// </summary>
+        /// <value>The display name of the annoitation.</value>
+        public string AnnoitationDisplayName { get; set; }
+        /// <summary>
+        /// When the annoitation is hovered over, this display will be visiable
+        /// </summary>
+        /// <value>The annotation description.</value>
+        public string AnnotationDescription { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format(@"annotations: {{ style:{0}, {1}  }}", 
+                AnnotationLineStyle.ToString().ToLower(),
+                AnnotationStyle == null ? string.Empty : AnnotationStyle.ToString() 
+                );
+        }
+    }
+
+
+    /// <summary>
+    /// Annotations create labels for lines on the graph.  You can attach the annotation to a line by providing the data column name.
+    /// Implements the <see cref="System.Collections.Generic.List{GoogleChartsNGraphsControls.LineAnnotation}" />
+    /// </summary>
+    /// <seealso cref="System.Collections.Generic.List{GoogleChartsNGraphsControls.LineAnnotation}" />
+    [Serializable()]
+    [DataContract(Name = "annotations")]
+    public class LineAnnotationsList : List<LineAnnotation>
+    {
+        public override string ToString()
+        {
+            string foo = string.Empty;
+            foreach (var s in this)
+                foo += s.ToString() + " ,";
+
+            return string.Format("{{ {0} }}", string.Join(",", foo.Substring(0, foo.Length - 2)));
+        }
+    }
+
 
     public static class BaseDesignTimeSupport
     {

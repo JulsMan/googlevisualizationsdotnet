@@ -12,3 +12,9 @@ C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\bortosky-google-visu
 C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.csprojResolveAssemblyReference.cache
 C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.dll
 C:\Users\kingj5\Documents\GitHub\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.pdb
+D:\Source\GoogleVisualizationsNET\googlevisualizationsdotnet\bortosky-google-visualization\src\bin\Debug\Visualization.dll
+D:\Source\GoogleVisualizationsNET\googlevisualizationsdotnet\bortosky-google-visualization\src\bin\Debug\Visualization.pdb
+D:\Source\GoogleVisualizationsNET\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.csprojAssemblyReference.cache
+D:\Source\GoogleVisualizationsNET\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.csproj.CoreCompileInputs.cache
+D:\Source\GoogleVisualizationsNET\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.dll
+D:\Source\GoogleVisualizationsNET\googlevisualizationsdotnet\bortosky-google-visualization\src\obj\Debug\Visualization.pdb

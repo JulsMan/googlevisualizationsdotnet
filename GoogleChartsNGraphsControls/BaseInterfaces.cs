@@ -33,4 +33,12 @@ namespace GoogleChartsNGraphsControls
     {
         Interval[] GviIntervals { get; set; }
     }
+
+    interface IHasLineSeries
+    {
+        ComboChartLineSeriesList GviLineSeriesList { get; set; }
+        void DataBindingEvent(object sender, EventArgs e);
+        void AddNewSeries(ComboChartLineSeries line);
+        void ClearSeries();
+    }
 }

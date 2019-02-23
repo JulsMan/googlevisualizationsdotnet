@@ -27,56 +27,130 @@ namespace TestGoogleCharsNGraphsControls
             combo.Rows.Add(new object[] { new DateTime(2004, 8, 1), 139, 1110, 615, 968, 215 });
             combo.Rows.Add(new object[] { new DateTime(2004, 9, 1), 136, 691, 629, 1026, 366 });
 
-            //this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.WaterMarkLine(System.Drawing.Color.OrangeRed, 300, "Sun's Temp"));
-            //this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
-            //{
-            //    FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
-            //    LineName = "Ceiling",
-            //    LineWidth = 4,
-            //    FixedValue = 1000,
-            //    DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.SHORT_DASH,
-            //    LineColor = System.Drawing.Color.Gray
-            //});
 
+
+            loadComboChart(combo);
+            loadLineChart(combo);
+            loadAreaChart(combo);
+
+
+
+
+        }
+
+
+        private void loadComboChart(DataTable dt)
+        {
             this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
             {
                 FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.AVG,
                 LineName = "Average",
                 LineWidth = 2,
-                LineType = GoogleChartsNGraphsControls.SeriesType.Area,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
+                LineColor = System.Drawing.Color.OrangeRed,
+                DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.LONG_DASH
+            });
+
+
+            this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
+                LineName = "Bad",
+                LineWidth = 3,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Line,
+                LineColor = System.Drawing.Color.BlueViolet,
+                FixedValue = 450,
+                DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.DOTTED
+            });
+
+            this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
+                LineName = "Good",
+                LineWidth = 3,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Line,
+                LineColor = System.Drawing.Color.DarkGreen,
+                FixedValue = 1200,
+                DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.SHORT_DASH
+            });
+
+            this.GVComboChart1.DataSource = dt;
+            this.GVComboChart1.DataBind();
+        }
+
+
+
+        private void loadLineChart(DataTable dt)
+        {
+            this.GVLineChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.AVG,
+                LineName = "Average",
+                LineWidth = 2,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
                 LineColor = System.Drawing.Color.OrangeRed
             });
 
 
-            //this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
-            //{
-            //    FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.STD_DEV,
-            //    LineName = "StdDev",
-            //    LineWidth = 2,
-            //    DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.DOTTED,
-            //    LineColor = System.Drawing.Color.PaleGoldenrod
-            //});
+            this.GVLineChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
+                LineName = "Bad",
+                LineWidth = 3,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
+                LineColor = System.Drawing.Color.BlueViolet,
+                FixedValue = 450
+            });
+
+            this.GVLineChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
+                LineName = "Good",
+                LineWidth = 3,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
+                LineColor = System.Drawing.Color.DarkGreen,
+                FixedValue = 1200
+            });
+
+            this.GVLineChart1.DataSource = dt;
+            this.GVLineChart1.DataBind();
+        }
 
 
-            //this.GVComboChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
-            //{
-            //    FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.MEDIAN,
-            //    LineName = "Median",
-            //    LineWidth = 2,
-            //    DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.DOTTED,
-            //    LineColor = System.Drawing.Color.Violet
-            //});
+        private void loadAreaChart(DataTable dt)
+        {
+            this.GVAreaChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.AVG,
+                LineName = "Average",
+                LineWidth = 2,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Candlesticks,
+                LineColor = System.Drawing.Color.OrangeRed
+            });
 
 
-            //this.GVComboChart1.GviOptionsOverride = "{ seriesType:'bars', series:{ 3:{type:'line'}, 4:{type:'line'} } }";
-            //this.GVComboChart1.GviComboChartLine = new GoogleChartsNGraphsControls.ComboChartLineSeries()
-            //{
-            //    Column = 5,
-            //    LineType = GoogleChartsNGraphsControls.SeriesType.Line
-            //};
-            this.GVComboChart1.DataSource = combo;
-            this.GVComboChart1.DataBind();
+            this.GVAreaChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
+                LineName = "Bad",
+                LineWidth = 3,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Candlesticks,
+                LineColor = System.Drawing.Color.BlueViolet,
+                FixedValue = 450
+            });
 
+            this.GVAreaChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
+            {
+                FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
+                LineName = "Good",
+                LineWidth = 3,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Candlesticks,
+                LineColor = System.Drawing.Color.DarkGreen,
+                FixedValue = 1200
+            });
+
+            this.GVAreaChart1.DataSource = dt;
+            this.GVAreaChart1.DataBind();
         }
     }
 }

@@ -30,6 +30,7 @@
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +87,7 @@
     <Content Include="CHAP.aspx" />
     <Content Include="Codebehind.aspx" />
     <Content Include="ComboWatermarks.aspx" />
+    <Content Include="debug.aspx" />
     <Content Include="GeoMaps.aspx" />
     <Content Include="img\16\delete.png" />
     <Content Include="img\16\moveleft.png" />
@@ -167,6 +169,13 @@
     </Compile>
     <Compile Include="ComboWatermarks.aspx.designer.cs">
       <DependentUpon>ComboWatermarks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="debug.aspx.cs">
+      <DependentUpon>debug.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="debug.aspx.designer.cs">
+      <DependentUpon>debug.aspx</DependentUpon>
     </Compile>
     <Compile Include="GeoMaps.aspx.cs">
       <DependentUpon>GeoMaps.aspx</DependentUpon>

@@ -115,6 +115,7 @@
     <Compile Include="GVPieChart.cs" />
     <Compile Include="GVTable.cs" />
     <Compile Include="IGoogleFormatter.cs" />
+    <Compile Include="MathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>

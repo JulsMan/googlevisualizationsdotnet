@@ -10,7 +10,7 @@
 namespace TestGoogleCharsNGraphsControls {
     
     
-    public partial class ComboWatermarks {
+    public partial class debug {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace TestGoogleCharsNGraphsControls {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// GVComboChart1 control.
+        /// PlaceHolderChart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVComboChart GVComboChart1;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderChart;
         
         /// <summary>
         /// GVLineChart1 control.
@@ -38,14 +38,5 @@ namespace TestGoogleCharsNGraphsControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GoogleChartsNGraphsControls.GVLineChart GVLineChart1;
-        
-        /// <summary>
-        /// GVAreaChart1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GoogleChartsNGraphsControls.GVAreaChart GVAreaChart1;
     }
 }

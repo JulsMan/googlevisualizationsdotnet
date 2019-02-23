@@ -15,56 +15,15 @@ namespace GoogleChartsNGraphsControls
     [ToolboxData("<{0}:GVComboChart runat=server></{0}:GVComboChart>")]
     [ToolboxBitmap(typeof(GVComboChart))]
     [DataContract]
-    public class GVComboChart : BaseWebControl, IsStackable
+    public class GVComboChart : BaseWebControl, IsStackable, IHasLineSeries
     {
        
-        #region Math Calcs
-        //
-        // MAth Calcs from 
-        // http://www.codeproject.com/Articles/42492/Using-LINQ-to-Calculate-Basic-Statistics
-        //
-
-        private decimal Median(IEnumerable<decimal> source)
-        {
-            var sortedList = from number in source
-                             orderby number
-                             select number;
-
-            int count = sortedList.Count();
-            int itemIndex = count / 2;
-            if (count % 2 == 0) // Even number of items. 
-                return (sortedList.ElementAt(itemIndex) +
-                        sortedList.ElementAt(itemIndex - 1)) / 2;
-
-            // Odd number of items. 
-            return sortedList.ElementAt(itemIndex);
-        }
-        private decimal StandardDeviation(IEnumerable<decimal> source)
-        {
-            return decimal.Parse( Math.Sqrt( (double) source.Variance()).ToString());
-        }
-        public decimal Variance(IEnumerable<decimal> source)
-        {
-            int n = 0;
-            decimal mean = 0;
-            decimal M2 = 0;
-
-            foreach (decimal x in source)
-            {
-                n = n + 1;
-                decimal delta = x - mean;
-                mean = mean + delta / n;
-                M2 += delta * (x - mean);
-            }
-            return M2 / (n - 1);
-        }
-        #endregion
 
         public GVComboChart()
             : base()
         {
             this.GviSeriesType = SeriesType.Bars;
-            this.GviComboChartLine = new ComboChartLineSeriesList();
+            this.GviLineSeriesList = new ComboChartLineSeriesList();
             this.LineSeries = new List<ComboChartLineSeries>();
         }
         public void DataBindingEvent(object sender, EventArgs e)
@@ -107,7 +66,7 @@ namespace GoogleChartsNGraphsControls
                                 this.dt.AcceptChanges();
 
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         case ComboChartLineSeries.FUNCTION_TYPE.SUM:
@@ -132,7 +91,7 @@ namespace GoogleChartsNGraphsControls
                                 this.dt.AcceptChanges();
 
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         case ComboChartLineSeries.FUNCTION_TYPE.AVG:
@@ -157,7 +116,7 @@ namespace GoogleChartsNGraphsControls
                                 this.dt.AcceptChanges();
 
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         case ComboChartLineSeries.FUNCTION_TYPE.COUNT:
@@ -182,7 +141,7 @@ namespace GoogleChartsNGraphsControls
                                 }
                                 this.dt.AcceptChanges();
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         case ComboChartLineSeries.FUNCTION_TYPE.STD_DEV:
@@ -202,13 +161,13 @@ namespace GoogleChartsNGraphsControls
                                     {
                                         median.Add(decimal.Parse(dr[cc].ToString()));
                                     }
-                                    dt.Rows[i].SetField<decimal>(dc, StandardDeviation(median));
+                                    dt.Rows[i].SetField<decimal>(dc, MathUtils.StandardDeviation(median));
                                 }
 
                                 this.dt.AcceptChanges();
 
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         case ComboChartLineSeries.FUNCTION_TYPE.VARIANCE:
@@ -228,12 +187,12 @@ namespace GoogleChartsNGraphsControls
                                     {
                                         median.Add(decimal.Parse(dr[cc].ToString()));
                                     }
-                                    dt.Rows[i].SetField<decimal>(dc, Variance(median));
+                                    dt.Rows[i].SetField<decimal>(dc, MathUtils.Variance(median));
                                 }
                                 this.dt.AcceptChanges();
 
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         case ComboChartLineSeries.FUNCTION_TYPE.MEDIAN:
@@ -252,12 +211,12 @@ namespace GoogleChartsNGraphsControls
                                     {
                                         median.Add( decimal.Parse(dr[cc].ToString()));
                                     }
-                                    dt.Rows[i].SetField<decimal>(dc, Median(median));
+                                    dt.Rows[i].SetField<decimal>(dc, MathUtils.Median(median));
                                 }
                                 this.dt.AcceptChanges();
 
                                 ln.Column = this.dt.Columns.Count - 2;
-                                this.GviComboChartLine.Add(ln);
+                                this.GviLineSeriesList.Add(ln);
                                 break;
                             }
                         default:
@@ -271,18 +230,19 @@ namespace GoogleChartsNGraphsControls
                     }
                 }
 
-
-          
         }
-        //protected List<WaterMarkLine> WaterMarkLines { get; set; }
-        //public void AddWaterMark(WaterMarkLine waterLine)
+       
+
+
+        //protected List<LineAnnotation> LineAnnotationCollection { get; set; }
+        //public void AddLineAnnotation(LineAnnotation waterLine)
         //{
-        //    this.WaterMarkLines.Add(waterLine);
+        //    this.LineAnnotationCollection.Add(waterLine);
         //    this.gvi.BindingDataTable += DataBindingEvent;
         //}
-        //public void ClearWaterMarks()
+        //public void ClearAnnotations()
         //{
-        //    this.WaterMarkLines.Clear();
+        //    this.LineAnnotationCollection.Clear();
         //    this.gvi.BindingDataTable -= DataBindingEvent;
         //}
         protected List<ComboChartLineSeries> LineSeries { get; set; }
@@ -341,15 +301,15 @@ namespace GoogleChartsNGraphsControls
         }
 
         [DataMember(Name="series")]
-        public ComboChartLineSeriesList GviComboChartLine
+        public ComboChartLineSeriesList GviLineSeriesList
         {
             get
             {
-                return (ComboChartLineSeriesList)ViewState["GviComboChartLine"];
+                return (ComboChartLineSeriesList)ViewState["GviLineSeriesList"];
             }
             set
             {
-                ViewState["GviComboChartLine"] = value;
+                ViewState["GviLineSeriesList"] = value;
             }
         }
        

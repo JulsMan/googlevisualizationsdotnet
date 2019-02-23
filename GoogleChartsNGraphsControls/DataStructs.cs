@@ -124,7 +124,7 @@ namespace GoogleChartsNGraphsControls
         public WaterMarkLine(System.Drawing.Color color, decimal FixedValueAt, string Title)
         {
             this.FunctType = FUNCTION_TYPE.FIXED;
-            this.LineType = GoogleChartsNGraphsControls.SeriesType.Area;
+            this.SeriesType = GoogleChartsNGraphsControls.SeriesType.Area;
             this.LineName = Title;
             this.FixedValue = FixedValueAt;
             this.LineColor = color;

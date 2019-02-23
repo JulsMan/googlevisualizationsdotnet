@@ -242,29 +242,7 @@ namespace GoogleChartsNGraphsControls
             }
         }
 
-        [GviConfigOption]
-        [Bindable(true)]
-        [Category("GoogleOptions")]
-        [Description(@"The type of the entity that receives focus on mouse hover. Also affects which entity is selected by mouse click, and which data table element is associated with events. Can be one of the following:
-            'datum' - Focus on a single data point. Correlates to a cell in the data table.
-            'category' - Focus on a grouping of all data points along the major axis. Correlates to a row in the data table.
-            In focusTarget 'category' the tooltip displays all the category values. This may be useful for comparing values of different series.")]
-        [DefaultValue(FocusTarget.Default)]
-        [DataMember(Name = "focusTarget", EmitDefaultValue = true, IsRequired = false)]
-        public FocusTarget GVIFocusTarget
-        {
-            get
-            {
-                object s = ViewState["GVIFocusTarget"];
-                if (s == null) return FocusTarget.Default;
-                FocusTarget ss = (FocusTarget)ViewState["GVIFocusTarget"];
-                return ss;
-            }
-            set
-            {
-                ViewState["GVIFocusTarget"] = value;
-            }
-        }
+       
 
         [GviConfigOption]
         [Bindable(true)]

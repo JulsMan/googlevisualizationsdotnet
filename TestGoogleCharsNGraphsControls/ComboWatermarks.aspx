@@ -14,6 +14,12 @@
 
         <cc1:GVComboChart ID="GVComboChart1" runat="server"  Width="680" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"/>
 
+
+        <cc1:GVLineChart ID="GVLineChart1" runat="server" Width="680" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"/>
+
+
+        <cc1:GVAreaChart ID="GVAreaChart1" runat="server" Width="680" Height="400" GviAnimation_Duration="1000" GviAnimation_Easing="Out"/>
+
     </form>
 </body>
 </html>
