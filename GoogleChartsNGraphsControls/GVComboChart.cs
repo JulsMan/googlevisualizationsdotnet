@@ -319,10 +319,8 @@ namespace GoogleChartsNGraphsControls
         protected override void RenderContents(HtmlTextWriter output)
         {
             this.GviTitle = string.IsNullOrEmpty(this.GviTitle) ? this.dt.TableName : this.GviTitle;
-
+    
             // combocharts need to have an Average column or an average column specified to show the average line
-
-
             this.gvi.RegisterGVIScriptsEx(this, this.dt, BaseGVI.GOOGLECHART.COMBO);
             output.Write(Text);
         }

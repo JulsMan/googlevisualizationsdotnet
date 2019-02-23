@@ -19,6 +19,7 @@ namespace GoogleChartsNGraphsControls
 
         public GVLineChart()
         {
+            this.GviLineSeriesList = new ComboChartLineSeriesList();
             this.LineSeries = new List<ComboChartLineSeries>();
         }
 
@@ -28,11 +29,11 @@ namespace GoogleChartsNGraphsControls
         {
             get
             {
-                return (ComboChartLineSeriesList)ViewState["GviComboChartLine"];
+                return (ComboChartLineSeriesList)ViewState["GviLineSeriesList"];
             }
             set
             {
-                ViewState["GviComboChartLine"] = value;
+                ViewState["GviLineSeriesList"] = value;
             }
         }
         protected List<ComboChartLineSeries> LineSeries { get; set; }
@@ -339,6 +340,7 @@ namespace GoogleChartsNGraphsControls
             myconverters.Add(new CustomConvertersAxis());
             myconverters.Add(new CustomConvertersLegend());
             myconverters.Add(new CustomConverterEnum());
+            myconverters.Add(new CustomConverterComboSeries());
             myconverters.Add(new CustomConverterTrendLine());
             myconverters.Add(new CustomConverterInterval());
 

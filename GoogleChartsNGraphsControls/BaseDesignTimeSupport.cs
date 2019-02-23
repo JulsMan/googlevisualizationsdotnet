@@ -705,6 +705,8 @@ namespace GoogleChartsNGraphsControls
                 return string.Format("{0}: {{ type:'{1}' }}", Column, SeriesType.ToString().LowerCaseFirst());
         }
     }
+
+
     [Serializable()]
     [DataContract(Name = "series")]
     public class ComboChartLineSeriesList : List<ComboChartLineSeries>
@@ -712,6 +714,9 @@ namespace GoogleChartsNGraphsControls
         public override string ToString()
         {
             string foo = string.Empty;
+            if (this.Count() == 0)
+                return "null";
+
             foreach (var s in this)
                 foo += s.ToString() + " ,";
 

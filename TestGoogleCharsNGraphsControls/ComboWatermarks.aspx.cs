@@ -29,9 +29,9 @@ namespace TestGoogleCharsNGraphsControls
 
 
 
-            loadComboChart(combo);
+            //loadComboChart(combo);
             loadLineChart(combo);
-            loadAreaChart(combo);
+            //loadAreaChart(combo);
 
 
 
@@ -87,8 +87,9 @@ namespace TestGoogleCharsNGraphsControls
                 FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.AVG,
                 LineName = "Average",
                 LineWidth = 2,
-                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
-                LineColor = System.Drawing.Color.OrangeRed
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.SteppedArea,
+                LineColor = System.Drawing.Color.OrangeRed,
+                DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.DASHED
             });
 
 
@@ -97,9 +98,10 @@ namespace TestGoogleCharsNGraphsControls
                 FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
                 LineName = "Bad",
                 LineWidth = 3,
-                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Line,
                 LineColor = System.Drawing.Color.BlueViolet,
-                FixedValue = 450
+                FixedValue = 450,
+                DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.DASHED
             });
 
             this.GVLineChart1.AddNewSeries(new GoogleChartsNGraphsControls.ComboChartLineSeries()
@@ -107,9 +109,10 @@ namespace TestGoogleCharsNGraphsControls
                 FunctType = GoogleChartsNGraphsControls.ComboChartLineSeries.FUNCTION_TYPE.FIXED,
                 LineName = "Good",
                 LineWidth = 3,
-                SeriesType = GoogleChartsNGraphsControls.SeriesType.Area,
+                SeriesType = GoogleChartsNGraphsControls.SeriesType.Line,
                 LineColor = System.Drawing.Color.DarkGreen,
-                FixedValue = 1200
+                FixedValue = 1200,
+                DashedLine = GoogleChartsNGraphsControls.ComboChartLineSeries.LINETYPE.DASHED
             });
 
             this.GVLineChart1.DataSource = dt;
